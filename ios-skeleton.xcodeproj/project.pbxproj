@@ -141,6 +141,13 @@
 		C212BC43224FBB2000C624A7 /* ios-skeleton */ = {
 			isa = PBXGroup;
 			children = (
+				C212BCB9225037DC00C624A7 /* DI */,
+				C212BCB72250365100C624A7 /* Base */,
+				C212BCB02250351700C624A7 /* Model */,
+				C212BCB3225035CD00C624A7 /* Coordinators */,
+				C212BCB4225035E500C624A7 /* Flows */,
+				C212BCB52250361300C624A7 /* View */,
+				C212BCB82250366500C624A7 /* Theme */,
 				C212BC85224FE67B00C624A7 /* Resources */,
 				C212BC44224FBB2000C624A7 /* AppDelegate.swift */,
 				C212BC46224FBB2000C624A7 /* ViewController.swift */,
@@ -235,6 +242,71 @@
 				C212BCA6225023FB00C624A7 /* Assets.swift */,
 			);
 			path = Generated;
+			sourceTree = "<group>";
+		};
+		C212BCB02250351700C624A7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C212BCB2225035B900C624A7 /* Repositories */,
+				C212BCB1225035B200C624A7 /* Api */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C212BCB1225035B200C624A7 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		C212BCB2225035B900C624A7 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		C212BCB3225035CD00C624A7 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		C212BCB4225035E500C624A7 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		C212BCB52250361300C624A7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C212BCB72250365100C624A7 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		C212BCB82250366500C624A7 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		C212BCB9225037DC00C624A7 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
