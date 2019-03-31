@@ -10,10 +10,6 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class BaseViewModel {
-    let disposeBag = DisposeBag()
-}
-
 class TransactionListViewModel: BaseViewModel {
     
     private let repository: TransactionRepositoring

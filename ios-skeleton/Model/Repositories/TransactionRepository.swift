@@ -20,13 +20,8 @@ protocol TransactionRepositoring {
     func getTransaction(id: Int) -> Single<TransactionInfo>
 }
 
+// Mocked repository with fake data for testing
 class MockedTransactionRepository: TransactionRepositoring {
-    
-    typealias Dependency = HasNoDependency
-    
-    init(dependencies: Dependency) {
-        // init networking & stuff
-    }
     
     func getTransactions() -> Single<[Transaction]> {
         return Single.just((0...20).map { Transaction(id: $0, amountInAccountCurrency: 124 * $0, direction: .incoming)})

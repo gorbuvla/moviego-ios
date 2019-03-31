@@ -24,13 +24,13 @@ final class TransactionApiService: TransactionApiServicing {
     }
     
     func fetchTransactions() -> Single<TransactionListResponse> {
-        return api.request("/transactions", method: .get, parameters: [:], encoding: JSONEncoding.default, headers: [:])
+        return api.request("/transactions", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil)
             .mapObject(to: TransactionListResponse.self)
             .asSingle()
     }
     
     func fetchTransaction(id: Int) -> Single<TransactionInfoResponse> {
-        return api.request("/transaction/\(id)", method: .get, parameters: [:], encoding: JSONEncoding.default, headers: [:])
+        return api.request("/transaction/\(id)", method: .get, parameters: [:], encoding: JSONEncoding.default, headers: nil)
             .mapObject(to: TransactionInfoResponse.self)
             .asSingle()
     }
