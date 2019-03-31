@@ -23,6 +23,20 @@
 		C212BCA9225024D400C624A7 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCA8225024D400C624A7 /* Environment.swift */; };
 		C212BCAB2250325C00C624A7 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCAA2250325C00C624A7 /* LocalizedStrings.swift */; };
 		C212BCAD2250327D00C624A7 /* environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = C212BCAC2250327D00C624A7 /* environment.plist */; };
+		C212BCBB22503E8C00C624A7 /* TransactionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCBA22503E8C00C624A7 /* TransactionRepository.swift */; };
+		C212BCBE2250475E00C624A7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C212BCBC2250475E00C624A7 /* RxSwift.framework */; };
+		C212BCBF2250475E00C624A7 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C212BCBD2250475E00C624A7 /* RxCocoa.framework */; };
+		C212BCC322504BD200C624A7 /* TransactionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCC222504BD200C624A7 /* TransactionListViewController.swift */; };
+		C212BCC522504C9700C624A7 /* TransactionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCC422504C9700C624A7 /* TransactionListViewModel.swift */; };
+		C212BCC722504ECF00C624A7 /* TransactionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCC622504ECF00C624A7 /* TransactionCoordinator.swift */; };
+		C212BCC922504F1300C624A7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCC822504F1300C624A7 /* Coordinator.swift */; };
+		C212BCCC225052AD00C624A7 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCCB225052AD00C624A7 /* TransactionTableViewCell.swift */; };
+		C212BCCE2250D58600C624A7 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCCD2250D58600C624A7 /* Transaction.swift */; };
+		C212BCD02250D81F00C624A7 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCCF2250D81F00C624A7 /* AppDependency.swift */; };
+		C212BCD22250DB9E00C624A7 /* ViewModelFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCD12250DB9E00C624A7 /* ViewModelFactories.swift */; };
+		C212BCD42250E45500C624A7 /* LoadingDataObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCD32250E45500C624A7 /* LoadingDataObservable.swift */; };
+		C212BCD62250E98D00C624A7 /* RxSwiftExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C212BCD52250E98D00C624A7 /* RxSwiftExt.framework */; };
+		C212BCD922511AF000C624A7 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCD822511AF000C624A7 /* BaseTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +65,7 @@
 		C212BC6F224FC4C100C624A7 /* UnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTests.swift; sourceTree = "<group>"; };
 		C212BC71224FC4C100C624A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C212BC7B224FD13700C624A7 /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
-		C212BC81224FD1E700C624A7 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		C212BC81224FD1E700C624A7 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C212BC83224FD20300C624A7 /* Gemfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Gemfile; sourceTree = "<group>"; };
 		C212BC86224FE6F700C624A7 /* Base.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Base.lproj; sourceTree = "<group>"; };
 		C212BC8D224FEB5200C624A7 /* generate_preprocess_header.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = generate_preprocess_header.sh; sourceTree = "<group>"; };
@@ -64,6 +78,20 @@
 		C212BCA8225024D400C624A7 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		C212BCAA2250325C00C624A7 /* LocalizedStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
 		C212BCAC2250327D00C624A7 /* environment.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = environment.plist; sourceTree = "<group>"; };
+		C212BCBA22503E8C00C624A7 /* TransactionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRepository.swift; sourceTree = "<group>"; };
+		C212BCBC2250475E00C624A7 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		C212BCBD2250475E00C624A7 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		C212BCC222504BD200C624A7 /* TransactionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewController.swift; sourceTree = "<group>"; };
+		C212BCC422504C9700C624A7 /* TransactionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewModel.swift; sourceTree = "<group>"; };
+		C212BCC622504ECF00C624A7 /* TransactionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCoordinator.swift; sourceTree = "<group>"; };
+		C212BCC822504F1300C624A7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		C212BCCB225052AD00C624A7 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
+		C212BCCD2250D58600C624A7 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		C212BCCF2250D81F00C624A7 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
+		C212BCD12250DB9E00C624A7 /* ViewModelFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactories.swift; sourceTree = "<group>"; };
+		C212BCD32250E45500C624A7 /* LoadingDataObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingDataObservable.swift; sourceTree = "<group>"; };
+		C212BCD52250E98D00C624A7 /* RxSwiftExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwiftExt.framework; path = Carthage/Build/iOS/RxSwiftExt.framework; sourceTree = "<group>"; };
+		C212BCD822511AF000C624A7 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		C9F82BCC923BFCAABAED12FA /* Pods-ios-skeletonUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-skeletonUITests.debug.xcconfig"; path = "Target Support Files/Pods-ios-skeletonUITests/Pods-ios-skeletonUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CD5853AE2A03E0C9B6969ED1 /* Pods-ios-skeleton.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-skeleton.beta.xcconfig"; path = "Target Support Files/Pods-ios-skeleton/Pods-ios-skeleton.beta.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +101,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C212BCD62250E98D00C624A7 /* RxSwiftExt.framework in Frameworks */,
+				C212BCBE2250475E00C624A7 /* RxSwift.framework in Frameworks */,
+				C212BCBF2250475E00C624A7 /* RxCocoa.framework in Frameworks */,
 				C212BC9E225002D500C624A7 /* Alamofire.framework in Frameworks */,
 				C212BC9F225002D500C624A7 /* SnapKit.framework in Frameworks */,
 				99AD379E1DD3CA458E7B39B7 /* Pods_ios_skeleton.framework in Frameworks */,
@@ -105,6 +136,9 @@
 		AA2D6159C38A722E5FA71F43 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C212BCD52250E98D00C624A7 /* RxSwiftExt.framework */,
+				C212BCBD2250475E00C624A7 /* RxCocoa.framework */,
+				C212BCBC2250475E00C624A7 /* RxSwift.framework */,
 				C212BC9C225002D500C624A7 /* Alamofire.framework */,
 				C212BC9D225002D500C624A7 /* SnapKit.framework */,
 				6CC92737F32EA1C1AAD0C261 /* Pods_ios_skeleton.framework */,
@@ -249,6 +283,7 @@
 			children = (
 				C212BCB2225035B900C624A7 /* Repositories */,
 				C212BCB1225035B200C624A7 /* Api */,
+				C212BCD32250E45500C624A7 /* LoadingDataObservable.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -256,6 +291,7 @@
 		C212BCB1225035B200C624A7 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				C212BCCD2250D58600C624A7 /* Transaction.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -263,6 +299,7 @@
 		C212BCB2225035B900C624A7 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				C212BCBA22503E8C00C624A7 /* TransactionRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -277,6 +314,7 @@
 		C212BCB4225035E500C624A7 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				C212BCC022504B9400C624A7 /* Transactions */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -284,6 +322,8 @@
 		C212BCB52250361300C624A7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C212BCD722511AD500C624A7 /* Base */,
+				C212BCCA2250524800C624A7 /* TableViewCells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -291,6 +331,7 @@
 		C212BCB72250365100C624A7 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				C212BCC822504F1300C624A7 /* Coordinator.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -305,8 +346,44 @@
 		C212BCB9225037DC00C624A7 /* DI */ = {
 			isa = PBXGroup;
 			children = (
+				C212BCCF2250D81F00C624A7 /* AppDependency.swift */,
+				C212BCD12250DB9E00C624A7 /* ViewModelFactories.swift */,
 			);
 			path = DI;
+			sourceTree = "<group>";
+		};
+		C212BCC022504B9400C624A7 /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				C212BCC122504BB500C624A7 /* List */,
+				C212BCC622504ECF00C624A7 /* TransactionCoordinator.swift */,
+			);
+			path = Transactions;
+			sourceTree = "<group>";
+		};
+		C212BCC122504BB500C624A7 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				C212BCC222504BD200C624A7 /* TransactionListViewController.swift */,
+				C212BCC422504C9700C624A7 /* TransactionListViewModel.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		C212BCCA2250524800C624A7 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				C212BCCB225052AD00C624A7 /* TransactionTableViewCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		C212BCD722511AD500C624A7 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				C212BCD822511AF000C624A7 /* BaseTableViewCell.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -530,11 +607,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C212BCD922511AF000C624A7 /* BaseTableViewCell.swift in Sources */,
+				C212BCC322504BD200C624A7 /* TransactionListViewController.swift in Sources */,
+				C212BCCC225052AD00C624A7 /* TransactionTableViewCell.swift in Sources */,
+				C212BCCE2250D58600C624A7 /* Transaction.swift in Sources */,
 				C212BC47224FBB2000C624A7 /* ViewController.swift in Sources */,
+				C212BCC922504F1300C624A7 /* Coordinator.swift in Sources */,
 				C212BCA9225024D400C624A7 /* Environment.swift in Sources */,
+				C212BCBB22503E8C00C624A7 /* TransactionRepository.swift in Sources */,
+				C212BCD42250E45500C624A7 /* LoadingDataObservable.swift in Sources */,
+				C212BCD22250DB9E00C624A7 /* ViewModelFactories.swift in Sources */,
+				C212BCD02250D81F00C624A7 /* AppDependency.swift in Sources */,
 				C212BC45224FBB2000C624A7 /* AppDelegate.swift in Sources */,
 				C212BCA7225023FB00C624A7 /* Assets.swift in Sources */,
 				C212BCAB2250325C00C624A7 /* LocalizedStrings.swift in Sources */,
+				C212BCC722504ECF00C624A7 /* TransactionCoordinator.swift in Sources */,
+				C212BCC522504C9700C624A7 /* TransactionListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
