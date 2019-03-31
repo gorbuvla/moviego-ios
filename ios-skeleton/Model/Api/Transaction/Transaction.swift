@@ -8,15 +8,16 @@
 
 import Foundation
 
-
-struct TransactionListResponse {
-    let items: [Transaction]
-}
-
 struct Transaction: Codable {
     let id: Int
     let amountInAccountCurrency: Int
     let direction: TrDirection
+}
+
+struct TransactionInfo: Codable {
+    let accountNumber: String
+    let accountName: String
+    let bankCode: String
 }
 
 enum TrDirection: String {
@@ -26,4 +27,12 @@ enum TrDirection: String {
 
 extension TrDirection: Codable {
     
+}
+
+struct TransactionListResponse: Codable {
+    let items: [Transaction]
+}
+
+struct TransactionInfoResponse: Codable {
+    let contraAccount: TransactionInfo
 }

@@ -17,10 +17,10 @@ protocol TransactionRepositoring {
     
     func getTransactions() -> Single<[Transaction]>
     
-    func getTransaction(id: Int) -> Single<Transaction>
+    func getTransaction(id: Int) -> Single<TransactionInfo>
 }
 
-class TransactionRepository: TransactionRepositoring {
+class MockedTransactionRepository: TransactionRepositoring {
     
     typealias Dependency = HasNoDependency
     
@@ -32,7 +32,26 @@ class TransactionRepository: TransactionRepositoring {
         return Single.just((0...20).map { Transaction(id: $0, amountInAccountCurrency: 124 * $0, direction: .incoming)})
     }
     
-    func getTransaction(id: Int) -> Single<Transaction> {
-        return Single.just(Transaction(id: id, amountInAccountCurrency: 124 * id, direction: .incoming))
+    func getTransaction(id: Int) -> Single<TransactionInfo> {
+        return Single.just(TransactionInfo(accountNumber: "1011", accountName: "BU", bankCode: "123"))
+    }
+}
+
+class TransactionRepository: TransactionRepositoring {
+    
+    private let apiService: TransactionApiServicing
+    
+    init(apiService: TransactionApiServicing) {
+        self.apiService = apiService
+    }
+    
+    func getTransactions() -> Single<[Transaction]> {
+        return apiService.fetchTransactions()
+            .map { $0.items }
+    }
+    
+    func getTransaction(id: Int) -> Single<TransactionInfo> {
+        return apiService.fetchTransaction(id: id)
+            .map { $0.contraAccount }
     }
 }

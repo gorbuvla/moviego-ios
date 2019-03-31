@@ -12,8 +12,16 @@ import Foundation
 
 final class AppDependency: HasTransactionManaging {
     
-    lazy var transactionRepository: TransactionRepositoring = TransactionRepository(dependencies: self)
+    // networking
+    lazy var network: Network = Network()
+    lazy var apiService: ApiServicing = ApiService(network: self.network)
+    lazy var authApiService: ApiServicing = ApiService(network: self.network) // TODO: to be continued
     
+    // api services
+    lazy var transactionsApi: TransactionApiServicing = TransactionApiService(api: self.apiService)
+    
+    // repositories
+    lazy var transactionRepository: TransactionRepositoring = TransactionRepository(apiService: self.transactionsApi)
 }
 
 let dependencies = AppDependency()

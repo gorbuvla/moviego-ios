@@ -37,6 +37,12 @@
 		C212BCD42250E45500C624A7 /* LoadingDataObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCD32250E45500C624A7 /* LoadingDataObservable.swift */; };
 		C212BCD62250E98D00C624A7 /* RxSwiftExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C212BCD52250E98D00C624A7 /* RxSwiftExt.framework */; };
 		C212BCD922511AF000C624A7 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCD822511AF000C624A7 /* BaseTableViewCell.swift */; };
+		C212BCDB2251247100C624A7 /* Reqres.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C212BCDA2251247100C624A7 /* Reqres.framework */; };
+		C212BCDE225126FA00C624A7 /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C212BCDD225126FA00C624A7 /* RxAlamofire.framework */; };
+		C212BCE022512CBF00C624A7 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCDF22512CBF00C624A7 /* Network.swift */; };
+		C212BCE222512EC800C624A7 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCE122512EC800C624A7 /* ApiService.swift */; };
+		C212BCE5225134A600C624A7 /* TransactionApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCE4225134A600C624A7 /* TransactionApiService.swift */; };
+		C212BCE72251371B00C624A7 /* RxAtomic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C212BCE62251371B00C624A7 /* RxAtomic.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +98,12 @@
 		C212BCD32250E45500C624A7 /* LoadingDataObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingDataObservable.swift; sourceTree = "<group>"; };
 		C212BCD52250E98D00C624A7 /* RxSwiftExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwiftExt.framework; path = Carthage/Build/iOS/RxSwiftExt.framework; sourceTree = "<group>"; };
 		C212BCD822511AF000C624A7 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		C212BCDA2251247100C624A7 /* Reqres.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reqres.framework; path = Carthage/Build/iOS/Reqres.framework; sourceTree = "<group>"; };
+		C212BCDD225126FA00C624A7 /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = Carthage/Build/iOS/RxAlamofire.framework; sourceTree = "<group>"; };
+		C212BCDF22512CBF00C624A7 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		C212BCE122512EC800C624A7 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		C212BCE4225134A600C624A7 /* TransactionApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionApiService.swift; sourceTree = "<group>"; };
+		C212BCE62251371B00C624A7 /* RxAtomic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAtomic.framework; path = Carthage/Build/iOS/RxAtomic.framework; sourceTree = "<group>"; };
 		C9F82BCC923BFCAABAED12FA /* Pods-ios-skeletonUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-skeletonUITests.debug.xcconfig"; path = "Target Support Files/Pods-ios-skeletonUITests/Pods-ios-skeletonUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CD5853AE2A03E0C9B6969ED1 /* Pods-ios-skeleton.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-skeleton.beta.xcconfig"; path = "Target Support Files/Pods-ios-skeleton/Pods-ios-skeleton.beta.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,6 +113,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C212BCE72251371B00C624A7 /* RxAtomic.framework in Frameworks */,
+				C212BCDE225126FA00C624A7 /* RxAlamofire.framework in Frameworks */,
+				C212BCDB2251247100C624A7 /* Reqres.framework in Frameworks */,
 				C212BCD62250E98D00C624A7 /* RxSwiftExt.framework in Frameworks */,
 				C212BCBE2250475E00C624A7 /* RxSwift.framework in Frameworks */,
 				C212BCBF2250475E00C624A7 /* RxCocoa.framework in Frameworks */,
@@ -136,6 +151,9 @@
 		AA2D6159C38A722E5FA71F43 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C212BCE62251371B00C624A7 /* RxAtomic.framework */,
+				C212BCDD225126FA00C624A7 /* RxAlamofire.framework */,
+				C212BCDA2251247100C624A7 /* Reqres.framework */,
 				C212BCD52250E98D00C624A7 /* RxSwiftExt.framework */,
 				C212BCBD2250475E00C624A7 /* RxCocoa.framework */,
 				C212BCBC2250475E00C624A7 /* RxSwift.framework */,
@@ -281,6 +299,7 @@
 		C212BCB02250351700C624A7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C212BCDC2251249B00C624A7 /* Network */,
 				C212BCB2225035B900C624A7 /* Repositories */,
 				C212BCB1225035B200C624A7 /* Api */,
 				C212BCD32250E45500C624A7 /* LoadingDataObservable.swift */,
@@ -291,7 +310,7 @@
 		C212BCB1225035B200C624A7 /* Api */ = {
 			isa = PBXGroup;
 			children = (
-				C212BCCD2250D58600C624A7 /* Transaction.swift */,
+				C212BCE32251348800C624A7 /* Transaction */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -384,6 +403,24 @@
 				C212BCD822511AF000C624A7 /* BaseTableViewCell.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		C212BCDC2251249B00C624A7 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C212BCDF22512CBF00C624A7 /* Network.swift */,
+				C212BCE122512EC800C624A7 /* ApiService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		C212BCE32251348800C624A7 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				C212BCCD2250D58600C624A7 /* Transaction.swift */,
+				C212BCE4225134A600C624A7 /* TransactionApiService.swift */,
+			);
+			path = Transaction;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -616,10 +653,13 @@
 				C212BCA9225024D400C624A7 /* Environment.swift in Sources */,
 				C212BCBB22503E8C00C624A7 /* TransactionRepository.swift in Sources */,
 				C212BCD42250E45500C624A7 /* LoadingDataObservable.swift in Sources */,
+				C212BCE5225134A600C624A7 /* TransactionApiService.swift in Sources */,
 				C212BCD22250DB9E00C624A7 /* ViewModelFactories.swift in Sources */,
+				C212BCE022512CBF00C624A7 /* Network.swift in Sources */,
 				C212BCD02250D81F00C624A7 /* AppDependency.swift in Sources */,
 				C212BC45224FBB2000C624A7 /* AppDelegate.swift in Sources */,
 				C212BCA7225023FB00C624A7 /* Assets.swift in Sources */,
+				C212BCE222512EC800C624A7 /* ApiService.swift in Sources */,
 				C212BCAB2250325C00C624A7 /* LocalizedStrings.swift in Sources */,
 				C212BCC722504ECF00C624A7 /* TransactionCoordinator.swift in Sources */,
 				C212BCC522504C9700C624A7 /* TransactionListViewModel.swift in Sources */,
