@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		99AD379E1DD3CA458E7B39B7 /* Pods_ios_skeleton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CC92737F32EA1C1AAD0C261 /* Pods_ios_skeleton.framework */; };
 		C212BC45224FBB2000C624A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BC44224FBB2000C624A7 /* AppDelegate.swift */; };
 		C212BC47224FBB2000C624A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BC46224FBB2000C624A7 /* ViewController.swift */; };
 		C212BC4C224FBB2200C624A7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C212BC4B224FBB2200C624A7 /* Images.xcassets */; };
@@ -37,6 +36,23 @@
 		C212BCD42250E45500C624A7 /* LoadingDataObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCD32250E45500C624A7 /* LoadingDataObservable.swift */; };
 		C212BCD62250E98D00C624A7 /* RxSwiftExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C212BCD52250E98D00C624A7 /* RxSwiftExt.framework */; };
 		C212BCD922511AF000C624A7 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCD822511AF000C624A7 /* BaseTableViewCell.swift */; };
+		C212BCDB2251247100C624A7 /* Reqres.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C212BCDA2251247100C624A7 /* Reqres.framework */; };
+		C212BCDE225126FA00C624A7 /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C212BCDD225126FA00C624A7 /* RxAlamofire.framework */; };
+		C212BCE022512CBF00C624A7 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCDF22512CBF00C624A7 /* Network.swift */; };
+		C212BCE222512EC800C624A7 /* ApiInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCE122512EC800C624A7 /* ApiInteractor.swift */; };
+		C212BCE5225134A600C624A7 /* TransactionApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCE4225134A600C624A7 /* TransactionApiService.swift */; };
+		C212BCE72251371B00C624A7 /* RxAtomic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C212BCE62251371B00C624A7 /* RxAtomic.framework */; };
+		C212BCEA2251497D00C624A7 /* Pods_ios_skeleton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C212BCE92251497D00C624A7 /* Pods_ios_skeleton.framework */; };
+		C212BCEC225151AC00C624A7 /* CredentialsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCEB225151AC00C624A7 /* CredentialsProvider.swift */; };
+		C212BCEE225151E000C624A7 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCED225151E000C624A7 /* Credentials.swift */; };
+		C212BCF1225158BD00C624A7 /* CollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCF0225158BD00C624A7 /* CollectionExtensions.swift */; };
+		C212BCF322515DD500C624A7 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCF222515DD500C624A7 /* UserRepository.swift */; };
+		C212BCF6225166D000C624A7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCF5225166D000C624A7 /* User.swift */; };
+		C212BCFA2251697700C624A7 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCF92251697700C624A7 /* BaseViewController.swift */; };
+		C212BCFC225169B100C624A7 /* BaseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCFB225169B100C624A7 /* BaseListView.swift */; };
+		C212BD0022516AA800C624A7 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCFF22516AA800C624A7 /* BaseViewModel.swift */; };
+		F5FCCCB022563B1C00640F2A /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCCCAF22563B1C00640F2A /* DateExtensions.swift */; };
+		F5FCCCB22256469200640F2A /* OAuthApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCCCB12256469200640F2A /* OAuthApiService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,8 +108,25 @@
 		C212BCD32250E45500C624A7 /* LoadingDataObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingDataObservable.swift; sourceTree = "<group>"; };
 		C212BCD52250E98D00C624A7 /* RxSwiftExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwiftExt.framework; path = Carthage/Build/iOS/RxSwiftExt.framework; sourceTree = "<group>"; };
 		C212BCD822511AF000C624A7 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		C212BCDA2251247100C624A7 /* Reqres.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reqres.framework; path = Carthage/Build/iOS/Reqres.framework; sourceTree = "<group>"; };
+		C212BCDD225126FA00C624A7 /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = Carthage/Build/iOS/RxAlamofire.framework; sourceTree = "<group>"; };
+		C212BCDF22512CBF00C624A7 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		C212BCE122512EC800C624A7 /* ApiInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiInteractor.swift; sourceTree = "<group>"; };
+		C212BCE4225134A600C624A7 /* TransactionApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionApiService.swift; sourceTree = "<group>"; };
+		C212BCE62251371B00C624A7 /* RxAtomic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAtomic.framework; path = Carthage/Build/iOS/RxAtomic.framework; sourceTree = "<group>"; };
+		C212BCE92251497D00C624A7 /* Pods_ios_skeleton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_ios_skeleton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C212BCEB225151AC00C624A7 /* CredentialsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsProvider.swift; sourceTree = "<group>"; };
+		C212BCED225151E000C624A7 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		C212BCF0225158BD00C624A7 /* CollectionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExtensions.swift; sourceTree = "<group>"; };
+		C212BCF222515DD500C624A7 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		C212BCF5225166D000C624A7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C212BCF92251697700C624A7 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		C212BCFB225169B100C624A7 /* BaseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListView.swift; sourceTree = "<group>"; };
+		C212BCFF22516AA800C624A7 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		C9F82BCC923BFCAABAED12FA /* Pods-ios-skeletonUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-skeletonUITests.debug.xcconfig"; path = "Target Support Files/Pods-ios-skeletonUITests/Pods-ios-skeletonUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CD5853AE2A03E0C9B6969ED1 /* Pods-ios-skeleton.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-skeleton.beta.xcconfig"; path = "Target Support Files/Pods-ios-skeleton/Pods-ios-skeleton.beta.xcconfig"; sourceTree = "<group>"; };
+		F5FCCCAF22563B1C00640F2A /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		F5FCCCB12256469200640F2A /* OAuthApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthApiService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,12 +134,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C212BCEA2251497D00C624A7 /* Pods_ios_skeleton.framework in Frameworks */,
+				C212BCE72251371B00C624A7 /* RxAtomic.framework in Frameworks */,
+				C212BCDE225126FA00C624A7 /* RxAlamofire.framework in Frameworks */,
+				C212BCDB2251247100C624A7 /* Reqres.framework in Frameworks */,
 				C212BCD62250E98D00C624A7 /* RxSwiftExt.framework in Frameworks */,
 				C212BCBE2250475E00C624A7 /* RxSwift.framework in Frameworks */,
 				C212BCBF2250475E00C624A7 /* RxCocoa.framework in Frameworks */,
 				C212BC9E225002D500C624A7 /* Alamofire.framework in Frameworks */,
 				C212BC9F225002D500C624A7 /* SnapKit.framework in Frameworks */,
-				99AD379E1DD3CA458E7B39B7 /* Pods_ios_skeleton.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +172,10 @@
 		AA2D6159C38A722E5FA71F43 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C212BCE92251497D00C624A7 /* Pods_ios_skeleton.framework */,
+				C212BCE62251371B00C624A7 /* RxAtomic.framework */,
+				C212BCDD225126FA00C624A7 /* RxAlamofire.framework */,
+				C212BCDA2251247100C624A7 /* Reqres.framework */,
 				C212BCD52250E98D00C624A7 /* RxSwiftExt.framework */,
 				C212BCBD2250475E00C624A7 /* RxCocoa.framework */,
 				C212BCBC2250475E00C624A7 /* RxSwift.framework */,
@@ -175,10 +215,10 @@
 		C212BC43224FBB2000C624A7 /* ios-skeleton */ = {
 			isa = PBXGroup;
 			children = (
+				C212BCEF225158AB00C624A7 /* Extensions */,
 				C212BCB9225037DC00C624A7 /* DI */,
 				C212BCB72250365100C624A7 /* Base */,
 				C212BCB02250351700C624A7 /* Model */,
-				C212BCB3225035CD00C624A7 /* Coordinators */,
 				C212BCB4225035E500C624A7 /* Flows */,
 				C212BCB52250361300C624A7 /* View */,
 				C212BCB82250366500C624A7 /* Theme */,
@@ -281,9 +321,11 @@
 		C212BCB02250351700C624A7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C212BCB2225035B900C624A7 /* Repositories */,
 				C212BCB1225035B200C624A7 /* Api */,
-				C212BCD32250E45500C624A7 /* LoadingDataObservable.swift */,
+				C212BCF4225166BB00C624A7 /* Entities */,
+				C212BCDC2251249B00C624A7 /* Network */,
+				C212BCB2225035B900C624A7 /* Repositories */,
+				C212BCF72251674C00C624A7 /* Util */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -291,7 +333,8 @@
 		C212BCB1225035B200C624A7 /* Api */ = {
 			isa = PBXGroup;
 			children = (
-				C212BCCD2250D58600C624A7 /* Transaction.swift */,
+				C212BCE4225134A600C624A7 /* TransactionApiService.swift */,
+				F5FCCCB12256469200640F2A /* OAuthApiService.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -300,15 +343,10 @@
 			isa = PBXGroup;
 			children = (
 				C212BCBA22503E8C00C624A7 /* TransactionRepository.swift */,
+				C212BCF222515DD500C624A7 /* UserRepository.swift */,
+				C212BCEB225151AC00C624A7 /* CredentialsProvider.swift */,
 			);
 			path = Repositories;
-			sourceTree = "<group>";
-		};
-		C212BCB3225035CD00C624A7 /* Coordinators */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		C212BCB4225035E500C624A7 /* Flows */ = {
@@ -322,7 +360,7 @@
 		C212BCB52250361300C624A7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C212BCD722511AD500C624A7 /* Base */,
+				C212BCF82251694D00C624A7 /* Base */,
 				C212BCCA2250524800C624A7 /* TableViewCells */,
 			);
 			path = View;
@@ -332,6 +370,9 @@
 			isa = PBXGroup;
 			children = (
 				C212BCC822504F1300C624A7 /* Coordinator.swift */,
+				C212BCF92251697700C624A7 /* BaseViewController.swift */,
+				C212BCFB225169B100C624A7 /* BaseListView.swift */,
+				C212BCFF22516AA800C624A7 /* BaseViewModel.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -356,6 +397,7 @@
 			isa = PBXGroup;
 			children = (
 				C212BCC122504BB500C624A7 /* List */,
+				C212BD0122516B9200C624A7 /* Detail */,
 				C212BCC622504ECF00C624A7 /* TransactionCoordinator.swift */,
 			);
 			path = Transactions;
@@ -378,12 +420,55 @@
 			path = TableViewCells;
 			sourceTree = "<group>";
 		};
-		C212BCD722511AD500C624A7 /* Base */ = {
+		C212BCDC2251249B00C624A7 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C212BCDF22512CBF00C624A7 /* Network.swift */,
+				C212BCE122512EC800C624A7 /* ApiInteractor.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		C212BCEF225158AB00C624A7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C212BCF0225158BD00C624A7 /* CollectionExtensions.swift */,
+				F5FCCCAF22563B1C00640F2A /* DateExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C212BCF4225166BB00C624A7 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				C212BCED225151E000C624A7 /* Credentials.swift */,
+				C212BCCD2250D58600C624A7 /* Transaction.swift */,
+				C212BCF5225166D000C624A7 /* User.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		C212BCF72251674C00C624A7 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				C212BCD32250E45500C624A7 /* LoadingDataObservable.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		C212BCF82251694D00C624A7 /* Base */ = {
 			isa = PBXGroup;
 			children = (
 				C212BCD822511AF000C624A7 /* BaseTableViewCell.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		C212BD0122516B9200C624A7 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -610,17 +695,30 @@
 				C212BCD922511AF000C624A7 /* BaseTableViewCell.swift in Sources */,
 				C212BCC322504BD200C624A7 /* TransactionListViewController.swift in Sources */,
 				C212BCCC225052AD00C624A7 /* TransactionTableViewCell.swift in Sources */,
+				C212BCEE225151E000C624A7 /* Credentials.swift in Sources */,
 				C212BCCE2250D58600C624A7 /* Transaction.swift in Sources */,
+				C212BD0022516AA800C624A7 /* BaseViewModel.swift in Sources */,
 				C212BC47224FBB2000C624A7 /* ViewController.swift in Sources */,
 				C212BCC922504F1300C624A7 /* Coordinator.swift in Sources */,
 				C212BCA9225024D400C624A7 /* Environment.swift in Sources */,
 				C212BCBB22503E8C00C624A7 /* TransactionRepository.swift in Sources */,
 				C212BCD42250E45500C624A7 /* LoadingDataObservable.swift in Sources */,
+				C212BCE5225134A600C624A7 /* TransactionApiService.swift in Sources */,
 				C212BCD22250DB9E00C624A7 /* ViewModelFactories.swift in Sources */,
+				C212BCE022512CBF00C624A7 /* Network.swift in Sources */,
+				C212BCF322515DD500C624A7 /* UserRepository.swift in Sources */,
 				C212BCD02250D81F00C624A7 /* AppDependency.swift in Sources */,
+				C212BCEC225151AC00C624A7 /* CredentialsProvider.swift in Sources */,
 				C212BC45224FBB2000C624A7 /* AppDelegate.swift in Sources */,
 				C212BCA7225023FB00C624A7 /* Assets.swift in Sources */,
+				C212BCE222512EC800C624A7 /* ApiInteractor.swift in Sources */,
 				C212BCAB2250325C00C624A7 /* LocalizedStrings.swift in Sources */,
+				F5FCCCB022563B1C00640F2A /* DateExtensions.swift in Sources */,
+				C212BCFA2251697700C624A7 /* BaseViewController.swift in Sources */,
+				F5FCCCB22256469200640F2A /* OAuthApiService.swift in Sources */,
+				C212BCF6225166D000C624A7 /* User.swift in Sources */,
+				C212BCF1225158BD00C624A7 /* CollectionExtensions.swift in Sources */,
+				C212BCFC225169B100C624A7 /* BaseListView.swift in Sources */,
 				C212BCC722504ECF00C624A7 /* TransactionCoordinator.swift in Sources */,
 				C212BCC522504C9700C624A7 /* TransactionListViewModel.swift in Sources */,
 			);
@@ -778,6 +876,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Environment/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -802,6 +901,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Environment/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -923,6 +1023,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Environment/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

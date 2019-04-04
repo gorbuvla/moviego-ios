@@ -10,6 +10,10 @@ import UIKit
 
 class TransactionTableViewCell: BaseTableViewCell<TransactionCellView> {
     
+    enum ReuseIdentifiers {
+        static let defaultId = "transactionCell"
+    }
+    
     var transaction: Transaction? {
         didSet {
             guard let transaction = transaction else { return }
