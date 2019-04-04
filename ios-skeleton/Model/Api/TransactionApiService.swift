@@ -17,20 +17,20 @@ protocol TransactionApiServicing {
 }
 
 final class TransactionApiService: TransactionApiServicing {
-    private let api: ApiServicing
+    private let interactor: ApiInteracting
     
-    init(api: ApiServicing) {
-        self.api = api
+    init(interactor: ApiInteracting) {
+        self.interactor = interactor
     }
     
     func fetchTransactions() -> Single<TransactionListResponse> {
-        return api.request("/transactions", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil)
+        return interactor.request("/transactions", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil)
             .mapObject(to: TransactionListResponse.self)
             .asSingle()
     }
     
     func fetchTransaction(id: Int) -> Single<TransactionInfoResponse> {
-        return api.request("/transaction/\(id)", method: .get, parameters: [:], encoding: JSONEncoding.default, headers: nil)
+        return interactor.request("/transaction/\(id)", method: .get, parameters: [:], encoding: JSONEncoding.default, headers: nil)
             .mapObject(to: TransactionInfoResponse.self)
             .asSingle()
     }

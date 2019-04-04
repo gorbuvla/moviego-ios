@@ -11,13 +11,12 @@ final class AppDependency: HasTransactionManaging {
     
     // networking
     lazy var network: Network = Network()
-    lazy var apiService: ApiServicing = ApiService(network: self.network)
-    // TODO: creates reference cycle
-    lazy var authApiService: ApiServicing = AuthApiService(network: self.network, credentialsStore: UserDefaults.defaultStore, factory: { credentials in self.oauthApi.refreshToken(credentials: credentials) })
+    lazy var apiInteractor: ApiInteracting = ApiInteractor(network: self.network)
+    lazy var authApiInteractor: ApiInteracting = AuthApiInteractor(network: self.network, credentialsStore: UserDefaults.defaultStore, factory: { credentials in self.oauthApi.refreshToken(credentials: credentials) })
     
     // api services
-    lazy var oauthApi: OAuthApiServicing = OAuthApiService(apiService: self.apiService)
-    lazy var transactionsApi: TransactionApiServicing = TransactionApiService(api: self.apiService)
+    lazy var oauthApi: OAuthApiServicing = OAuthApiService(interactor: self.apiInteractor)
+    lazy var transactionsApi: TransactionApiServicing = TransactionApiService(interactor: self.apiInteractor) // no auth
     
     // repositories
     lazy var userRepository: UserRepositoring = MockedUserRepository(credentialsStore: UserDefaults.defaultStore)

@@ -10,12 +10,12 @@ import Foundation
 import RxSwift
 import Alamofire
 
-protocol ApiServicing {
+protocol ApiInteracting {
     
     func request(_ url: RequestURL, method: HTTPMethod, parameters: [String:Any]?, encoding: ParameterEncoding, headers: HTTPHeaders?) -> Observable<(HTTPURLResponse, Data)>
 }
 
-class ApiService: ApiServicing {
+class ApiInteractor: ApiInteracting {
     
     private let network: Network
     
@@ -30,7 +30,7 @@ class ApiService: ApiServicing {
 
 typealias CredentialsCallFactory = (Credentials) -> Single<Credentials>
 
-class AuthApiService: ApiServicing {
+class AuthApiInteractor: ApiInteracting {
     
     private let network: Network
     private var credentialsStore: CredentialsStore

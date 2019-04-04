@@ -18,27 +18,27 @@ protocol OAuthApiServicing {
 
 class OAuthApiService: OAuthApiServicing {
     
-    private let apiService: ApiService
+    private let interactor: ApiInteracting
     
-    init(apiService: ApiServicing) {
-        self.apiService = apiService
+    init(interactor: ApiInteracting) {
+        self.interactor = interactor
     }
     
     func login(credentials: LoginCredentials) -> Single<UserWithCredentials> {
-        return apiService.request("/login", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil)
+        return interactor.request("/login", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil)
             .mapObject(to: UserWithCredentials.self)
             .asSingle()
     }
     
     func register(credentials: RegisterCredentials) -> Single<UserWithCredentials> {
         // TODO: some cool way to decode object to parameters
-        return apiService.request("/register", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil)
+        return interactor.request("/register", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil)
             .mapObject(to: UserWithCredentials.self)
             .asSingle()
     }
     
     func refreshToken(credentials: Credentials) -> Single<Credentials> {
-        return apiService.request("/refresh", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil)
+        return interactor.request("/refresh", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil)
             .mapObject(to: Credentials.self)
             .asSingle()
     }
