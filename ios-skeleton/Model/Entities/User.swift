@@ -9,3 +9,8 @@
 struct User: Codable {
     let name: String
 }
+
+struct UserWithCredentials: Codable {
+    let user: User
+    let credentials: Credentials
+}

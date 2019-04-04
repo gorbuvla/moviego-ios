@@ -28,24 +28,34 @@ class ApiService: ApiServicing {
     }
 }
 
+typealias CredentialsCallFactory = (Credentials) -> Single<Credentials>
+
 class AuthApiService: ApiServicing {
     
     private let network: Network
-    private let credentialsProvider: CredentialsProvider
+    private var credentialsStore: CredentialsStore
+    private let credentialsCallFactory: CredentialsCallFactory
     
-    private var authHeader: Observable<HTTPHeaders> { return Observable.just(credentialsProvider.credentials.map { ["Authorization": "Bearer " + $0.accessToken] } ?? [:]) }
+    private var authHeader: Single<HTTPHeaders> {
+        guard let credentials = credentialsStore.credentials else { return Single.just([:]) }
+        
+        let source: Single<Credentials> = credentialsStore.isTokenExpired ? credentialsCallFactory(credentials).do(onSuccess: { [weak self] it in self?.credentialsStore.credentials = it }) : Single.just(credentialsStore.credentials!)
+        return source.map { ["Authorization": "Bearer " + $0.accessToken] }
+    }
     
-    init(network: Network, credentialsProvider: CredentialsProvider) {
+    init(network: Network, credentialsStore: CredentialsStore, factory: @escaping CredentialsCallFactory) {
         self.network = network
-        self.credentialsProvider = credentialsProvider
+        self.credentialsStore = credentialsStore
+        self.credentialsCallFactory = factory
     }
     
     func request(_ url: RequestURL, method: HTTPMethod, parameters: [String : Any]?, encoding: ParameterEncoding, headers: HTTPHeaders? = [:]) -> Observable<(HTTPURLResponse, Data)> {
-        return authHeader.map { $0 + headers! }
-            .flatMap { [unowned network] in network.request(url, method: method, parameters: parameters, encoding: encoding, headers: $0) }
+        // todo: on 401 repeat once
+        return authHeader
+                .map { $0 + headers! }.asObservable() // no .flatMapObservable() :-(
+                .flatMap { [unowned network] in network.request(url, method: method, parameters: parameters, encoding: encoding, headers: $0) }
     }
 }
-
 
 extension ObservableType where E == (HTTPURLResponse, Data) {
     public func mapObject<T: Codable>(to type: T.Type) -> Observable<T> {

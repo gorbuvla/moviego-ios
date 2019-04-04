@@ -11,8 +11,13 @@ import Foundation
 struct Credentials: Codable {
     let accessToken: String
     let refreshToken: String
+    let expireIn: Int
 }
 
 enum LoginCredentials {
     case password(username: String, password: String)
+}
+
+enum RegisterCredentials {
+    case form(name: String, password: String)
 }
