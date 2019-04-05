@@ -10,8 +10,4 @@ target 'ios-skeleton' do
     pod 'Smartling.i18n', '~> 1.0'
     pod 'SwiftLint', '~> 0.27'
     pod 'SwiftGen', '~> 6.0'
-
-    target 'ios-skeletonUITests' do
-        inherit! :search_paths
-    end
 end

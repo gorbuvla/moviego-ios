@@ -53,6 +53,7 @@
 		C212BD0022516AA800C624A7 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCFF22516AA800C624A7 /* BaseViewModel.swift */; };
 		F5FCCCB022563B1C00640F2A /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCCCAF22563B1C00640F2A /* DateExtensions.swift */; };
 		F5FCCCB22256469200640F2A /* OAuthApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCCCB12256469200640F2A /* OAuthApiService.swift */; };
+		F5FCCCB4225654E300640F2A /* TransactionDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCCCB3225654E300640F2A /* TransactionDetailController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,7 @@
 		CD5853AE2A03E0C9B6969ED1 /* Pods-ios-skeleton.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-skeleton.beta.xcconfig"; path = "Target Support Files/Pods-ios-skeleton/Pods-ios-skeleton.beta.xcconfig"; sourceTree = "<group>"; };
 		F5FCCCAF22563B1C00640F2A /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		F5FCCCB12256469200640F2A /* OAuthApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthApiService.swift; sourceTree = "<group>"; };
+		F5FCCCB3225654E300640F2A /* TransactionDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TransactionDetailController.swift; path = "ios-skeleton/Model/Api/TransactionDetailController.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -467,6 +469,7 @@
 		C212BD0122516B9200C624A7 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				F5FCCCB3225654E300640F2A /* TransactionDetailController.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -697,6 +700,7 @@
 				C212BCCC225052AD00C624A7 /* TransactionTableViewCell.swift in Sources */,
 				C212BCEE225151E000C624A7 /* Credentials.swift in Sources */,
 				C212BCCE2250D58600C624A7 /* Transaction.swift in Sources */,
+				F5FCCCB4225654E300640F2A /* TransactionDetailController.swift in Sources */,
 				C212BD0022516AA800C624A7 /* BaseViewModel.swift in Sources */,
 				C212BC47224FBB2000C624A7 /* ViewController.swift in Sources */,
 				C212BCC922504F1300C624A7 /* Coordinator.swift in Sources */,
