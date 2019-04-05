@@ -1,10 +1,10 @@
 platform :ios, '10.3'
-project 'ios-skeleton', 'Beta' => :release,'Production' => :release, 'Development' => :debug
+project 'moviego-ios', 'Beta' => :release,'Production' => :release, 'Development' => :debug
 
 inhibit_all_warnings!
 use_frameworks!
 
-target 'ios-skeleton' do
+target 'moviego-ios' do
 
     pod 'ACKLocalization', '~> 0.3'
     pod 'Smartling.i18n', '~> 1.0'
