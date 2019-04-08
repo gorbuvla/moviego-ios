@@ -6,3 +6,4 @@ $(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework
 $(SRCROOT)/Carthage/Build/iOS/RxSwiftExt.framework
 $(SRCROOT)/Carthage/Build/iOS/Reqres.framework
 $(SRCROOT)/Carthage/Build/iOS/RxAlamofire.framework
+$(SRCROOT)/Carthage/Build/iOS/ACKategories.framework

@@ -43,7 +43,6 @@
 		C212BCE222512EC800C624A7 /* ApiInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCE122512EC800C624A7 /* ApiInteractor.swift */; };
 		C212BCE5225134A600C624A7 /* TransactionApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCE4225134A600C624A7 /* TransactionApiService.swift */; };
 		C212BCE72251371B00C624A7 /* RxAtomic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C212BCE62251371B00C624A7 /* RxAtomic.framework */; };
-		C212BCEA2251497D00C624A7 /* Pods_ios_skeleton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C212BCE92251497D00C624A7 /* Pods_ios_skeleton.framework */; };
 		C212BCEC225151AC00C624A7 /* CredentialsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCEB225151AC00C624A7 /* CredentialsProvider.swift */; };
 		C212BCEE225151E000C624A7 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCED225151E000C624A7 /* Credentials.swift */; };
 		C212BCF1225158BD00C624A7 /* CollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCF0225158BD00C624A7 /* CollectionExtensions.swift */; };
@@ -52,6 +51,7 @@
 		C212BCFA2251697700C624A7 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCF92251697700C624A7 /* BaseViewController.swift */; };
 		C212BCFC225169B100C624A7 /* BaseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCFB225169B100C624A7 /* BaseListView.swift */; };
 		C212BD0022516AA800C624A7 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCFF22516AA800C624A7 /* BaseViewModel.swift */; };
+		C224E183225BDE0800A4AE37 /* ACKategories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C224E182225BDE0800A4AE37 /* ACKategories.framework */; };
 		F5FCCCB022563B1C00640F2A /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCCCAF22563B1C00640F2A /* DateExtensions.swift */; };
 		F5FCCCB22256469200640F2A /* OAuthApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCCCB12256469200640F2A /* OAuthApiService.swift */; };
 		F5FCCCB4225654E300640F2A /* TransactionDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCCCB3225654E300640F2A /* TransactionDetailController.swift */; };
@@ -127,6 +127,7 @@
 		C212BCF92251697700C624A7 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C212BCFB225169B100C624A7 /* BaseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListView.swift; sourceTree = "<group>"; };
 		C212BCFF22516AA800C624A7 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		C224E182225BDE0800A4AE37 /* ACKategories.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ACKategories.framework; path = Carthage/Build/iOS/ACKategories.framework; sourceTree = "<group>"; };
 		C9F82BCC923BFCAABAED12FA /* Pods-moviego-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moviego-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-moviego-iosUITests/Pods-moviego-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CD5853AE2A03E0C9B6969ED1 /* Pods-moviego-ios.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moviego-ios.beta.xcconfig"; path = "Target Support Files/Pods-moviego-ios/Pods-moviego-ios.beta.xcconfig"; sourceTree = "<group>"; };
 		F5FCCCAF22563B1C00640F2A /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
@@ -139,7 +140,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C212BCEA2251497D00C624A7 /* Pods_ios_skeleton.framework in Frameworks */,
+				C224E183225BDE0800A4AE37 /* ACKategories.framework in Frameworks */,
 				C212BCE72251371B00C624A7 /* RxAtomic.framework in Frameworks */,
 				C212BCDE225126FA00C624A7 /* RxAlamofire.framework in Frameworks */,
 				C212BCDB2251247100C624A7 /* Reqres.framework in Frameworks */,
@@ -179,6 +180,7 @@
 		AA2D6159C38A722E5FA71F43 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C224E182225BDE0800A4AE37 /* ACKategories.framework */,
 				C212BCE92251497D00C624A7 /* Pods_ios_skeleton.framework */,
 				C212BCE62251371B00C624A7 /* RxAtomic.framework */,
 				C212BCDD225126FA00C624A7 /* RxAlamofire.framework */,
