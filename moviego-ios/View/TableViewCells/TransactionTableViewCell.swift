@@ -34,22 +34,13 @@ class TransactionTableViewCell: BaseTableViewCell<TransactionCellView> {
     }
 }
 
-class TransactionCellView: UIView {
+class TransactionCellView: BaseView {
     
     weak var transactionIdText: UITextView!
     weak var amountText: UITextView!
     weak var directionText: UITextView!
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        createView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func createView() {
+    override func createView() {
         let transactionIdText = UITextView()
         transactionIdText.textColor = .black
         transactionIdText.backgroundColor = .yellow

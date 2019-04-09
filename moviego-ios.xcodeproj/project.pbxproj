@@ -52,6 +52,20 @@
 		C212BCFC225169B100C624A7 /* BaseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCFB225169B100C624A7 /* BaseListView.swift */; };
 		C212BD0022516AA800C624A7 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCFF22516AA800C624A7 /* BaseViewModel.swift */; };
 		C224E183225BDE0800A4AE37 /* ACKategories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C224E182225BDE0800A4AE37 /* ACKategories.framework */; };
+		C24400C2225C9C73001C88A1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400C1225C9C73001C88A1 /* LoginViewController.swift */; };
+		C24400C4225CCBA8001C88A1 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400C3225CCBA8001C88A1 /* BaseView.swift */; };
+		C24400C6225CD1E2001C88A1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400C5225CD1E2001C88A1 /* LoginView.swift */; };
+		C24400C9225CD222001C88A1 /* ViewDsl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400C8225CD222001C88A1 /* ViewDsl.swift */; };
+		C24400CB225CD276001C88A1 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400CA225CD276001C88A1 /* LoginViewModel.swift */; };
+		C24400CF225CD57B001C88A1 /* RegisterNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400CE225CD57B001C88A1 /* RegisterNameViewController.swift */; };
+		C24400D1225CD5A2001C88A1 /* RegisterNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400D0225CD5A2001C88A1 /* RegisterNameView.swift */; };
+		C24400D3225CD72C001C88A1 /* RegisterNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400D2225CD72C001C88A1 /* RegisterNameViewModel.swift */; };
+		C24400D6225CF4C0001C88A1 /* RegisterCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400D5225CF4C0001C88A1 /* RegisterCityViewController.swift */; };
+		C24400D8225CF7C4001C88A1 /* RegisterCityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400D7225CF7C4001C88A1 /* RegisterCityViewModel.swift */; };
+		C24400DA225CF7F5001C88A1 /* RegistrationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400D9225CF7F5001C88A1 /* RegistrationRepository.swift */; };
+		C24400DC225CFA73001C88A1 /* Copyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400DB225CFA73001C88A1 /* Copyable.swift */; };
+		C24400DE225CFDE1001C88A1 /* RegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400DD225CFDE1001C88A1 /* RegistrationCoordinator.swift */; };
+		C24400E0225D063B001C88A1 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400DF225D063B001C88A1 /* LoginCoordinator.swift */; };
 		F5FCCCB022563B1C00640F2A /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCCCAF22563B1C00640F2A /* DateExtensions.swift */; };
 		F5FCCCB22256469200640F2A /* OAuthApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCCCB12256469200640F2A /* OAuthApiService.swift */; };
 		F5FCCCB4225654E300640F2A /* TransactionDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCCCB3225654E300640F2A /* TransactionDetailController.swift */; };
@@ -128,6 +142,20 @@
 		C212BCFB225169B100C624A7 /* BaseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListView.swift; sourceTree = "<group>"; };
 		C212BCFF22516AA800C624A7 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		C224E182225BDE0800A4AE37 /* ACKategories.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ACKategories.framework; path = Carthage/Build/iOS/ACKategories.framework; sourceTree = "<group>"; };
+		C24400C1225C9C73001C88A1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C24400C3225CCBA8001C88A1 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		C24400C5225CD1E2001C88A1 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		C24400C8225CD222001C88A1 /* ViewDsl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDsl.swift; sourceTree = "<group>"; };
+		C24400CA225CD276001C88A1 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		C24400CE225CD57B001C88A1 /* RegisterNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNameViewController.swift; sourceTree = "<group>"; };
+		C24400D0225CD5A2001C88A1 /* RegisterNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNameView.swift; sourceTree = "<group>"; };
+		C24400D2225CD72C001C88A1 /* RegisterNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNameViewModel.swift; sourceTree = "<group>"; };
+		C24400D5225CF4C0001C88A1 /* RegisterCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCityViewController.swift; sourceTree = "<group>"; };
+		C24400D7225CF7C4001C88A1 /* RegisterCityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCityViewModel.swift; sourceTree = "<group>"; };
+		C24400D9225CF7F5001C88A1 /* RegistrationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRepository.swift; sourceTree = "<group>"; };
+		C24400DB225CFA73001C88A1 /* Copyable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Copyable.swift; sourceTree = "<group>"; };
+		C24400DD225CFDE1001C88A1 /* RegistrationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCoordinator.swift; sourceTree = "<group>"; };
+		C24400DF225D063B001C88A1 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		C9F82BCC923BFCAABAED12FA /* Pods-moviego-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moviego-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-moviego-iosUITests/Pods-moviego-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CD5853AE2A03E0C9B6969ED1 /* Pods-moviego-ios.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moviego-ios.beta.xcconfig"; path = "Target Support Files/Pods-moviego-ios/Pods-moviego-ios.beta.xcconfig"; sourceTree = "<group>"; };
 		F5FCCCAF22563B1C00640F2A /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
@@ -362,6 +390,8 @@
 		C212BCB4225035E500C624A7 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				C24400CC225CD438001C88A1 /* Registration */,
+				C24400C0225C9C51001C88A1 /* Login */,
 				C212BCC022504B9400C624A7 /* Transactions */,
 			);
 			path = Flows;
@@ -383,6 +413,7 @@
 				C212BCF92251697700C624A7 /* BaseViewController.swift */,
 				C212BCFB225169B100C624A7 /* BaseListView.swift */,
 				C212BCFF22516AA800C624A7 /* BaseViewModel.swift */,
+				C24400C3225CCBA8001C88A1 /* BaseView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -442,8 +473,10 @@
 		C212BCEF225158AB00C624A7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C24400C7225CD214001C88A1 /* Experimental */,
 				C212BCF0225158BD00C624A7 /* CollectionExtensions.swift */,
 				F5FCCCAF22563B1C00640F2A /* DateExtensions.swift */,
+				C24400DB225CFA73001C88A1 /* Copyable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -480,6 +513,55 @@
 				F5FCCCB3225654E300640F2A /* TransactionDetailController.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		C24400C0225C9C51001C88A1 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C24400C1225C9C73001C88A1 /* LoginViewController.swift */,
+				C24400C5225CD1E2001C88A1 /* LoginView.swift */,
+				C24400CA225CD276001C88A1 /* LoginViewModel.swift */,
+				C24400DF225D063B001C88A1 /* LoginCoordinator.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		C24400C7225CD214001C88A1 /* Experimental */ = {
+			isa = PBXGroup;
+			children = (
+				C24400C8225CD222001C88A1 /* ViewDsl.swift */,
+			);
+			path = Experimental;
+			sourceTree = "<group>";
+		};
+		C24400CC225CD438001C88A1 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				C24400CD225CD560001C88A1 /* Name */,
+				C24400D4225CF493001C88A1 /* City */,
+				C24400D9225CF7F5001C88A1 /* RegistrationRepository.swift */,
+				C24400DD225CFDE1001C88A1 /* RegistrationCoordinator.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		C24400CD225CD560001C88A1 /* Name */ = {
+			isa = PBXGroup;
+			children = (
+				C24400CE225CD57B001C88A1 /* RegisterNameViewController.swift */,
+				C24400D0225CD5A2001C88A1 /* RegisterNameView.swift */,
+				C24400D2225CD72C001C88A1 /* RegisterNameViewModel.swift */,
+			);
+			path = Name;
+			sourceTree = "<group>";
+		};
+		C24400D4225CF493001C88A1 /* City */ = {
+			isa = PBXGroup;
+			children = (
+				C24400D5225CF4C0001C88A1 /* RegisterCityViewController.swift */,
+				C24400D7225CF7C4001C88A1 /* RegisterCityViewModel.swift */,
+			);
+			path = City;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -703,24 +785,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C24400D3225CD72C001C88A1 /* RegisterNameViewModel.swift in Sources */,
 				C212BCD922511AF000C624A7 /* BaseTableViewCell.swift in Sources */,
 				C212BCC322504BD200C624A7 /* TransactionListViewController.swift in Sources */,
 				C212BCCC225052AD00C624A7 /* TransactionTableViewCell.swift in Sources */,
+				C24400DC225CFA73001C88A1 /* Copyable.swift in Sources */,
 				C212BCEE225151E000C624A7 /* Credentials.swift in Sources */,
 				C212BCCE2250D58600C624A7 /* Transaction.swift in Sources */,
 				F5FCCCB4225654E300640F2A /* TransactionDetailController.swift in Sources */,
 				C212BD0022516AA800C624A7 /* BaseViewModel.swift in Sources */,
+				C24400D8225CF7C4001C88A1 /* RegisterCityViewModel.swift in Sources */,
 				C212BC47224FBB2000C624A7 /* ViewController.swift in Sources */,
+				C24400CF225CD57B001C88A1 /* RegisterNameViewController.swift in Sources */,
 				C212BCC922504F1300C624A7 /* Coordinator.swift in Sources */,
 				C212BCA9225024D400C624A7 /* Environment.swift in Sources */,
 				C212BCBB22503E8C00C624A7 /* TransactionRepository.swift in Sources */,
 				C212BCD42250E45500C624A7 /* LoadingDataObservable.swift in Sources */,
 				C212BCE5225134A600C624A7 /* TransactionApiService.swift in Sources */,
+				C24400CB225CD276001C88A1 /* LoginViewModel.swift in Sources */,
+				C24400C2225C9C73001C88A1 /* LoginViewController.swift in Sources */,
 				C212BCD22250DB9E00C624A7 /* ViewModelFactories.swift in Sources */,
 				C212BCE022512CBF00C624A7 /* Network.swift in Sources */,
+				C24400DA225CF7F5001C88A1 /* RegistrationRepository.swift in Sources */,
 				C212BCF322515DD500C624A7 /* UserRepository.swift in Sources */,
 				C212BCD02250D81F00C624A7 /* AppDependency.swift in Sources */,
 				C212BCEC225151AC00C624A7 /* CredentialsProvider.swift in Sources */,
+				C24400D6225CF4C0001C88A1 /* RegisterCityViewController.swift in Sources */,
+				C24400E0225D063B001C88A1 /* LoginCoordinator.swift in Sources */,
+				C24400DE225CFDE1001C88A1 /* RegistrationCoordinator.swift in Sources */,
 				C212BC45224FBB2000C624A7 /* AppDelegate.swift in Sources */,
 				C212BCA7225023FB00C624A7 /* Assets.swift in Sources */,
 				C212BCE222512EC800C624A7 /* ApiInteractor.swift in Sources */,
@@ -730,9 +822,13 @@
 				F5FCCCB22256469200640F2A /* OAuthApiService.swift in Sources */,
 				C212BCF6225166D000C624A7 /* User.swift in Sources */,
 				C212BCF1225158BD00C624A7 /* CollectionExtensions.swift in Sources */,
+				C24400C9225CD222001C88A1 /* ViewDsl.swift in Sources */,
 				C212BCFC225169B100C624A7 /* BaseListView.swift in Sources */,
 				C212BCC722504ECF00C624A7 /* TransactionCoordinator.swift in Sources */,
+				C24400D1225CD5A2001C88A1 /* RegisterNameView.swift in Sources */,
+				C24400C6225CD1E2001C88A1 /* LoginView.swift in Sources */,
 				C212BCC522504C9700C624A7 /* TransactionListViewModel.swift in Sources */,
+				C24400C4225CCBA8001C88A1 /* BaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
