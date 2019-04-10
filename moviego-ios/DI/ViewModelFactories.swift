@@ -42,6 +42,14 @@ extension AppDependency: ViewModelFactory {
         return { RegisterCityViewModel(repository: dependencies.registrationRepository) }
     }
     
+    var movieListViewModelFactory: () -> MovieListViewModel {
+        return { MovieListViewModel() }
+    }
+    
+    var promotionListViewModelFactory: () -> PromotionListViewModel {
+        return { PromotionListViewModel() }
+    }
+    
     var profileViewModel: () -> ProfileViewModel {
         return { ProfileViewModel() }
     }

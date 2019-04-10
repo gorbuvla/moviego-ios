@@ -27,7 +27,7 @@ class AppCoordinator: FlowCoordinator {
             .subscribe(onNext: { [weak self] user in
                 self?.childCoordinators.forEach { $0.stop(animated: false) }
                 
-                let coordinator = user == nil ? LoginCoordinator() : DashboardCoordinator()
+                let coordinator = user == nil ? LoginCoordinator() : MainCoordinator()
                 
                 self?.addChild(coordinator)
             

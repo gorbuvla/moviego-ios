@@ -9,7 +9,7 @@
 import UIKit
 import ACKategories
 
-class MainFlowCoordinator: FlowCoordinator {
+class MainCoordinator: FlowCoordinator {
     
     override func start() -> UIViewController {
         let tabBarController = setupTabBarController()
@@ -21,11 +21,19 @@ class MainFlowCoordinator: FlowCoordinator {
     private func setupTabBarController() -> UITabBarController {
         let tabBarController = UITabBarController()
         
+        let moviesFlow = MoviesCoordinator()
+        let moviesRoot = moviesFlow.start()
+        addChild(moviesFlow)
+        
+        let promotionsFlow = PromotionsCoordinator()
+        let promotionsRoot = promotionsFlow.start()
+        addChild(promotionsFlow)
+        
         let profileFlow = ProfileCoordinator()
         let profileRoot = profileFlow.start()
         addChild(profileFlow)
         
-        tabBarController.viewControllers = [profileRoot]
+        tabBarController.viewControllers = [moviesRoot, promotionsRoot, profileRoot]
         return tabBarController
     }
 }

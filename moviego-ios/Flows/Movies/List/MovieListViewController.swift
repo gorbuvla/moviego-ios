@@ -1,5 +1,5 @@
 //
-//  ProfileViewController.swift
+//  MovieListViewController.swift
 //  moviego-ios
 //
 //  Created by Vlad Gorbunov on 10/04/2019.
@@ -7,21 +7,18 @@
 //
 
 import UIKit
-import SnapKit
 
-protocol ProfileNavigationDelegate: class {
-    // todo: methods
-}
+protocol MovieListNavigationDelegate: class {}
 
-class ProfileViewController: ViewController {
+class MovieListViewController: BaseViewController<BaseListView> {
     
-    weak var navigationDelegate: ProfileNavigationDelegate?
-    private let viewModel: ProfileViewModel
+    weak var navigationDelegate: MovieListNavigationDelegate?
+    private let viewModel: MovieListViewModel
     
-    init(viewModel: ProfileViewModel) {
+    init(viewModel: MovieListViewModel) {
         self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-        tabBarItem.title = "Profile"
+        super.init()
+        tabBarItem.title = "Movies"
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -32,7 +29,7 @@ class ProfileViewController: ViewController {
         super.viewDidLoad()
         view.backgroundColor = .gray
         view.label { it in
-            it.text = "Profile & Latest Activity"
+            it.text = "Movies & Cinemas Flow"
             it.textColor = .black
             
             it.snp.makeConstraints { make in
@@ -41,4 +38,3 @@ class ProfileViewController: ViewController {
         }
     }
 }
-
