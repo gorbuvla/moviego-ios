@@ -12,11 +12,13 @@ class LoginView: BaseView {
     
     weak var emailOrUsernameTextField: UITextField!
     weak var passwordTextField: UITextField!
+    weak var loginButton: UIButton!
     
     override func createView() {
+        backgroundColor = .gray
+        
         stack { it in
-            
-            emailOrUsernameTextField = textField { it in
+            emailOrUsernameTextField = it.textField { it in
                 
                 it.snp.makeConstraints { make in
                     make.width.equalToSuperview()
@@ -24,7 +26,15 @@ class LoginView: BaseView {
                 }
             }
             
-            passwordTextField = textField { it in
+            passwordTextField = it.textField { it in
+                
+                it.snp.makeConstraints { make in
+                    make.width.equalToSuperview()
+                    make.height.equalTo(40)
+                }
+            }
+            
+            loginButton = it.button { it in
                 
                 it.snp.makeConstraints { make in
                     make.width.equalToSuperview()

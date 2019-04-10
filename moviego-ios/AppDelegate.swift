@@ -7,20 +7,21 @@
 //
 
 import UIKit
+import ACKategories
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    private lazy var initialCoordinator: Coordinator = TransactionCoordinator(dependencies: dependencies)
+    private lazy var initialCoordinator: FlowCoordinator = AppCoordinator(userRepository: dependencies.userRepository)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        initialCoordinator.start(inside: window!)
+        initialCoordinator.start(in: window!)
         return true
     }
 }

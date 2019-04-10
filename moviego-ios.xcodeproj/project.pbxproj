@@ -66,6 +66,11 @@
 		C24400DC225CFA73001C88A1 /* Copyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400DB225CFA73001C88A1 /* Copyable.swift */; };
 		C24400DE225CFDE1001C88A1 /* RegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400DD225CFDE1001C88A1 /* RegistrationCoordinator.swift */; };
 		C24400E0225D063B001C88A1 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400DF225D063B001C88A1 /* LoginCoordinator.swift */; };
+		C24400E2225D0778001C88A1 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400E1225D0778001C88A1 /* AppCoordinator.swift */; };
+		C2C52EBA225E3547009A6D93 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C52EB9225E3547009A6D93 /* ProfileViewController.swift */; };
+		C2C52EBC225E3623009A6D93 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C52EBB225E3623009A6D93 /* ProfileCoordinator.swift */; };
+		C2C52EBE225E3682009A6D93 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C52EBD225E3682009A6D93 /* ProfileViewModel.swift */; };
+		C2C52EC1225E3880009A6D93 /* MainFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C52EC0225E3880009A6D93 /* MainFlowCoordinator.swift */; };
 		F5FCCCB022563B1C00640F2A /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCCCAF22563B1C00640F2A /* DateExtensions.swift */; };
 		F5FCCCB22256469200640F2A /* OAuthApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCCCB12256469200640F2A /* OAuthApiService.swift */; };
 		F5FCCCB4225654E300640F2A /* TransactionDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCCCB3225654E300640F2A /* TransactionDetailController.swift */; };
@@ -156,6 +161,11 @@
 		C24400DB225CFA73001C88A1 /* Copyable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Copyable.swift; sourceTree = "<group>"; };
 		C24400DD225CFDE1001C88A1 /* RegistrationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCoordinator.swift; sourceTree = "<group>"; };
 		C24400DF225D063B001C88A1 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		C24400E1225D0778001C88A1 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		C2C52EB9225E3547009A6D93 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		C2C52EBB225E3623009A6D93 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		C2C52EBD225E3682009A6D93 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		C2C52EC0225E3880009A6D93 /* MainFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowCoordinator.swift; sourceTree = "<group>"; };
 		C9F82BCC923BFCAABAED12FA /* Pods-moviego-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moviego-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-moviego-iosUITests/Pods-moviego-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CD5853AE2A03E0C9B6969ED1 /* Pods-moviego-ios.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moviego-ios.beta.xcconfig"; path = "Target Support Files/Pods-moviego-ios/Pods-moviego-ios.beta.xcconfig"; sourceTree = "<group>"; };
 		F5FCCCAF22563B1C00640F2A /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
@@ -390,9 +400,14 @@
 		C212BCB4225035E500C624A7 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				C2C52EBF225E386A009A6D93 /* Main */,
+				C2C52EB8225E34EF009A6D93 /* Profile */,
+				C2C52EB7225E3450009A6D93 /* Movies */,
+				C24400E4225E32FD001C88A1 /* Promotions */,
 				C24400CC225CD438001C88A1 /* Registration */,
 				C24400C0225C9C51001C88A1 /* Login */,
 				C212BCC022504B9400C624A7 /* Transactions */,
+				C24400E1225D0778001C88A1 /* AppCoordinator.swift */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -562,6 +577,38 @@
 				C24400D7225CF7C4001C88A1 /* RegisterCityViewModel.swift */,
 			);
 			path = City;
+			sourceTree = "<group>";
+		};
+		C24400E4225E32FD001C88A1 /* Promotions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Promotions;
+			sourceTree = "<group>";
+		};
+		C2C52EB7225E3450009A6D93 /* Movies */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Movies;
+			sourceTree = "<group>";
+		};
+		C2C52EB8225E34EF009A6D93 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C2C52EB9225E3547009A6D93 /* ProfileViewController.swift */,
+				C2C52EBB225E3623009A6D93 /* ProfileCoordinator.swift */,
+				C2C52EBD225E3682009A6D93 /* ProfileViewModel.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		C2C52EBF225E386A009A6D93 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				C2C52EC0225E3880009A6D93 /* MainFlowCoordinator.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -796,6 +843,7 @@
 				C212BD0022516AA800C624A7 /* BaseViewModel.swift in Sources */,
 				C24400D8225CF7C4001C88A1 /* RegisterCityViewModel.swift in Sources */,
 				C212BC47224FBB2000C624A7 /* ViewController.swift in Sources */,
+				C2C52EC1225E3880009A6D93 /* MainFlowCoordinator.swift in Sources */,
 				C24400CF225CD57B001C88A1 /* RegisterNameViewController.swift in Sources */,
 				C212BCC922504F1300C624A7 /* Coordinator.swift in Sources */,
 				C212BCA9225024D400C624A7 /* Environment.swift in Sources */,
@@ -812,8 +860,10 @@
 				C212BCEC225151AC00C624A7 /* CredentialsProvider.swift in Sources */,
 				C24400D6225CF4C0001C88A1 /* RegisterCityViewController.swift in Sources */,
 				C24400E0225D063B001C88A1 /* LoginCoordinator.swift in Sources */,
+				C2C52EBC225E3623009A6D93 /* ProfileCoordinator.swift in Sources */,
 				C24400DE225CFDE1001C88A1 /* RegistrationCoordinator.swift in Sources */,
 				C212BC45224FBB2000C624A7 /* AppDelegate.swift in Sources */,
+				C2C52EBE225E3682009A6D93 /* ProfileViewModel.swift in Sources */,
 				C212BCA7225023FB00C624A7 /* Assets.swift in Sources */,
 				C212BCE222512EC800C624A7 /* ApiInteractor.swift in Sources */,
 				C212BCAB2250325C00C624A7 /* LocalizedStrings.swift in Sources */,
@@ -823,10 +873,12 @@
 				C212BCF6225166D000C624A7 /* User.swift in Sources */,
 				C212BCF1225158BD00C624A7 /* CollectionExtensions.swift in Sources */,
 				C24400C9225CD222001C88A1 /* ViewDsl.swift in Sources */,
+				C2C52EBA225E3547009A6D93 /* ProfileViewController.swift in Sources */,
 				C212BCFC225169B100C624A7 /* BaseListView.swift in Sources */,
 				C212BCC722504ECF00C624A7 /* TransactionCoordinator.swift in Sources */,
 				C24400D1225CD5A2001C88A1 /* RegisterNameView.swift in Sources */,
 				C24400C6225CD1E2001C88A1 /* LoginView.swift in Sources */,
+				C24400E2225D0778001C88A1 /* AppCoordinator.swift in Sources */,
 				C212BCC522504C9700C624A7 /* TransactionListViewModel.swift in Sources */,
 				C24400C4225CCBA8001C88A1 /* BaseView.swift in Sources */,
 			);

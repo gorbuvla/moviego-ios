@@ -18,7 +18,11 @@ protocol RegistrationViewModelFactories {
     var registerCityViewModelFactory: () -> RegisterCityViewModel { get }
 }
 
-typealias ViewModelFactory = HasViewModelFactories & RegistrationViewModelFactories
+protocol ProfileViewModelFactories {
+    var profileViewModel: () -> ProfileViewModel { get }
+}
+
+typealias ViewModelFactory = HasViewModelFactories & RegistrationViewModelFactories & ProfileViewModelFactories
 
 extension AppDependency: ViewModelFactory {
     
@@ -36,5 +40,9 @@ extension AppDependency: ViewModelFactory {
     
     var registerCityViewModelFactory: () -> RegisterCityViewModel {
         return { RegisterCityViewModel(repository: dependencies.registrationRepository) }
+    }
+    
+    var profileViewModel: () -> ProfileViewModel {
+        return { ProfileViewModel() }
     }
 }
