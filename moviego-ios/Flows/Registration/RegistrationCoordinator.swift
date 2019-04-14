@@ -29,15 +29,15 @@ class RegistrationCoordinator: FlowCoordinator {
 extension RegistrationCoordinator: RegisterNameNavigationDelegate {
     
     func didTapContinue() {
-        let vc = RegisterCityViewController(viewModel: factories.registerCityViewModelFactory())
-        vc.navigationDelegate = self
-        navigationController?.pushViewController(vc, animated: true)
+//        let vc = RegisterCityViewController(viewModel: factories.registerCityViewModelFactory())
+//        vc.navigationDelegate = self
+//        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
-extension RegistrationCoordinator: RegisterCityNavigationDelegate {
-    
-    func onRegisterSuccess() {
-        // todo: continue into main flow
-    }
-}
+//extension RegistrationCoordinator: RegisterCityNavigationDelegate {
+//
+//    func onRegisterSuccess() {
+//        // todo: continue into main flow
+//    }
+//}
