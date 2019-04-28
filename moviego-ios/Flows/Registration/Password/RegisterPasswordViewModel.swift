@@ -1,14 +1,12 @@
 //
-//  RegisterNameViewModel.swift
+//  RegisterPasswordViewModel.swift
 //  moviego-ios
 //
-//  Created by Vlad Gorbunov on 09/04/2019.
+//  Created by Vlad Gorbunov on 28/04/2019.
 //  Copyright © 2019 Vlad Gorbunov. All rights reserved.
 //
 
-import Foundation
-
-class RegisterNameViewModel: BaseViewModel {
+class RegisterPasswordViewModel: BaseViewModel {
     
     private let repository: RegistrationRepositoring
     
@@ -16,3 +14,4 @@ class RegisterNameViewModel: BaseViewModel {
         self.repository = repository
     }
 }
+

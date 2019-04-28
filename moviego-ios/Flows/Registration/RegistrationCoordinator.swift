@@ -20,18 +20,25 @@ class RegistrationCoordinator: FlowCoordinator {
     override func start(with navigationController: UINavigationController) {
         self.navigationController = navigationController
         
-        let vc = RegisterNameViewController(viewModel: factories.registerNameViewModelFactory())
+        let vc = RegisterUserViewController(viewModel: factories.userRegistrationViewModelFactory())
         vc.navigationDelegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
-extension RegistrationCoordinator: RegisterNameNavigationDelegate {
+extension RegistrationCoordinator: UserRegistrationNavigationDelegate {
     
     func didTapContinue() {
-//        let vc = RegisterCityViewController(viewModel: factories.registerCityViewModelFactory())
-//        vc.navigationDelegate = self
-//        navigationController?.pushViewController(vc, animated: true)
+        let vc = RegisterPasswordViewController(viewModel: factories.registerPasswordViewModelFactory())
+        vc.navigationDelegate = self
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension RegistrationCoordinator: RegisterPasswordNavigationDelegate {
+    
+    func didTapNext() {
+        // TODO: go to city
     }
 }
 

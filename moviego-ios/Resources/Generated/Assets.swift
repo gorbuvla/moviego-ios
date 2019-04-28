@@ -18,6 +18,9 @@
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 internal enum Asset {
+  internal static let logo = ImageAsset(name: "logo")
+  internal static let secureOff = ImageAsset(name: "secure_off")
+  internal static let secureOn = ImageAsset(name: "secure_on")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 

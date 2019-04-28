@@ -45,7 +45,13 @@ extension UIView {
         return customView(UIStackView(), block)
     }
     
+    @discardableResult
     func button(_ block: (UIButton) -> Void) -> UIButton {
         return customView(UIButton(), block)
+    }
+    
+    @discardableResult
+    func imageView(_ block: (UIImageView) -> Void) -> UIImageView {
+        return customView(UIImageView(), block)
     }
 }

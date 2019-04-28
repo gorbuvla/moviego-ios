@@ -51,20 +51,32 @@
 		C212BCFA2251697700C624A7 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCF92251697700C624A7 /* BaseViewController.swift */; };
 		C212BCFC225169B100C624A7 /* BaseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCFB225169B100C624A7 /* BaseListView.swift */; };
 		C212BD0022516AA800C624A7 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCFF22516AA800C624A7 /* BaseViewModel.swift */; };
+		C216F51F227522C3001EB291 /* RegisterPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216F51E227522C3001EB291 /* RegisterPasswordViewController.swift */; };
+		C216F521227522D8001EB291 /* RegisterPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216F520227522D8001EB291 /* RegisterPasswordViewModel.swift */; };
+		C216F523227522ED001EB291 /* RegisterPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216F522227522ED001EB291 /* RegisterPasswordView.swift */; };
+		C216F52522752958001EB291 /* BaseFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216F52422752958001EB291 /* BaseFormView.swift */; };
+		C216F52922752B9F001EB291 /* RegisterUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216F52822752B9F001EB291 /* RegisterUserView.swift */; };
 		C224E183225BDE0800A4AE37 /* ACKategories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C224E182225BDE0800A4AE37 /* ACKategories.framework */; };
+		C243CC3B226B33F900B68DC5 /* CityApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243CC3A226B33F900B68DC5 /* CityApiService.swift */; };
+		C243CC3E226B3AC100B68DC5 /* RegisterCityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243CC3D226B3AC100B68DC5 /* RegisterCityViewModel.swift */; };
+		C243CC40226BB7FD00B68DC5 /* FramedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243CC3F226BB7FD00B68DC5 /* FramedTextField.swift */; };
+		C243CC422274E27400B68DC5 /* TextTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243CC412274E27400B68DC5 /* TextTheme.swift */; };
+		C243CC442274E6B900B68DC5 /* colors.json in Resources */ = {isa = PBXBuildFile; fileRef = C243CC432274E6B900B68DC5 /* colors.json */; };
+		C243CC462274E8FE00B68DC5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243CC452274E8FD00B68DC5 /* Colors.swift */; };
+		C243CC482274E93200B68DC5 /* UIElementTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243CC472274E93200B68DC5 /* UIElementTheme.swift */; };
 		C24400C2225C9C73001C88A1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400C1225C9C73001C88A1 /* LoginViewController.swift */; };
 		C24400C4225CCBA8001C88A1 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400C3225CCBA8001C88A1 /* BaseView.swift */; };
 		C24400C6225CD1E2001C88A1 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400C5225CD1E2001C88A1 /* LoginView.swift */; };
 		C24400C9225CD222001C88A1 /* ViewDsl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400C8225CD222001C88A1 /* ViewDsl.swift */; };
 		C24400CB225CD276001C88A1 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400CA225CD276001C88A1 /* LoginViewModel.swift */; };
-		C24400CF225CD57B001C88A1 /* RegisterNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400CE225CD57B001C88A1 /* RegisterNameViewController.swift */; };
-		C24400D1225CD5A2001C88A1 /* RegisterNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400D0225CD5A2001C88A1 /* RegisterNameView.swift */; };
-		C24400D3225CD72C001C88A1 /* RegisterNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400D2225CD72C001C88A1 /* RegisterNameViewModel.swift */; };
+		C24400CF225CD57B001C88A1 /* RegisterUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400CE225CD57B001C88A1 /* RegisterUserViewController.swift */; };
+		C24400D3225CD72C001C88A1 /* RegisterUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400D2225CD72C001C88A1 /* RegisterUserViewModel.swift */; };
 		C24400DA225CF7F5001C88A1 /* RegistrationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400D9225CF7F5001C88A1 /* RegistrationRepository.swift */; };
 		C24400DC225CFA73001C88A1 /* Copyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400DB225CFA73001C88A1 /* Copyable.swift */; };
 		C24400DE225CFDE1001C88A1 /* RegistrationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400DD225CFDE1001C88A1 /* RegistrationCoordinator.swift */; };
 		C24400E0225D063B001C88A1 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400DF225D063B001C88A1 /* LoginCoordinator.swift */; };
 		C24400E2225D0778001C88A1 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24400E1225D0778001C88A1 /* AppCoordinator.swift */; };
+		C27BAD45226A3B420052BDA6 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27BAD44226A3B420052BDA6 /* StringExtensions.swift */; };
 		C2C52EBA225E3547009A6D93 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C52EB9225E3547009A6D93 /* ProfileViewController.swift */; };
 		C2C52EBC225E3623009A6D93 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C52EBB225E3623009A6D93 /* ProfileCoordinator.swift */; };
 		C2C52EBE225E3682009A6D93 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C52EBD225E3682009A6D93 /* ProfileViewModel.swift */; };
@@ -76,7 +88,7 @@
 		C2C52ECD225E3E91009A6D93 /* PromotionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C52ECC225E3E91009A6D93 /* PromotionListViewModel.swift */; };
 		C2C52ECF225E3FAB009A6D93 /* PromotionsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C52ECE225E3FAB009A6D93 /* PromotionsCoordinator.swift */; };
 		C2C52ED2225E4211009A6D93 /* CitySelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C52ED1225E4211009A6D93 /* CitySelectViewController.swift */; };
-		C2C52ED4225E4243009A6D93 /* RegisterCityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C52ED3225E4243009A6D93 /* RegisterCityViewModel.swift */; };
+		C2C52ED4225E4243009A6D93 /* ChangeCityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C52ED3225E4243009A6D93 /* ChangeCityViewModel.swift */; };
 		F5FCCCB022563B1C00640F2A /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCCCAF22563B1C00640F2A /* DateExtensions.swift */; };
 		F5FCCCB22256469200640F2A /* OAuthApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCCCB12256469200640F2A /* OAuthApiService.swift */; };
 		F5FCCCB4225654E300640F2A /* TransactionDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCCCB3225654E300640F2A /* TransactionDetailController.swift */; };
@@ -152,20 +164,33 @@
 		C212BCF92251697700C624A7 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C212BCFB225169B100C624A7 /* BaseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListView.swift; sourceTree = "<group>"; };
 		C212BCFF22516AA800C624A7 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		C216F51C22751B6B001EB291 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C216F51E227522C3001EB291 /* RegisterPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPasswordViewController.swift; sourceTree = "<group>"; };
+		C216F520227522D8001EB291 /* RegisterPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPasswordViewModel.swift; sourceTree = "<group>"; };
+		C216F522227522ED001EB291 /* RegisterPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPasswordView.swift; sourceTree = "<group>"; };
+		C216F52422752958001EB291 /* BaseFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFormView.swift; sourceTree = "<group>"; };
+		C216F52822752B9F001EB291 /* RegisterUserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterUserView.swift; sourceTree = "<group>"; };
 		C224E182225BDE0800A4AE37 /* ACKategories.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ACKategories.framework; path = Carthage/Build/iOS/ACKategories.framework; sourceTree = "<group>"; };
+		C243CC3A226B33F900B68DC5 /* CityApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityApiService.swift; sourceTree = "<group>"; };
+		C243CC3D226B3AC100B68DC5 /* RegisterCityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCityViewModel.swift; sourceTree = "<group>"; };
+		C243CC3F226BB7FD00B68DC5 /* FramedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FramedTextField.swift; sourceTree = "<group>"; };
+		C243CC412274E27400B68DC5 /* TextTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TextTheme.swift; path = "moviego-ios/View/TextTheme.swift"; sourceTree = SOURCE_ROOT; };
+		C243CC432274E6B900B68DC5 /* colors.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = colors.json; sourceTree = "<group>"; };
+		C243CC452274E8FD00B68DC5 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		C243CC472274E93200B68DC5 /* UIElementTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIElementTheme.swift; path = "moviego-ios/Resources/Generated/UIElementTheme.swift"; sourceTree = SOURCE_ROOT; };
 		C24400C1225C9C73001C88A1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C24400C3225CCBA8001C88A1 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		C24400C5225CD1E2001C88A1 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		C24400C8225CD222001C88A1 /* ViewDsl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDsl.swift; sourceTree = "<group>"; };
 		C24400CA225CD276001C88A1 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		C24400CE225CD57B001C88A1 /* RegisterNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNameViewController.swift; sourceTree = "<group>"; };
-		C24400D0225CD5A2001C88A1 /* RegisterNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNameView.swift; sourceTree = "<group>"; };
-		C24400D2225CD72C001C88A1 /* RegisterNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNameViewModel.swift; sourceTree = "<group>"; };
+		C24400CE225CD57B001C88A1 /* RegisterUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserViewController.swift; sourceTree = "<group>"; };
+		C24400D2225CD72C001C88A1 /* RegisterUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserViewModel.swift; sourceTree = "<group>"; };
 		C24400D9225CF7F5001C88A1 /* RegistrationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRepository.swift; sourceTree = "<group>"; };
 		C24400DB225CFA73001C88A1 /* Copyable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Copyable.swift; sourceTree = "<group>"; };
 		C24400DD225CFDE1001C88A1 /* RegistrationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationCoordinator.swift; sourceTree = "<group>"; };
 		C24400DF225D063B001C88A1 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		C24400E1225D0778001C88A1 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		C27BAD44226A3B420052BDA6 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		C2C52EB9225E3547009A6D93 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C2C52EBB225E3623009A6D93 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		C2C52EBD225E3682009A6D93 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -177,7 +202,7 @@
 		C2C52ECC225E3E91009A6D93 /* PromotionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionListViewModel.swift; sourceTree = "<group>"; };
 		C2C52ECE225E3FAB009A6D93 /* PromotionsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionsCoordinator.swift; sourceTree = "<group>"; };
 		C2C52ED1225E4211009A6D93 /* CitySelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySelectViewController.swift; sourceTree = "<group>"; };
-		C2C52ED3225E4243009A6D93 /* RegisterCityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCityViewModel.swift; sourceTree = "<group>"; };
+		C2C52ED3225E4243009A6D93 /* ChangeCityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCityViewModel.swift; sourceTree = "<group>"; };
 		C9F82BCC923BFCAABAED12FA /* Pods-moviego-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moviego-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-moviego-iosUITests/Pods-moviego-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CD5853AE2A03E0C9B6969ED1 /* Pods-moviego-ios.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moviego-ios.beta.xcconfig"; path = "Target Support Files/Pods-moviego-ios/Pods-moviego-ios.beta.xcconfig"; sourceTree = "<group>"; };
 		F5FCCCAF22563B1C00640F2A /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
@@ -349,6 +374,8 @@
 				C212BCA122500B2100C624A7 /* Generated */,
 				C212BC86224FE6F700C624A7 /* Base.lproj */,
 				C212BC4B224FBB2200C624A7 /* Images.xcassets */,
+				C243CC432274E6B900B68DC5 /* colors.json */,
+				C216F51C22751B6B001EB291 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -372,6 +399,7 @@
 		C212BCA122500B2100C624A7 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
+				C243CC452274E8FD00B68DC5 /* Colors.swift */,
 				C212BCAA2250325C00C624A7 /* LocalizedStrings.swift */,
 				C212BCA6225023FB00C624A7 /* Assets.swift */,
 			);
@@ -393,8 +421,9 @@
 		C212BCB1225035B200C624A7 /* Api */ = {
 			isa = PBXGroup;
 			children = (
-				C212BCE4225134A600C624A7 /* TransactionApiService.swift */,
 				F5FCCCB12256469200640F2A /* OAuthApiService.swift */,
+				C212BCE4225134A600C624A7 /* TransactionApiService.swift */,
+				C243CC3A226B33F900B68DC5 /* CityApiService.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -430,6 +459,8 @@
 			children = (
 				C212BCF82251694D00C624A7 /* Base */,
 				C212BCCA2250524800C624A7 /* TableViewCells */,
+				C243CC3F226BB7FD00B68DC5 /* FramedTextField.swift */,
+				C216F52422752958001EB291 /* BaseFormView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -449,6 +480,8 @@
 		C212BCB82250366500C624A7 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
+				C243CC412274E27400B68DC5 /* TextTheme.swift */,
+				C243CC472274E93200B68DC5 /* UIElementTheme.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -505,6 +538,7 @@
 				C212BCF0225158BD00C624A7 /* CollectionExtensions.swift */,
 				F5FCCCAF22563B1C00640F2A /* DateExtensions.swift */,
 				C24400DB225CFA73001C88A1 /* Copyable.swift */,
+				C27BAD44226A3B420052BDA6 /* StringExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -543,6 +577,25 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		C216F51D22752291001EB291 /* Password */ = {
+			isa = PBXGroup;
+			children = (
+				C216F51E227522C3001EB291 /* RegisterPasswordViewController.swift */,
+				C216F520227522D8001EB291 /* RegisterPasswordViewModel.swift */,
+				C216F522227522ED001EB291 /* RegisterPasswordView.swift */,
+			);
+			path = Password;
+			sourceTree = "<group>";
+		};
+		C243CC3C226B3A9200B68DC5 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				C2C52ED3225E4243009A6D93 /* ChangeCityViewModel.swift */,
+				C243CC3D226B3AC100B68DC5 /* RegisterCityViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		C24400C0225C9C51001C88A1 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -565,21 +618,22 @@
 		C24400CC225CD438001C88A1 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
-				C24400CD225CD560001C88A1 /* Name */,
+				C216F51D22752291001EB291 /* Password */,
+				C24400CD225CD560001C88A1 /* User */,
 				C24400D9225CF7F5001C88A1 /* RegistrationRepository.swift */,
 				C24400DD225CFDE1001C88A1 /* RegistrationCoordinator.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
 		};
-		C24400CD225CD560001C88A1 /* Name */ = {
+		C24400CD225CD560001C88A1 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				C24400CE225CD57B001C88A1 /* RegisterNameViewController.swift */,
-				C24400D0225CD5A2001C88A1 /* RegisterNameView.swift */,
-				C24400D2225CD72C001C88A1 /* RegisterNameViewModel.swift */,
+				C216F52822752B9F001EB291 /* RegisterUserView.swift */,
+				C24400CE225CD57B001C88A1 /* RegisterUserViewController.swift */,
+				C24400D2225CD72C001C88A1 /* RegisterUserViewModel.swift */,
 			);
-			path = Name;
+			path = User;
 			sourceTree = "<group>";
 		};
 		C24400E4225E32FD001C88A1 /* Promotions */ = {
@@ -639,8 +693,8 @@
 		C2C52ED0225E4200009A6D93 /* City */ = {
 			isa = PBXGroup;
 			children = (
+				C243CC3C226B3A9200B68DC5 /* ViewModels */,
 				C2C52ED1225E4211009A6D93 /* CitySelectViewController.swift */,
-				C2C52ED3225E4243009A6D93 /* RegisterCityViewModel.swift */,
 			);
 			path = City;
 			sourceTree = "<group>";
@@ -736,6 +790,7 @@
 				C212BC8E224FEB5200C624A7 /* generate_preprocess_header.sh in Resources */,
 				C212BC4C224FBB2200C624A7 /* Images.xcassets in Resources */,
 				C212BC87224FE6F700C624A7 /* Base.lproj in Resources */,
+				C243CC442274E6B900B68DC5 /* colors.json in Resources */,
 				C212BCAD2250327D00C624A7 /* environment.plist in Resources */,
 				C212BC7C224FD13700C624A7 /* Cartfile in Resources */,
 			);
@@ -805,6 +860,7 @@
 				"${PROJECT_DIR}/${TARGET_NAME}/Resources/Base.lproj/Localizable.strings",
 				"${PROJECT_DIR}/${TARGET_NAME}/Resources/Images.xcassets",
 				"$(ENVIRONMENT_DIR)/Current/environment.plist",
+				"${PROJECT_DIR}/${TARGET_NAME}/Resources/colors.json",
 			);
 			name = SwiftGen;
 			outputFileListPaths = (
@@ -813,10 +869,11 @@
 				"${PROJECT_DIR}/${TARGET_NAME}/Resources/Generated/LocalizedStrings.swift",
 				"${PROJECT_DIR}/${TARGET_NAME}/Resources/Generated/Assets.swift",
 				"${PROJECT_DIR}/Environment/Generated/Environment.swift",
+				"${PROJECT_DIR}/${TARGET_NAME}/Resources/Generated/Colors.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export PATH=\"${PODS_ROOT}/SwiftGen/bin:$PATH\"\n\nSTR_SRC_FILE=\"${SCRIPT_INPUT_FILE_0}\"\nIMG_SRC_FILE=\"${SCRIPT_INPUT_FILE_1}\"\nPLIST_SRC_FILE=\"${SCRIPT_INPUT_FILE_2}\"\n\ntouch \"$STR_SRC_FILE\"\ntouch \"$IMG_SRC_FILE\"\n\nswiftgen strings -t structured-swift4 \"$STR_SRC_FILE\" -o \"${SCRIPT_OUTPUT_FILE_0}\"\necho $?\n\nswiftgen xcassets -t swift4 \"$IMG_SRC_FILE\" -o \"${SCRIPT_OUTPUT_FILE_1}\"\nexho $?\n\nswiftgen plist -t runtime-swift4 \"$PLIST_SRC_FILE\" -o \"${SCRIPT_OUTPUT_FILE_2}\" --param enumName=\"Environment\"\necho $?\n\n";
+			shellScript = "export PATH=\"${PODS_ROOT}/SwiftGen/bin:$PATH\"\n\nSTR_SRC_FILE=\"${SCRIPT_INPUT_FILE_0}\"\nIMG_SRC_FILE=\"${SCRIPT_INPUT_FILE_1}\"\nPLIST_SRC_FILE=\"${SCRIPT_INPUT_FILE_2}\"\nCLRS_SRC_FILE=\"${SCRIPT_INPUT_FILE_3}\"\n\n\ntouch \"$STR_SRC_FILE\"\ntouch \"$IMG_SRC_FILE\"\n\nswiftgen strings -t structured-swift4 \"$STR_SRC_FILE\" -o \"${SCRIPT_OUTPUT_FILE_0}\"\necho $?\n\nswiftgen xcassets -t swift4 \"$IMG_SRC_FILE\" -o \"${SCRIPT_OUTPUT_FILE_1}\"\necho $?\n\nswiftgen plist -t runtime-swift4 \"$PLIST_SRC_FILE\" -o \"${SCRIPT_OUTPUT_FILE_2}\" --param enumName=\"Environment\"\necho $?\n\nswiftgen colors -t swift4 \"$CLRS_SRC_FILE\" -o \"${SCRIPT_OUTPUT_FILE_3}\"\necho $?\n";
 		};
 		C212BC9A224FFB7B00C624A7 /* Environment */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -866,21 +923,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C24400D3225CD72C001C88A1 /* RegisterNameViewModel.swift in Sources */,
+				C24400D3225CD72C001C88A1 /* RegisterUserViewModel.swift in Sources */,
 				C212BCD922511AF000C624A7 /* BaseTableViewCell.swift in Sources */,
+				C216F523227522ED001EB291 /* RegisterPasswordView.swift in Sources */,
+				C243CC422274E27400B68DC5 /* TextTheme.swift in Sources */,
 				C212BCC322504BD200C624A7 /* TransactionListViewController.swift in Sources */,
 				C212BCCC225052AD00C624A7 /* TransactionTableViewCell.swift in Sources */,
 				C24400DC225CFA73001C88A1 /* Copyable.swift in Sources */,
-				C2C52ED4225E4243009A6D93 /* RegisterCityViewModel.swift in Sources */,
+				C216F51F227522C3001EB291 /* RegisterPasswordViewController.swift in Sources */,
+				C2C52ED4225E4243009A6D93 /* ChangeCityViewModel.swift in Sources */,
 				C212BCEE225151E000C624A7 /* Credentials.swift in Sources */,
 				C212BCCE2250D58600C624A7 /* Transaction.swift in Sources */,
 				F5FCCCB4225654E300640F2A /* TransactionDetailController.swift in Sources */,
 				C212BD0022516AA800C624A7 /* BaseViewModel.swift in Sources */,
 				C212BC47224FBB2000C624A7 /* ViewController.swift in Sources */,
 				C2C52EC1225E3880009A6D93 /* MainCoordinator.swift in Sources */,
-				C24400CF225CD57B001C88A1 /* RegisterNameViewController.swift in Sources */,
+				C24400CF225CD57B001C88A1 /* RegisterUserViewController.swift in Sources */,
 				C212BCC922504F1300C624A7 /* Coordinator.swift in Sources */,
 				C212BCA9225024D400C624A7 /* Environment.swift in Sources */,
+				C216F52922752B9F001EB291 /* RegisterUserView.swift in Sources */,
 				C212BCBB22503E8C00C624A7 /* TransactionRepository.swift in Sources */,
 				C2C52ECD225E3E91009A6D93 /* PromotionListViewModel.swift in Sources */,
 				C2C52ECF225E3FAB009A6D93 /* PromotionsCoordinator.swift in Sources */,
@@ -890,21 +951,26 @@
 				C24400C2225C9C73001C88A1 /* LoginViewController.swift in Sources */,
 				C212BCD22250DB9E00C624A7 /* ViewModelFactories.swift in Sources */,
 				C212BCE022512CBF00C624A7 /* Network.swift in Sources */,
+				C27BAD45226A3B420052BDA6 /* StringExtensions.swift in Sources */,
 				C24400DA225CF7F5001C88A1 /* RegistrationRepository.swift in Sources */,
 				C212BCF322515DD500C624A7 /* UserRepository.swift in Sources */,
 				C2C52ED2225E4211009A6D93 /* CitySelectViewController.swift in Sources */,
+				C216F521227522D8001EB291 /* RegisterPasswordViewModel.swift in Sources */,
 				C2C52ECB225E3E78009A6D93 /* PromotionListViewController.swift in Sources */,
 				C212BCD02250D81F00C624A7 /* AppDependency.swift in Sources */,
 				C212BCEC225151AC00C624A7 /* CredentialsProvider.swift in Sources */,
 				C24400E0225D063B001C88A1 /* LoginCoordinator.swift in Sources */,
 				C2C52EBC225E3623009A6D93 /* ProfileCoordinator.swift in Sources */,
 				C24400DE225CFDE1001C88A1 /* RegistrationCoordinator.swift in Sources */,
+				C243CC40226BB7FD00B68DC5 /* FramedTextField.swift in Sources */,
 				C212BC45224FBB2000C624A7 /* AppDelegate.swift in Sources */,
 				C2C52EC4225E39C7009A6D93 /* MovieListViewController.swift in Sources */,
 				C2C52EBE225E3682009A6D93 /* ProfileViewModel.swift in Sources */,
 				C212BCA7225023FB00C624A7 /* Assets.swift in Sources */,
 				C212BCE222512EC800C624A7 /* ApiInteractor.swift in Sources */,
 				C2C52EC6225E3BC5009A6D93 /* MovieListViewModel.swift in Sources */,
+				C243CC462274E8FE00B68DC5 /* Colors.swift in Sources */,
+				C243CC3E226B3AC100B68DC5 /* RegisterCityViewModel.swift in Sources */,
 				C212BCAB2250325C00C624A7 /* LocalizedStrings.swift in Sources */,
 				C2C52EC8225E3CA3009A6D93 /* MoviesCoordinator.swift in Sources */,
 				F5FCCCB022563B1C00640F2A /* DateExtensions.swift in Sources */,
@@ -915,8 +981,10 @@
 				C24400C9225CD222001C88A1 /* ViewDsl.swift in Sources */,
 				C2C52EBA225E3547009A6D93 /* ProfileViewController.swift in Sources */,
 				C212BCFC225169B100C624A7 /* BaseListView.swift in Sources */,
+				C243CC482274E93200B68DC5 /* UIElementTheme.swift in Sources */,
 				C212BCC722504ECF00C624A7 /* TransactionCoordinator.swift in Sources */,
-				C24400D1225CD5A2001C88A1 /* RegisterNameView.swift in Sources */,
+				C216F52522752958001EB291 /* BaseFormView.swift in Sources */,
+				C243CC3B226B33F900B68DC5 /* CityApiService.swift in Sources */,
 				C24400C6225CD1E2001C88A1 /* LoginView.swift in Sources */,
 				C24400E2225D0778001C88A1 /* AppCoordinator.swift in Sources */,
 				C212BCC522504C9700C624A7 /* TransactionListViewModel.swift in Sources */,
@@ -1067,7 +1135,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 714178FBA904447304E10E73 /* Pods-moviego-ios.debug.xcconfig */;
 			buildSettings = {
-				APP_NAME = "Skeleton Dev";
+				APP_NAME = "MovieGo Dev";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P88J5J9T9W;
@@ -1092,7 +1160,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1208531ACDFE9F70ACF977E4 /* Pods-moviego-ios.release.xcconfig */;
 			buildSettings = {
-				APP_NAME = Skeleton;
+				APP_NAME = MovieGo;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P88J5J9T9W;
@@ -1214,7 +1282,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CD5853AE2A03E0C9B6969ED1 /* Pods-moviego-ios.beta.xcconfig */;
 			buildSettings = {
-				APP_NAME = "Skeleton Beta";
+				APP_NAME = "MovieGo Beta";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P88J5J9T9W;

@@ -12,10 +12,6 @@ protocol CitySelectModeling {
     
 }
 
-class RegisterCityViewModel: CitySelectModeling, BaseViewModel {
-    
-}
-
-class ChangeCityViewModel: CitySelectModeling, BaseViewModel {
+class ChangeCityViewModel: BaseViewModel, CitySelectModeling {
     
 }

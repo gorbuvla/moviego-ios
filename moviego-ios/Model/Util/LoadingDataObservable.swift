@@ -58,6 +58,67 @@ extension ObservableType where E: LoadingDataObservable {
     }
     
     private var events: Observable<Event<E.ElementType>> {
-        get { return self.filter { !$0.loading || $0.data != nil }.map { $0.data! } }
+        get { return self.filter { $0.data != nil }.map { $0.data! } }
     }
 }
+
+// TODO: general extension for subjects
+extension Variable where Element: LoadingDataObservable {
+    
+    var isLoading: Bool {
+        get { return value.loading }
+        set(newLoading) {}
+    }
+}
+
+//protocol ObservableProperty {
+//
+//    associatedtype T
+//
+//    var loading: Observable<Bool> { get }
+//
+//    var data: Observable<T> { get }
+//
+//    var error: Observable<Error> { get }
+//}
+//
+//protocol MutableProperty: ObservableProperty {
+//
+//    associatedtype T
+//
+//    var isLoading: Bool { get set }
+//}
+
+typealias ObservableProperty<T> = Observable<LoadingResult<T>>
+
+//extension Variable: ObservableProperty where Element: LoadingDataObservable {
+//
+//    typealias T = Element.ElementType
+//
+//    var loading: Observable<Bool> {
+//        get { return self.asObservable().map { $0.loading } }
+//    }
+//
+//    var data: Observable<T> {
+//        get { return self.events.elements() }
+//    }
+//
+//    var error: Observable<Error> {
+//        get { return self.events.errors() }
+//    }
+//
+//    private var events: Observable<Event<E.ElementType>> {
+//        get { return self.asObservable().filter { !$0.loading || $0.data != nil }.map { $0.data! } }
+//    }
+//}
+
+
+
+//extension Variable: MutableProperty where Element: LoadingDataObservable {
+//    
+//    var isLoading: Bool {
+//        get { return self.value.loading }
+//        set(newLoading) { self.value = LoadingResult(newLoading) }
+//    }
+//}
+//
