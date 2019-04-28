@@ -10,4 +10,5 @@ target 'moviego-ios' do
     pod 'Smartling.i18n', '~> 1.0'
     pod 'SwiftLint', '~> 0.27'
     pod 'SwiftGen', '~> 6.0'
+    pod 'Cloudinary', '~> 2.7'
 end

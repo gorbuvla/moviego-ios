@@ -1,1 +1,10 @@
 "app.name" = "iOS Skeleton";
+"login.email_title" = "Email";
+"login.password" = "Password";
+"login.button_title" = "Sign In";
+"login.register_button" = "Register";
+
+"tabbar.movies.title" = "Movies";
+"tabbar.map.title" = "Map";
+"tabbar.promotions.title" = "Promotions";
+"tabbar.profile.title" = "Profile";

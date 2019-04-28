@@ -14,3 +14,11 @@ func + <Key, Value> (lhs: [Key: Value], rhs: [Key: Value]) -> [Key: Value] {
     rhs.forEach { (key, value) in dict[key] = value }
     return dict
 }
+
+extension Collection {
+    
+    /// Returns the element at the specified index if it is within bounds, otherwise nil.
+    subscript (safe index: Index) -> Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
+}

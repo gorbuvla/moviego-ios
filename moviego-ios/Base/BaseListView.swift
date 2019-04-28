@@ -9,22 +9,13 @@
 import UIKit
 import SnapKit
 
-class BaseListView: UIView {
+class BaseListView: BaseView {
     
     weak var tableView: UITableView!
     weak var refreshControl: UIRefreshControl!
     weak var activityIndicator: UIActivityIndicatorView!
     
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        createView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func createView() {
+    override func createView() {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.backgroundColor = .white
         self.tableView = tableView
