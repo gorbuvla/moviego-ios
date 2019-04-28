@@ -10,14 +10,14 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol UserRegistrationNavigationDelegate: class {
-    func didTapContinue()
+protocol RegistrUserNavigationDelegate: class {
+    func didTapGoToPassword()
 }
 
 class RegisterUserViewController: BaseViewController<RegisterUserView> {
     
     private let viewModel: RegisterUserViewModel
-    var navigationDelegate: UserRegistrationNavigationDelegate?
+    var navigationDelegate: RegistrUserNavigationDelegate?
     
     init(viewModel: RegisterUserViewModel) {
         self.viewModel = viewModel
@@ -37,7 +37,7 @@ class RegisterUserViewController: BaseViewController<RegisterUserView> {
 //            .disposed(by: disposeBag)
         
         layout.continueButton.rx.tap
-            .bind(onNext: { [weak navigationDelegate] in navigationDelegate?.didTapContinue() })
+            .bind(onNext: { [weak navigationDelegate] in navigationDelegate?.didTapGoToPassword() })
             .disposed(by: disposeBag)
     }
     

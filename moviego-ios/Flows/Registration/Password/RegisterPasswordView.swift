@@ -19,6 +19,9 @@ class RegisterPasswordView: BaseFormView {
         continueButton.setTitle("Next", for: .normal)
         
         stack { it in
+            it.axis = .vertical
+            it.spacing = 10
+            
             passwordInput = it.customView(FramedTextField(style: .dark)) { it in
                 it.titleLabel.text = "Enter password"
             }

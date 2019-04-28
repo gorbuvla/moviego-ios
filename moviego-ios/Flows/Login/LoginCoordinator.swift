@@ -14,6 +14,7 @@ class LoginCoordinator: FlowCoordinator {
     override func start() -> UIViewController {
         let navigation = UINavigationController()
         navigation.translucentStyle()
+        navigation.navigationBar.barStyle = .blackOpaque
         
         let vc = LoginViewController(viewModel: dependencies.loginViewModelFactory())
         vc.navigationDelegate = self
@@ -21,12 +22,17 @@ class LoginCoordinator: FlowCoordinator {
         navigationController = navigation
         return navigation
     }
+    
+    override func stop(animated: Bool = false) {
+        rootViewController = nil
+    }
 }
 
 extension LoginCoordinator: LoginNavigationDelegate {
     func didTapRegister() {
         let registrationCoordinator = RegistrationCoordinator(factories: dependencies)
-        registrationCoordinator.start(with: navigationController!) // todo: intentional test behaviour
+        addChild(registrationCoordinator)
+        registrationCoordinator.start(with: navigationController!)
     }
     
     func didFinishLogin() {

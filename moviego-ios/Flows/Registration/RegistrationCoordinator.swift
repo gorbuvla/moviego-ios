@@ -27,9 +27,9 @@ class RegistrationCoordinator: FlowCoordinator {
     }
 }
 
-extension RegistrationCoordinator: UserRegistrationNavigationDelegate {
+extension RegistrationCoordinator: RegistrUserNavigationDelegate {
     
-    func didTapContinue() {
+    func didTapGoToPassword() {
         let vc = RegisterPasswordViewController(viewModel: factories.registerPasswordViewModelFactory())
         vc.navigationDelegate = self
         navController?.pushViewController(vc, animated: true)
@@ -38,8 +38,16 @@ extension RegistrationCoordinator: UserRegistrationNavigationDelegate {
 
 extension RegistrationCoordinator: RegisterPasswordNavigationDelegate {
     
-    func didTapNext() {
-        // TODO: go to city
+    func didTapGoToCity() {
+        let vc = PickCityViewController(viewModel: factories.registerCityViewModelFactory())
+        vc.navigationDelegate = self
+        navController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension RegistrationCoordinator: PickCityNavigationDelegate {
+    func onPickSuccess() {
+        // TODO: navigate to dashboard
     }
 }
 

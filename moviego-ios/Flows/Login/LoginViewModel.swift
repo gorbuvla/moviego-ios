@@ -32,7 +32,7 @@ class LoginViewModel: BaseViewModel {
         
         repository.login(credentials: .password(username: emailOrUsername, password: password))
             .map { _ in () }
-            .asObservable() // ???
+            .asObservable() // ... :(
             .subscribe { self.viewStateObserver.value = LoadingResult($0) }
             .disposed(by: disposeBag)
     }

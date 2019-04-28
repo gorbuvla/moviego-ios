@@ -1,4 +1,9 @@
 {
-    "primary_green": "#8DB38B",
-    "primary_blue": "#183059",
+    "primary": "#183059",
+    "secondary": "#8DB38B",
+    "bkg_dark": "#276FBF",
+    "bkg_light": "#F6F4F3",
+    "error_red": "#C60101",
+    "text_light": "#FFFFFF",
+    "text_dark": "#000000"
 }

@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import RxSwift
 
 protocol RegisterPasswordNavigationDelegate: class {
-    func didTapNext()
+    func didTapGoToCity()
 }
 
 class RegisterPasswordViewController: BaseViewController<RegisterPasswordView> {
@@ -29,8 +30,10 @@ class RegisterPasswordViewController: BaseViewController<RegisterPasswordView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Enter password"
+        
+        layout.continueButton.rx.tap
+            .observeOn(MainScheduler.instance)
+            .bind(onNext: { [weak navigationDelegate] in navigationDelegate?.didTapGoToCity() })
+            .disposed(by: disposeBag)
     }
-    
-    
-    
 }

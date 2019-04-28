@@ -14,7 +14,7 @@ class BaseFormView: BaseView {
     weak var continueButton: UIButton!
     
     override func createView() {
-        backgroundColor = UIColor(named: .primaryBlue).withAlphaComponent(0.8)
+        backgroundColor = UIColor(named: .primary).withAlphaComponent(0.8)
         
         continueButton = button { it in
             it.primaryButton()

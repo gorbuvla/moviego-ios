@@ -25,7 +25,7 @@ class AppCoordinator: FlowCoordinator {
         userStateDisposable = userRepository.user.distinctUntilChanged { $0?.name == $1?.name }
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] user in
-                self?.childCoordinators.forEach { $0.stop(animated: false) }
+                //self?.childCoordinators.forEach { $0.stop(animated: false) }
                 
                 let coordinator = user == nil ? LoginCoordinator() : MainCoordinator()
                 
@@ -39,7 +39,7 @@ class AppCoordinator: FlowCoordinator {
     }
     
     override func stop(animated: Bool = false) {
-        super.stop()
+        //super.stop()
         userStateDisposable?.dispose()
     }
 }

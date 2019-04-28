@@ -30,6 +30,7 @@ class MockedUserRepository: UserRepositoring {
     }
     
     func login(credentials: LoginCredentials) -> Single<User> {
+        userState.value = User(name: "Mocked User")
         return Single.just(User(name: "Mocked User"))
     }
     

@@ -14,6 +14,8 @@ class MoviesCoordinator: FlowCoordinator {
     override func start() -> UIViewController {
         let nav = UINavigationController()
         let vc = MovieListViewController(viewModel: dependencies.movieListViewModelFactory())
+        vc.tabBarItem.image = Asset.icTabMovies.image
+        vc.tabBarItem.title = L10n.Tabbar.Movies.title
         vc.navigationDelegate = self
         nav.viewControllers = [vc]
         navigationController = nav

@@ -17,9 +17,12 @@ class MainCoordinator: FlowCoordinator {
         return tabBarController
     }
     
-    
     private func setupTabBarController() -> UITabBarController {
-        let tabBarController = UITabBarController()
+        let tabbarController = UITabBarController()
+        tabbarController.tabBar.barTintColor = UIColor.white
+        tabbarController.tabBar.backgroundColor = UIColor.white
+        tabbarController.tabBar.tintColor = UIColor(named: .primary)
+        tabbarController.tabBar.unselectedItemTintColor = .gray
         
         let moviesFlow = MoviesCoordinator()
         let moviesRoot = moviesFlow.start()
@@ -33,7 +36,7 @@ class MainCoordinator: FlowCoordinator {
         let profileRoot = profileFlow.start()
         addChild(profileFlow)
         
-        tabBarController.viewControllers = [moviesRoot, promotionsRoot, profileRoot]
-        return tabBarController
+        tabbarController.viewControllers = [moviesRoot, promotionsRoot, profileRoot]
+        return tabbarController
     }
 }

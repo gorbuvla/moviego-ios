@@ -34,6 +34,11 @@ class LoginViewController: BaseViewController<LoginView> {
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        if Environment.isDev {
+            layout.emailOrUsernameField.textField.text = "movielover@moviego.me"
+            layout.passwordField.textField.text = "password"
+        }
+        
         combinedFormInput.map { $0.isNotEmpty && $1.isNotEmpty }
             .bind(to: layout.loginButton.rx.isEnabled)
             .disposed(by: disposeBag)
@@ -68,6 +73,10 @@ class LoginViewController: BaseViewController<LoginView> {
             .disposed(by: disposeBag)
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         layout.logoImage.snp.remakeConstraints { (make) in
@@ -76,7 +85,7 @@ class LoginViewController: BaseViewController<LoginView> {
             make.centerY.equalToSuperview().multipliedBy(0.5)
         }
         
-        UIView.animate(withDuration: 1.5, animations: {
+        UIView.animate(withDuration: 1.0, animations: {
             self.view.layoutIfNeeded()
         }, completion: { _ in
             UIView.transition(with: self.view, duration: 1, options: .transitionCrossDissolve, animations: {

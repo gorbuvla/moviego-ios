@@ -9,40 +9,27 @@
 import RxSwift
 import RxCocoa
 
-class RegisterCityViewModel: BaseViewModel, CitySelectModeling {
-    private let cityApi: CityApiServicing
+class RegisterCityViewModel: BasePickCityViewModel {
+    
     private let repository: RegistrationRepositoring
-    private let viewStateObserver: Variable<LoadingResult<[(City, Bool)]>>
+    private let continuationSubject: PublishSubject<LoadingResult<()>> = PublishSubject.init()
     
-    private
-    
-    var viewState: ObservableProperty<[(City, Bool)]> {
-        get { return viewStateObserver.asObservable() }
-    }
-    
-    var cities: [(City, Bool)] {
-        get { return viewStateObserver.value.data?.element ?? [] }
+    override var continuationState: ObservableProperty<()> {
+        get { return continuationSubject.asObservable() }
     }
     
     init(cityApi: CityApiServicing, repository: RegistrationRepositoring) {
-        self.cityApi = cityApi
         self.repository = repository
-        self.viewStateObserver = Variable(LoadingResult(false))
+        super.init(cityApi: cityApi)
     }
     
-    func selectCity(_ city: City) {
-        guard cities.isNotEmpty else { return }
+    override func selectCity(_ city: City) {
+        super.selectCity(city)
         
-        let selection = cities.map { option in (option.0, option.0 == city ? !option.1 : false) }
-        viewStateObserver.value = LoadingResult(.next(selection))
+        // TODO: notify data source
     }
     
-    private func fetchCities() {
-        cityApi.fetchCities()
-            .map { cities in cities.map { ($0, false) } }
-            .asObservable()
-            .mapLoading()
-            .bind(to: viewStateObserver)
-            .disposed(by: disposeBag)
+    override func register() {
+        // TODO: send api request, handle result appropriately
     }
 }

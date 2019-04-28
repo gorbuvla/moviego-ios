@@ -17,29 +17,29 @@ class FramedTextField: BaseView {
         
         var textColor: UIColor {
             switch self {
-            case .light: return UIColor.black
-            case .dark: return UIColor.white
+            case .light: return UIColor(named: .textDark)
+            case .dark: return UIColor(named: .textLight)
             }
         }
         
         var bgColor: UIColor {
             switch self {
-            case .light: return UIColor.white.withAlphaComponent(0.4)
-            case .dark: return .black
+            case .light: return UIColor(named: .bkgLight).withAlphaComponent(0.6)
+            case .dark: return UIColor(named: .bkgDark).withAlphaComponent(0.6)
             }
         }
         
         var selectedColor: UIColor {
             switch self {
-            case .light: return UIColor.white
-            case .dark: return UIColor.black
+            case .light: return UIColor(named: .bkgLight)
+            case .dark: return UIColor(named: .bkgDark)
             }
         }
         
         var activeBorderColor: UIColor {
             switch self {
-            case .light: return .black
-            case .dark: return .white
+            case .light: return UIColor(named: .primary)
+            case .dark: return UIColor(named: .secondary)
             }
         }
         
@@ -52,8 +52,8 @@ class FramedTextField: BaseView {
         
         var placeholderColor: UIColor {
             switch self {
-            case .light: return .gray
-            case .dark: return .white
+            case .light: return UIColor(named: .textDark).withAlphaComponent(0.6)
+            case .dark: return UIColor(named: .bkgLight).withAlphaComponent(0.6)
             }
         }
     }
@@ -112,6 +112,7 @@ class FramedTextField: BaseView {
         
         titleLabel = label { it in
             it.textColor = style.textColor
+            it.styleLabel()
             
             it.snp.makeConstraints { make in
                 make.top.leading.trailing.equalToSuperview()
@@ -127,6 +128,7 @@ class FramedTextField: BaseView {
                 textField = it.textField { it in
                     it.textColor = style.textColor
                     it.placeholder = "Placeholder"
+                    it.styleParagraphLarge()
                 }
                 
                 secureInputButton = it.button { it in
@@ -150,11 +152,10 @@ class FramedTextField: BaseView {
         }
         
         errorLabel = label { it in
-            it.textColor = .red // TODO: theme + generated colors
-            //it.isHidden = true
+            it.styleError()
             
             it.snp.makeConstraints { make in
-                make.leading.trailing.equalToSuperview().inset(15)
+                make.leading.trailing.equalToSuperview()
                 make.top.equalTo(backgroundView.snp.bottom).offset(3)
                 make.height.equalTo(15)
                 make.bottom.equalToSuperview()

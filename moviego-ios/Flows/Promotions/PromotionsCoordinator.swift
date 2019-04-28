@@ -14,6 +14,7 @@ class PromotionsCoordinator: FlowCoordinator {
     override func start() -> UIViewController {
         let nav = UINavigationController()
         let vc = PromotionListViewController(viewModel: dependencies.promotionListViewModelFactory())
+        vc.tabBarItem.title = L10n.Tabbar.Promotions.title
         nav.viewControllers = [vc]
         navigationController = nav
         return nav

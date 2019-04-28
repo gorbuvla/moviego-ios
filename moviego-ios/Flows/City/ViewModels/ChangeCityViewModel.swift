@@ -8,10 +8,7 @@
 
 import Foundation
 
-protocol CitySelectModeling {
-    
-}
-
-class ChangeCityViewModel: BaseViewModel, CitySelectModeling {
+// TODO: implement a viewModel for changing city from within a user profile
+class ChangeCityViewModel {
     
 }
