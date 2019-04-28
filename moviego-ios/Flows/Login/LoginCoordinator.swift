@@ -13,6 +13,8 @@ class LoginCoordinator: FlowCoordinator {
     
     override func start() -> UIViewController {
         let navigation = UINavigationController()
+        navigation.translucentStyle()
+        
         let vc = LoginViewController(viewModel: dependencies.loginViewModelFactory())
         vc.navigationDelegate = self
         navigation.viewControllers = [vc]

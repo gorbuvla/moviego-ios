@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CitySelectViewController: BaseViewController<BaseListView> {
+class PickCityViewController: BaseViewController<BaseListView> {
     
     init(viewModel: CitySelectModeling) {
         super.init()

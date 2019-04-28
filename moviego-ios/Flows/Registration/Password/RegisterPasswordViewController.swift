@@ -26,6 +26,11 @@ class RegisterPasswordViewController: BaseViewController<RegisterPasswordView> {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.title = "Enter password"
+    }
+    
     
     
 }

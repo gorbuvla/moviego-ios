@@ -54,4 +54,9 @@ extension UIView {
     func imageView(_ block: (UIImageView) -> Void) -> UIImageView {
         return customView(UIImageView(), block)
     }
+    
+    @discardableResult
+    func scrollView(_ block: (UIScrollView) -> Void) -> UIScrollView {
+        return customView(UIScrollView(), block)
+    }
 }

@@ -16,6 +16,7 @@ class RegisterPasswordView: BaseFormView {
     
     override func createView() {
         super.createView()
+        continueButton.setTitle("Next", for: .normal)
         
         stack { it in
             passwordInput = it.customView(FramedTextField(style: .dark)) { it in

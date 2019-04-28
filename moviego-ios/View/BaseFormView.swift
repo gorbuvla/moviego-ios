@@ -10,6 +10,7 @@ import UIKit
 
 class BaseFormView: BaseView {
     
+    weak var scrollContent: UIView!
     weak var continueButton: UIButton!
     
     override func createView() {
@@ -20,6 +21,25 @@ class BaseFormView: BaseView {
             
             it.snp.makeConstraints { make in
                 make.leading.trailing.equalToSuperview().inset(20)
+                make.bottom.equalTo(safeArea).inset(50)
+            }
+        }
+        
+        scrollView { it in
+            
+            scrollContent = it.view { it in
+                
+                it.snp.makeConstraints { make in
+                    make.top.equalToSuperview().inset(20)
+                    make.leading.trailing.equalToSuperview().inset(12)
+                    make.width.equalToSuperview().inset(12)
+                }
+            }
+            
+            it.snp.makeConstraints { make in
+                make.top.leading.trailing.equalTo(safeArea)
+                make.bottom.equalTo(continueButton.snp.top).inset(-20)
+                
             }
         }
     }

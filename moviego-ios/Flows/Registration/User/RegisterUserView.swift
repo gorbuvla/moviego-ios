@@ -18,12 +18,15 @@ class RegisterUserView: BaseFormView {
     override func createView() {
         super.createView()
         
-        stack { it in
+        continueButton.setTitle("Next", for: .normal)
+        
+        scrollContent.stack { it in
             it.axis = .vertical
             it.spacing = 10
             
             nameTextField = it.customView(FramedTextField(style: .dark)) { it in
                 it.titleLabel.text = "Name"
+                it.backgroundColor = .gray
                 
                 it.snp.makeConstraints { make in
                     make.width.equalToSuperview()
@@ -38,17 +41,9 @@ class RegisterUserView: BaseFormView {
                 }
             }
             
-            passwordTextField = it.customView(FramedTextField(style: .dark)) { it in
-                it.titleLabel.text = "Password"
-                it.isSecureTextEntry = true
-                
-                it.snp.makeConstraints { make in
-                    make.width.equalToSuperview()
-                }
-            }
-            
             userInfoTextField = it.customView(FramedTextField(style: .dark)) { it in
                 it.titleLabel.text = "Info"
+                
                 
                 it.snp.makeConstraints { make in
                     make.width.equalToSuperview()
@@ -56,9 +51,7 @@ class RegisterUserView: BaseFormView {
             }
             
             it.snp.makeConstraints { make in
-                make.centerY.equalToSuperview()
-                make.leading.trailing.equalToSuperview().inset(16)
-                make.bottom.lessThanOrEqualTo(continueButton.snp.top).offset(50)
+                make.top.leading.trailing.equalToSuperview()
             }
         }
     }

@@ -16,7 +16,7 @@ final class AppDependency: HasTransactionManaging {
     
     // api services
     lazy var oauthApi: OAuthApiServicing = OAuthApiService(interactor: self.apiInteractor)
-    lazy var cityApi: CityApiServicing = CityApiService(interactor: self.apiInteractor)
+    lazy var cityApi: CityApiServicing = MockedCityApiService()
     lazy var transactionsApi: TransactionApiServicing = TransactionApiService(interactor: self.apiInteractor) // no auth
     
     // repositories

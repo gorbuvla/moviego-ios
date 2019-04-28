@@ -17,7 +17,7 @@ protocol UserRegistrationNavigationDelegate: class {
 class RegisterUserViewController: BaseViewController<RegisterUserView> {
     
     private let viewModel: RegisterUserViewModel
-    weak var navigationDelegate: UserRegistrationNavigationDelegate?
+    var navigationDelegate: UserRegistrationNavigationDelegate?
     
     init(viewModel: RegisterUserViewModel) {
         self.viewModel = viewModel
@@ -30,10 +30,11 @@ class RegisterUserViewController: BaseViewController<RegisterUserView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Enter info"
         
-        combinedFormInput.map { $0.isNotEmpty && $1.isNotEmpty }
-            .bind(to: layout.continueButton.rx.isEnabled)
-            .disposed(by: disposeBag)
+//        combinedFormInput.map { $0.isNotEmpty && $1.isNotEmpty }
+//            .bind(to: layout.continueButton.rx.isEnabled)
+//            .disposed(by: disposeBag)
         
         layout.continueButton.rx.tap
             .bind(onNext: { [weak navigationDelegate] in navigationDelegate?.didTapContinue() })

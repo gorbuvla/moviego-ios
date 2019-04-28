@@ -19,3 +19,14 @@ extension UIButton {
         setTitleColor(UIColor.white.withAlphaComponent(0.3), for: .disabled)
     }
 }
+
+
+extension UINavigationController {
+    func translucentStyle() {
+        navigationBar.tintColor = UIColor.white
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationBar.backgroundColor = .clear
+        navigationBar.isTranslucent = true
+    }
+}
