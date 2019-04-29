@@ -10,7 +10,6 @@ import Foundation
 
 protocol HasViewModelFactories {
     
-    var transactionListViewModelFactory: () -> TransactionListViewModel { get }
 }
 
 protocol RegistrationViewModelFactories {
@@ -26,10 +25,6 @@ protocol ProfileViewModelFactories {
 typealias ViewModelFactory = HasViewModelFactories & RegistrationViewModelFactories & ProfileViewModelFactories
 
 extension AppDependency: ViewModelFactory {
-    
-    var transactionListViewModelFactory: () -> TransactionListViewModel {
-        return { TransactionListViewModel(repository: dependencies.transactionRepository) }
-    }
     
     var loginViewModelFactory: () -> LoginViewModel {
         return { LoginViewModel(repository: dependencies.userRepository) }

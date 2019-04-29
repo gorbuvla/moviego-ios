@@ -7,7 +7,7 @@
 //
 import Foundation
 
-final class AppDependency: HasTransactionManaging {
+final class AppDependency {
     
     // networking
     lazy var network: Network = Network()
@@ -17,12 +17,10 @@ final class AppDependency: HasTransactionManaging {
     // api services
     lazy var oauthApi: OAuthApiServicing = OAuthApiService(interactor: self.apiInteractor)
     lazy var cityApi: CityApiServicing = MockedCityApiService()
-    lazy var transactionsApi: TransactionApiServicing = TransactionApiService(interactor: self.apiInteractor) // no auth
     
     // repositories
     lazy var registrationRepository: RegistrationRepositoring = RegistrationRepository()
     lazy var userRepository: UserRepositoring = MockedUserRepository(credentialsStore: UserDefaults.defaultStore)
-    lazy var transactionRepository: TransactionRepositoring = TransactionRepository(apiService: self.transactionsApi)
 }
 
 let dependencies = AppDependency()

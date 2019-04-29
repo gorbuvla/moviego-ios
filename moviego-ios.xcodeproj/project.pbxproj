@@ -23,7 +23,6 @@
 		C212BCA9225024D400C624A7 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCA8225024D400C624A7 /* Environment.swift */; };
 		C212BCAB2250325C00C624A7 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCAA2250325C00C624A7 /* LocalizedStrings.swift */; };
 		C212BCAD2250327D00C624A7 /* environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = C212BCAC2250327D00C624A7 /* environment.plist */; };
-		C212BCBB22503E8C00C624A7 /* TransactionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCBA22503E8C00C624A7 /* TransactionRepository.swift */; };
 		C212BCBE2250475E00C624A7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C212BCBC2250475E00C624A7 /* RxSwift.framework */; };
 		C212BCBF2250475E00C624A7 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C212BCBD2250475E00C624A7 /* RxCocoa.framework */; };
 		C212BCC922504F1300C624A7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCC822504F1300C624A7 /* Coordinator.swift */; };
@@ -36,7 +35,6 @@
 		C212BCDE225126FA00C624A7 /* RxAlamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C212BCDD225126FA00C624A7 /* RxAlamofire.framework */; };
 		C212BCE022512CBF00C624A7 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCDF22512CBF00C624A7 /* Network.swift */; };
 		C212BCE222512EC800C624A7 /* ApiInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCE122512EC800C624A7 /* ApiInteractor.swift */; };
-		C212BCE5225134A600C624A7 /* TransactionApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCE4225134A600C624A7 /* TransactionApiService.swift */; };
 		C212BCE72251371B00C624A7 /* RxAtomic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C212BCE62251371B00C624A7 /* RxAtomic.framework */; };
 		C212BCEC225151AC00C624A7 /* CredentialsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCEB225151AC00C624A7 /* CredentialsProvider.swift */; };
 		C212BCEE225151E000C624A7 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCED225151E000C624A7 /* Credentials.swift */; };
@@ -133,7 +131,6 @@
 		C212BCA8225024D400C624A7 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		C212BCAA2250325C00C624A7 /* LocalizedStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
 		C212BCAC2250327D00C624A7 /* environment.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = environment.plist; sourceTree = "<group>"; };
-		C212BCBA22503E8C00C624A7 /* TransactionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRepository.swift; sourceTree = "<group>"; };
 		C212BCBC2250475E00C624A7 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		C212BCBD2250475E00C624A7 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		C212BCC822504F1300C624A7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -146,7 +143,6 @@
 		C212BCDD225126FA00C624A7 /* RxAlamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAlamofire.framework; path = Carthage/Build/iOS/RxAlamofire.framework; sourceTree = "<group>"; };
 		C212BCDF22512CBF00C624A7 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		C212BCE122512EC800C624A7 /* ApiInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiInteractor.swift; sourceTree = "<group>"; };
-		C212BCE4225134A600C624A7 /* TransactionApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionApiService.swift; sourceTree = "<group>"; };
 		C212BCE62251371B00C624A7 /* RxAtomic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAtomic.framework; path = Carthage/Build/iOS/RxAtomic.framework; sourceTree = "<group>"; };
 		C212BCE92251497D00C624A7 /* Pods_ios_skeleton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_ios_skeleton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C212BCEB225151AC00C624A7 /* CredentialsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsProvider.swift; sourceTree = "<group>"; };
@@ -418,7 +414,6 @@
 			isa = PBXGroup;
 			children = (
 				F5FCCCB12256469200640F2A /* OAuthApiService.swift */,
-				C212BCE4225134A600C624A7 /* TransactionApiService.swift */,
 				C243CC3A226B33F900B68DC5 /* CityApiService.swift */,
 			);
 			path = Api;
@@ -427,7 +422,6 @@
 		C212BCB2225035B900C624A7 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				C212BCBA22503E8C00C624A7 /* TransactionRepository.swift */,
 				C212BCF222515DD500C624A7 /* UserRepository.swift */,
 				C212BCEB225151AC00C624A7 /* CredentialsProvider.swift */,
 			);
@@ -913,12 +907,10 @@
 				C212BCA9225024D400C624A7 /* Environment.swift in Sources */,
 				C216F52F2275CD12001EB291 /* BasePickCityViewModel.swift in Sources */,
 				C216F52922752B9F001EB291 /* RegisterUserView.swift in Sources */,
-				C212BCBB22503E8C00C624A7 /* TransactionRepository.swift in Sources */,
 				C2C52ECD225E3E91009A6D93 /* PromotionListViewModel.swift in Sources */,
 				C216F52D2275C045001EB291 /* PickCityCell.swift in Sources */,
 				C2C52ECF225E3FAB009A6D93 /* PromotionsCoordinator.swift in Sources */,
 				C212BCD42250E45500C624A7 /* LoadingDataObservable.swift in Sources */,
-				C212BCE5225134A600C624A7 /* TransactionApiService.swift in Sources */,
 				C24400CB225CD276001C88A1 /* LoginViewModel.swift in Sources */,
 				C24400C2225C9C73001C88A1 /* LoginViewController.swift in Sources */,
 				C212BCD22250DB9E00C624A7 /* ViewModelFactories.swift in Sources */,
