@@ -54,6 +54,7 @@
 		C216F52F2275CD12001EB291 /* BasePickCityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216F52E2275CD12001EB291 /* BasePickCityViewModel.swift */; };
 		C216F5312275D07C001EB291 /* PickCityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216F5302275D07C001EB291 /* PickCityView.swift */; };
 		C224E183225BDE0800A4AE37 /* ACKategories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C224E182225BDE0800A4AE37 /* ACKategories.framework */; };
+		C23EEB9B2278D16E00A95185 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C23EEB9A2278D16E00A95185 /* LaunchScreen.storyboard */; };
 		C243CC3B226B33F900B68DC5 /* CityApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243CC3A226B33F900B68DC5 /* CityApiService.swift */; };
 		C243CC3E226B3AC100B68DC5 /* RegisterCityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243CC3D226B3AC100B68DC5 /* RegisterCityViewModel.swift */; };
 		C243CC40226BB7FD00B68DC5 /* FramedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243CC3F226BB7FD00B68DC5 /* FramedTextField.swift */; };
@@ -153,7 +154,6 @@
 		C212BCF92251697700C624A7 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C212BCFB225169B100C624A7 /* BaseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListView.swift; sourceTree = "<group>"; };
 		C212BCFF22516AA800C624A7 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
-		C216F51C22751B6B001EB291 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C216F51E227522C3001EB291 /* RegisterPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPasswordViewController.swift; sourceTree = "<group>"; };
 		C216F520227522D8001EB291 /* RegisterPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPasswordViewModel.swift; sourceTree = "<group>"; };
 		C216F522227522ED001EB291 /* RegisterPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPasswordView.swift; sourceTree = "<group>"; };
@@ -164,6 +164,7 @@
 		C216F52E2275CD12001EB291 /* BasePickCityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePickCityViewModel.swift; sourceTree = "<group>"; };
 		C216F5302275D07C001EB291 /* PickCityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickCityView.swift; sourceTree = "<group>"; };
 		C224E182225BDE0800A4AE37 /* ACKategories.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ACKategories.framework; path = Carthage/Build/iOS/ACKategories.framework; sourceTree = "<group>"; };
+		C23EEB9A2278D16E00A95185 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C243CC3A226B33F900B68DC5 /* CityApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityApiService.swift; sourceTree = "<group>"; };
 		C243CC3D226B3AC100B68DC5 /* RegisterCityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCityViewModel.swift; sourceTree = "<group>"; };
 		C243CC3F226BB7FD00B68DC5 /* FramedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FramedTextField.swift; sourceTree = "<group>"; };
@@ -367,7 +368,7 @@
 				C212BC86224FE6F700C624A7 /* Base.lproj */,
 				C212BC4B224FBB2200C624A7 /* Images.xcassets */,
 				C243CC432274E6B900B68DC5 /* colors.json */,
-				C216F51C22751B6B001EB291 /* LaunchScreen.storyboard */,
+				C23EEB9A2278D16E00A95185 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -749,6 +750,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C23EEB9B2278D16E00A95185 /* LaunchScreen.storyboard in Resources */,
 				C212BC84224FD20300C624A7 /* Gemfile in Resources */,
 				C212BC82224FD1E700C624A7 /* Podfile in Resources */,
 				C212BC8E224FEB5200C624A7 /* generate_preprocess_header.sh in Resources */,
