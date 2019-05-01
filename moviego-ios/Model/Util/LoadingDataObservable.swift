@@ -69,6 +69,8 @@ extension Variable where Element: LoadingDataObservable {
         get { return value.loading }
         set(newLoading) {}
     }
+    
+    
 }
 
 //protocol ObservableProperty {

@@ -59,4 +59,9 @@ extension UIView {
     func scrollView(_ block: (UIScrollView) -> Void) -> UIScrollView {
         return customView(UIScrollView(), block)
     }
+    
+    @discardableResult
+    func activityIndicator(_ block: (UIActivityIndicatorView) -> Void) -> UIActivityIndicatorView {
+        return customView(UIActivityIndicatorView(), block)
+    }
 }

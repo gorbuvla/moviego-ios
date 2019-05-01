@@ -55,6 +55,9 @@
 		C216F5312275D07C001EB291 /* PickCityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216F5302275D07C001EB291 /* PickCityView.swift */; };
 		C224E183225BDE0800A4AE37 /* ACKategories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C224E182225BDE0800A4AE37 /* ACKategories.framework */; };
 		C23EEB9B2278D16E00A95185 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C23EEB9A2278D16E00A95185 /* LaunchScreen.storyboard */; };
+		C23EEB9D2279D26100A95185 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23EEB9C2279D26100A95185 /* LoadingView.swift */; };
+		C23EEB9F2279D3CE00A95185 /* CustomComponentDsl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23EEB9E2279D3CE00A95185 /* CustomComponentDsl.swift */; };
+		C23EEBA1227A01E400A95185 /* BaseScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23EEBA0227A01E400A95185 /* BaseScrollView.swift */; };
 		C243CC3B226B33F900B68DC5 /* CityApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243CC3A226B33F900B68DC5 /* CityApiService.swift */; };
 		C243CC3E226B3AC100B68DC5 /* RegisterCityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243CC3D226B3AC100B68DC5 /* RegisterCityViewModel.swift */; };
 		C243CC40226BB7FD00B68DC5 /* FramedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C243CC3F226BB7FD00B68DC5 /* FramedTextField.swift */; };
@@ -165,6 +168,9 @@
 		C216F5302275D07C001EB291 /* PickCityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickCityView.swift; sourceTree = "<group>"; };
 		C224E182225BDE0800A4AE37 /* ACKategories.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ACKategories.framework; path = Carthage/Build/iOS/ACKategories.framework; sourceTree = "<group>"; };
 		C23EEB9A2278D16E00A95185 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C23EEB9C2279D26100A95185 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		C23EEB9E2279D3CE00A95185 /* CustomComponentDsl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomComponentDsl.swift; sourceTree = "<group>"; };
+		C23EEBA0227A01E400A95185 /* BaseScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScrollView.swift; sourceTree = "<group>"; };
 		C243CC3A226B33F900B68DC5 /* CityApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityApiService.swift; sourceTree = "<group>"; };
 		C243CC3D226B3AC100B68DC5 /* RegisterCityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCityViewModel.swift; sourceTree = "<group>"; };
 		C243CC3F226BB7FD00B68DC5 /* FramedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FramedTextField.swift; sourceTree = "<group>"; };
@@ -451,6 +457,7 @@
 				C212BCCA2250524800C624A7 /* TableViewCells */,
 				C243CC3F226BB7FD00B68DC5 /* FramedTextField.swift */,
 				C216F52422752958001EB291 /* BaseFormView.swift */,
+				C23EEB9C2279D26100A95185 /* LoadingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -463,6 +470,7 @@
 				C212BCFB225169B100C624A7 /* BaseListView.swift */,
 				C212BCFF22516AA800C624A7 /* BaseViewModel.swift */,
 				C24400C3225CCBA8001C88A1 /* BaseView.swift */,
+				C23EEBA0227A01E400A95185 /* BaseScrollView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -575,6 +583,7 @@
 			isa = PBXGroup;
 			children = (
 				C24400C8225CD222001C88A1 /* ViewDsl.swift */,
+				C23EEB9E2279D3CE00A95185 /* CustomComponentDsl.swift */,
 			);
 			path = Experimental;
 			sourceTree = "<group>";
@@ -897,6 +906,7 @@
 				C212BCD922511AF000C624A7 /* BaseTableViewCell.swift in Sources */,
 				C216F523227522ED001EB291 /* RegisterPasswordView.swift in Sources */,
 				C243CC422274E27400B68DC5 /* TextTheme.swift in Sources */,
+				C23EEB9F2279D3CE00A95185 /* CustomComponentDsl.swift in Sources */,
 				C24400DC225CFA73001C88A1 /* Copyable.swift in Sources */,
 				C216F51F227522C3001EB291 /* RegisterPasswordViewController.swift in Sources */,
 				C2C52ED4225E4243009A6D93 /* ChangeCityViewModel.swift in Sources */,
@@ -919,6 +929,7 @@
 				C212BCE022512CBF00C624A7 /* Network.swift in Sources */,
 				C27BAD45226A3B420052BDA6 /* StringExtensions.swift in Sources */,
 				C24400DA225CF7F5001C88A1 /* RegistrationRepository.swift in Sources */,
+				C23EEB9D2279D26100A95185 /* LoadingView.swift in Sources */,
 				C212BCF322515DD500C624A7 /* UserRepository.swift in Sources */,
 				C2C52ED2225E4211009A6D93 /* PickCityViewController.swift in Sources */,
 				C216F521227522D8001EB291 /* RegisterPasswordViewModel.swift in Sources */,
@@ -928,6 +939,7 @@
 				C24400E0225D063B001C88A1 /* LoginCoordinator.swift in Sources */,
 				C2C52EBC225E3623009A6D93 /* ProfileCoordinator.swift in Sources */,
 				C24400DE225CFDE1001C88A1 /* RegistrationCoordinator.swift in Sources */,
+				C23EEBA1227A01E400A95185 /* BaseScrollView.swift in Sources */,
 				C243CC40226BB7FD00B68DC5 /* FramedTextField.swift in Sources */,
 				C212BC45224FBB2000C624A7 /* AppDelegate.swift in Sources */,
 				C2C52EC4225E39C7009A6D93 /* MovieListViewController.swift in Sources */,
