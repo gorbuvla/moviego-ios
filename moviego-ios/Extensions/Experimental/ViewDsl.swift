@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 extension UIView {
     
@@ -63,5 +64,10 @@ extension UIView {
     @discardableResult
     func activityIndicator(_ block: (UIActivityIndicatorView) -> Void) -> UIActivityIndicatorView {
         return customView(UIActivityIndicatorView(), block)
+    }
+ 
+    @discardableResult
+    func mapView(_ block: (MKMapView) -> Void) -> MKMapView {
+        return customView(MKMapView(), block)
     }
 }

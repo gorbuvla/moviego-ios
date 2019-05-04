@@ -86,7 +86,8 @@
 		C2649835227D8D4D0037AF48 /* ShowtimeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2649834227D8D4D0037AF48 /* ShowtimeRepository.swift */; };
 		C2649839227D96460037AF48 /* CinemaMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2649838227D96460037AF48 /* CinemaMapViewController.swift */; };
 		C264983B227D96540037AF48 /* CinemaMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C264983A227D96540037AF48 /* CinemaMapViewModel.swift */; };
-		C264983D227D96630037AF48 /* CinemaMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C264983C227D96630037AF48 /* CinemaMapView.swift */; };
+		C264983F227D99FB0037AF48 /* CinemaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C264983E227D99FB0037AF48 /* CinemaRepository.swift */; };
+		C2649841227DB2170037AF48 /* BaseMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2649840227DB2170037AF48 /* BaseMapView.swift */; };
 		C27BAD45226A3B420052BDA6 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27BAD44226A3B420052BDA6 /* StringExtensions.swift */; };
 		C2C52EBA225E3547009A6D93 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C52EB9225E3547009A6D93 /* ProfileViewController.swift */; };
 		C2C52EBC225E3623009A6D93 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C52EBB225E3623009A6D93 /* ProfileCoordinator.swift */; };
@@ -209,7 +210,8 @@
 		C2649834227D8D4D0037AF48 /* ShowtimeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowtimeRepository.swift; sourceTree = "<group>"; };
 		C2649838227D96460037AF48 /* CinemaMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaMapViewController.swift; sourceTree = "<group>"; };
 		C264983A227D96540037AF48 /* CinemaMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaMapViewModel.swift; sourceTree = "<group>"; };
-		C264983C227D96630037AF48 /* CinemaMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaMapView.swift; sourceTree = "<group>"; };
+		C264983E227D99FB0037AF48 /* CinemaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaRepository.swift; sourceTree = "<group>"; };
+		C2649840227DB2170037AF48 /* BaseMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMapView.swift; sourceTree = "<group>"; };
 		C27BAD44226A3B420052BDA6 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		C2C52EB9225E3547009A6D93 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C2C52EBB225E3623009A6D93 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 				C212BCF222515DD500C624A7 /* UserRepository.swift */,
 				C212BCEB225151AC00C624A7 /* CredentialsProvider.swift */,
 				C2649834227D8D4D0037AF48 /* ShowtimeRepository.swift */,
+				C264983E227D99FB0037AF48 /* CinemaRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 				C212BCFF22516AA800C624A7 /* BaseViewModel.swift */,
 				C24400C3225CCBA8001C88A1 /* BaseView.swift */,
 				C23EEBA0227A01E400A95185 /* BaseScrollView.swift */,
+				C2649840227DB2170037AF48 /* BaseMapView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -659,7 +663,6 @@
 			children = (
 				C2649838227D96460037AF48 /* CinemaMapViewController.swift */,
 				C264983A227D96540037AF48 /* CinemaMapViewModel.swift */,
-				C264983C227D96630037AF48 /* CinemaMapView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -974,6 +977,8 @@
 				C24400C2225C9C73001C88A1 /* LoginViewController.swift in Sources */,
 				C212BCD22250DB9E00C624A7 /* ViewModelFactories.swift in Sources */,
 				C212BCE022512CBF00C624A7 /* Network.swift in Sources */,
+				C2649841227DB2170037AF48 /* BaseMapView.swift in Sources */,
+				C264983F227D99FB0037AF48 /* CinemaRepository.swift in Sources */,
 				C27BAD45226A3B420052BDA6 /* StringExtensions.swift in Sources */,
 				C23EEBAF227B7B8B00A95185 /* ShowtimeApiService.swift in Sources */,
 				C24400DA225CF7F5001C88A1 /* RegistrationRepository.swift in Sources */,
@@ -991,7 +996,6 @@
 				C23EEBA1227A01E400A95185 /* BaseScrollView.swift in Sources */,
 				C243CC40226BB7FD00B68DC5 /* FramedTextField.swift in Sources */,
 				C23EEBA7227B77B000A95185 /* Cinema.swift in Sources */,
-				C264983D227D96630037AF48 /* CinemaMapView.swift in Sources */,
 				C212BC45224FBB2000C624A7 /* AppDelegate.swift in Sources */,
 				C2649835227D8D4D0037AF48 /* ShowtimeRepository.swift in Sources */,
 				C23EEBAB227B791400A95185 /* Showtime.swift in Sources */,

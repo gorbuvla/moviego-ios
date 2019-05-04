@@ -16,12 +16,6 @@ protocol CinemaApiServicing {
     func fetchBy(by: CinemaOrderBy, lat: Float?, lng: Float?) -> Single<[Cinema]>
 }
 
-enum CinemaOrderBy: String {
-    case distance = "distance"
-    case userRating = "userRating"
-}
-
-
 class CinemaApiService: CinemaApiServicing  {
     
     private let interactor: ApiInteracting

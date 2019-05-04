@@ -21,6 +21,7 @@ final class AppDependency {
     // repositories
     lazy var registrationRepository: RegistrationRepositoring = RegistrationRepository()
     lazy var userRepository: UserRepositoring = MockedUserRepository(credentialsStore: UserDefaults.defaultStore)
+    lazy var showtimeRepository: ShowtimeRepositoring = MockedShowtimeRepository()
 }
 
 let dependencies = AppDependency()

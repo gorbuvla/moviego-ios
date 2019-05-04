@@ -16,9 +16,4 @@ protocol ShowtimeApiServicing {
     func fetchShowtimes(movieId: Int?, startingFrom: Date, lat: Float?, lng: Float?, orderBy: ShowtimeOrderBy, limit: Int, offset: Int) -> Single<[Showtime]>
 }
 
-enum ShowtimeOrderBy: String {
-    case time = "time"
-    case nearestCinema = "nearestCinema"
-}
-
 class ShowtimeApiService {}

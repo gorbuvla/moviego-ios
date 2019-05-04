@@ -26,3 +26,8 @@ struct CinemaReview: Codable {
     let cinema: Cinema
     let user: ServiceUser
 }
+
+enum CinemaOrderBy: String {
+    case distance = "distance"
+    case userRating = "userRating"
+}
