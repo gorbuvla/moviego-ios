@@ -60,26 +60,43 @@ class UserRepository: UserRepositoring {
 
 class MockedUserRepository: UserRepositoring {
     
-    private let credentialsStore: CredentialsStore
-    private let userState: Variable<User?>
+    private var credentialsStore: CredentialsStore
+    private let userVariable: Variable<User?>
     
     var user: Observable<User?> {
-        get { return userState.asObservable() }
+        get { return userVariable.asObservable() }
     }
     
     init(credentialsStore: CredentialsStore) {
         self.credentialsStore = credentialsStore
-        self.userState = Variable(credentialsStore.user)
+        self.userVariable = Variable(credentialsStore.user)
     }
     
     func login(credentials: LoginCredentials) -> Single<User> {
-        return Single.just(User(name: "Mocked User")).delay(3, scheduler: MainScheduler.instance)
-            .do(onSuccess: { user in
-                self.userState.value = user
-            })
+        guard case .password(let email, let password) = credentials else { return Single.error(ApiException.unauthorized) }
+        
+        var singleSource: Single<UserWithCredentials> = Single.error(ApiException.unauthorized)
+        
+        if email == "movielover@moviego.me" && password == "password" {
+            singleSource = Single.just(UserWithCredentials(id: 1, name: "Hackerman", email: "movielover@moviego.me", avatarId: "user_avatars/hackerman", city: City(id: 2, name: "Prague", pictureId: "id", cinemasCount: 2), credentials: Credentials(accessToken: "AT", refreshToken: "RT", expiresIn: 3600)))
+        }
+
+        return singleSource.do(onSuccess: { [weak self] userWithCredentials in
+                self?.credentialsStore.user = userWithCredentials.user
+                self?.credentialsStore.credentials = userWithCredentials.credentials
+                self?.userVariable.value = userWithCredentials.user
+            }).map { $0.user }
+            .delay(3, scheduler: MainScheduler.instance)
     }
     
     func logout() -> Completable {
-        return Single.just(()).asCompletable()
+        return Completable.create { [weak self] completable in
+            self?.credentialsStore.user = nil
+            self?.credentialsStore.credentials = nil
+            self?.userVariable.value = nil
+            
+            completable(.completed)
+            return Disposables.create {}
+        }
     }
 }

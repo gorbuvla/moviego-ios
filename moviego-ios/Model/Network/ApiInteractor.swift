@@ -60,7 +60,17 @@ class AuthApiInteractor: ApiInteracting {
 extension ObservableType where E == (HTTPURLResponse, Data) {
     public func mapObject<T: Codable>(to type: T.Type) -> Observable<T> {
         return map { (response, data) -> T in
-            try! JSONDecoder().decode(T.self, from: data)
+            if response.statusCode == 200 {
+                return try! JSONDecoder().decode(T.self, from: data)
+            } else {
+                throw ApiException.unauthorized
+            }
+            // TODO: map errors here
         }
     }
+}
+
+enum ApiException: Error {
+    
+    case unauthorized
 }

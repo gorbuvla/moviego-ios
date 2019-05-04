@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol MovieListNavigationDelegate: class {}
+protocol ShowtimeListNavigationDelegate: class {}
 
-class MovieListViewController: BaseViewController<BaseListView> {
+class ShowtimeListViewController: BaseViewController<BaseListView> {
     
-    weak var navigationDelegate: MovieListNavigationDelegate?
-    private let viewModel: MovieListViewModel
+    weak var navigationDelegate: ShowtimeListNavigationDelegate?
+    private let viewModel: ShowtimeListViewModel
     
-    init(viewModel: MovieListViewModel) {
+    init(viewModel: ShowtimeListViewModel) {
         self.viewModel = viewModel
         super.init()
         tabBarItem.title = "Movies"

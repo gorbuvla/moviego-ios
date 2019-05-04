@@ -11,7 +11,7 @@ import Foundation
 struct Credentials: Codable {
     let accessToken: String
     let refreshToken: String
-    let expireIn: Int
+    let expiresIn: Int
 }
 
 enum LoginCredentials {

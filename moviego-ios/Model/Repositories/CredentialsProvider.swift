@@ -34,7 +34,7 @@ extension UserDefaults: CredentialsStore, CredentialsProvider {
         get { return decode(key: Keys.credentials)}
         set {
             encode(value: credentials, key: Keys.credentials)
-            encode(value: Date.currentTimeMillis + (credentials?.expireIn ?? 0), key: Keys.tokenExpiration)
+            encode(value: Date.currentTimeMillis + (credentials?.expiresIn ?? 0), key: Keys.tokenExpiration)
         }
     }
     

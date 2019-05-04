@@ -73,6 +73,10 @@ extension Variable where Element: LoadingDataObservable {
     
 }
 
+
+// 1. computed property of optional current value
+typealias ObservableProperty<T> = Observable<LoadingResult<T>>
+
 //protocol ObservableProperty {
 //
 //    associatedtype T
@@ -91,7 +95,7 @@ extension Variable where Element: LoadingDataObservable {
 //    var isLoading: Bool { get set }
 //}
 
-typealias ObservableProperty<T> = Observable<LoadingResult<T>>
+
 
 //extension Variable: ObservableProperty where Element: LoadingDataObservable {
 //

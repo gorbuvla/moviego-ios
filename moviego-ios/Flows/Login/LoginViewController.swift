@@ -43,7 +43,7 @@ class LoginViewController: BaseViewController<LoginView>, UITextFieldDelegate {
     
         if Environment.isDev {
             layout.emailOrUsernameField.textField.text = "movielover@moviego.me"
-            layout.passwordField.textField.text = "password"
+            layout.passwordField.textField.text = "password1"
         }
         
         combinedFormInput.map { $0.isNotEmpty && $1.isNotEmpty }
@@ -67,26 +67,19 @@ class LoginViewController: BaseViewController<LoginView>, UITextFieldDelegate {
         
         viewModel.viewState.error
             .observeOn(MainScheduler.instance)
-            .bind(onNext: { [weak layout] error in
+            .bind(onNext: { [weak self] error in
                 switch error {
                 case LoginValidationException.emailOrUsernameFieldError(let errorStr):
-                    layout?.emailOrUsernameField.error = errorStr
+                    self?.layout.emailOrUsernameField.error = errorStr
                 case LoginValidationException.passwordFieldError(let errorStr):
-                    layout?.passwordField.error = errorStr
+                    self?.layout.passwordField.error = errorStr
+                case ApiException.unauthorized:
+                    self?.layout.passwordField.error = "Bad credentials"
                 default:
-                    break
+                    self?.handleError(error: error)
                 }
             })
             .disposed(by: disposeBag)
-        
-//        _ = keyboardHeight
-//            .observeOn(MainScheduler.instance)
-//            .takeUntil(rx.methodInvoked(#selector(viewWillDisappear(_:))))
-//            .bind(onNext: { height in
-//                self.layout.controlStack.snp.updateConstraints { make in
-//                    make.bottom.lessThanOrEqualToSuperview().offset(-height)
-//                }
-//            })
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -118,8 +111,8 @@ class LoginViewController: BaseViewController<LoginView>, UITextFieldDelegate {
             layout.passwordField.textField.resignFirstResponder()
             
             guard let email = layout.emailOrUsernameField.textField.text,
-                let password = layout.passwordField.textField.text else {
-                    return false
+                  let password = layout.passwordField.textField.text else {
+                return false
             }
             
             if email.isNotEmpty && password.isNotEmpty {
@@ -131,8 +124,6 @@ class LoginViewController: BaseViewController<LoginView>, UITextFieldDelegate {
     }
     
     override func receiveKeyboardChange(_ offset: CGFloat, _ duration: Double) {
-        print("RectEndHeight: \(offset)")
-        
         layout.scrollView.snp.updateConstraints { make in
             make.bottom.equalToSuperview().offset(-offset)
         }

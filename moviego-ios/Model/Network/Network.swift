@@ -32,8 +32,7 @@ class Network {
     }()
     
     func request(_ url: RequestURL, method: HTTPMethod, parameters: [String:Any]?, encoding: ParameterEncoding, headers: HTTPHeaders?) -> Observable<(HTTPURLResponse, Data)> {
-        return sessionManager
-                .rx
+        return sessionManager.rx
                 .request(method, url.absoluteUrl, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
                 .responseData()
     }

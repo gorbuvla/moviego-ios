@@ -23,7 +23,7 @@ class PickCityCell: BaseTableViewCell<PickCityCellView> {
             
             layout.cityPreviewImage.cldSetImage(publicId: city.pictureId, cloudinary: CLDCloudinary(configuration: CLDConfiguration(cloudName: "test")))
             layout.cityTitleLabel.text = city.name
-            layout.cinemaCountLabel.text = "Cinemas: \(city.cinemaCount)"
+            layout.cinemaCountLabel.text = "Cinemas: \(city.cinemasCount)"
         }
     }
 }

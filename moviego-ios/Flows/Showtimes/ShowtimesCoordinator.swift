@@ -9,11 +9,11 @@
 import UIKit
 import ACKategories
 
-class MoviesCoordinator: FlowCoordinator {
+class ShowtimesCoordinator: FlowCoordinator {
     
     override func start() -> UIViewController {
         let nav = UINavigationController()
-        let vc = MovieListViewController(viewModel: dependencies.movieListViewModelFactory())
+        let vc = ShowtimeListViewController(viewModel: dependencies.movieListViewModelFactory())
         vc.tabBarItem.image = Asset.icTabMovies.image
         vc.tabBarItem.title = L10n.Tabbar.Movies.title
         vc.navigationDelegate = self
@@ -23,6 +23,6 @@ class MoviesCoordinator: FlowCoordinator {
     }
 }
 
-extension MoviesCoordinator: MovieListNavigationDelegate {
+extension ShowtimesCoordinator: ShowtimeListNavigationDelegate {
     
 }

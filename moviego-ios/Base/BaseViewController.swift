@@ -62,7 +62,6 @@ class BaseViewController<V: UIView>: UIViewController {
         navigationController?.setNavigationBarHidden(!hasNavigationBar(), animated: animated)
         
         if shouldObserveKeyboardChanges() {
-            
             Observable.merge(keyboardOpenObservable, keyboardCloseObservable)
                 .takeUntil(rx.methodInvoked(#selector(viewWillAppear(_:))))
                 .bind(onNext: { (offset, duration) in self.receiveKeyboardChange(offset, duration) })
@@ -77,18 +76,18 @@ class BaseViewController<V: UIView>: UIViewController {
         view.endEditing(true)
     }
     
-    private var keyboardOpenObservable: Observable<(offset: CGFloat, duration: Double)> {
+    private var keyboardOpenObservable: Observable<(CGFloat, Double)> {
         get { return NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification).mapOffsetDuration() }
     }
     
-    private var keyboardCloseObservable: Observable<(offset: CGFloat, duration: Double)> {
+    private var keyboardCloseObservable: Observable<(CGFloat, Double)> {
         get { return NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification).mapOffsetDuration().map { (0, $1)} }
     }
 }
 
 extension Observable where Element == Notification {
     
-    func mapOffsetDuration() -> Observable<(offset: CGFloat, duration: Double)> {
+    func mapOffsetDuration() -> Observable<(CGFloat, Double)> {
         return self.map { notification in
             let offset = UIScreen.main.bounds.size.height - ((notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.origin.y ?? CGFloat(0))
             
@@ -96,5 +95,18 @@ extension Observable where Element == Notification {
             
             return (offset, duration)
         }
+    }
+}
+
+extension BaseViewController where V: UIView {
+    
+    func handleError(error: Error) {
+        var errorMessage = ""
+        switch error {
+        default: errorMessage = "Something weird happened...."
+        }
+        
+        let errorAlert = UIAlertController(title: "Uncategorized error", message: errorMessage, preferredStyle: .alert)
+        present(errorAlert, animated: true)
     }
 }

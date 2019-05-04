@@ -24,7 +24,7 @@ class MainCoordinator: FlowCoordinator {
         tabbarController.tabBar.tintColor = UIColor(named: .primary)
         tabbarController.tabBar.unselectedItemTintColor = .gray
         
-        let moviesFlow = MoviesCoordinator()
+        let moviesFlow = ShowtimesCoordinator()
         let moviesRoot = moviesFlow.start()
         addChild(moviesFlow)
         
