@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 extension UIView {
     
@@ -58,5 +59,15 @@ extension UIView {
     @discardableResult
     func scrollView(_ block: (UIScrollView) -> Void) -> UIScrollView {
         return customView(UIScrollView(), block)
+    }
+    
+    @discardableResult
+    func activityIndicator(_ block: (UIActivityIndicatorView) -> Void) -> UIActivityIndicatorView {
+        return customView(UIActivityIndicatorView(), block)
+    }
+ 
+    @discardableResult
+    func mapView(_ block: (MKMapView) -> Void) -> MKMapView {
+        return customView(MKMapView(), block)
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 import ACKategories
 
-class LoginView: BaseView {
+class LoginView: BaseScrollView {
     
     weak var logoImage: UIImageView!
     weak var controlStack: UIStackView!
@@ -17,12 +17,13 @@ class LoginView: BaseView {
     weak var passwordField: FramedTextField!
     weak var registerButton: UIButton!
     weak var loginButton: UIButton!
-    weak var loadingIndicator: UIActivityIndicatorView!
+    weak var loadingView: UIView!
     
-    override func createView() {
+    
+    override func createScrollContent(contentView: UIView) {
         backgroundColor = UIColor(named: .bkgDark).withAlphaComponent(0.8)
         
-        logoImage = imageView { it in
+        logoImage = contentView.imageView { it in
             it.image = Asset.logo.image
             it.backgroundColor = .yellow
             
@@ -32,12 +33,12 @@ class LoginView: BaseView {
             }
         }
         
-        controlStack = stack { it in
+        controlStack = contentView.stack { it in
             it.axis = .vertical
             it.spacing = 5
             it.isHidden = true
             
-            emailOrUsernameField = it.customView(FramedTextField(style: .dark)) { it in
+            emailOrUsernameField = it.framedField(style: .dark) { it in
                 it.titleLabel.text = L10n.Login.emailTitle
                 it.textField.textContentType = .emailAddress
                 it.textField.returnKeyType = .next
@@ -47,7 +48,7 @@ class LoginView: BaseView {
                 }
             }
             
-            passwordField = it.customView(FramedTextField(style: .dark)) { it in
+            passwordField = it.framedField(style: .dark) { it in
                 it.titleLabel.text = L10n.Login.password
                 it.textField.textContentType = .password
                 it.textField.returnKeyType = .send
@@ -82,15 +83,15 @@ class LoginView: BaseView {
             it.snp.makeConstraints { make in
                 make.leading.trailing.equalToSuperview().inset(16)
                 make.top.equalTo(logoImage.snp.bottom).offset(50)
+                make.bottom.lessThanOrEqualToSuperview()
             }
         }
         
-        loadingIndicator = customView(UIActivityIndicatorView()) { it in
-            it.style = .whiteLarge
+        loadingView = customView(LoadingView()) { it in
             it.isHidden = true
             
             it.snp.makeConstraints { make in
-                make.center.equalToSuperview()
+                make.edges.equalToSuperview()
             }
         }
     }

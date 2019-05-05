@@ -6,11 +6,28 @@
 //  Copyright © 2019 Vlad Gorbunov. All rights reserved.
 //
 
-struct User: Codable {
+struct UserWithCredentials: Codable {
+    let id: Int
     let name: String
+    let email: String
+    let avatarId: String?
+    let city: City
+    let credentials: Credentials
+    
+    var user: User {
+        get { return User(id: id, name: name, email: email, avatarId: avatarId, city: city) }
+    }
 }
 
-struct UserWithCredentials: Codable {
-    let user: User
-    let credentials: Credentials
+struct User: Codable {
+    let id: Int
+    let name: String
+    let email: String
+    let avatarId: String?
+    let city: City
+}
+
+struct ServiceUser: Codable {
+    let avatarId: String?
+    let name: String
 }

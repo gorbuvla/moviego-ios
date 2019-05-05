@@ -23,6 +23,8 @@ class LoginViewModel: BaseViewModel {
     }
     
     func login(emailOrUsername: String, password: String) {
+        viewStateObserver.value = LoadingResult(true)
+        
         do {
             try validateFields(credential: emailOrUsername, password: password)
         } catch {

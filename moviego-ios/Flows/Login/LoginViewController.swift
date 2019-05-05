@@ -10,16 +10,13 @@ import UIKit
 import RxSwift
 
 protocol LoginNavigationDelegate: class {
-    
     func didTapRegister()
-    
     func didFinishLogin()
 }
 
-class LoginViewController: BaseViewController<LoginView> {
+class LoginViewController: BaseViewController<LoginView>, UITextFieldDelegate {
     
     private let viewModel: LoginViewModel
-    
     weak var navigationDelegate: LoginNavigationDelegate?
     
     init(viewModel: LoginViewModel) {
@@ -31,12 +28,22 @@ class LoginViewController: BaseViewController<LoginView> {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func hasNavigationBar() -> Bool {
+        return false
+    }
+    
+    override func shouldObserveKeyboardChanges() -> Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        layout.emailOrUsernameField.textField.delegate = self
+        layout.passwordField.textField.delegate = self
     
         if Environment.isDev {
             layout.emailOrUsernameField.textField.text = "movielover@moviego.me"
-            layout.passwordField.textField.text = "password"
+            layout.passwordField.textField.text = "password1"
         }
         
         combinedFormInput.map { $0.isNotEmpty && $1.isNotEmpty }
@@ -55,19 +62,21 @@ class LoginViewController: BaseViewController<LoginView> {
         viewModel.viewState.loading
             .map { !$0 }
             .observeOn(MainScheduler.instance)
-            .bind(to: layout.loadingIndicator.rx.isHidden)
+            .bind(to: layout.loadingView.rx.isHidden)
             .disposed(by: disposeBag)
         
         viewModel.viewState.error
             .observeOn(MainScheduler.instance)
-            .bind(onNext: { [weak layout] error in
+            .bind(onNext: { [weak self] error in
                 switch error {
                 case LoginValidationException.emailOrUsernameFieldError(let errorStr):
-                    layout?.emailOrUsernameField.error = errorStr
+                    self?.layout.emailOrUsernameField.error = errorStr
                 case LoginValidationException.passwordFieldError(let errorStr):
-                    layout?.passwordField.error = errorStr
+                    self?.layout.passwordField.error = errorStr
+                case ApiException.unauthorized:
+                    self?.layout.passwordField.error = "Bad credentials"
                 default:
-                    break
+                    self?.handleError(error: error)
                 }
             })
             .disposed(by: disposeBag)
@@ -92,6 +101,36 @@ class LoginViewController: BaseViewController<LoginView> {
                 self.layout.controlStack.isHidden = false
             })
         })
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case layout.emailOrUsernameField.textField:
+            layout.passwordField.textField.becomeFirstResponder()
+        case layout.passwordField.textField:
+            layout.passwordField.textField.resignFirstResponder()
+            
+            guard let email = layout.emailOrUsernameField.textField.text,
+                  let password = layout.passwordField.textField.text else {
+                return false
+            }
+            
+            if email.isNotEmpty && password.isNotEmpty {
+                viewModel.login(emailOrUsername: email, password: password)
+            }
+        default: break
+        }
+        return false
+    }
+    
+    override func receiveKeyboardChange(_ offset: CGFloat, _ duration: Double) {
+        layout.scrollView.snp.updateConstraints { make in
+            make.bottom.equalToSuperview().offset(-offset)
+        }
+        
+        UIView.animate(withDuration: duration) { [weak self] in
+            self?.view.layoutIfNeeded()
+        }
     }
     
     private var combinedFormInput: Observable<(String, String)> {

@@ -9,18 +9,6 @@
 import RxSwift
 import Alamofire
 
-struct City: Codable, Equatable {
-    
-    static func == (lhs: City, rhs: City) -> Bool {
-        return lhs.id == rhs.id
-    }
-    
-    let id: Int
-    let name: String
-    let pictureId: String
-    let cinemaCount: Int
-}
-
 protocol CityApiServicing {
     func fetchCities() -> Single<[City]>
 }
@@ -30,9 +18,9 @@ class MockedCityApiService: CityApiServicing {
     func fetchCities() -> Single<[City]> {
         return Single.just(
             [
-                City(id: 1, name: "Prague", pictureId: "cities/bg-city-prague", cinemaCount: 2),
-                City(id: 2, name: "Berlin", pictureId: "cities/bg-city-berlin", cinemaCount: 4),
-                City(id: 3, name: "Paris", pictureId: "cities/bg-city-paris", cinemaCount: 3)
+                City(id: 1, name: "Prague", pictureId: "cities/bg-city-prague", cinemasCount: 2),
+                City(id: 2, name: "Berlin", pictureId: "cities/bg-city-berlin", cinemasCount: 4),
+                City(id: 3, name: "Paris", pictureId: "cities/bg-city-paris", cinemasCount: 3)
             ]
         ).delay(2, scheduler: MainScheduler.instance)
     }
