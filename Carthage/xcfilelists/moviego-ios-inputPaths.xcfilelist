@@ -7,3 +7,5 @@ $(SRCROOT)/Carthage/Build/iOS/RxSwiftExt.framework
 $(SRCROOT)/Carthage/Build/iOS/Reqres.framework
 $(SRCROOT)/Carthage/Build/iOS/RxAlamofire.framework
 $(SRCROOT)/Carthage/Build/iOS/ACKategories.framework
+$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework
+$(SRCROOT)/Carthage/Build/iOS/RxCoreLocation.framework

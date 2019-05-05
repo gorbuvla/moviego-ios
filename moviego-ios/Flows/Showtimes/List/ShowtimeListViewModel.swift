@@ -7,6 +7,8 @@
 //
 
 import RxSwift
+import Foundation
+import CoreLocation
 
 class ShowtimeListViewModel: BaseViewModel {
     
@@ -17,12 +19,17 @@ class ShowtimeListViewModel: BaseViewModel {
         get { return viewStateVariable.asObservable() }
     }
     
+    var data: [Showtime] {
+        get { return viewStateVariable.value.data?.element ?? [] }
+    }
+    
     init(repository: ShowtimeRepositoring) {
         self.repository = repository
     }
     
     func fetchInitial() {
         
+        repository.fetchShowtimes(for: nil, movieId: nil, startingFrom: Date(), lat: nil, lng: nil, orderBy: .time, limit: 20, offset: 0)
     }
     
     func fetchNext() {

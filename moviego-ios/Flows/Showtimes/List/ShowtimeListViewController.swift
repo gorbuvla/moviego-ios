@@ -10,8 +10,8 @@ import UIKit
 
 protocol ShowtimeListNavigationDelegate: class {}
 
-class ShowtimeListViewController: BaseViewController<BaseListView> {
-    
+class ShowtimeListViewController: BaseViewController<BaseListView>, UITableViewDataSource, UITableViewDelegate {
+
     weak var navigationDelegate: ShowtimeListNavigationDelegate?
     private let viewModel: ShowtimeListViewModel
     
@@ -27,6 +27,8 @@ class ShowtimeListViewController: BaseViewController<BaseListView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         view.backgroundColor = .gray
         view.label { it in
             it.text = "Movies & Cinemas Flow"
@@ -36,5 +38,18 @@ class ShowtimeListViewController: BaseViewController<BaseListView> {
                 make.center.equalToSuperview()
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.data.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let showtime = viewModel.data[safe: indexPath.row] else { return UITableViewCell() }
+        
+        let cell = layout.tableView.dequeueReusableCell(withIdentifier: ShowtimeCell.ReuseIdentifiers.defaultId, for: indexPath) as! ShowtimeCell
+        cell.showtime = showtime
+        cell.selectionStyle = .none
+        return cell
     }
 }

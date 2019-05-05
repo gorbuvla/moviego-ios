@@ -32,7 +32,7 @@ class CinemaMapViewModel: BaseViewModel {
     }
     
     private func bindUpdates() {
-        viewportSubject.debounce(1, scheduler: MainScheduler.instance)
+        viewportSubject.debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
             .flatMap { viewport in self.repository.fetchByGeo(lat: viewport.lat, lng: viewport.lng, radius: viewport.radius) }
             .mapLoading() // TODO: this should emit loading every time viewport changes... 
             .bind(to: viewStateVariable)

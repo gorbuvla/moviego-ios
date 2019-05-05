@@ -42,8 +42,8 @@ extension AppDependency: ViewModelFactory {
         return { RegisterCityViewModel(cityApi: dependencies.cityApi, repository: dependencies.registrationRepository) }
     }
     
-    var movieListViewModelFactory: () -> ShowtimeListViewModel {
-        return { ShowtimeListViewModel() }
+    var showtimeListViewModelFactory: () -> ShowtimeListViewModel {
+        return { ShowtimeListViewModel(repository: dependencies.showtimeRepository) }
     }
     
     var promotionListViewModelFactory: () -> PromotionListViewModel {

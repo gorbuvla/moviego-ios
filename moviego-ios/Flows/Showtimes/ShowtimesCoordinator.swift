@@ -13,7 +13,7 @@ class ShowtimesCoordinator: FlowCoordinator {
     
     override func start() -> UIViewController {
         let nav = UINavigationController()
-        let vc = ShowtimeListViewController(viewModel: dependencies.movieListViewModelFactory())
+        let vc = ShowtimeListViewController(viewModel: dependencies.showtimeListViewModelFactory())
         vc.tabBarItem.image = Asset.icTabMovies.image
         vc.tabBarItem.title = L10n.Tabbar.Movies.title
         vc.navigationDelegate = self

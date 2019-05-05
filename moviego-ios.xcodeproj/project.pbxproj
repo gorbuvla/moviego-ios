@@ -88,6 +88,7 @@
 		C264983B227D96540037AF48 /* CinemaMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C264983A227D96540037AF48 /* CinemaMapViewModel.swift */; };
 		C264983F227D99FB0037AF48 /* CinemaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C264983E227D99FB0037AF48 /* CinemaRepository.swift */; };
 		C2649841227DB2170037AF48 /* BaseMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2649840227DB2170037AF48 /* BaseMapView.swift */; };
+		C2649843227E1FFC0037AF48 /* ShowtimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2649842227E1FFC0037AF48 /* ShowtimeCell.swift */; };
 		C27BAD45226A3B420052BDA6 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27BAD44226A3B420052BDA6 /* StringExtensions.swift */; };
 		C2C52EBA225E3547009A6D93 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C52EB9225E3547009A6D93 /* ProfileViewController.swift */; };
 		C2C52EBC225E3623009A6D93 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C52EBB225E3623009A6D93 /* ProfileCoordinator.swift */; };
@@ -101,6 +102,8 @@
 		C2C52ECF225E3FAB009A6D93 /* PromotionsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C52ECE225E3FAB009A6D93 /* PromotionsCoordinator.swift */; };
 		C2C52ED2225E4211009A6D93 /* PickCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C52ED1225E4211009A6D93 /* PickCityViewController.swift */; };
 		C2C52ED4225E4243009A6D93 /* ChangeCityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C52ED3225E4243009A6D93 /* ChangeCityViewModel.swift */; };
+		C2DF154E227F82440071A9FB /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2DF154D227F82440071A9FB /* AlamofireImage.framework */; };
+		C2DF1550227F8AFA0071A9FB /* RxCoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2DF154F227F8AFA0071A9FB /* RxCoreLocation.framework */; };
 		F5FCCCB022563B1C00640F2A /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCCCAF22563B1C00640F2A /* DateExtensions.swift */; };
 		F5FCCCB22256469200640F2A /* OAuthApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCCCB12256469200640F2A /* OAuthApiService.swift */; };
 /* End PBXBuildFile section */
@@ -212,6 +215,7 @@
 		C264983A227D96540037AF48 /* CinemaMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaMapViewModel.swift; sourceTree = "<group>"; };
 		C264983E227D99FB0037AF48 /* CinemaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaRepository.swift; sourceTree = "<group>"; };
 		C2649840227DB2170037AF48 /* BaseMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMapView.swift; sourceTree = "<group>"; };
+		C2649842227E1FFC0037AF48 /* ShowtimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowtimeCell.swift; sourceTree = "<group>"; };
 		C27BAD44226A3B420052BDA6 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		C2C52EB9225E3547009A6D93 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C2C52EBB225E3623009A6D93 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
@@ -225,6 +229,8 @@
 		C2C52ECE225E3FAB009A6D93 /* PromotionsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionsCoordinator.swift; sourceTree = "<group>"; };
 		C2C52ED1225E4211009A6D93 /* PickCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickCityViewController.swift; sourceTree = "<group>"; };
 		C2C52ED3225E4243009A6D93 /* ChangeCityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCityViewModel.swift; sourceTree = "<group>"; };
+		C2DF154D227F82440071A9FB /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
+		C2DF154F227F8AFA0071A9FB /* RxCoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCoreLocation.framework; path = Carthage/Build/iOS/RxCoreLocation.framework; sourceTree = "<group>"; };
 		C9F82BCC923BFCAABAED12FA /* Pods-moviego-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moviego-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-moviego-iosUITests/Pods-moviego-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CD5853AE2A03E0C9B6969ED1 /* Pods-moviego-ios.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moviego-ios.beta.xcconfig"; path = "Target Support Files/Pods-moviego-ios/Pods-moviego-ios.beta.xcconfig"; sourceTree = "<group>"; };
 		F5FCCCAF22563B1C00640F2A /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
@@ -236,6 +242,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2DF1550227F8AFA0071A9FB /* RxCoreLocation.framework in Frameworks */,
+				C2DF154E227F82440071A9FB /* AlamofireImage.framework in Frameworks */,
 				C224E183225BDE0800A4AE37 /* ACKategories.framework in Frameworks */,
 				C212BCE72251371B00C624A7 /* RxAtomic.framework in Frameworks */,
 				C212BCDE225126FA00C624A7 /* RxAlamofire.framework in Frameworks */,
@@ -276,6 +284,8 @@
 		AA2D6159C38A722E5FA71F43 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C2DF154F227F8AFA0071A9FB /* RxCoreLocation.framework */,
+				C2DF154D227F82440071A9FB /* AlamofireImage.framework */,
 				C224E182225BDE0800A4AE37 /* ACKategories.framework */,
 				C212BCE92251497D00C624A7 /* Pods_ios_skeleton.framework */,
 				C212BCE62251371B00C624A7 /* RxAtomic.framework */,
@@ -525,6 +535,7 @@
 			isa = PBXGroup;
 			children = (
 				C216F52C2275C045001EB291 /* PickCityCell.swift */,
+				C2649842227E1FFC0037AF48 /* ShowtimeCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -667,9 +678,17 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		C2649844227F6A600037AF48 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		C2C52EB7225E3450009A6D93 /* Showtimes */ = {
 			isa = PBXGroup;
 			children = (
+				C2649844227F6A600037AF48 /* Detail */,
 				C2C52EC2225E39AD009A6D93 /* List */,
 				C2C52EC7225E3CA3009A6D93 /* ShowtimesCoordinator.swift */,
 			);
@@ -1023,6 +1042,7 @@
 				C216F52522752958001EB291 /* BaseFormView.swift in Sources */,
 				C243CC3B226B33F900B68DC5 /* CityApiService.swift in Sources */,
 				C24400C6225CD1E2001C88A1 /* LoginView.swift in Sources */,
+				C2649843227E1FFC0037AF48 /* ShowtimeCell.swift in Sources */,
 				C23EEBA5227A4BC500A95185 /* City.swift in Sources */,
 				C24400E2225D0778001C88A1 /* AppCoordinator.swift in Sources */,
 				C216F5312275D07C001EB291 /* PickCityView.swift in Sources */,

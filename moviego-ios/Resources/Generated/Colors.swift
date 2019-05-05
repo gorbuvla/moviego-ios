@@ -25,9 +25,9 @@ internal struct ColorName {
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#f6f4f3"></span>
   /// Alpha: 100% <br/> (0xf6f4f3ff)
   internal static let bkgLight = ColorName(rgbaValue: 0xf6f4f3ff)
-  /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#c60101"></span>
-  /// Alpha: 100% <br/> (0xc60101ff)
-  internal static let errorRed = ColorName(rgbaValue: 0xc60101ff)
+  /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#f74850"></span>
+  /// Alpha: 100% <br/> (0xf74850ff)
+  internal static let errorRed = ColorName(rgbaValue: 0xf74850ff)
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#183059"></span>
   /// Alpha: 100% <br/> (0x183059ff)
   internal static let primary = ColorName(rgbaValue: 0x183059ff)
