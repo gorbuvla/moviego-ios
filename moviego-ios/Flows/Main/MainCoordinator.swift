@@ -11,10 +11,15 @@ import ACKategories
 
 class MainCoordinator: FlowCoordinator {
     
+    private var showtimesFlow: ShowtimesCoordinator? = nil
+    
     override func start() -> UIViewController {
-        let tabBarController = setupTabBarController()
-        rootViewController = tabBarController
-        return tabBarController
+        let navController = BaseNavigationController()
+        navigationController = navController
+        let showtimesFlow = ShowtimesCoordinator()
+        self.showtimesFlow = showtimesFlow
+        showtimesFlow.start(with: navController)
+        return navController
     }
     
     private func setupTabBarController() -> UITabBarController {

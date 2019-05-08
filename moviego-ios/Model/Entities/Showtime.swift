@@ -15,6 +15,12 @@ struct Showtime: Codable {
     let movie: Movie
 }
 
+struct ShowtimeSearchItem: Codable {
+    let cinema: Cinema
+    let movie: Movie
+    let showtimes: [Showtime]
+}
+
 enum ShowtimeOrderBy: String {
     case time = "time"
     case nearestCinema = "nearestCinema"

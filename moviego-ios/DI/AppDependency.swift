@@ -17,11 +17,13 @@ final class AppDependency {
     // api services
     lazy var oauthApi: OAuthApiServicing = OAuthApiService(interactor: self.apiInteractor)
     lazy var cityApi: CityApiServicing = MockedCityApiService()
+    lazy var cinemaApi: CinemaApiServicing = CinemaApiService(interactor: self.authApiInteractor)
     
     // repositories
     lazy var registrationRepository: RegistrationRepositoring = RegistrationRepository()
     lazy var userRepository: UserRepositoring = MockedUserRepository(credentialsStore: UserDefaults.defaultStore)
     lazy var showtimeRepository: ShowtimeRepositoring = MockedShowtimeRepository()
+    lazy var cinemaRepository: CinemaRepositoring = MockedCinemaRepository()
 }
 
 let dependencies = AppDependency()

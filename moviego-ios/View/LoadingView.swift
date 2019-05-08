@@ -27,3 +27,10 @@ class LoadingView: BaseView {
         }
     }
 }
+
+extension UIView {
+    
+    func loadingView(_ block: (LoadingView) -> ()) -> LoadingView {
+        return customView(LoadingView(), block)
+    }
+}

@@ -8,11 +8,12 @@
 
 import RxSwift
 import CoreLocation
+import RxRelay
 
 class CinemaMapViewModel: BaseViewModel {
     
     private let viewportSubject = PublishSubject<Viewport>()
-    private let viewStateVariable = Variable(LoadingResult<[Cinema]>(false))
+    private let viewStateVariable = BehaviorRelay(value: LoadingResult<[Cinema]>(false))
     private let repository: CinemaRepositoring
     
     let locationManager: CLLocationManager
@@ -25,6 +26,8 @@ class CinemaMapViewModel: BaseViewModel {
         self.repository = repository
         self.locationManager = CLLocationManager()
         self.locationManager.requestWhenInUseAuthorization()
+        super.init()
+        bindUpdates()
     }
     
     func viewportDidChange(_ viewport: Viewport) {
@@ -33,7 +36,7 @@ class CinemaMapViewModel: BaseViewModel {
     
     private func bindUpdates() {
         viewportSubject.debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
-            .flatMap { viewport in self.repository.fetchByGeo(lat: viewport.lat, lng: viewport.lng, radius: viewport.radius) }
+            .flatMap { viewport in self.repository.fetchCinemas(lat: viewport.lat, lng: viewport.lng, radius: viewport.radius) }
             .mapLoading() // TODO: this should emit loading every time viewport changes... 
             .bind(to: viewStateVariable)
             .disposed(by: disposeBag)

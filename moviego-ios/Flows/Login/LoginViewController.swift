@@ -43,7 +43,7 @@ class LoginViewController: BaseViewController<LoginView>, UITextFieldDelegate {
     
         if Environment.isDev {
             layout.emailOrUsernameField.textField.text = "movielover@moviego.me"
-            layout.passwordField.textField.text = "password1"
+            layout.passwordField.textField.text = "password"
         }
         
         combinedFormInput.map { $0.isNotEmpty && $1.isNotEmpty }

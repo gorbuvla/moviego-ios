@@ -50,6 +50,8 @@ class BaseViewController<V: UIView>: UIViewController {
         let item = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = item
         
+        //automaticallyAdjustsScrollViewInsets = false
+        
         tapGestureRecognizer.isEnabled = shouldObserveKeyboardChanges()
         
         tapGestureRecognizer.rx.event
@@ -76,12 +78,22 @@ class BaseViewController<V: UIView>: UIViewController {
         view.endEditing(true)
     }
     
+    func modalClosable() {
+        let closeButton = UIBarButtonItem(image: Asset.icClose.image, style: .plain, target: self, action: #selector(close))
+        closeButton.tintColor = .blue
+        navigationItem.leftBarButtonItem = closeButton
+    }
+    
     private var keyboardOpenObservable: Observable<(CGFloat, Double)> {
         get { return NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification).mapOffsetDuration() }
     }
     
     private var keyboardCloseObservable: Observable<(CGFloat, Double)> {
         get { return NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification).mapOffsetDuration().map { (0, $1)} }
+    }
+    
+    @objc private func close() {
+        dismiss(animated: true)
     }
 }
 

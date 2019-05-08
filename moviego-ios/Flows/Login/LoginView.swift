@@ -87,7 +87,7 @@ class LoginView: BaseScrollView {
             }
         }
         
-        loadingView = customView(LoadingView()) { it in
+        loadingView = loadingView { it in
             it.isHidden = true
             
             it.snp.makeConstraints { make in

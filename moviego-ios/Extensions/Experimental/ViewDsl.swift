@@ -52,8 +52,8 @@ extension UIView {
     }
     
     @discardableResult
-    func imageView(_ block: (UIImageView) -> Void) -> UIImageView {
-        return customView(UIImageView(), block)
+    func imageView(image: UIImage? = nil, _ block: (UIImageView) -> Void) -> UIImageView {
+        return customView(UIImageView(image: image), block)
     }
     
     @discardableResult

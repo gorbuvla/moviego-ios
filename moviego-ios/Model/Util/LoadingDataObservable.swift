@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import RxSwiftExt
+import RxRelay
 
 protocol LoadingDataObservable {
     
@@ -36,20 +37,24 @@ struct LoadingResult<T>: LoadingDataObservable {
 
 extension ObservableType {
     
-    func mapLoading() -> Observable<LoadingResult<E>> {
-        return self.materialize()
+    func mapLoadingEvent() -> Observable<LoadingResult<Element>> {
+        return materialize().map(LoadingResult.init)
+    }
+    
+    func mapLoading() -> Observable<LoadingResult<Element>> {
+        return materialize()
             .map(LoadingResult.init)
             .startWith(LoadingResult(true))
     }
 }
 
-extension ObservableType where E: LoadingDataObservable {
+extension ObservableType where Element: LoadingDataObservable {
     
     var loading: Observable<Bool> {
         get { return self.map { $0.loading } }
     }
     
-    var data: Observable<E.ElementType> {
+    var data: Observable<Element.ElementType> {
         get { return self.events.elements() }
     }
     
@@ -57,20 +62,45 @@ extension ObservableType where E: LoadingDataObservable {
         get { return self.events.errors() }
     }
     
-    private var events: Observable<Event<E.ElementType>> {
+    private var events: Observable<Event<Element.ElementType>> {
         get { return self.filter { $0.data != nil }.map { $0.data! } }
     }
 }
 
-// TODO: general extension for subjects
-extension Variable where Element: LoadingDataObservable {
+class MutableProperty<T> {
+    
+    private let relay: BehaviorRelay<LoadingResult<T>>
     
     var isLoading: Bool {
-        get { return value.loading }
-        set(newLoading) {}
+        get { return relay.value.loading }
+        set(newValue) {
+            relay.accept(LoadingResult(newValue))
+        }
     }
     
+    var data: T? {
+        get { return relay.value.data?.element }
+        set(newValue) {
+            guard let value = newValue else { return }
+            relay.accept(LoadingResult(.next(value)))
+        }
+    }
     
+    init() {
+        relay = BehaviorRelay(value: LoadingResult(false))
+    }
+    
+    init(value: T) {
+        relay = BehaviorRelay(value: LoadingResult(.next(value)))
+    }
+    
+    func on(event: LoadingResult<T>) {
+        
+    }
+    
+    func asObservable() -> ObservableProperty<T> {
+        return relay.asObservable()
+    }
 }
 
 
