@@ -8,20 +8,20 @@
 
 import Foundation
 
-struct Showtime: Codable {
+struct Session: Codable {
     let type: String
     let startsAt: Date
     let cinema: Cinema
     let movie: Movie
 }
 
-struct ShowtimeSearchItem: Codable {
+struct SessionSearchItem: Codable {
     let cinema: Cinema
     let movie: Movie
-    let showtimes: [Showtime]
+    let showtimes: [Session]
 }
 
-enum ShowtimeOrderBy: String {
+enum SessionOrderBy: String {
     case time = "time"
     case nearestCinema = "nearestCinema"
 }

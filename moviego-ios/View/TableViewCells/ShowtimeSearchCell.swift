@@ -15,7 +15,7 @@ class ShowtimeSearchCell: BaseTableViewCell<ShowtimeCellView> {
         static let defaultId = "showtimeCell"
     }
     
-    var searchItem: ShowtimeSearchItem? {
+    var searchItem: SessionSearchItem? {
         didSet {
             guard let movie = searchItem?.movie,
                   let cinema = searchItem?.cinema,

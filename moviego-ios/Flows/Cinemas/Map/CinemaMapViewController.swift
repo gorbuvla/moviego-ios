@@ -31,6 +31,7 @@ class CinemaMapViewController: BaseViewController<BaseMapView>, MKMapViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = L10n.Cinema.Map.title
         modalClosable()
         layout.mapView.delegate = self
         

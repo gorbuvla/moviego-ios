@@ -9,18 +9,18 @@
 import Foundation
 import RxSwift
 
-protocol ShowtimeRepositoring {
+protocol SessionRepositoring {
     
-    func searchShowtimes(startingFrom: Date, lat: Double?, lng: Double?, limit: Int, offset: Int) -> Single<[ShowtimeSearchItem]>
+    func fetchTrendingSessions(startingFrom: Date, lat: Double?, lng: Double?, limit: Int, offset: Int) -> Single<[SessionSearchItem]>
 }
 
-class MockedShowtimeRepository: ShowtimeRepositoring {
+class MockedSessionRepository: SessionRepositoring {
     
-    func searchShowtimes(startingFrom: Date, lat: Double?, lng: Double?, limit: Int, offset: Int) -> Single<[ShowtimeSearchItem]> {
+    func fetchTrendingSessions(startingFrom: Date, lat: Double?, lng: Double?, limit: Int, offset: Int) -> Single<[SessionSearchItem]> {
         
         let results = [ccAndel, ccChodov, csAndel]
             .flatMap { cinema in [rhapsody, atomicBlonde].map { movie in (cinema, movie) } }
-            .map { cinema, movie in ShowtimeSearchItem(cinema: cinema, movie: movie, showtimes: [Showtime(type: "Standard", startsAt: Date(), cinema: cinema, movie: movie), Showtime(type: "Standard", startsAt: Date(timeInterval: 3600 * 1000, since: Date()), cinema: cinema, movie: movie)]) }
+            .map { cinema, movie in SessionSearchItem(cinema: cinema, movie: movie, showtimes: [Session(type: "Standard", startsAt: Date(), cinema: cinema, movie: movie), Session(type: "Standard", startsAt: Date(timeInterval: 3600 * 1000, since: Date()), cinema: cinema, movie: movie)]) }
         
         return Single.just(results).delay(.seconds(3), scheduler: MainScheduler.instance)
     }

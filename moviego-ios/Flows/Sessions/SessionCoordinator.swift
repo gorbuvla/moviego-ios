@@ -9,10 +9,10 @@
 import UIKit
 import ACKategories
 
-class ShowtimesCoordinator: FlowCoordinator {
+class SessionCoordinator: FlowCoordinator {
     
     override func start() -> UIViewController {
-        let vc = ShowtimeSearchViewController(viewModel: dependencies.showtimeListViewModelFactory())
+        let vc = SessionSearchViewController(viewModel: dependencies.showtimeListViewModelFactory())
         vc.navigationDelegate = self
         
         let nav = BaseNavigationController(rootViewController: vc)
@@ -21,14 +21,14 @@ class ShowtimesCoordinator: FlowCoordinator {
     }
     
     override func start(with navigationController: UINavigationController) {
-        let vc = ShowtimeSearchViewController(viewModel: dependencies.showtimeListViewModelFactory())
+        let vc = SessionSearchViewController(viewModel: dependencies.showtimeListViewModelFactory())
         vc.navigationDelegate = self
         self.navigationController = navigationController
         navigationController.pushViewController(vc, animated: true)
     }
 }
 
-extension ShowtimesCoordinator: ShowtimeSearchNavigationDelegate {
+extension SessionCoordinator: SessionSearchNavigationDelegate {
     func presentMap(from viewController: UIViewController) {
         let navidation = UINavigationController()
         navidation.viewControllers = [CinemaMapViewController(viewModel: dependencies.cinemaMapViewModel())]
@@ -41,7 +41,9 @@ extension ShowtimesCoordinator: ShowtimeSearchNavigationDelegate {
         viewController.present(navigation, animated: true)
     }
     
-    func didSelect(searchItem: ShowtimeSearchItem) {
-        
+    func didSelect(searchItem: SessionSearchItem) {
+        let sessionDetailViewModel = dependencies.sessionDetailViewModelFactory(searchItem.movie, searchItem.cinema, searchItem.showtimes)
+        let sessionDetailViewController = SessionDetailViewController(viewModel: sessionDetailViewModel)
+        navigationController?.pushViewController(sessionDetailViewController, animated: true)
     }
 }

@@ -10,18 +10,18 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol ShowtimeSearchNavigationDelegate: class {
+protocol SessionSearchNavigationDelegate: class {
     func presentMap(from viewController: UIViewController)
     func presentProfile(from viewController: UIViewController)
-    func didSelect(searchItem: ShowtimeSearchItem)
+    func didSelect(searchItem: SessionSearchItem)
 }
 
-class ShowtimeSearchViewController: BaseViewController<BaseListView>, ProfileAccessoryController, UITableViewDataSource, UITableViewDelegate {
+class SessionSearchViewController: BaseViewController<BaseListView>, ProfileAccessoryController, UITableViewDataSource, UITableViewDelegate {
 
-    weak var navigationDelegate: ShowtimeSearchNavigationDelegate?
-    private let viewModel: ShowtimeSearchViewModel
+    weak var navigationDelegate: SessionSearchNavigationDelegate?
+    private let viewModel: SessionSearchViewModel
     
-    init(viewModel: ShowtimeSearchViewModel) {
+    init(viewModel: SessionSearchViewModel) {
         self.viewModel = viewModel
         super.init()
     }
@@ -32,6 +32,7 @@ class ShowtimeSearchViewController: BaseViewController<BaseListView>, ProfileAcc
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = L10n.Sessions.title
         let mapButton = UIBarButtonItem(image: Asset.icMap.image, style: .plain, target: self, action: #selector(didTapMapButton))
         navigationItem.rightBarButtonItem = mapButton
         

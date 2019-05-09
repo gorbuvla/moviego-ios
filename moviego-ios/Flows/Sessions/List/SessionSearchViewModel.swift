@@ -13,20 +13,20 @@ import RxCoreLocation
 import RxCocoa
 import RxRelay
 
-class ShowtimeSearchViewModel: BaseViewModel {
+class SessionSearchViewModel: BaseViewModel {
     
     static let DEFAULT_LIMIT = 10
     
-    private let showtimeRepository: ShowtimeRepositoring
+    private let showtimeRepository: SessionRepositoring
     private let userRepository: UserRepositoring
     private let locationManager = CLLocationManager()
-    private let viewStateVariable = BehaviorSubject(value: LoadingResult<[ShowtimeSearchItem]>(false))
+    private let viewStateVariable = BehaviorSubject(value: LoadingResult<[SessionSearchItem]>(false))
     
     // stored values by which search is affected
     private let searchLocationRelay = BehaviorRelay<CLLocation?>(value: nil)
     private let searchDateRelay = BehaviorRelay(value: Date())
     
-    private var mutableData: [ShowtimeSearchItem] = []
+    private var mutableData: [SessionSearchItem] = []
     
     var profileImageId: String? {
         return userRepository.currentUser?.avatarId
@@ -38,15 +38,15 @@ class ShowtimeSearchViewModel: BaseViewModel {
         get { return locationManager.location }
     }
     
-    var viewState: ObservableProperty<[ShowtimeSearchItem]> {
+    var viewState: ObservableProperty<[SessionSearchItem]> {
         get { return viewStateVariable.asObservable() }
     }
     
-    var data: [ShowtimeSearchItem] {
+    var data: [SessionSearchItem] {
         return mutableData
     }
     
-    init(showtimeRepository: ShowtimeRepositoring, userRepository: UserRepositoring) {
+    init(showtimeRepository: SessionRepositoring, userRepository: UserRepositoring) {
         self.showtimeRepository = showtimeRepository
         self.userRepository = userRepository
         super.init()
@@ -76,15 +76,15 @@ class ShowtimeSearchViewModel: BaseViewModel {
     private func fetch(location: CLLocation?, date: Date, offset: Int = 0) {
         guard canFetchMore else { return }
         
-            showtimeRepository.searchShowtimes(
+            showtimeRepository.fetchTrendingSessions(
                     startingFrom: date,
                     lat: location?.coordinate.latitude,
                     lng: location?.coordinate.latitude,
-                    limit: ShowtimeSearchViewModel.DEFAULT_LIMIT,
+                    limit: SessionSearchViewModel.DEFAULT_LIMIT,
                     offset: offset
                 ).asObservable()
             .do(onNext: { searchItems in
-                self.canFetchMore = searchItems.count == ShowtimeSearchViewModel.DEFAULT_LIMIT
+                self.canFetchMore = searchItems.count == SessionSearchViewModel.DEFAULT_LIMIT
                 self.mutableData = offset == 0 ? searchItems : self.mutableData + searchItems
             })
             .mapLoading()
