@@ -16,7 +16,7 @@ protocol SessionSearchNavigationDelegate: class {
     func didSelect(searchItem: SessionSearchItem)
 }
 
-class SessionSearchViewController: BaseViewController<BaseListView>, ProfileAccessoryController, UITableViewDataSource, UITableViewDelegate {
+class SessionSearchViewController: BaseListController, ProfileAccessoryController {
 
     weak var navigationDelegate: SessionSearchNavigationDelegate?
     private let viewModel: SessionSearchViewModel
@@ -33,42 +33,60 @@ class SessionSearchViewController: BaseViewController<BaseListView>, ProfileAcce
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = L10n.Sessions.title
+        
         let mapButton = UIBarButtonItem(image: Asset.icMap.image, style: .plain, target: self, action: #selector(didTapMapButton))
         navigationItem.rightBarButtonItem = mapButton
         
-        layout.tableView.delegate = self
-        layout.tableView.dataSource = self
-        layout.tableView.register(ShowtimeSearchCell.self, forCellReuseIdentifier: ShowtimeSearchCell.ReuseIdentifiers.defaultId)
+        tableView.register(ShowtimeSearchCell.self, forCellReuseIdentifier: ShowtimeSearchCell.ReuseIdentifiers.defaultId)
         
-        layout.tableView.separatorStyle = .none
-        layout.tableView.rowHeight = UITableView.automaticDimension
-        layout.tableView.estimatedRowHeight = 70
-        layout.tableView.sectionHeaderHeight = 0
-        layout.tableView.estimatedSectionHeaderHeight = 0
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 70
+        tableView.sectionHeaderHeight = 0
+        tableView.estimatedSectionHeaderHeight = 0
+        tableView.refreshControl = nil
+        
+        let searchController = UISearchController(searchResultsController:  nil)
+        
+//        searchController.searchResultsUpdater = self
+//        searchController.delegate = self
+//        searchController.searchBar.delegate = self
+        //searchController.searchBar.barTintColor = .primary
+        searchController.searchBar.tintColor = .white
+        searchController.searchBar.textField.backgroundColor = .primaryDark
+        searchController.searchBar.placeholder = "Search Movies & Cinemas"
+        //searchController.searchBar.backgroundColor = .primaryDark
+        
+        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.dimsBackgroundDuringPresentation = true
+        
+        self.navigationItem.searchController = searchController
+        
+        self.definesPresentationContext = true
         
         navigationItem.leftBarButtonItem = profileAccessoryButton(for: viewModel.profileImageId, action: #selector(didTapProfile))
         
         bindUpdates()
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.data.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let searchItem = viewModel.data[safe: indexPath.row] else { return UITableViewCell() }
         
-        let cell = layout.tableView.dequeueReusableCell(withIdentifier: ShowtimeSearchCell.ReuseIdentifiers.defaultId, for: indexPath) as! ShowtimeSearchCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ShowtimeSearchCell.ReuseIdentifiers.defaultId, for: indexPath) as! ShowtimeSearchCell
         cell.searchItem = searchItem
         cell.selectionStyle = .default
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         navigationDelegate?.didSelect(searchItem: viewModel.data[indexPath.row])
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let isLastSection = indexPath.section == tableView.numberOfSections - 1
         let isLastRowInSection = indexPath.section == tableView.numberOfSections - 1
         
@@ -80,13 +98,13 @@ class SessionSearchViewController: BaseViewController<BaseListView>, ProfileAcce
     private func bindUpdates() {
         viewModel.viewState.loading
             .map { !$0 }
-            .bind(to: layout.loadingView.rx.isHidden)
+            .bind(to: loadingView.rx.isHidden)
             .disposed(by: disposeBag)
         
         // TODO: empty label
         viewModel.viewState.data
             .observeOn(MainScheduler.instance)
-            .bind(onNext: { [weak layout] _ in layout?.tableView.reloadData() })
+            .bind(onNext: { [weak tableView] _ in tableView?.reloadData() })
             .disposed(by: disposeBag)
         
         // TODO: errors

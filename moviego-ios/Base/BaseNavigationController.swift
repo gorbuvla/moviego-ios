@@ -25,7 +25,7 @@ class BaseNavigationController: UINavigationController {
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return topViewController?.preferredStatusBarStyle ?? .default
+        return topViewController?.preferredStatusBarStyle ?? .lightContent
     }
     
     private func setupAppearance() {
@@ -37,5 +37,6 @@ class BaseNavigationController: UINavigationController {
         navigationBar.backIndicatorImage = backImage
         navigationBar.backIndicatorTransitionMaskImage = backImage
         navigationBar.titleTextAttributes = [.font: UIFont.systemFont(ofSize: 17), .foregroundColor: UIColor.white]
+        navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
     }
 }

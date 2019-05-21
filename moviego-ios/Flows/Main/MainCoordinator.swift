@@ -15,6 +15,7 @@ class MainCoordinator: FlowCoordinator {
     
     override func start() -> UIViewController {
         let navController = BaseNavigationController()
+        navController.navigationBar.prefersLargeTitles = true
         navigationController = navController
         let showtimesFlow = SessionCoordinator()
         self.showtimesFlow = showtimesFlow

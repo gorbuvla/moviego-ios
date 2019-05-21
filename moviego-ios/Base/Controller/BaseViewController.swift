@@ -14,6 +14,10 @@ class BaseViewController<V: UIView>: UIViewController {
     private var tapGestureRecognizer: UITapGestureRecognizer!
     let disposeBag = DisposeBag()
     
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
+    
     var layout: V {
         get { return view as! V }
     }
@@ -49,8 +53,6 @@ class BaseViewController<V: UIView>: UIViewController {
         super.viewDidLoad()
         let item = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem = item
-        
-        //automaticallyAdjustsScrollViewInsets = false
         
         tapGestureRecognizer.isEnabled = shouldObserveKeyboardChanges()
         

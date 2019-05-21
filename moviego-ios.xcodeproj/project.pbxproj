@@ -101,6 +101,8 @@
 		C29C62642284948F00FD0876 /* CinemaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C62632284948F00FD0876 /* CinemaDetailViewController.swift */; };
 		C29C6266228494A100FD0876 /* CinemaDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C6265228494A100FD0876 /* CinemaDetailViewModel.swift */; };
 		C29C6268228494B400FD0876 /* CinemaDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C6267228494B400FD0876 /* CinemaDetailView.swift */; };
+		C29C626A22849F9400FD0876 /* PromotionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C626922849F9400FD0876 /* PromotionRepository.swift */; };
+		C29C626C22849FE000FD0876 /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C626B22849FE000FD0876 /* Promotion.swift */; };
 		C2C52EBA225E3547009A6D93 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C52EB9225E3547009A6D93 /* ProfileViewController.swift */; };
 		C2C52EBC225E3623009A6D93 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C52EBB225E3623009A6D93 /* ProfileCoordinator.swift */; };
 		C2C52EBE225E3682009A6D93 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C52EBD225E3682009A6D93 /* ProfileViewModel.swift */; };
@@ -111,6 +113,8 @@
 		C2DF154E227F82440071A9FB /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2DF154D227F82440071A9FB /* AlamofireImage.framework */; };
 		C2DF1550227F8AFA0071A9FB /* RxCoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2DF154F227F8AFA0071A9FB /* RxCoreLocation.framework */; };
 		C2DF15522280BF500071A9FB /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2DF15512280BF500071A9FB /* RxRelay.framework */; };
+		C2DF8771229334C500694A28 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DF8770229334C500694A28 /* ColorTheme.swift */; };
+		C2FD899122933878006694DE /* BaseListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FD899022933878006694DE /* BaseListController.swift */; };
 		F5FCCCB022563B1C00640F2A /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCCCAF22563B1C00640F2A /* DateExtensions.swift */; };
 		F5FCCCB22256469200640F2A /* OAuthApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCCCB12256469200640F2A /* OAuthApiService.swift */; };
 /* End PBXBuildFile section */
@@ -235,6 +239,8 @@
 		C29C62632284948F00FD0876 /* CinemaDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaDetailViewController.swift; sourceTree = "<group>"; };
 		C29C6265228494A100FD0876 /* CinemaDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaDetailViewModel.swift; sourceTree = "<group>"; };
 		C29C6267228494B400FD0876 /* CinemaDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaDetailView.swift; sourceTree = "<group>"; };
+		C29C626922849F9400FD0876 /* PromotionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionRepository.swift; sourceTree = "<group>"; };
+		C29C626B22849FE000FD0876 /* Promotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promotion.swift; sourceTree = "<group>"; };
 		C2C52EB9225E3547009A6D93 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C2C52EBB225E3623009A6D93 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		C2C52EBD225E3682009A6D93 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -245,6 +251,8 @@
 		C2DF154D227F82440071A9FB /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		C2DF154F227F8AFA0071A9FB /* RxCoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCoreLocation.framework; path = Carthage/Build/iOS/RxCoreLocation.framework; sourceTree = "<group>"; };
 		C2DF15512280BF500071A9FB /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
+		C2DF8770229334C500694A28 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorTheme.swift; path = "moviego-ios/Base/ColorTheme.swift"; sourceTree = SOURCE_ROOT; };
+		C2FD899022933878006694DE /* BaseListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListController.swift; sourceTree = "<group>"; };
 		C9F82BCC923BFCAABAED12FA /* Pods-moviego-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moviego-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-moviego-iosUITests/Pods-moviego-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CD5853AE2A03E0C9B6969ED1 /* Pods-moviego-ios.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moviego-ios.beta.xcconfig"; path = "Target Support Files/Pods-moviego-ios/Pods-moviego-ios.beta.xcconfig"; sourceTree = "<group>"; };
 		F5FCCCAF22563B1C00640F2A /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
@@ -482,6 +490,7 @@
 				C212BCEB225151AC00C624A7 /* CredentialsProvider.swift */,
 				C2649834227D8D4D0037AF48 /* ShowtimeRepository.swift */,
 				C264983E227D99FB0037AF48 /* CinemaRepository.swift */,
+				C29C626922849F9400FD0876 /* PromotionRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -516,8 +525,8 @@
 		C212BCB72250365100C624A7 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				C2DF87722293377000694A28 /* Controller */,
 				C212BCC822504F1300C624A7 /* Coordinator.swift */,
-				C212BCF92251697700C624A7 /* BaseViewController.swift */,
 				C212BCFB225169B100C624A7 /* BaseListView.swift */,
 				C212BCFF22516AA800C624A7 /* BaseViewModel.swift */,
 				C24400C3225CCBA8001C88A1 /* BaseView.swift */,
@@ -534,6 +543,7 @@
 			children = (
 				C243CC412274E27400B68DC5 /* TextTheme.swift */,
 				C243CC472274E93200B68DC5 /* UIElementTheme.swift */,
+				C2DF8770229334C500694A28 /* ColorTheme.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -587,6 +597,7 @@
 				C23EEBA6227B77B000A95185 /* Cinema.swift */,
 				C23EEBA8227B790200A95185 /* Movie.swift */,
 				C23EEBAA227B791400A95185 /* Session.swift */,
+				C29C626B22849FE000FD0876 /* Promotion.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -753,6 +764,15 @@
 				C216F5302275D07C001EB291 /* PickCityView.swift */,
 			);
 			path = City;
+			sourceTree = "<group>";
+		};
+		C2DF87722293377000694A28 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C212BCF92251697700C624A7 /* BaseViewController.swift */,
+				C2FD899022933878006694DE /* BaseListController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -987,6 +1007,7 @@
 				C24400D3225CD72C001C88A1 /* RegisterUserViewModel.swift in Sources */,
 				C212BCD922511AF000C624A7 /* BaseTableViewCell.swift in Sources */,
 				C216F523227522ED001EB291 /* RegisterPasswordView.swift in Sources */,
+				C2DF8771229334C500694A28 /* ColorTheme.swift in Sources */,
 				C243CC422274E27400B68DC5 /* TextTheme.swift in Sources */,
 				C23EEB9F2279D3CE00A95185 /* CustomComponentDsl.swift in Sources */,
 				C228EF0122834A1C004C19EE /* CloudinaryExtensions.swift in Sources */,
@@ -1031,6 +1052,7 @@
 				C212BCEC225151AC00C624A7 /* CredentialsProvider.swift in Sources */,
 				C24400E0225D063B001C88A1 /* LoginCoordinator.swift in Sources */,
 				C2C52EBC225E3623009A6D93 /* ProfileCoordinator.swift in Sources */,
+				C29C626A22849F9400FD0876 /* PromotionRepository.swift in Sources */,
 				C24400DE225CFDE1001C88A1 /* RegistrationCoordinator.swift in Sources */,
 				C23EEBA1227A01E400A95185 /* BaseScrollView.swift in Sources */,
 				C243CC40226BB7FD00B68DC5 /* FramedTextField.swift in Sources */,
@@ -1045,6 +1067,7 @@
 				C243CC3E226B3AC100B68DC5 /* RegisterCityViewModel.swift in Sources */,
 				C212BCAB2250325C00C624A7 /* LocalizedStrings.swift in Sources */,
 				C2C52EC8225E3CA3009A6D93 /* SessionCoordinator.swift in Sources */,
+				C29C626C22849FE000FD0876 /* Promotion.swift in Sources */,
 				C23EEBA9227B790200A95185 /* Movie.swift in Sources */,
 				F5FCCCB022563B1C00640F2A /* DateExtensions.swift in Sources */,
 				C29C6261228492A900FD0876 /* SessionSearchViewModel.swift in Sources */,
@@ -1057,6 +1080,7 @@
 				C2C52EBA225E3547009A6D93 /* ProfileViewController.swift in Sources */,
 				C212BCFC225169B100C624A7 /* BaseListView.swift in Sources */,
 				C216F52B2275B238001EB291 /* UIViewExtensions.swift in Sources */,
+				C2FD899122933878006694DE /* BaseListController.swift in Sources */,
 				C243CC482274E93200B68DC5 /* UIElementTheme.swift in Sources */,
 				C216F52522752958001EB291 /* BaseFormView.swift in Sources */,
 				C243CC3B226B33F900B68DC5 /* CityApiService.swift in Sources */,
