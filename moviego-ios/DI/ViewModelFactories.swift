@@ -58,6 +58,10 @@ extension AppDependency: ViewModelFactory {
         }
     }
     
+    var dashboardViewModelFactory: () -> DashboardViewModel {
+        return { DashboardViewModel(repository: dependencies.cinemaRepository) }
+    }
+    
     var cinemaMapViewModel: () -> CinemaMapViewModel {
         return { CinemaMapViewModel(repository: dependencies.cinemaRepository) }
     }

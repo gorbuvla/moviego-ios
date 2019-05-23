@@ -18,15 +18,15 @@ class RegisterPasswordView: BaseFormView {
         super.createView()
         continueButton.setTitle("Next", for: .normal)
         
-        stack { it in
+        ui.stack { it in
             it.axis = .vertical
             it.spacing = 10
             
-            passwordInput = it.customView(FramedTextField(style: .dark)) { it in
+            passwordInput = it.ui.customView(FramedTextField(style: .dark)) { it in
                 it.titleLabel.text = "Enter password"
             }
             
-            confirmInput = it.customView(FramedTextField(style: .dark)) { it in
+            confirmInput = it.ui.customView(FramedTextField(style: .dark)) { it in
                 it.titleLabel.text = "Confirm password"
             }
             

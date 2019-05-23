@@ -31,7 +31,7 @@ class ProfileViewController: BaseViewController<UIView> {
         super.viewDidLoad()
         modalClosable()
         view.backgroundColor = .white
-        view.label { it in
+        view.ui.label { it in
             it.text = "Profile & Latest Activity"
             it.textColor = .black
             

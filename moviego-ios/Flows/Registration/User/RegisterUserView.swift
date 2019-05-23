@@ -20,11 +20,11 @@ class RegisterUserView: BaseFormView {
         
         continueButton.setTitle("Next", for: .normal)
         
-        scrollContent.stack { it in
+        scrollContent.ui.stack { it in
             it.axis = .vertical
             it.spacing = 10
             
-            nameTextField = it.customView(FramedTextField(style: .dark)) { it in
+            nameTextField = it.ui.customView(FramedTextField(style: .dark)) { it in
                 it.titleLabel.text = "Name"
                 it.backgroundColor = .gray
                 
@@ -33,7 +33,7 @@ class RegisterUserView: BaseFormView {
                 }
             }
             
-            emailTextField = it.customView(FramedTextField(style: .dark)) { it in
+            emailTextField = it.ui.customView(FramedTextField(style: .dark)) { it in
                 it.titleLabel.text = "Email"
                 
                 it.snp.makeConstraints { make in
@@ -41,7 +41,7 @@ class RegisterUserView: BaseFormView {
                 }
             }
             
-            userInfoTextField = it.customView(FramedTextField(style: .dark)) { it in
+            userInfoTextField = it.ui.customView(FramedTextField(style: .dark)) { it in
                 it.titleLabel.text = "Info"
                 
                 

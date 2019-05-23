@@ -37,11 +37,11 @@ class PickCityCellView: BaseView {
     override func createView() {
         super.createView()
         
-        view { it in
+        ui.view { it in
             it.layer.cornerRadius = 13
             it.backgroundColor = UIColor(named: .primary).withAlphaComponent(0.5)
             
-            cityPreviewImage = it.imageView { it in
+            cityPreviewImage = it.ui.imageView { it in
                 it.layer.cornerRadius = 13
                 
                 it.snp.makeConstraints { make in
@@ -51,17 +51,17 @@ class PickCityCellView: BaseView {
                 }
             }
             
-            it.stack { it in
+            it.ui.stack { it in
                 it.axis = .horizontal
                 it.spacing = 10
                 it.distribution = .fillEqually
                 
                 
-                cityTitleLabel = it.label { it in
+                cityTitleLabel = it.ui.label { it in
                     // TODO: styles
                 }
                 
-                cinemaCountLabel = it.label { it in
+                cinemaCountLabel = it.ui.label { it in
                     // TODO: styles
                 }
                 

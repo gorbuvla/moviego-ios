@@ -8,7 +8,7 @@
 
 import MapKit
 
-class CinemaMapAnnotation: NSObject, MKAnnotation {
+class CinemaAnnotation: NSObject, MKAnnotation {
     
     let title: String?
     let subtitle: String?
@@ -25,6 +25,6 @@ class CinemaMapAnnotation: NSObject, MKAnnotation {
     }
     
     override func isEqual(_ object: Any?) -> Bool {
-        return cinema.id == (object as? CinemaMapAnnotation)?.cinema.id
+        return cinema.id == (object as? CinemaAnnotation)?.cinema.id
     }
 }

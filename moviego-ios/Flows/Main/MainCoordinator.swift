@@ -11,15 +11,15 @@ import ACKategories
 
 class MainCoordinator: FlowCoordinator {
     
-    private var showtimesFlow: SessionCoordinator? = nil
+    private var dashboardCoordinator: DashboardCoordinator? = nil
     
     override func start() -> UIViewController {
         let navController = BaseNavigationController()
         navController.navigationBar.prefersLargeTitles = true
         navigationController = navController
-        let showtimesFlow = SessionCoordinator()
-        self.showtimesFlow = showtimesFlow
-        showtimesFlow.start(with: navController)
+        let dashboardFlow = DashboardCoordinator()
+        self.dashboardCoordinator = dashboardFlow
+        self.dashboardCoordinator?.start(with: navController)
         return navController
     }
 }

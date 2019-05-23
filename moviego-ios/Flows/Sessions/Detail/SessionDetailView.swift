@@ -15,7 +15,7 @@ class SessionDetailView: BaseView {
     override func createView() {
         backgroundColor = .white
         
-        labelText = label { it in
+        labelText = ui.label { it in
             it.textStyleDark()
             it.snp.makeConstraints { make in
                 make.center.equalToSuperview()

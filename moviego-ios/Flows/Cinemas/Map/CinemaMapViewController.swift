@@ -32,12 +32,13 @@ class CinemaMapViewController: BaseViewController<BaseMapView>, MKMapViewDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = L10n.Cinema.Map.title
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: UIActivityIndicatorView(style: .gray))
         modalClosable()
         layout.mapView.delegate = self
         
         viewModel.locationManager.rx.location
             .take(1)
-            .mapRegion(width: 300, height: 300)
+            .mapRegion(width: 1000, height: 1000)
             .observeOn(MainScheduler.instance)
             .bind(onNext: { [weak layout] region in
                 layout?.mapView.setRegion(region, animated: true)
@@ -45,12 +46,12 @@ class CinemaMapViewController: BaseViewController<BaseMapView>, MKMapViewDelegat
             .disposed(by: disposeBag)
         
         viewModel.viewState.data
-            .map { cinemas in cinemas.map { CinemaMapAnnotation(cinema: $0) } }
+            .map { cinemas in cinemas.map { CinemaAnnotation(cinema: $0) } }
             .observeOn(MainScheduler.instance)
             .bind(onNext: { [weak layout] annotations in
                 guard let mapView = layout?.mapView else { return }
                 
-                let present = mapView.annotations.compactMap { $0 as? CinemaMapAnnotation }
+                let present = mapView.annotations.compactMap { $0 as? CinemaAnnotation }
                 mapView.addAnnotations(annotations.filter { !present.contains($0) })
             })
             .disposed(by: disposeBag)
@@ -62,15 +63,15 @@ class CinemaMapViewController: BaseViewController<BaseMapView>, MKMapViewDelegat
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard let annotation = annotation as? CinemaMapAnnotation else { return nil }
+        if let annotation = annotation as? CinemaAnnotation {
+            let reuseId = CinemaAnnotationView.ReuseIdentifiers.defaultId
+            let view = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) ?? CinemaAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            view.annotation = annotation
+            return view
+        }
         
-        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "cinema_pin")
-            ?? MKAnnotationView(annotation: annotation, reuseIdentifier: "cinema_pin")
-        
-        annotationView.image = Asset.icMapPin.image
-        annotationView.canShowCallout = true
-        annotationView.clusteringIdentifier = "cluster_id"
-        return annotationView
+        // TODO: handle annotations for prizes
+        return nil
     }
 }
 

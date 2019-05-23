@@ -24,7 +24,6 @@
 		C212BCAB2250325C00C624A7 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCAA2250325C00C624A7 /* LocalizedStrings.swift */; };
 		C212BCBE2250475E00C624A7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C212BCBC2250475E00C624A7 /* RxSwift.framework */; };
 		C212BCBF2250475E00C624A7 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C212BCBD2250475E00C624A7 /* RxCocoa.framework */; };
-		C212BCC922504F1300C624A7 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCC822504F1300C624A7 /* Coordinator.swift */; };
 		C212BCD02250D81F00C624A7 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCCF2250D81F00C624A7 /* AppDependency.swift */; };
 		C212BCD22250DB9E00C624A7 /* ViewModelFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCD12250DB9E00C624A7 /* ViewModelFactories.swift */; };
 		C212BCD42250E45500C624A7 /* LoadingDataObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCD32250E45500C624A7 /* LoadingDataObservable.swift */; };
@@ -53,9 +52,13 @@
 		C216F52F2275CD12001EB291 /* BasePickCityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216F52E2275CD12001EB291 /* BasePickCityViewModel.swift */; };
 		C216F5312275D07C001EB291 /* PickCityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216F5302275D07C001EB291 /* PickCityView.swift */; };
 		C224E183225BDE0800A4AE37 /* ACKategories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C224E182225BDE0800A4AE37 /* ACKategories.framework */; };
-		C228EEFD2282F36A004C19EE /* CinemaMapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C228EEFC2282F36A004C19EE /* CinemaMapAnnotation.swift */; };
+		C228EEFD2282F36A004C19EE /* CinemaAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C228EEFC2282F36A004C19EE /* CinemaAnnotation.swift */; };
 		C228EEFF22834913004C19EE /* ProfileAccessoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C228EEFE22834913004C19EE /* ProfileAccessoryController.swift */; };
 		C228EF0122834A1C004C19EE /* CloudinaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C228EF0022834A1C004C19EE /* CloudinaryExtensions.swift */; };
+		C23AFA172297160300CC753D /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23AFA162297160300CC753D /* MovieCell.swift */; };
+		C23AFA1A2297204900CC753D /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23AFA192297204900CC753D /* DashboardViewController.swift */; };
+		C23AFA1C2297207400CC753D /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23AFA1B2297207400CC753D /* DashboardViewModel.swift */; };
+		C23AFA1E2297376B00CC753D /* DashboardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23AFA1D2297376B00CC753D /* DashboardCoordinator.swift */; };
 		C23EEB9B2278D16E00A95185 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C23EEB9A2278D16E00A95185 /* LaunchScreen.storyboard */; };
 		C23EEB9D2279D26100A95185 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23EEB9C2279D26100A95185 /* LoadingView.swift */; };
 		C23EEB9F2279D3CE00A95185 /* CustomComponentDsl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23EEB9E2279D3CE00A95185 /* CustomComponentDsl.swift */; };
@@ -114,6 +117,7 @@
 		C2DF1550227F8AFA0071A9FB /* RxCoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2DF154F227F8AFA0071A9FB /* RxCoreLocation.framework */; };
 		C2DF15522280BF500071A9FB /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2DF15512280BF500071A9FB /* RxRelay.framework */; };
 		C2DF8771229334C500694A28 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DF8770229334C500694A28 /* ColorTheme.swift */; };
+		C2F86D5F22946B62001D9878 /* CinemaAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F86D5E22946B62001D9878 /* CinemaAnnotationView.swift */; };
 		C2FD899122933878006694DE /* BaseListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FD899022933878006694DE /* BaseListController.swift */; };
 		F5FCCCB022563B1C00640F2A /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCCCAF22563B1C00640F2A /* DateExtensions.swift */; };
 		F5FCCCB22256469200640F2A /* OAuthApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCCCB12256469200640F2A /* OAuthApiService.swift */; };
@@ -161,7 +165,6 @@
 		C212BCAA2250325C00C624A7 /* LocalizedStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
 		C212BCBC2250475E00C624A7 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		C212BCBD2250475E00C624A7 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
-		C212BCC822504F1300C624A7 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C212BCCF2250D81F00C624A7 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
 		C212BCD12250DB9E00C624A7 /* ViewModelFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactories.swift; sourceTree = "<group>"; };
 		C212BCD32250E45500C624A7 /* LoadingDataObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingDataObservable.swift; sourceTree = "<group>"; };
@@ -191,9 +194,13 @@
 		C216F52E2275CD12001EB291 /* BasePickCityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePickCityViewModel.swift; sourceTree = "<group>"; };
 		C216F5302275D07C001EB291 /* PickCityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickCityView.swift; sourceTree = "<group>"; };
 		C224E182225BDE0800A4AE37 /* ACKategories.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ACKategories.framework; path = Carthage/Build/iOS/ACKategories.framework; sourceTree = "<group>"; };
-		C228EEFC2282F36A004C19EE /* CinemaMapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaMapAnnotation.swift; sourceTree = "<group>"; };
+		C228EEFC2282F36A004C19EE /* CinemaAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaAnnotation.swift; sourceTree = "<group>"; };
 		C228EEFE22834913004C19EE /* ProfileAccessoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAccessoryController.swift; sourceTree = "<group>"; };
 		C228EF0022834A1C004C19EE /* CloudinaryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudinaryExtensions.swift; sourceTree = "<group>"; };
+		C23AFA162297160300CC753D /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		C23AFA192297204900CC753D /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		C23AFA1B2297207400CC753D /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		C23AFA1D2297376B00CC753D /* DashboardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardCoordinator.swift; sourceTree = "<group>"; };
 		C23EEB9A2278D16E00A95185 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C23EEB9C2279D26100A95185 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		C23EEB9E2279D3CE00A95185 /* CustomComponentDsl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomComponentDsl.swift; sourceTree = "<group>"; };
@@ -252,6 +259,7 @@
 		C2DF154F227F8AFA0071A9FB /* RxCoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCoreLocation.framework; path = Carthage/Build/iOS/RxCoreLocation.framework; sourceTree = "<group>"; };
 		C2DF15512280BF500071A9FB /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		C2DF8770229334C500694A28 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorTheme.swift; path = "moviego-ios/Base/ColorTheme.swift"; sourceTree = SOURCE_ROOT; };
+		C2F86D5E22946B62001D9878 /* CinemaAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaAnnotationView.swift; sourceTree = "<group>"; };
 		C2FD899022933878006694DE /* BaseListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListController.swift; sourceTree = "<group>"; };
 		C9F82BCC923BFCAABAED12FA /* Pods-moviego-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moviego-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-moviego-iosUITests/Pods-moviego-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CD5853AE2A03E0C9B6969ED1 /* Pods-moviego-ios.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moviego-ios.beta.xcconfig"; path = "Target Support Files/Pods-moviego-ios/Pods-moviego-ios.beta.xcconfig"; sourceTree = "<group>"; };
@@ -498,6 +506,7 @@
 		C212BCB4225035E500C624A7 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				C23AFA182297203900CC753D /* Dashboard */,
 				C2649836227D95950037AF48 /* Cinemas */,
 				C2C52ED0225E4200009A6D93 /* City */,
 				C2C52EBF225E386A009A6D93 /* Main */,
@@ -526,7 +535,6 @@
 			isa = PBXGroup;
 			children = (
 				C2DF87722293377000694A28 /* Controller */,
-				C212BCC822504F1300C624A7 /* Coordinator.swift */,
 				C212BCFB225169B100C624A7 /* BaseListView.swift */,
 				C212BCFF22516AA800C624A7 /* BaseViewModel.swift */,
 				C24400C3225CCBA8001C88A1 /* BaseView.swift */,
@@ -562,6 +570,7 @@
 			children = (
 				C216F52C2275C045001EB291 /* PickCityCell.swift */,
 				C2649842227E1FFC0037AF48 /* ShowtimeSearchCell.swift */,
+				C23AFA162297160300CC753D /* MovieCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -629,6 +638,16 @@
 			path = Password;
 			sourceTree = "<group>";
 		};
+		C23AFA182297203900CC753D /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				C23AFA192297204900CC753D /* DashboardViewController.swift */,
+				C23AFA1B2297207400CC753D /* DashboardViewModel.swift */,
+				C23AFA1D2297376B00CC753D /* DashboardCoordinator.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
 		C243CC3C226B3A9200B68DC5 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -692,9 +711,9 @@
 		C2649837227D96330037AF48 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				C2F86D6022947121001D9878 /* Util */,
 				C2649838227D96460037AF48 /* CinemaMapViewController.swift */,
 				C264983A227D96540037AF48 /* CinemaMapViewModel.swift */,
-				C228EEFC2282F36A004C19EE /* CinemaMapAnnotation.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -773,6 +792,15 @@
 				C2FD899022933878006694DE /* BaseListController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		C2F86D6022947121001D9878 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				C2F86D5E22946B62001D9878 /* CinemaAnnotationView.swift */,
+				C228EEFC2282F36A004C19EE /* CinemaAnnotation.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1021,7 +1049,6 @@
 				C2C52EC1225E3880009A6D93 /* MainCoordinator.swift in Sources */,
 				C228EEFF22834913004C19EE /* ProfileAccessoryController.swift in Sources */,
 				C24400CF225CD57B001C88A1 /* RegisterUserViewController.swift in Sources */,
-				C212BCC922504F1300C624A7 /* Coordinator.swift in Sources */,
 				C28812C022848CBE006D2120 /* SessionDetailViewModel.swift in Sources */,
 				C212BCA9225024D400C624A7 /* Environment.swift in Sources */,
 				C216F52F2275CD12001EB291 /* BasePickCityViewModel.swift in Sources */,
@@ -1037,10 +1064,11 @@
 				C24400C2225C9C73001C88A1 /* LoginViewController.swift in Sources */,
 				C212BCD22250DB9E00C624A7 /* ViewModelFactories.swift in Sources */,
 				C212BCE022512CBF00C624A7 /* Network.swift in Sources */,
-				C228EEFD2282F36A004C19EE /* CinemaMapAnnotation.swift in Sources */,
+				C228EEFD2282F36A004C19EE /* CinemaAnnotation.swift in Sources */,
 				C2649841227DB2170037AF48 /* BaseMapView.swift in Sources */,
 				C264983F227D99FB0037AF48 /* CinemaRepository.swift in Sources */,
 				C29C62642284948F00FD0876 /* CinemaDetailViewController.swift in Sources */,
+				C23AFA1A2297204900CC753D /* DashboardViewController.swift in Sources */,
 				C27BAD45226A3B420052BDA6 /* StringExtensions.swift in Sources */,
 				C24400DA225CF7F5001C88A1 /* RegistrationRepository.swift in Sources */,
 				C23EEB9D2279D26100A95185 /* LoadingView.swift in Sources */,
@@ -1065,9 +1093,11 @@
 				C212BCE222512EC800C624A7 /* ApiInteractor.swift in Sources */,
 				C243CC462274E8FE00B68DC5 /* Colors.swift in Sources */,
 				C243CC3E226B3AC100B68DC5 /* RegisterCityViewModel.swift in Sources */,
+				C23AFA1C2297207400CC753D /* DashboardViewModel.swift in Sources */,
 				C212BCAB2250325C00C624A7 /* LocalizedStrings.swift in Sources */,
 				C2C52EC8225E3CA3009A6D93 /* SessionCoordinator.swift in Sources */,
 				C29C626C22849FE000FD0876 /* Promotion.swift in Sources */,
+				C2F86D5F22946B62001D9878 /* CinemaAnnotationView.swift in Sources */,
 				C23EEBA9227B790200A95185 /* Movie.swift in Sources */,
 				F5FCCCB022563B1C00640F2A /* DateExtensions.swift in Sources */,
 				C29C6261228492A900FD0876 /* SessionSearchViewModel.swift in Sources */,
@@ -1075,6 +1105,7 @@
 				F5FCCCB22256469200640F2A /* OAuthApiService.swift in Sources */,
 				C212BCF6225166D000C624A7 /* User.swift in Sources */,
 				C212BCF1225158BD00C624A7 /* CollectionExtensions.swift in Sources */,
+				C23AFA172297160300CC753D /* MovieCell.swift in Sources */,
 				C2649839227D96460037AF48 /* CinemaMapViewController.swift in Sources */,
 				C24400C9225CD222001C88A1 /* ViewDsl.swift in Sources */,
 				C2C52EBA225E3547009A6D93 /* ProfileViewController.swift in Sources */,
@@ -1089,6 +1120,7 @@
 				C23EEBA5227A4BC500A95185 /* City.swift in Sources */,
 				C28812B822836563006D2120 /* BaseNavigationController.swift in Sources */,
 				C24400E2225D0778001C88A1 /* AppCoordinator.swift in Sources */,
+				C23AFA1E2297376B00CC753D /* DashboardCoordinator.swift in Sources */,
 				C216F5312275D07C001EB291 /* PickCityView.swift in Sources */,
 				C24400C4225CCBA8001C88A1 /* BaseView.swift in Sources */,
 			);

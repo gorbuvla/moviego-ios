@@ -8,6 +8,7 @@
 
 import RxSwift
 import CoreLocation
+import RxCoreLocation
 import RxRelay
 
 class CinemaMapViewModel: BaseViewModel {
@@ -35,6 +36,11 @@ class CinemaMapViewModel: BaseViewModel {
     }
     
     private func bindUpdates() {
+        locationManager.rx.location
+        
+        
+        
+        
         viewportSubject.debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
             .flatMap { viewport in self.repository.fetchCinemas(lat: viewport.lat, lng: viewport.lng, radius: viewport.radius) }
             .mapLoading() // TODO: this should emit loading every time viewport changes... 

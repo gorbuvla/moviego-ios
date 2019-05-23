@@ -35,7 +35,7 @@ class BaseListView: BaseView {
         
         let loadingView = LoadingView()
         loadingView.isHidden = true
-        self.addView(loadingView)
+        self.ui.addView(loadingView)
         loadingView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }

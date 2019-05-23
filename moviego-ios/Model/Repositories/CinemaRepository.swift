@@ -7,9 +7,12 @@
 //
 
 import RxSwift
+import Foundation
 
 protocol CinemaRepositoring {
     func fetchCinemas(lat: Float?, lng: Float?, radius: Double?) -> Single<[Cinema]>
+    
+    func fetchMovies(offset: Int, limit: Int) -> Single<[Movie]>
 }
 
 class MockedCinemaRepository: CinemaRepositoring {
@@ -44,12 +47,44 @@ class MockedCinemaRepository: CinemaRepositoring {
         topMovies: []
     )
     
+    private let rhapsody = Movie(
+        title: "Bohemian Rhapsody",
+        year: "2018",
+        imdbRating: 8.3,
+        imdbId: "tt1727824",
+        rottenTomatoesRating: "83%",
+        plot: "The story of the legendary rock music band Queen and its lead singer Freddie Mercury.",
+        poster: URL(string: "https://m.media-amazon.com/images/M/MV5BNDg2NjIxMDUyNF5BMl5BanBnXkFtZTgwMzEzNTE1NTM@._V1_SX300.jpg")!,
+        release: "02 Nov 2018",
+        trailer: "https://www.youtube.com/watch?v=mP0VHJYFOAU",
+        director: Person(name: "Bryan Singer"),
+        actors: "Rami Malek, Lucy Boynton, Gwilym Lee, Ben Hardy".components(separatedBy: ", ").map { Person(name: $0) }
+    )
+    
+    private let atomicBlonde = Movie(
+        title: "Atomic Blonde",
+        year: "2017",
+        imdbRating: 6.7,
+        imdbId: "tt2406566",
+        rottenTomatoesRating: "78%",
+        plot: "An undercover MI6 agent is sent to Berlin during the Cold War to investigate the murder of a fellow agent and recover a missing list of double agents.",
+        poster: URL(string: "https://m.media-amazon.com/images/M/MV5BMjM5NDYzMzg5N15BMl5BanBnXkFtZTgwOTM2NDU1MjI@._V1_SX300.jpg")!,
+        release: "28 Jul 2017",
+        trailer: "https://www.youtube.com/watch?v=yIUube1pSC0",
+        director: Person(name: "David Leitch"),
+        actors: "Charlize Theron, James McAvoy, Eddie Marsan, John Goodman".components(separatedBy: ", ").map { Person(name: $0) }
+    )
+    
     func fetchCinemas(lat: Float?, lng: Float?, radius: Double?) -> Single<[Cinema]> {
         return Single.just([csAndel, ccAndel, ccChodov]).delay(.seconds(3), scheduler: MainScheduler.instance)
     }
+    
+    func fetchMovies(offset: Int, limit: Int) -> Single<[Movie]> {
+        return Single.just([rhapsody, atomicBlonde]).delay(.seconds(2), scheduler: MainScheduler.instance)
+    }
 }
 
-class CinemaRepository: CinemaRepositoring {
+class CinemaRepository {
     
     private let cinemaApi: CinemaApiServicing
     

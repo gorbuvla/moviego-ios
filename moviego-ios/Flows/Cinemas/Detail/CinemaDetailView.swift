@@ -14,7 +14,7 @@ class CinemaDetailView: BaseView {
     
     override func createView() {
         backgroundColor = .white
-        titleLabel = label { it in
+        titleLabel = ui.label { it in
             it.textStyleDark()
             
             it.snp.makeConstraints { make in

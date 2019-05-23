@@ -59,7 +59,7 @@ class ShowtimeCellView: BaseView {
         super.createView()
         backgroundColor = .white
         
-        posterImage = imageView { it in
+        posterImage = ui.imageView { it in
             it.layer.cornerRadius = 6.0
             it.clipsToBounds = true
             it.contentMode = .scaleAspectFill
@@ -72,7 +72,7 @@ class ShowtimeCellView: BaseView {
             }
         }
         
-        let chevronIndicator = imageView(image: Asset.icChevron.image) { it in
+        let chevronIndicator = ui.imageView(image: Asset.icChevron.image) { it in
             it.tintColor = UIColor(named: .primary)
             
             it.snp.makeConstraints { make in
@@ -81,11 +81,11 @@ class ShowtimeCellView: BaseView {
             }
         }
         
-        stack { it in
+        ui.stack { it in
             it.axis = .vertical
             it.spacing = 5
             
-            movieTitleText = it.label { it in
+            movieTitleText = it.ui.label { it in
                 it.textStyleDark()
                 it.styleHeading2()
 //                it.snp.makeConstraints { make in
@@ -94,12 +94,12 @@ class ShowtimeCellView: BaseView {
 //                }
             }
             
-            ratingLabel = it.label { it in
+            ratingLabel = it.ui.label { it in
                 it.textStyleDark()
                 it.styleHeading3()
             }
             
-            cinemaTitleText = it.label { it in
+            cinemaTitleText = it.ui.label { it in
                 it.textStyleDark()
                 it.styleHeading3()
             }

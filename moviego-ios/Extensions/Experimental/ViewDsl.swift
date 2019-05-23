@@ -9,7 +9,23 @@
 import UIKit
 import MapKit
 
+class DslMaker {
+    
+    let parent: UIView
+    
+    init(view: UIView) {
+        self.parent = view
+    }
+}
+
 extension UIView {
+    
+    var ui: DslMaker {
+        get { return DslMaker(view: self) }
+    }
+}
+
+extension DslMaker {
     
     @discardableResult
     func customView<V: UIView>(_ view: V, _ block: (V) -> Void) -> V {
@@ -19,10 +35,10 @@ extension UIView {
     }
     
     func addView(_ view: UIView) {
-        if let stack = self as? UIStackView {
+        if let stack = parent as? UIStackView {
             stack.addArrangedSubview(view)
         } else {
-            addSubview(view)
+            parent.addSubview(view)
         }
     }
     

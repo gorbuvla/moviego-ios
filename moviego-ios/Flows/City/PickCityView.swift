@@ -16,7 +16,7 @@ class PickCityView: BaseListView {
         super.createView()
         backgroundColor = UIColor(named: .primary).withAlphaComponent(0.8)
         
-        continueButton = button { it in
+        continueButton = ui.button { it in
             it.setTitle("Register", for: .normal)
             it.primaryButton()
             
