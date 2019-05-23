@@ -42,12 +42,28 @@ extension AppDependency: ViewModelFactory {
         return { RegisterCityViewModel(cityApi: dependencies.cityApi, repository: dependencies.registrationRepository) }
     }
     
-    var showtimeListViewModelFactory: () -> ShowtimeListViewModel {
-        return { ShowtimeListViewModel(repository: dependencies.showtimeRepository) }
+    var showtimeListViewModelFactory: () -> SessionSearchViewModel {
+        return {
+            SessionSearchViewModel(
+                showtimeRepository: dependencies.sessionRepository, userRepository: dependencies.userRepository
+            )
+        }
     }
     
-    var promotionListViewModelFactory: () -> PromotionListViewModel {
-        return { PromotionListViewModel() }
+    var sessionDetailViewModelFactory: (Movie, Cinema, [Session]?) -> SessionDetailViewModel {
+        return { movie, cinema, sessions in
+            SessionDetailViewModel(
+                movie: movie, cinema: cinema, sessions: sessions
+            )
+        }
+    }
+    
+    var dashboardViewModelFactory: () -> DashboardViewModel {
+        return { DashboardViewModel(repository: dependencies.cinemaRepository) }
+    }
+    
+    var cinemaMapViewModel: () -> CinemaMapViewModel {
+        return { CinemaMapViewModel(repository: dependencies.cinemaRepository) }
     }
     
     var profileViewModel: () -> ProfileViewModel {

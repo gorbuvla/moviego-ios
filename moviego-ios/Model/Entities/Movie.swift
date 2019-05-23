@@ -6,6 +6,8 @@
 //  Copyright © 2019 Vlad Gorbunov. All rights reserved.
 //
 
+import Foundation
+
 struct Movie: Codable {
     let title: String
     let year: String
@@ -13,7 +15,7 @@ struct Movie: Codable {
     let imdbId: String
     let rottenTomatoesRating: String
     let plot: String
-    let poster: String
+    let poster: URL
     let release: String
     let trailer: String
     let director: Person

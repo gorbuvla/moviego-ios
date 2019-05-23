@@ -12,8 +12,6 @@ import Alamofire
 protocol CinemaApiServicing {
     
     func fetchByDistance(lat: Float?, lng: Float?, radius: Double?) -> Single<[Cinema]>
-    
-    func fetchBy(by: CinemaOrderBy, lat: Float?, lng: Float?) -> Single<[Cinema]>
 }
 
 class CinemaApiService: CinemaApiServicing  {
@@ -29,18 +27,6 @@ class CinemaApiService: CinemaApiServicing  {
             "lat": lat,
             "lng": lng,
             "radius": radius
-        ]
-        
-        return interactor.request("/cinemas", method: .get, parameters: params.nilsRemoved, encoding: JSONEncoding.default, headers: nil)
-            .mapObject(to: [Cinema].self)
-            .asSingle()
-    }
-    
-    func fetchBy(by: CinemaOrderBy, lat: Float?, lng: Float?) -> Single<[Cinema]> {
-        let params: [String: Any?] = [
-            "lat": lat,
-            "lng": lng,
-            "orderBy": by.rawValue
         ]
         
         return interactor.request("/cinemas", method: .get, parameters: params.nilsRemoved, encoding: JSONEncoding.default, headers: nil)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UIView {
+extension DslMaker {
     
     @discardableResult
     func framedField(style: FramedTextField.Style, _ block: (FramedTextField) -> Void) -> FramedTextField {

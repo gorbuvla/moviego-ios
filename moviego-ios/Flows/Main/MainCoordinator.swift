@@ -11,32 +11,15 @@ import ACKategories
 
 class MainCoordinator: FlowCoordinator {
     
-    override func start() -> UIViewController {
-        let tabBarController = setupTabBarController()
-        rootViewController = tabBarController
-        return tabBarController
-    }
+    private var dashboardCoordinator: DashboardCoordinator? = nil
     
-    private func setupTabBarController() -> UITabBarController {
-        let tabbarController = UITabBarController()
-        tabbarController.tabBar.barTintColor = UIColor.white
-        tabbarController.tabBar.backgroundColor = UIColor.white
-        tabbarController.tabBar.tintColor = UIColor(named: .primary)
-        tabbarController.tabBar.unselectedItemTintColor = .gray
-        
-        let moviesFlow = ShowtimesCoordinator()
-        let moviesRoot = moviesFlow.start()
-        addChild(moviesFlow)
-        
-        let promotionsFlow = PromotionsCoordinator()
-        let promotionsRoot = promotionsFlow.start()
-        addChild(promotionsFlow)
-        
-        let profileFlow = ProfileCoordinator()
-        let profileRoot = profileFlow.start()
-        addChild(profileFlow)
-        
-        tabbarController.viewControllers = [moviesRoot, promotionsRoot, profileRoot]
-        return tabbarController
+    override func start() -> UIViewController {
+        let navController = BaseNavigationController()
+        navController.navigationBar.prefersLargeTitles = true
+        navigationController = navController
+        let dashboardFlow = DashboardCoordinator()
+        self.dashboardCoordinator = dashboardFlow
+        self.dashboardCoordinator?.start(with: navController)
+        return navController
     }
 }

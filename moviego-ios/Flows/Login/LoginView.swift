@@ -23,7 +23,7 @@ class LoginView: BaseScrollView {
     override func createScrollContent(contentView: UIView) {
         backgroundColor = UIColor(named: .bkgDark).withAlphaComponent(0.8)
         
-        logoImage = contentView.imageView { it in
+        logoImage = contentView.ui.imageView { it in
             it.image = Asset.logo.image
             it.backgroundColor = .yellow
             
@@ -33,12 +33,12 @@ class LoginView: BaseScrollView {
             }
         }
         
-        controlStack = contentView.stack { it in
+        controlStack = contentView.ui.stack { it in
             it.axis = .vertical
             it.spacing = 5
             it.isHidden = true
             
-            emailOrUsernameField = it.framedField(style: .dark) { it in
+            emailOrUsernameField = it.ui.framedField(style: .dark) { it in
                 it.titleLabel.text = L10n.Login.emailTitle
                 it.textField.textContentType = .emailAddress
                 it.textField.returnKeyType = .next
@@ -48,7 +48,7 @@ class LoginView: BaseScrollView {
                 }
             }
             
-            passwordField = it.framedField(style: .dark) { it in
+            passwordField = it.ui.framedField(style: .dark) { it in
                 it.titleLabel.text = L10n.Login.password
                 it.textField.textContentType = .password
                 it.textField.returnKeyType = .send
@@ -59,7 +59,7 @@ class LoginView: BaseScrollView {
                 }
             }
             
-            registerButton = it.button { it in
+            registerButton = it.ui.button { it in
                 it.underlinedButton(text: L10n.Login.registerButton)
                 it.titleLabel?.styleLink()
                 it.titleLabel?.textStyleLight()
@@ -70,7 +70,7 @@ class LoginView: BaseScrollView {
                 }
             }
             
-            loginButton = it.button { it in
+            loginButton = it.ui.button { it in
                 it.setTitle(L10n.Login.buttonTitle, for: .normal)
                 it.primaryButton()
                 
@@ -87,7 +87,7 @@ class LoginView: BaseScrollView {
             }
         }
         
-        loadingView = customView(LoadingView()) { it in
+        loadingView = ui.loadingView { it in
             it.isHidden = true
             
             it.snp.makeConstraints { make in

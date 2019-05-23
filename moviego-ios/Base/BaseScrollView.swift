@@ -15,9 +15,9 @@ class BaseScrollView: BaseView {
     
     override func createView() {
         super.createView()
-        scrollView = scrollView { it in
+        scrollView = ui.scrollView { it in
             
-            scrollContent = it.view { it in
+            scrollContent = it.ui.view { it in
                 createScrollContent(contentView: it)
                 
                 it.snp.makeConstraints { make in

@@ -40,12 +40,12 @@ class PickCityViewController: BaseViewController<PickCityView>, UITableViewDataS
         
         viewModel.viewState.loading.map { !$0 }
             .observeOn(MainScheduler.instance)
-            .bind(to: layout.activityIndicator.rx.isHidden)
+            .bind(to: layout.loadingView.rx.isHidden)
             .disposed(by: disposeBag)
         
         viewModel.continuationState.loading.map { !$0 }
             .observeOn(MainScheduler.instance)
-            .bind(to: layout.activityIndicator.rx.isHidden)
+            .bind(to: layout.loadingView.rx.isHidden)
             .disposed(by: disposeBag)
         
         viewModel.viewState.data

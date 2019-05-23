@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private lazy var initialCoordinator: FlowCoordinator = AppCoordinator(userRepository: dependencies.userRepository)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         

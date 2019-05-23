@@ -9,24 +9,20 @@
 import Foundation
 import RxSwift
 
-protocol ShowtimeRepositoring {
+protocol SessionRepositoring {
     
-    func fetchShowtimes(for cinema: Cinema?, movieId: Int?, startingFrom: Date, lat: Float?, lng: Float?, orderBy: ShowtimeOrderBy, limit: Int, offset: Int) -> Single<[Showtime]>
+    func fetchTrendingSessions(startingFrom: Date, lat: Double?, lng: Double?, limit: Int, offset: Int) -> Single<[SessionSearchItem]>
 }
 
-class MockedShowtimeRepository: ShowtimeRepositoring {
+class MockedSessionRepository: SessionRepositoring {
     
-    func fetchShowtimes(for cinema: Cinema?, movieId: Int?, startingFrom: Date, lat: Float?, lng: Float?, orderBy: ShowtimeOrderBy, limit: Int, offset: Int) -> Single<[Showtime]> {
-        let showtimeList = [Showtime(type: "Standard", startsAt: Date(), cinema: ccAndel, movie: rhapsody),
-                            Showtime(type: "Standard", startsAt: Date(), cinema: ccAndel, movie: atomicBlonde)]
+    func fetchTrendingSessions(startingFrom: Date, lat: Double?, lng: Double?, limit: Int, offset: Int) -> Single<[SessionSearchItem]> {
         
-        var returnList: [Showtime] = []
+        let results = [ccAndel, ccChodov, csAndel]
+            .flatMap { cinema in [rhapsody, atomicBlonde].map { movie in (cinema, movie) } }
+            .map { cinema, movie in SessionSearchItem(cinema: cinema, movie: movie, showtimes: [Session(type: "Standard", startsAt: Date(), cinema: cinema, movie: movie), Session(type: "Standard", startsAt: Date(timeInterval: 3600 * 1000, since: Date()), cinema: cinema, movie: movie)]) }
         
-        if offset < showtimeList.count && limit > 0 {
-            returnList = showtimeList
-        }
-        
-        return Single.just(returnList).delay(3, scheduler: MainScheduler.instance)
+        return Single.just(results).delay(.seconds(3), scheduler: MainScheduler.instance)
     }
     
     private let rhapsody = Movie(
@@ -36,7 +32,7 @@ class MockedShowtimeRepository: ShowtimeRepositoring {
         imdbId: "tt1727824",
         rottenTomatoesRating: "83%",
         plot: "The story of the legendary rock music band Queen and its lead singer Freddie Mercury.",
-        poster: "https://m.media-amazon.com/images/M/MV5BNDg2NjIxMDUyNF5BMl5BanBnXkFtZTgwMzEzNTE1NTM@._V1_SX300.jpg",
+        poster: URL(string: "https://m.media-amazon.com/images/M/MV5BNDg2NjIxMDUyNF5BMl5BanBnXkFtZTgwMzEzNTE1NTM@._V1_SX300.jpg")!,
         release: "02 Nov 2018",
         trailer: "https://www.youtube.com/watch?v=mP0VHJYFOAU",
         director: Person(name: "Bryan Singer"),
@@ -50,7 +46,7 @@ class MockedShowtimeRepository: ShowtimeRepositoring {
         imdbId: "tt2406566",
         rottenTomatoesRating: "78%",
         plot: "An undercover MI6 agent is sent to Berlin during the Cold War to investigate the murder of a fellow agent and recover a missing list of double agents.",
-        poster: "https://m.media-amazon.com/images/M/MV5BMjM5NDYzMzg5N15BMl5BanBnXkFtZTgwOTM2NDU1MjI@._V1_SX300.jpg",
+        poster: URL(string: "https://m.media-amazon.com/images/M/MV5BMjM5NDYzMzg5N15BMl5BanBnXkFtZTgwOTM2NDU1MjI@._V1_SX300.jpg")!,
         release: "28 Jul 2017",
         trailer: "https://www.youtube.com/watch?v=yIUube1pSC0",
         director: Person(name: "David Leitch"),
@@ -64,6 +60,26 @@ class MockedShowtimeRepository: ShowtimeRepositoring {
         lat: 50.0741409,
         lng: 14.4025448,
         website: "https://cinemacity.cz/",
+        topMovies: []
+    )
+    
+    private let ccChodov = Cinema(
+        id: 2,
+        name: "CinemaCity Chodov",
+        address: "Chodov Praha 4",
+        lat: 50.0304824,
+        lng: 14.4885782,
+        website: "https://cinemacity.cz/",
+        topMovies: []
+    )
+    
+    private let csAndel = Cinema(
+        id: 3,
+        name: "CineStar Andel",
+        address: "Andel Praha 5",
+        lat: 50.071116,
+        lng: 14.3996753,
+        website: "https://cinestar.cz/",
         topMovies: []
     )
 }

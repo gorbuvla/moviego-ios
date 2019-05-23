@@ -17,6 +17,19 @@ internal enum L10n {
     internal static let name = L10n.tr("Localizable", "app.name")
   }
 
+  internal enum Cinema {
+    internal enum Detail {
+      /// %@
+      internal static func title(_ p1: String) -> String {
+        return L10n.tr("Localizable", "cinema.detail.title", p1)
+      }
+    }
+    internal enum Map {
+      /// Cinemas
+      internal static let title = L10n.tr("Localizable", "cinema.map.title")
+    }
+  }
+
   internal enum Login {
     /// Sign In
     internal static let buttonTitle = L10n.tr("Localizable", "login.button_title")
@@ -26,6 +39,13 @@ internal enum L10n {
     internal static let password = L10n.tr("Localizable", "login.password")
     /// Register
     internal static let registerButton = L10n.tr("Localizable", "login.register_button")
+  }
+
+  internal enum Sessions {
+    /// Movie sessions
+    internal static let detail = L10n.tr("Localizable", "sessions.detail")
+    /// Hot sessions nearby
+    internal static let title = L10n.tr("Localizable", "sessions.title")
   }
 
   internal enum Tabbar {

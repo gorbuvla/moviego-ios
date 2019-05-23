@@ -13,15 +13,14 @@ protocol ProfileNavigationDelegate: class {
     // todo: methods
 }
 
-class ProfileViewController: ViewController {
+class ProfileViewController: BaseViewController<UIView> {
     
     weak var navigationDelegate: ProfileNavigationDelegate?
     private let viewModel: ProfileViewModel
     
     init(viewModel: ProfileViewModel) {
         self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-        tabBarItem.title = "Profile"
+        super.init()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -30,8 +29,9 @@ class ProfileViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .gray
-        view.label { it in
+        modalClosable()
+        view.backgroundColor = .white
+        view.ui.label { it in
             it.text = "Profile & Latest Activity"
             it.textColor = .black
             

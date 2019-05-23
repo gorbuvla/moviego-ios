@@ -16,7 +16,7 @@ class BaseFormView: BaseView {
     override func createView() {
         backgroundColor = UIColor(named: .primary).withAlphaComponent(0.8)
         
-        continueButton = button { it in
+        continueButton = ui.button { it in
             it.primaryButton()
             
             it.snp.makeConstraints { make in
@@ -25,9 +25,9 @@ class BaseFormView: BaseView {
             }
         }
         
-        scrollView { it in
+        ui.scrollView { it in
             
-            scrollContent = it.view { it in
+            scrollContent = it.ui.view { it in
                 
                 it.snp.makeConstraints { make in
                     make.top.equalToSuperview().inset(20)

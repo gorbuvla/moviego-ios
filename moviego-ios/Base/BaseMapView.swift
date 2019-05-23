@@ -14,7 +14,7 @@ class BaseMapView: BaseView {
     weak var mapView: MKMapView!
     
     override func createView() {
-        mapView = mapView { it in
+        mapView = ui.mapView { it in
             it.snp.makeConstraints { make in
                 make.edges.equalToSuperview()
             }

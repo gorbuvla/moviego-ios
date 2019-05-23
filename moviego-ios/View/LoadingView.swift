@@ -17,7 +17,7 @@ class LoadingView: BaseView {
         
         backgroundColor = UIColor.black.withAlphaComponent(0.5)
         
-        indicator = customView(UIActivityIndicatorView()) { it in
+        indicator = ui.customView(UIActivityIndicatorView()) { it in
             it.style = .whiteLarge
             it.startAnimating()
             
@@ -25,5 +25,12 @@ class LoadingView: BaseView {
                 make.center.equalToSuperview()
             }
         }
+    }
+}
+
+extension DslMaker {
+    
+    func loadingView(_ block: (LoadingView) -> ()) -> LoadingView {
+        return customView(LoadingView(), block)
     }
 }

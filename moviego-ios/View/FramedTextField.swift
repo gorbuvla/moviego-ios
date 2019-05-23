@@ -110,7 +110,7 @@ class FramedTextField: BaseView {
     
     override func createView() {
         
-        titleLabel = label { it in
+        titleLabel = ui.label { it in
             it.textColor = style.textColor
             it.styleLabel()
             
@@ -119,19 +119,19 @@ class FramedTextField: BaseView {
             }
         }
         
-        backgroundView = view { it in
+        backgroundView = ui.view { it in
             it.layer.cornerRadius = 15
             it.layer.borderWidth = 3
             it.layer.borderColor = UIColor.white.cgColor
             
-            it.stack { it in
-                textField = it.textField { it in
+            it.ui.stack { it in
+                textField = it.ui.textField { it in
                     it.textColor = style.textColor
                     it.placeholder = "Placeholder"
                     it.styleParagraphLarge()
                 }
                 
-                secureInputButton = it.button { it in
+                secureInputButton = it.ui.button { it in
                     it.isHidden = true
                     it.setImage(Asset.secureOff.image, for: .normal)
                     it.addTarget(self, action: #selector(didTapSecureInput), for: .touchUpInside)
@@ -151,7 +151,7 @@ class FramedTextField: BaseView {
             }
         }
         
-        errorLabel = label { it in
+        errorLabel = ui.label { it in
             it.styleError()
             
             it.snp.makeConstraints { make in

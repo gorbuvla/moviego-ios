@@ -9,6 +9,12 @@
 import UIKit
 import MapKit
 import RxSwift
+import RxCoreLocation
+
+protocol CinemaMapNavigationDelegate {
+    func didTapShowDetail(of cinema: Cinema)
+    func didTapNavigateCinema(cinema: Cinema)
+}
 
 class CinemaMapViewController: BaseViewController<BaseMapView>, MKMapViewDelegate {
     
@@ -25,14 +31,28 @@ class CinemaMapViewController: BaseViewController<BaseMapView>, MKMapViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = L10n.Cinema.Map.title
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: UIActivityIndicatorView(style: .gray))
+        modalClosable()
         layout.mapView.delegate = self
         
-        viewModel.viewState.data
+        viewModel.locationManager.rx.location
+            .take(1)
+            .mapRegion(width: 1000, height: 1000)
             .observeOn(MainScheduler.instance)
-            .bind(onNext: { [weak layout] cinemas in
+            .bind(onNext: { [weak layout] region in
+                layout?.mapView.setRegion(region, animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.viewState.data
+            .map { cinemas in cinemas.map { CinemaAnnotation(cinema: $0) } }
+            .observeOn(MainScheduler.instance)
+            .bind(onNext: { [weak layout] annotations in
                 guard let mapView = layout?.mapView else { return }
                 
-                
+                let present = mapView.annotations.compactMap { $0 as? CinemaAnnotation }
+                mapView.addAnnotations(annotations.filter { !present.contains($0) })
             })
             .disposed(by: disposeBag)
         
@@ -43,6 +63,14 @@ class CinemaMapViewController: BaseViewController<BaseMapView>, MKMapViewDelegat
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if let annotation = annotation as? CinemaAnnotation {
+            let reuseId = CinemaAnnotationView.ReuseIdentifiers.defaultId
+            let view = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) ?? CinemaAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            view.annotation = annotation
+            return view
+        }
+        
+        // TODO: handle annotations for prizes
         return nil
     }
 }
@@ -51,6 +79,17 @@ struct Viewport {
     let lat: Float
     let lng: Float
     let radius: Double
+}
+
+extension ObservableType where Element == CLLocation? {
+    
+    func mapRegion(width: CLLocationDistance, height: CLLocationDistance) -> Observable<MKCoordinateRegion> {
+        return compactMap { location in
+            guard let location = location else { return nil }
+            
+            return MKCoordinateRegion(center: location.coordinate, latitudinalMeters: width, longitudinalMeters: height)
+        }
+    }
 }
 
 extension MKMapView {

@@ -9,6 +9,8 @@
 import RxSwift
 
 protocol UserRepositoring {
+    
+    var currentUser: User? { get }
     var user: Observable<User?> { get }
     
     func login(credentials: LoginCredentials) -> Single<User>
@@ -19,7 +21,11 @@ class UserRepository: UserRepositoring {
     
     private var credentialsStore: CredentialsStore
     private let oauthApi: OAuthApiServicing
-    private let userVariable: Variable<User?>
+    private let userVariable: BehaviorSubject<User?>
+    
+    var currentUser: User? {
+        get { return try! userVariable.value() }
+    }
     
     var user: Observable<User?> {
         get { return userVariable.asObservable() }
@@ -28,7 +34,7 @@ class UserRepository: UserRepositoring {
     init(credentialsStore: CredentialsStore, oauthApi: OAuthApiServicing) {
         self.oauthApi = oauthApi
         self.credentialsStore = credentialsStore
-        self.userVariable = Variable(credentialsStore.user)
+        self.userVariable = BehaviorSubject(value: credentialsStore.user)
     }
 
     func login(credentials: LoginCredentials) -> Single<User> {
@@ -42,7 +48,7 @@ class UserRepository: UserRepositoring {
         return request!.do(onSuccess: { [weak self] userWithCredentials in
             self?.credentialsStore.user = userWithCredentials.user
             self?.credentialsStore.credentials = userWithCredentials.credentials
-            self?.userVariable.value = userWithCredentials.user
+            self?.userVariable.onNext(userWithCredentials.user)
         }).map { $0.user }
     }
     
@@ -50,7 +56,7 @@ class UserRepository: UserRepositoring {
         return Completable.create { [weak self] completable in
             self?.credentialsStore.user = nil
             self?.credentialsStore.credentials = nil
-            self?.userVariable.value = nil
+            self?.userVariable.onNext(nil)
             
             completable(.completed)
             return Disposables.create {}
@@ -62,6 +68,10 @@ class MockedUserRepository: UserRepositoring {
     
     private var credentialsStore: CredentialsStore
     private let userVariable: Variable<User?>
+    
+    var currentUser: User? {
+        return userVariable.value
+    }
     
     var user: Observable<User?> {
         get { return userVariable.asObservable() }
@@ -78,7 +88,7 @@ class MockedUserRepository: UserRepositoring {
         var singleSource: Single<UserWithCredentials> = Single.error(ApiException.unauthorized)
         
         if email == "movielover@moviego.me" && password == "password" {
-            singleSource = Single.just(UserWithCredentials(id: 1, name: "Hackerman", email: "movielover@moviego.me", avatarId: "user_avatars/hackerman", city: City(id: 2, name: "Prague", pictureId: "id", cinemasCount: 2), credentials: Credentials(accessToken: "AT", refreshToken: "RT", expiresIn: 3600)))
+            singleSource = Single.just(UserWithCredentials(id: 1, name: "Hackerman", email: "movielover@moviego.me", avatarId: "user_avatars/hackerman.jpg", city: City(id: 2, name: "Prague", pictureId: "id", cinemasCount: 2), credentials: Credentials(accessToken: "AT", refreshToken: "RT", expiresIn: 3600)))
         }
 
         return singleSource.do(onSuccess: { [weak self] userWithCredentials in
