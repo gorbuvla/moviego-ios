@@ -13,7 +13,7 @@ import Foundation
 internal enum L10n {
 
   internal enum App {
-    /// iOS Skeleton
+    /// MovieGo
     internal static let name = L10n.tr("Localizable", "app.name")
   }
 
@@ -30,6 +30,13 @@ internal enum L10n {
     }
   }
 
+  internal enum Dashboard {
+    /// Search movies & cinemas
+    internal static let searchHint = L10n.tr("Localizable", "dashboard.search_hint")
+    /// In theatres
+    internal static let title = L10n.tr("Localizable", "dashboard.title")
+  }
+
   internal enum Login {
     /// Sign In
     internal static let buttonTitle = L10n.tr("Localizable", "login.button_title")
@@ -41,11 +48,26 @@ internal enum L10n {
     internal static let registerButton = L10n.tr("Localizable", "login.register_button")
   }
 
+  internal enum Session {
+    /// At %@, %@ away
+    internal static func subtitleFormat(_ p1: String, _ p2: String) -> String {
+      return L10n.tr("Localizable", "session.subtitleFormat", p1, p2)
+    }
+    /// %@ (%@)
+    internal static func titleWithYear(_ p1: String, _ p2: String) -> String {
+      return L10n.tr("Localizable", "session.titleWithYear", p1, p2)
+    }
+  }
+
   internal enum Sessions {
     /// Movie sessions
     internal static let detail = L10n.tr("Localizable", "sessions.detail")
     /// Hot sessions nearby
     internal static let title = L10n.tr("Localizable", "sessions.title")
+    internal enum Suggest {
+      /// Top sessions:
+      internal static let title = L10n.tr("Localizable", "sessions.suggest.title")
+    }
   }
 
   internal enum Tabbar {

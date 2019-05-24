@@ -1,9 +1,12 @@
 {
-    "primary": "#8552FF",
+    "secondary": "#FF8E5D",
+    "primary": "#FFFFFF",
+    "title": "#5B6576",
+    "subtitle": "C2C8D3",
+    "separator": "F5F6F7",
     "primaryDark": "#5839a3",
-    "secondary": "#8DB38B",
     "bkg_dark": "#276FBF",
-    "bkg_light": "#F6F4F3",
+    "bkg_light": "#F4F6F8",
     "error_red": "#F74850",
     "text_light": "#FFFFFF",
     "text_dark": "#000000"

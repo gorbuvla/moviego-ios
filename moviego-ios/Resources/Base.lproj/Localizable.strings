@@ -1,8 +1,12 @@
-"app.name" = "iOS Skeleton";
+"app.name" = "MovieGo";
 "login.email_title" = "Email";
 "login.password" = "Password";
 "login.button_title" = "Sign In";
 "login.register_button" = "Register";
+
+
+"dashboard.title" = "In theatres";
+"dashboard.search_hint" = "Search movies & cinemas";
 
 "tabbar.movies.title" = "Movies";
 "tabbar.map.title" = "Map";
@@ -11,6 +15,9 @@
 
 "sessions.title" = "Hot sessions nearby";
 "sessions.detail" = "Movie sessions";
+"sessions.suggest.title" = "Top sessions:";
+"session.titleWithYear" = "%@ (%@)";
+"session.subtitleFormat" = "At %@, %@ away";
 
 "cinema.map.title" = "Cinemas";
 "cinema.detail.title" = "%@";

@@ -29,7 +29,7 @@ class BaseNavigationController: UINavigationController {
     }
     
     private func setupAppearance() {
-        navigationBar.barTintColor = UIColor(named: .primary)
+        navigationBar.barTintColor = UIColor(named: .secondary)
         navigationBar.tintColor = .white
         navigationBar.shadowImage = UIImage()
         navigationBar.isTranslucent = false
