@@ -48,6 +48,27 @@ internal enum L10n {
     internal static let registerButton = L10n.tr("Localizable", "login.register_button")
   }
 
+  internal enum Registration {
+    internal enum ChooseCity {
+      /// Choose your city
+      internal static let title = L10n.tr("Localizable", "registration.choose_city.title")
+    }
+    internal enum User {
+      /// Confirm password
+      internal static let confirmPassword = L10n.tr("Localizable", "registration.user.confirm_password")
+      /// Email
+      internal static let email = L10n.tr("Localizable", "registration.user.email")
+      /// Name
+      internal static let name = L10n.tr("Localizable", "registration.user.name")
+      /// Password
+      internal static let password = L10n.tr("Localizable", "registration.user.password")
+      /// Surname
+      internal static let surname = L10n.tr("Localizable", "registration.user.surname")
+      /// Set email & password
+      internal static let title = L10n.tr("Localizable", "registration.user.title")
+    }
+  }
+
   internal enum Session {
     /// At %@, %@ away
     internal static func subtitleFormat(_ p1: String, _ p2: String) -> String {

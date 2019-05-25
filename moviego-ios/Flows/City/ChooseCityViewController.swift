@@ -43,6 +43,7 @@ class ChooseCityViewController: BaseListController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = L10n.Registration.ChooseCity.title
         let item = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = item
         
@@ -75,8 +76,16 @@ class ChooseCityViewController: BaseListController {
         
         viewModel.continuation.data
             .observeOn(MainScheduler.instance)
-            .bind(onNext: { [weak navigationDelegate] _ in navigationDelegate?.onCityPicked() })
+            .bind(onNext: { [weak navigationDelegate] d in
+                print(d)
+                navigationDelegate?.onCityPicked() })
             .disposed(by: disposeBag)
+        
+        viewModel.continuation.error
+            .observeOn(MainScheduler.instance)
+            .bind(onNext: { error in
+                print(error)
+            })
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

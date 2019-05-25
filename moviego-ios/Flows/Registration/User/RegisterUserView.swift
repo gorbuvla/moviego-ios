@@ -37,7 +37,8 @@ class RegisterUserView: BaseScrollView {
             
             it.snp.makeConstraints { make in
                 //make.top.equalTo(.snp.bottom)
-                make.leading.trailing.bottom.equalTo(safeArea)
+                make.leading.trailing.equalTo(safeArea)
+                make.bottom.equalTo(safeArea)
                 make.height.equalTo(0).priority(250)
                 make.height.greaterThanOrEqualTo(0)
             }
@@ -58,7 +59,7 @@ class RegisterUserView: BaseScrollView {
             it.spacing = 2
             
             nameTextField = it.ui.framedField(style: .light) { it in
-                it.titleLabel.text = "Name"
+                it.titleLabel.text = L10n.Registration.User.name
                 it.textField.textContentType = .givenName
                 it.textField.returnKeyType = .next
                 
@@ -68,7 +69,7 @@ class RegisterUserView: BaseScrollView {
             }
             
             surnameTextField = it.ui.framedField(style: .light) { it in
-                it.titleLabel.text = "Surname"
+                it.titleLabel.text = L10n.Registration.User.surname
                 it.textField.textContentType = .familyName
                 it.textField.returnKeyType = .next
                 
@@ -78,7 +79,7 @@ class RegisterUserView: BaseScrollView {
             }
             
             emailTextField = it.ui.framedField(style: .light) { it in
-                it.titleLabel.text = "Email"
+                it.titleLabel.text = L10n.Registration.User.email
                 it.textField.textContentType = .emailAddress
                 it.textField.returnKeyType = .next
                 
@@ -88,7 +89,7 @@ class RegisterUserView: BaseScrollView {
             }
             
             passwordInput = it.ui.framedField(style: .light) { it in
-                it.titleLabel.text = "Enter password"
+                it.titleLabel.text = L10n.Registration.User.password
                 it.textField.textContentType = .newPassword
                 it.textField.returnKeyType = .next
                 
@@ -98,7 +99,7 @@ class RegisterUserView: BaseScrollView {
             }
             
             confirmInput = it.ui.framedField(style: .light) { it in
-                it.titleLabel.text = "Confirm password"
+                it.titleLabel.text = L10n.Registration.User.confirmPassword
                 it.textField.textContentType = .newPassword
                 it.textField.returnKeyType = .continue
                 

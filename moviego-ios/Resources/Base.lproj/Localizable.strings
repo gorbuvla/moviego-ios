@@ -4,6 +4,13 @@
 "login.button_title" = "Sign In";
 "login.register_button" = "Register";
 
+"registration.choose_city.title" = "Choose your city";
+"registration.user.title" = "Set email & password";
+"registration.user.name" = "Name";
+"registration.user.surname" = "Surname";
+"registration.user.email" = "Email";
+"registration.user.password" = "Password";
+"registration.user.confirm_password" = "Confirm password";
 
 "dashboard.title" = "In theatres";
 "dashboard.search_hint" = "Search movies & cinemas";

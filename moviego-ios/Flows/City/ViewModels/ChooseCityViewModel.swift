@@ -33,10 +33,18 @@ class ChooseCityViewModel: BaseViewModel {
     }
     
     func selectCity(_ city: City) {
+        if city.name != "Prague" {
+            continuationSubject.onNext(.init(.error(UnsupportedCityError(message: "\(city.name) is currently unsupported, you may travel to another city"))))
+            return
+        }
+        
         saveSelection(city)
             .asObservable()
             .mapLoading()
-            .bind(to: continuationSubject)
+            .bind(onNext: { city in
+                // because bind:to does not dispose same observer from previous saveSelection...
+                self.continuationSubject.onNext(city)
+            })
             .disposed(by: disposeBag)
     }
     
@@ -51,4 +59,8 @@ class ChooseCityViewModel: BaseViewModel {
             .bind(to: viewStateSubject)
             .disposed(by: disposeBag)
     }
+}
+
+struct UnsupportedCityError: Error {
+    let message: String
 }

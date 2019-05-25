@@ -34,7 +34,7 @@ class RegisterUserViewController: BaseViewController<RegisterUserView>, UITextFi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Enter info"
+        navigationItem.title = L10n.Registration.User.title
         
 //        layout.continueButton.rx.tap
 //            .withLatestFrom(combinedFormInput) { $1 }
@@ -93,8 +93,8 @@ class RegisterUserViewController: BaseViewController<RegisterUserView>, UITextFi
     }
     
     override func receiveKeyboardChange(_ offset: CGFloat, _ duration: Double) {
-        layout.scrollView.snp.updateConstraints { make in
-            make.bottom.equalToSuperview().offset(-offset)
+        layout.footerView.snp.updateConstraints { make in
+            make.bottom.equalTo(safeArea).offset(-offset)
         }
         
         UIView.animate(withDuration: duration) { [weak self] in
