@@ -37,10 +37,12 @@ extension UILabel {
     }
     
     func styleParagraphNormall() {
-        font = UIFont.systemFont(ofSize: 15)
+        textColor = .title
+        fontSize = 15
     }
     
     func styleParagraphSmall() {
+        textColor = .subtitle
         font = UIFont.systemFont(ofSize: 12)
     }
     
@@ -90,10 +92,12 @@ extension UITextField {
     }
     
     func styleParagraphNormall() {
+        textColor = .title
         font = UIFont.systemFont(ofSize: 15)
     }
     
     func styleParagraphSmall() {
+        textColor = .subtitle
         font = UIFont.systemFont(ofSize: 12)
     }
     

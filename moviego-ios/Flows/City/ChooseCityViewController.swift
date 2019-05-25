@@ -14,7 +14,7 @@ protocol ChooseCityNavigationDelegate: class {
     func onCityPicked()
 }
 
-class ChooseCityViewController: BaseListController {
+class ChooseCityViewController: BaseViewController<BaseListView>, UITableViewDataSource, UITableViewDelegate {
 
     private let viewModel: ChooseCityViewModel
     var navigationDelegate: ChooseCityNavigationDelegate?
@@ -28,56 +28,41 @@ class ChooseCityViewController: BaseListController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func loadView() {
-        super.loadView()
-        view.ui.view { it in
-            it.backgroundColor = .red
-            
-            it.snp.makeConstraints { make in
-                make.top.equalTo(tableView.snp.bottom)
-                make.leading.trailing.bottom.equalToSuperview()
-                make.height.equalTo(100)
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = L10n.Registration.ChooseCity.title
-        let item = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
-        navigationItem.backBarButtonItem = item
         
         view.backgroundColor = .bkgLight
-        tableView.backgroundColor = .bkgLight
+        layout.tableView.backgroundColor = .bkgLight
+        layout.tableView.refreshControl = nil
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(CityCell.self, forCellReuseIdentifier: CityCell.ReuseIdentifiers.defaultId)
+        layout.tableView.delegate = self
+        layout.tableView.dataSource = self
+        layout.tableView.register(CityCell.self, forCellReuseIdentifier: CityCell.ReuseIdentifiers.defaultId)
         
-        tableView.separatorStyle = .none
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 50
+        layout.tableView.separatorStyle = .none
+        layout.tableView.rowHeight = UITableView.automaticDimension
+        layout.tableView.estimatedRowHeight = 120
         
         viewModel.viewState.loading.map { !$0 }
             .observeOn(MainScheduler.instance)
-            .bind(to: loadingView.rx.isHidden)
+            .bind(to: layout.loadingView.rx.isHidden)
             .disposed(by: disposeBag)
         
         viewModel.continuation.loading.map { !$0 }
             .observeOn(MainScheduler.instance)
-            .bind(to: loadingView.rx.isHidden)
+            .bind(to: layout.loadingView.rx.isHidden)
             .disposed(by: disposeBag)
         
         viewModel.viewState.data
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { data in
-                self.tableView.reloadData() })
+                self.layout.tableView.reloadData() })
             .disposed(by: disposeBag)
         
         viewModel.continuation.data
             .observeOn(MainScheduler.instance)
             .bind(onNext: { [weak navigationDelegate] d in
-                print(d)
                 navigationDelegate?.onCityPicked() })
             .disposed(by: disposeBag)
         
@@ -91,20 +76,20 @@ class ChooseCityViewController: BaseListController {
             .disposed(by: disposeBag)
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.data.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let city = viewModel.data[safe: indexPath.row] else { return UITableViewCell() }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: CityCell.ReuseIdentifiers.defaultId, for: indexPath) as! CityCell
+        let cell = layout.tableView.dequeueReusableCell(withIdentifier: CityCell.ReuseIdentifiers.defaultId, for: indexPath) as! CityCell
         cell.city = city
         cell.selectionStyle = .none
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let city = viewModel.data[safe: indexPath.row] else { return }
         
         viewModel.selectCity(city)

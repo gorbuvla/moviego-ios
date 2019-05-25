@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SessionSuggestView: UIView, UICollectionViewDelegate {
+class SessionSuggestView: BaseView, UICollectionViewDelegate {
     
     private weak var collectionView: UICollectionView!
     
@@ -19,7 +19,7 @@ class SessionSuggestView: UIView, UICollectionViewDelegate {
         }
     }
     
-    private func createView() {
+    override func createView() {
         backgroundColor = .red
         
         let sectionTitle = UILabel()

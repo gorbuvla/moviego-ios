@@ -88,13 +88,11 @@ class MovieCellView: BaseView {
                 it.spacing = 5
                 
                 titleLabel = it.ui.label { it in
-                    it.textColor = .title
-                    it.fontSize = 15
+                    it.styleParagraphNormall()
                 }
                 
                 yearLabel = it.ui.label { it in
-                    it.textColor = .subtitle
-                    it.fontSize = 12
+                    it.styleParagraphSmall()
                 }
                 
                 it.snp.makeConstraints { make in

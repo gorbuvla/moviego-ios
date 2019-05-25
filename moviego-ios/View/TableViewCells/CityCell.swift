@@ -20,7 +20,7 @@ class CityCell: BaseTableViewCell<CityCellView> {
             guard let city = city else { return }
             
             layout.thumbnailImage.cldSetImage(publicId: city.pictureId, cloudinary: CLDCloudinary(configuration: CLDConfiguration(cloudName: "do04iflqy")))
-            layout.titleLabel.text = city.name
+            layout.titleLabel.text = city.name.uppercased()
             layout.subtitleLabel.text = "Cinemas: \(city.cinemasCount)"
         }
     }
@@ -41,28 +41,37 @@ class CityCellView: BaseShadowedView {
             it.clipsToBounds = true
             
             it.snp.makeConstraints { make in
-                make.top.leading.trailing.equalToSuperview().inset(10)
-                make.width.equalToSuperview().inset(10)
+                make.top.leading.trailing.equalToSuperview().inset(15)
+                make.width.equalToSuperview().inset(15)
                 make.height.equalTo(it.snp.width).multipliedBy(0.5)
             }
         }
         
         container.ui.stack { it in
-            it.axis = .horizontal
+            it.axis = .vertical
             it.spacing = 10
-            it.distribution = .fillEqually
+            it.distribution = .equalCentering
             
             titleLabel = it.ui.label { it in
-                // TODO: styles
+                it.styleParagraphNormall()
+            }
+            
+            it.ui.view { it in
+                it.backgroundColor = .separator
+                
+                it.snp.makeConstraints { make in
+                    make.height.equalTo(1)
+                    make.width.equalToSuperview().multipliedBy(0.5)
+                }
             }
             
             subtitleLabel = it.ui.label { it in
-                // TODO: styles
+                it.styleParagraphSmall()
             }
             
             it.snp.makeConstraints { make in
-                make.top.equalTo(thumbnailImage.snp.bottom)
-                make.leading.trailing.bottom.equalToSuperview()
+                make.top.equalTo(thumbnailImage.snp.bottom).offset(8)
+                make.leading.trailing.bottom.equalToSuperview().inset(15)
             }
         }
     }
