@@ -35,29 +35,32 @@ class RegisterUserViewController: BaseViewController<RegisterUserView>, UITextFi
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = L10n.Registration.User.title
+        layout.nameTextField.textField.delegate = self
+        layout.surnameTextField.textField.delegate = self
+        layout.emailTextField.textField.delegate = self
+        layout.passwordTextField.textField.delegate = self
+        layout.confirmTextField.textField.delegate = self
         
-//        layout.continueButton.rx.tap
-//            .withLatestFrom(combinedFormInput) { $1 }
-//            .bind(onNext: { [weak viewModel] (name, surname, email, password, confirm) in
-//                viewModel?.submit(name: name, surname: surname, email: email, password: password, confirm: confirm)
-//            })
-//            .disposed(by: disposeBag)
-//
-//        combinedFormInput.map { input in
-//            input.0.isNotEmpty && input.1.isNotEmpty
-//                && input.2.isNotEmpty && input.3.isNotEmpty && input.4.isNotEmpty
-//            }
-//            .bind(to: layout.continueButton.rx.isEnabled)
-//            .disposed(by: disposeBag)
-//
-//        viewModel.viewState
-//            .map { try! $0.get() }
-//            .observeOn(MainScheduler.instance)
-//            .subscribe(
-//                onNext: { [weak navigationDelegate] _ in navigationDelegate?.didTapNext() },
-//                onError: { [weak self] error in self?.handleError(error: error as! RegisterationValidationException) }
-//            )
-//            .disposed(by: disposeBag)
+        layout.continueButton.rx.tap
+            .withLatestFrom(combinedFormInput) { $1 }
+            .bind(onNext: { [weak viewModel] (name, surname, email, password, confirm) in
+                viewModel?.submit(name: name, surname: surname, email: email, password: password, confirm: confirm)
+            })
+            .disposed(by: disposeBag)
+
+        combinedFormInput.map { (name, surname, email, password, confirm) in
+                name.isNotEmpty && surname.isNotEmpty && email.isNotEmpty && password.isNotEmpty && confirm.isNotEmpty
+            }
+            .bind(to: layout.continueButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+
+        viewModel.viewState
+            .observeOn(MainScheduler.instance)
+            .subscribe(
+                onNext: { [weak navigationDelegate] _ in navigationDelegate?.didTapNext() },
+                onError: { [weak self] error in self?.handleError(error: error as! RegisterationValidationException) }
+            )
+            .disposed(by: disposeBag)
         
         layout.continueButton.rx.tap
             .bind(onNext: { [weak navigationDelegate] in navigationDelegate?.didTapNext() })
@@ -70,16 +73,16 @@ class RegisterUserViewController: BaseViewController<RegisterUserView>, UITextFi
             layout.surnameTextField.textField.becomeFirstResponder()
         case layout.surnameTextField.textField:
             layout.emailTextField.textField.becomeFirstResponder()
-        case layout.passwordInput.textField:
-            layout.confirmInput.textField.becomeFirstResponder()
-        case layout.confirmInput.textField:
-            layout.confirmInput.textField.resignFirstResponder()
+        case layout.passwordTextField.textField:
+            layout.confirmTextField.textField.becomeFirstResponder()
+        case layout.confirmTextField.textField:
+            layout.confirmTextField.textField.resignFirstResponder()
             
             guard let name = layout.nameTextField.textField.text,
                 let surname = layout.surnameTextField.textField.text,
                 let email = layout.emailTextField.textField.text,
-                let password = layout.passwordInput.textField.text,
-                let confirm = layout.confirmInput.textField.text else {
+                let password = layout.passwordTextField.textField.text,
+                let confirm = layout.confirmTextField.textField.text else {
                     return false
                 }
             
@@ -111,9 +114,9 @@ class RegisterUserViewController: BaseViewController<RegisterUserView>, UITextFi
         case .emailFieldError(let errorStr):
             layout.emailTextField.error = errorStr
         case .passwordFieldError(let errorStr):
-            layout.passwordInput.error = errorStr
+            layout.passwordTextField.error = errorStr
         case .confirmFieldError(let errorStr):
-            layout.confirmInput.error = errorStr
+            layout.confirmTextField.error = errorStr
         }
     }
     
@@ -123,8 +126,8 @@ class RegisterUserViewController: BaseViewController<RegisterUserView>, UITextFi
                 layout.nameTextField.textField.rx.text.orEmpty,
                 layout.surnameTextField.textField.rx.text.orEmpty,
                 layout.emailTextField.textField.rx.text.orEmpty,
-                layout.passwordInput.textField.rx.text.orEmpty,
-                layout.passwordInput.textField.rx.text.orEmpty
+                layout.passwordTextField.textField.rx.text.orEmpty,
+                layout.confirmTextField.textField.rx.text.orEmpty
             )
         }
     }

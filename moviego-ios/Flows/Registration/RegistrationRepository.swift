@@ -17,15 +17,7 @@ protocol RegistrationRepositoring {
     var password: String? { get set }
     var city: City? { get set }
     
-    var credentials: RegisterCredentialsDTO { get }
-}
-
-struct RegisterCredentialsDTO {
-    let name: String
-    let surname: String
-    let email: String
-    let password: String
-    let city: City
+    var credentials: RegisterCredentials { get }
 }
 
 class RegistrationRepository: RegistrationRepositoring {
@@ -36,10 +28,10 @@ class RegistrationRepository: RegistrationRepositoring {
     var password: String?
     var city: City?
     
-    var credentials: RegisterCredentialsDTO {
+    var credentials: RegisterCredentials {
         get {
             assert(name != nil && surname != nil && email != nil && password != nil && city != nil)
-            return RegisterCredentialsDTO(name: name!, surname: surname!, email: email!, password: password!, city: city!)
+            return RegisterCredentials(name: name!, surname: surname!, email: email!, password: password!, city: city!)
         }
     }
 }

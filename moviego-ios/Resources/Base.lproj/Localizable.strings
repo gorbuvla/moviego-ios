@@ -1,4 +1,8 @@
 "app.name" = "MovieGo";
+
+"general.ok" = "Ok";
+"general.continue" = "Continue";
+
 "login.email_title" = "Email";
 "login.password" = "Password";
 "login.button_title" = "Sign In";
@@ -11,6 +15,9 @@
 "registration.user.email" = "Email";
 "registration.user.password" = "Password";
 "registration.user.confirm_password" = "Confirm password";
+"registration.user.button" = "Register";
+"registration.choose_city.unsupported.title" = "Unsupported city";
+"registration.choose_city.unsupported.message" = "%@ is currently unsupported, you may travel to another city to use our app";
 
 "dashboard.title" = "In theatres";
 "dashboard.search_hint" = "Search movies & cinemas";

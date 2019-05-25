@@ -34,7 +34,7 @@ class ChooseCityViewModel: BaseViewModel {
     
     func selectCity(_ city: City) {
         if city.name != "Prague" {
-            continuationSubject.onNext(.init(.error(UnsupportedCityError(message: "\(city.name) is currently unsupported, you may travel to another city"))))
+            continuationSubject.onNext(.init(.error(UnsupportedCityError(message: L10n.Registration.ChooseCity.Unsupported.message(city.name)))))
             return
         }
         

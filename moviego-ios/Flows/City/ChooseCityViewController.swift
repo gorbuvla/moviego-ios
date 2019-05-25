@@ -112,8 +112,8 @@ class ChooseCityViewController: BaseListController {
     }
     
     private func handleUnsupportedError(error: UnsupportedCityError) {
-        let alert = UIAlertController(title: "Unsupported", message: error.message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        let alert = UIAlertController(title: L10n.Registration.ChooseCity.Unsupported.title, message: error.message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: L10n.General.ok, style: .default, handler: nil))
         present(alert, animated: true)
     }
 }

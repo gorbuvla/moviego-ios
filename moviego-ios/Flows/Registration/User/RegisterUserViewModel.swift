@@ -11,25 +11,40 @@ import RxSwift
 
 class RegisterUserViewModel: BaseViewModel {
     
-    private let repository: RegistrationRepositoring
+    private var repository: RegistrationRepositoring
+    private let userRepository: UserRepositoring
     private let viewStateSubject = PublishSubject<Result<Void, RegisterationValidationException>>()
     
     var viewState: Observable<Result<Void, RegisterationValidationException>> {
         get { return viewStateSubject.asObservable() }
     }
     
-    init(repository: RegistrationRepositoring) {
+    init(repository: RegistrationRepositoring, userRepository: UserRepositoring) {
         self.repository = repository
+        self.userRepository = userRepository
     }
     
     func submit(name: String, surname: String, email: String, password: String, confirm: String) {
         do {
             try validate(name, surname, email, password, confirm)
+            repository.name = name
+            repository.surname = surname
+            repository.email = email
+            repository.password = password
         } catch {
             viewStateSubject.onNext(.failure(error as! RegisterationValidationException))
             return
         }
         
+        register()
+    }
+    
+    private func register() {
+        // TODO: make actual call
+        userRepository.register(credentials: repository.credentials)
+            .subscribe()
+            .disposed(by: disposeBag)
+
         viewStateSubject.onNext(.success(()))
     }
     

@@ -37,9 +37,9 @@ internal struct ColorName {
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ff8e5d"></span>
   /// Alpha: 100% <br/> (0xff8e5dff)
   internal static let secondary = ColorName(rgbaValue: 0xff8e5dff)
-  /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#f5f6f7"></span>
-  /// Alpha: 100% <br/> (0xf5f6f7ff)
-  internal static let separator = ColorName(rgbaValue: 0xf5f6f7ff)
+  /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#e8e8e8"></span>
+  /// Alpha: 100% <br/> (0xe8e8e8ff)
+  internal static let separator = ColorName(rgbaValue: 0xe8e8e8ff)
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#c2c8d3"></span>
   /// Alpha: 100% <br/> (0xc2c8d3ff)
   internal static let subtitle = ColorName(rgbaValue: 0xc2c8d3ff)
