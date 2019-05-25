@@ -12,14 +12,13 @@ protocol HasViewModelFactories {
     
 }
 
-protocol RegistrationViewModelFactories {
-    var userRegistrationViewModelFactory: () -> RegisterUserViewModel { get }
-    var registerPasswordViewModelFactory: () -> RegisterPasswordViewModel { get }
-    var registerCityViewModelFactory: () -> RegisterCityViewModel { get }
-}
-
 protocol ProfileViewModelFactories {
     var profileViewModel: () -> ProfileViewModel { get }
+}
+
+protocol RegistrationViewModelFactories {
+    var userRegistrationViewModelFactory: (RegistrationRepository) -> RegisterUserViewModel { get }
+    var registerCityViewModelFactory: (RegistrationRepository) -> RegisterCityViewModel { get }
 }
 
 typealias ViewModelFactory = HasViewModelFactories & RegistrationViewModelFactories & ProfileViewModelFactories
@@ -30,22 +29,22 @@ extension AppDependency: ViewModelFactory {
         return { LoginViewModel(repository: dependencies.userRepository) }
     }
     
-    var userRegistrationViewModelFactory: () -> RegisterUserViewModel {
-        return { RegisterUserViewModel(repository: dependencies.registrationRepository) }
+    var userRegistrationViewModelFactory: (RegistrationRepository) -> RegisterUserViewModel {
+        return { registrationRepository in
+            RegisterUserViewModel(repository: registrationRepository, userRepository: dependencies.userRepository)
+        }
     }
     
-    var registerPasswordViewModelFactory: () -> RegisterPasswordViewModel {
-        return { RegisterPasswordViewModel(repository: dependencies.registrationRepository) }
-    }
-    
-    var registerCityViewModelFactory: () -> RegisterCityViewModel {
-        return { RegisterCityViewModel(cityApi: dependencies.cityApi, repository: dependencies.registrationRepository) }
+    var registerCityViewModelFactory: (RegistrationRepository) -> RegisterCityViewModel {
+        return { registrationRepository in
+            RegisterCityViewModel(cityApi: dependencies.cityApi, repository: registrationRepository)
+        }
     }
     
     var showtimeListViewModelFactory: () -> SessionSearchViewModel {
         return {
             SessionSearchViewModel(
-                showtimeRepository: dependencies.sessionRepository, userRepository: dependencies.userRepository
+                showtimeRepository: dependencies.cinemaRepository, userRepository: dependencies.userRepository
             )
         }
     }

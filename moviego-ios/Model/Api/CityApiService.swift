@@ -22,7 +22,7 @@ class MockedCityApiService: CityApiServicing {
                 City(id: 2, name: "Berlin", pictureId: "cities/bg-city-berlin", cinemasCount: 4),
                 City(id: 3, name: "Paris", pictureId: "cities/bg-city-paris", cinemasCount: 3)
             ]
-        ).delay(2, scheduler: MainScheduler.instance)
+        ).delay(1, scheduler: MainScheduler.instance)
     }
 }
 

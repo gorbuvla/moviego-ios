@@ -21,11 +21,10 @@ class LoginView: BaseScrollView {
     
     
     override func createScrollContent(contentView: UIView) {
-        backgroundColor = UIColor(named: .bkgDark).withAlphaComponent(0.8)
+        backgroundColor = .bkgLight
         
         logoImage = contentView.ui.imageView { it in
             it.image = Asset.logo.image
-            it.backgroundColor = .yellow
             
             it.snp.makeConstraints { make in
                 make.width.height.equalTo(240)
@@ -35,10 +34,10 @@ class LoginView: BaseScrollView {
         
         controlStack = contentView.ui.stack { it in
             it.axis = .vertical
-            it.spacing = 5
+            it.spacing = 2
             it.isHidden = true
             
-            emailOrUsernameField = it.ui.framedField(style: .dark) { it in
+            emailOrUsernameField = it.ui.framedField(style: .light) { it in
                 it.titleLabel.text = L10n.Login.emailTitle
                 it.textField.textContentType = .emailAddress
                 it.textField.returnKeyType = .next
@@ -48,7 +47,7 @@ class LoginView: BaseScrollView {
                 }
             }
             
-            passwordField = it.ui.framedField(style: .dark) { it in
+            passwordField = it.ui.framedField(style: .light) { it in
                 it.titleLabel.text = L10n.Login.password
                 it.textField.textContentType = .password
                 it.textField.returnKeyType = .send
@@ -62,7 +61,7 @@ class LoginView: BaseScrollView {
             registerButton = it.ui.button { it in
                 it.underlinedButton(text: L10n.Login.registerButton)
                 it.titleLabel?.styleLink()
-                it.titleLabel?.textStyleLight()
+                it.titleLabel?.textStyleDark()
                 
                 it.snp.makeConstraints { make in
                     make.leading.trailing.equalToSuperview().inset(50)

@@ -18,6 +18,10 @@ enum LoginCredentials {
     case password(username: String, password: String)
 }
 
-enum RegisterCredentials {
-    case form(name: String, password: String)
+struct RegisterCredentials: Codable {
+    let name: String
+    let surname: String
+    let email: String
+    let password: String
+    let city: City
 }

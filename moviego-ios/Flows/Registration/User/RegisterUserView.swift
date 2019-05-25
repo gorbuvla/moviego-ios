@@ -8,42 +8,82 @@
 
 import UIKit
 
-class RegisterUserView: BaseFormView {
+class RegisterUserView: BaseScrollView {
 
     weak var nameTextField: FramedTextField!
+    weak var surnameTextField: FramedTextField!
     weak var emailTextField: FramedTextField!
     weak var passwordTextField: FramedTextField!
-    weak var userInfoTextField: FramedTextField!
+    weak var confirmTextField: FramedTextField!
+    
+    weak var footerView: UIView!
+    weak var continueButton: UIButton!
     
     override func createView() {
         super.createView()
         
-        continueButton.setTitle("Next", for: .normal)
+        footerView = ui.view { it in
+            continueButton = it.ui.button { it in
+                it.setTitle(L10n.Registration.User.button, for: .normal)
+                it.primaryButton()
+                
+                it.snp.makeConstraints { make in
+                    make.height.equalTo(40)
+                    make.leading.trailing.equalToSuperview().inset(20)
+                    make.bottom.top.equalToSuperview().inset(30)
+                }
+            }
+            
+            it.snp.makeConstraints { make in
+                make.leading.trailing.equalTo(safeArea)
+                make.bottom.equalTo(safeArea)
+                make.height.equalTo(0).priority(250)
+                make.height.greaterThanOrEqualTo(0)
+            }
+        }
         
-        scrollContent.ui.stack { it in
+        scrollView.snp.removeConstraints()
+        scrollView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(footerView.snp.top)
+        }
+    }
+    
+    override func createScrollContent(contentView: UIView) {
+        super.createScrollContent(contentView: contentView)
+        backgroundColor = .bkgLight
+        
+        let userStack = contentView.ui.stack { it in
             it.axis = .vertical
-            it.spacing = 10
+            it.spacing = 2
             
-            nameTextField = it.ui.customView(FramedTextField(style: .dark)) { it in
-                it.titleLabel.text = "Name"
-                it.backgroundColor = .gray
+            nameTextField = it.ui.framedField(style: .light) { it in
+                it.titleLabel.text = L10n.Registration.User.name
+                it.textField.textContentType = .givenName
+                it.textField.returnKeyType = .next
+                it.textField.enablesReturnKeyAutomatically = true
                 
                 it.snp.makeConstraints { make in
                     make.width.equalToSuperview()
                 }
             }
             
-            emailTextField = it.ui.customView(FramedTextField(style: .dark)) { it in
-                it.titleLabel.text = "Email"
+            surnameTextField = it.ui.framedField(style: .light) { it in
+                it.titleLabel.text = L10n.Registration.User.surname
+                it.textField.textContentType = .familyName
+                it.textField.returnKeyType = .next
+                it.textField.enablesReturnKeyAutomatically = true
                 
                 it.snp.makeConstraints { make in
                     make.width.equalToSuperview()
                 }
             }
             
-            userInfoTextField = it.ui.customView(FramedTextField(style: .dark)) { it in
-                it.titleLabel.text = "Info"
-                
+            emailTextField = it.ui.framedField(style: .light) { it in
+                it.titleLabel.text = L10n.Registration.User.email
+                it.textField.textContentType = .emailAddress
+                it.textField.returnKeyType = .next
+                it.textField.enablesReturnKeyAutomatically = true
                 
                 it.snp.makeConstraints { make in
                     make.width.equalToSuperview()
@@ -51,7 +91,51 @@ class RegisterUserView: BaseFormView {
             }
             
             it.snp.makeConstraints { make in
-                make.top.leading.trailing.equalToSuperview()
+                make.top.leading.trailing.equalToSuperview().inset(20)
+            }
+        }
+        
+        let divider = contentView.ui.view { it in
+            it.backgroundColor = UIColor.separator //.withAlphaComponent(0.6)
+            
+            it.snp.makeConstraints { make in
+                make.top.equalTo(userStack.snp.bottom).offset(24)
+                make.height.equalTo(1)
+                make.leading.trailing.equalToSuperview().inset(20)
+            }
+        }
+        
+        contentView.ui.stack { it in
+            it.axis = .vertical
+            it.spacing = 2
+            
+            passwordTextField = it.ui.framedField(style: .light) { it in
+                it.titleLabel.text = L10n.Registration.User.password
+                it.textField.textContentType = .newPassword
+                it.textField.returnKeyType = .next
+                it.textField.enablesReturnKeyAutomatically = true
+                it.isSecureTextEntry = true
+                
+                it.snp.makeConstraints { make in
+                    make.width.equalToSuperview()
+                }
+            }
+            
+            confirmTextField = it.ui.framedField(style: .light) { it in
+                it.titleLabel.text = L10n.Registration.User.confirmPassword
+                it.textField.textContentType = .newPassword
+                it.textField.returnKeyType = .continue
+                it.textField.enablesReturnKeyAutomatically = true
+                it.isSecureTextEntry = true
+                
+                it.snp.makeConstraints { make in
+                    make.width.equalToSuperview()
+                }
+            }
+            
+            it.snp.makeConstraints { make in
+                make.top.equalTo(divider.snp.bottom).offset(30)
+                make.leading.trailing.bottom.equalToSuperview().inset(20)
             }
         }
     }

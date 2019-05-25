@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class DslMaker {
+class ViewDslMaker {
     
     let parent: UIView
     
@@ -20,12 +20,12 @@ class DslMaker {
 
 extension UIView {
     
-    var ui: DslMaker {
-        get { return DslMaker(view: self) }
+    var ui: ViewDslMaker {
+        get { return ViewDslMaker(view: self) }
     }
 }
 
-extension DslMaker {
+extension ViewDslMaker {
     
     @discardableResult
     func customView<V: UIView>(_ view: V, _ block: (V) -> Void) -> V {

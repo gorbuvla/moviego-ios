@@ -36,12 +36,14 @@ class DashboardViewController: BaseListController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = L10n.Dashboard.title.uppercased()
         let mapButton = UIBarButtonItem(image: Asset.icMap.image, style: .plain, target: self, action: #selector(didTapMapButton))
         navigationItem.rightBarButtonItem = mapButton
         
         tableView.register(MovieCell.self, forCellReuseIdentifier: MovieCell.ReuseIdentifiers.defaultId)
+        tableView.register(SuggestSessionsCell.self, forCellReuseIdentifier: SuggestSessionsCell.ReuseIdentifiers.defaultId)
         
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
+        tableView.separatorStyle = .none
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 70
         tableView.sectionHeaderHeight = 0
@@ -86,9 +88,10 @@ class DashboardViewController: BaseListController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == TOP_SESSIONS_CELL_INDEX {
-            // TODO: return horizontally scrollable cell
-            return UITableViewCell()
+        if indexPath.row == TOP_SESSIONS_CELL_INDEX && !viewModel.sessions.isEmpty {
+            let cell = tableView.dequeueReusableCell(withIdentifier: SuggestSessionsCell.ReuseIdentifiers.defaultId) as! SuggestSessionsCell
+            cell.sessions = viewModel.sessions
+            return cell
         }
         
         let adjustIndex = indexPath.row > TOP_SESSIONS_CELL_INDEX ? indexPath.row + 1 : indexPath.row

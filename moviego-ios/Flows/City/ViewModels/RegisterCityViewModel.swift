@@ -9,27 +9,17 @@
 import RxSwift
 import RxCocoa
 
-class RegisterCityViewModel: BasePickCityViewModel {
+class RegisterCityViewModel: ChooseCityViewModel {
     
-    private let repository: RegistrationRepositoring
-    private let continuationSubject: PublishSubject<LoadingResult<()>> = PublishSubject.init()
-    
-    override var continuationState: ObservableProperty<()> {
-        get { return continuationSubject.asObservable() }
-    }
+    private var repository: RegistrationRepositoring
     
     init(cityApi: CityApiServicing, repository: RegistrationRepositoring) {
         self.repository = repository
         super.init(cityApi: cityApi)
     }
     
-    override func selectCity(_ city: City) {
-        super.selectCity(city)
-        
-        // TODO: notify data source
-    }
-    
-    override func register() {
-        // TODO: send api request, handle result appropriately
+    override func saveSelection(_ city: City) -> Single<City> {
+        repository.city = city
+        return super.saveSelection(city)
     }
 }

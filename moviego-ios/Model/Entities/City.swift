@@ -7,13 +7,12 @@
 //
 
 struct City: Codable, Equatable {
-    
-    static func == (lhs: City, rhs: City) -> Bool {
-        return lhs.id == rhs.id
-    }
-    
     let id: Int
     let name: String
     let pictureId: String
     let cinemasCount: Int
+    
+    static func == (lhs: City, rhs: City) -> Bool {
+        return lhs.id == rhs.id
+    }
 }

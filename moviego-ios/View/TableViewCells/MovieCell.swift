@@ -18,38 +18,60 @@ class MovieCell: BaseTableViewCell<MovieCellView> {
         didSet {
             guard let movie = movie else { return }
             
+            layout.titleLabel.text = movie.title
+            layout.yearLabel.text = movie.year
             layout.posterImage.af_setImage(withURL: movie.poster)
-            
+            layout.ratingView.imdbScore = movie.imdbRating
+            layout.ratingView.tomatoScore = 96
         }
     }
     
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        contentView.backgroundColor = UIColor.bkgLight
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 class MovieCellView: BaseView {
     
+    private weak var container: UIView!
     weak var posterImage: UIImageView!
+    weak var titleLabel: UILabel!
+    weak var yearLabel: UILabel!
+    weak var ratingView: MovieRatingView!
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        container.applyShadow()
+    }
     
     override func createView() {
         // container
-        ui.view { it in
-            
-            it.layer.borderColor = UIColor.red.cgColor
-            it.layer.borderWidth = 2
+        backgroundColor = UIColor.bkgLight
+        container = ui.view { it in
+            it.backgroundColor = .primary
+            it.layer.cornerRadius = 4
+            it.applyShadow()
             
             // poster image
             posterImage = it.ui.imageView { it in
+                it.layer.cornerRadius = 4
+                it.clipsToBounds = true
                 
                 it.snp.makeConstraints { make in
-                    make.top.leading.bottom.equalToSuperview()
-                    make.height.equalTo(70) // replace with superview once content available
+                    make.top.leading.bottom.equalToSuperview().inset(10)
+                    make.height.equalTo(100) // replace with superview once content available
                     make.width.equalTo(it.snp.height).multipliedBy(0.75)
                 }
             }
             
             // divider
-            it.ui.view { it in
-                it.backgroundColor = .black
+            let divider = it.ui.view { it in
+                it.backgroundColor = .separator
 
                 it.snp.makeConstraints { make in
                     make.height.equalTo(1)
@@ -59,8 +81,38 @@ class MovieCellView: BaseView {
                 }
             }
             
+            // top section
+            it.ui.stack { it in
+                it.axis = .vertical
+                
+                it.spacing = 5
+                
+                titleLabel = it.ui.label { it in
+                    it.styleParagraphNormall()
+                }
+                
+                yearLabel = it.ui.label { it in
+                    it.styleParagraphSmall()
+                }
+                
+                it.snp.makeConstraints { make in
+                    make.top.trailing.equalToSuperview().inset(10)
+                    make.leading.equalTo(posterImage.snp.trailing).offset(10)
+                    make.bottom.equalTo(divider.snp.top).offset(-15)
+                }
+            }
+            
+            ratingView = it.ui.movieRatingView { it in
+                
+                it.snp.makeConstraints { make in
+                    make.bottom.trailing.equalToSuperview().inset(6)
+                    make.leading.equalTo(posterImage.snp.trailing).offset(10)
+                    make.top.equalTo(divider.snp.top).inset(6)
+                }
+            }
+            
             it.snp.makeConstraints { make in
-                make.edges.equalToSuperview().inset(20)
+                make.edges.equalToSuperview().inset(10)
             }
         }
     }

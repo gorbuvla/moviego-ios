@@ -8,9 +8,12 @@
 
 import Foundation
 import RxSwift
+import CoreLocation
+import RxCoreLocation
 
 class DashboardViewModel: BaseViewModel {
     
+    private let locationManager: CLLocationManager
     private let fetcher: PagedFetcher<Movie>
     private let repository: CinemaRepositoring
     private let viewStateSubject = BehaviorSubject<LoadingResult<[Movie]>>(value: LoadingResult(false))
@@ -39,6 +42,8 @@ class DashboardViewModel: BaseViewModel {
     init(repository: CinemaRepositoring) {
         self.repository = repository
         self.fetcher = PagedFetcher(request: repository.fetchMovies)
+        self.locationManager = CLLocationManager()
+        self.locationManager.requestWhenInUseAuthorization()
         super.init()
         bindUpdates()
         fetchInitial()
@@ -56,6 +61,16 @@ class DashboardViewModel: BaseViewModel {
         fetcher.pagedResult
             .mapLoading()
             .bind(to: viewStateSubject)
+            .disposed(by: disposeBag)
+        
+        locationManager.rx.location
+            .take(1)
+            .asObservable()
+            .flatMap { location in
+                self.repository.fetchSessions(startingFrom: Date(), lat: location?.coordinate.latitude, lng: location?.coordinate.longitude, limit: 10, offset: 0)
+            }
+            .mapLoading()
+            .bind(to: sessionStateSubject)
             .disposed(by: disposeBag)
     }
 }

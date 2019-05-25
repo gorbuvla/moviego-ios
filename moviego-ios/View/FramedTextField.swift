@@ -17,36 +17,36 @@ class FramedTextField: BaseView {
         
         var textColor: UIColor {
             switch self {
-            case .light: return UIColor(named: .textDark)
-            case .dark: return UIColor(named: .textLight)
+            case .light: return .secondary
+            case .dark: return .primary
             }
         }
         
         var bgColor: UIColor {
             switch self {
-            case .light: return UIColor(named: .bkgLight).withAlphaComponent(0.6)
-            case .dark: return UIColor(named: .bkgDark).withAlphaComponent(0.6)
+            case .light: return UIColor.primary.withAlphaComponent(0.6)
+            case .dark: return UIColor.secondary.withAlphaComponent(0.6)
             }
         }
         
         var selectedColor: UIColor {
             switch self {
-            case .light: return UIColor(named: .bkgLight)
-            case .dark: return UIColor(named: .bkgDark)
+            case .light: return .primary
+            case .dark: return .secondary
             }
         }
         
         var activeBorderColor: UIColor {
             switch self {
-            case .light: return UIColor(named: .primary)
-            case .dark: return UIColor(named: .secondary)
+            case .light: return .secondary
+            case .dark: return .primary
             }
         }
         
         var inactiveBorderColor: UIColor {
             switch self {
-            case .light: return .gray
-            case .dark: return .gray
+            case .light: return UIColor.secondary.withAlphaComponent(0.6)
+            case .dark: return UIColor.primary.withAlphaComponent(0.6)
             }
         }
         

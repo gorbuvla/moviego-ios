@@ -14,7 +14,10 @@ protocol UserRepositoring {
     var user: Observable<User?> { get }
     
     func login(credentials: LoginCredentials) -> Single<User>
+    func register(credentials: RegisterCredentials) -> Single<User>
     func logout() -> Completable
+    
+    func changeCity(to city: City) -> Completable
 }
 
 class UserRepository: UserRepositoring {
@@ -52,6 +55,16 @@ class UserRepository: UserRepositoring {
         }).map { $0.user }
     }
     
+    func register(credentials: RegisterCredentials) -> Single<User> {
+        return oauthApi.register(credentials: credentials)
+            .do(onSuccess: { [weak self] userWithCredentials in
+                self?.credentialsStore.user = userWithCredentials.user
+                self?.credentialsStore.credentials = userWithCredentials.credentials
+                self?.userVariable.onNext(userWithCredentials.user)
+            })
+            .map { $0.user }
+    }
+    
     func logout() -> Completable {
         return Completable.create { [weak self] completable in
             self?.credentialsStore.user = nil
@@ -61,6 +74,10 @@ class UserRepository: UserRepositoring {
             completable(.completed)
             return Disposables.create {}
         }
+    }
+    
+    func changeCity(to city: City) -> Completable {
+        return Observable.just(()).asSingle().asCompletable() // jackie chan meme
     }
 }
 
@@ -82,6 +99,10 @@ class MockedUserRepository: UserRepositoring {
         self.userVariable = Variable(credentialsStore.user)
     }
     
+    func changeCity(to city: City) -> Completable {
+        return Observable.just(()).asSingle().asCompletable() // jackie chan meme
+    }
+    
     func login(credentials: LoginCredentials) -> Single<User> {
         guard case .password(let email, let password) = credentials else { return Single.error(ApiException.unauthorized) }
         
@@ -96,7 +117,14 @@ class MockedUserRepository: UserRepositoring {
                 self?.credentialsStore.credentials = userWithCredentials.credentials
                 self?.userVariable.value = userWithCredentials.user
             }).map { $0.user }
-            .delay(3, scheduler: MainScheduler.instance)
+            .delay(.seconds(1), scheduler: MainScheduler.instance)
+    }
+    
+    func register(credentials: RegisterCredentials) -> Single<User> {
+        let user = User(id: 1, name: credentials.name, email: credentials.surname, avatarId: nil, city: credentials.city)
+        userVariable.value = user
+        return Single.just(User(id: 1, name: credentials.name, email: credentials.surname, avatarId: nil, city: credentials.city))
+            .delay(.seconds(1), scheduler: MainScheduler.instance)
     }
     
     func logout() -> Completable {

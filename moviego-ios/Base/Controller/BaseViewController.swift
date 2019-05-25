@@ -67,7 +67,7 @@ class BaseViewController<V: UIView>: UIViewController {
         
         if shouldObserveKeyboardChanges() {
             Observable.merge(keyboardOpenObservable, keyboardCloseObservable)
-                .takeUntil(rx.methodInvoked(#selector(viewWillAppear(_:))))
+                .takeUntil(rx.methodInvoked(#selector(viewWillDisappear(_:))))
                 .bind(onNext: { (offset, duration) in self.receiveKeyboardChange(offset, duration) })
                 .disposed(by: disposeBag)
         }

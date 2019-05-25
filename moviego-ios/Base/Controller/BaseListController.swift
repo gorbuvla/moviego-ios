@@ -22,8 +22,13 @@ class BaseListController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func loadView() {
         super.loadView()
+        view.backgroundColor = .bkgLight
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.tableFooterView = UIView(frame: .zero)
         tableView.dataSource = self

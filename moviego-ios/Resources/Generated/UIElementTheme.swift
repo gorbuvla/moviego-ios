@@ -23,6 +23,19 @@ extension UIButton {
         titleLabel?.styleLink()
     }
     
+    func secondaryButton() {
+        setBackgroundImage(UIColor(named: .primary).image(), for: .normal)
+        setBackgroundImage(UIColor(named: .primary).withAlphaComponent(0.4).image(), for: .disabled)
+        setTitleColor(.secondary, for: .normal)
+        setTitleColor(UIColor.secondary.withAlphaComponent(0.3), for: .disabled)
+        
+        layer.cornerRadius = 20
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.secondary.cgColor
+        clipsToBounds = true
+        titleLabel?.styleLink()
+    }
+    
     func underlinedButton(text: String) {
         let title = NSMutableAttributedString(string: text, attributes: [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue])
         self.setAttributedTitle(title, for: .normal)

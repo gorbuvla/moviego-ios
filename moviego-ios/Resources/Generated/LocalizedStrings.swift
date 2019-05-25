@@ -13,7 +13,7 @@ import Foundation
 internal enum L10n {
 
   internal enum App {
-    /// iOS Skeleton
+    /// MovieGo
     internal static let name = L10n.tr("Localizable", "app.name")
   }
 
@@ -30,6 +30,20 @@ internal enum L10n {
     }
   }
 
+  internal enum Dashboard {
+    /// Search movies & cinemas
+    internal static let searchHint = L10n.tr("Localizable", "dashboard.search_hint")
+    /// In theatres
+    internal static let title = L10n.tr("Localizable", "dashboard.title")
+  }
+
+  internal enum General {
+    /// Continue
+    internal static let `continue` = L10n.tr("Localizable", "general.continue")
+    /// Ok
+    internal static let ok = L10n.tr("Localizable", "general.ok")
+  }
+
   internal enum Login {
     /// Sign In
     internal static let buttonTitle = L10n.tr("Localizable", "login.button_title")
@@ -41,11 +55,57 @@ internal enum L10n {
     internal static let registerButton = L10n.tr("Localizable", "login.register_button")
   }
 
+  internal enum Registration {
+    internal enum ChooseCity {
+      /// Choose your city
+      internal static let title = L10n.tr("Localizable", "registration.choose_city.title")
+      internal enum Unsupported {
+        /// %@ is currently unsupported, you may travel to another city to use our app
+        internal static func message(_ p1: String) -> String {
+          return L10n.tr("Localizable", "registration.choose_city.unsupported.message", p1)
+        }
+        /// Unsupported city
+        internal static let title = L10n.tr("Localizable", "registration.choose_city.unsupported.title")
+      }
+    }
+    internal enum User {
+      /// Register
+      internal static let button = L10n.tr("Localizable", "registration.user.button")
+      /// Confirm password
+      internal static let confirmPassword = L10n.tr("Localizable", "registration.user.confirm_password")
+      /// Email
+      internal static let email = L10n.tr("Localizable", "registration.user.email")
+      /// Name
+      internal static let name = L10n.tr("Localizable", "registration.user.name")
+      /// Password
+      internal static let password = L10n.tr("Localizable", "registration.user.password")
+      /// Surname
+      internal static let surname = L10n.tr("Localizable", "registration.user.surname")
+      /// Set email & password
+      internal static let title = L10n.tr("Localizable", "registration.user.title")
+    }
+  }
+
+  internal enum Session {
+    /// At %@, %@ away
+    internal static func subtitleFormat(_ p1: String, _ p2: String) -> String {
+      return L10n.tr("Localizable", "session.subtitleFormat", p1, p2)
+    }
+    /// %@ (%@)
+    internal static func titleWithYear(_ p1: String, _ p2: String) -> String {
+      return L10n.tr("Localizable", "session.titleWithYear", p1, p2)
+    }
+  }
+
   internal enum Sessions {
     /// Movie sessions
     internal static let detail = L10n.tr("Localizable", "sessions.detail")
     /// Hot sessions nearby
     internal static let title = L10n.tr("Localizable", "sessions.title")
+    internal enum Suggest {
+      /// Top sessions:
+      internal static let title = L10n.tr("Localizable", "sessions.suggest.title")
+    }
   }
 
   internal enum Tabbar {

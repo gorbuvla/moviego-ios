@@ -13,6 +13,7 @@ protocol CinemaRepositoring {
     func fetchCinemas(lat: Float?, lng: Float?, radius: Double?) -> Single<[Cinema]>
     
     func fetchMovies(offset: Int, limit: Int) -> Single<[Movie]>
+    func fetchSessions(startingFrom: Date, lat: Double?, lng: Double?, limit: Int, offset: Int) -> Single<[Session]>
 }
 
 class MockedCinemaRepository: CinemaRepositoring {
@@ -76,11 +77,22 @@ class MockedCinemaRepository: CinemaRepositoring {
     )
     
     func fetchCinemas(lat: Float?, lng: Float?, radius: Double?) -> Single<[Cinema]> {
-        return Single.just([csAndel, ccAndel, ccChodov]).delay(.seconds(3), scheduler: MainScheduler.instance)
+        return Single.just([csAndel, ccAndel, ccChodov]).delay(.seconds(1), scheduler: MainScheduler.instance)
     }
     
     func fetchMovies(offset: Int, limit: Int) -> Single<[Movie]> {
-        return Single.just([rhapsody, atomicBlonde]).delay(.seconds(2), scheduler: MainScheduler.instance)
+        return Single.just([rhapsody, atomicBlonde]).delay(.seconds(1), scheduler: MainScheduler.instance)
+    }
+    
+    func fetchSessions(startingFrom: Date, lat: Double?, lng: Double?, limit: Int, offset: Int) -> Single<[Session]> {
+        
+        let results = [ccAndel, ccChodov, csAndel]
+            .flatMap { cinema in [rhapsody, atomicBlonde].map { movie in (cinema, movie) } }
+            .map { cinema, movie in
+                Session(type: "2D", startsAt: Date(), cinema: cinema, movie: movie)
+            }
+
+        return Single.just(results).delay(.seconds(1), scheduler: MainScheduler.instance)
     }
 }
 

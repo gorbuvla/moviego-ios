@@ -11,44 +11,28 @@ import RxSwift
 
 protocol RegistrationRepositoring {
     
-    var email: String? { get set }
     var name: String? { get set }
+    var surname: String? { get set }
+    var email: String? { get set }
     var password: String? { get set }
-    //var city: City { get set } // todo: uncomment once api model added
+    var city: City? { get set }
     
-    var credentials: Observable<RegisterCredentialsDTO> { get }
-}
-
-struct RegisterCredentialsDTO {
-    var name: String? = nil
-    var email: String? = nil
-    var password: String? = nil
+    var credentials: RegisterCredentials { get }
 }
 
 class RegistrationRepository: RegistrationRepositoring {
     
-    private let credentialsvariable = Variable<RegisterCredentialsDTO>(RegisterCredentialsDTO(name: nil, email: nil, password: nil))
+    var name: String?
+    var surname: String?
+    var email: String?
+    var password: String?
+    var city: City?
     
-    var email: String? {
-        didSet {
-           credentialsvariable.value.email = email
+    var credentials: RegisterCredentials {
+        get {
+            assert(name != nil && surname != nil && email != nil && password != nil && city != nil)
+            return RegisterCredentials(name: name!, surname: surname!, email: email!, password: password!, city: city!)
         }
-    }
-    
-    var name: String? {
-        didSet {
-            credentialsvariable.value.name = name
-        }
-    }
-    
-    var password: String? {
-        didSet {
-            credentialsvariable.value.password = password
-        }
-    }
-    
-    var credentials: Observable<RegisterCredentialsDTO> {
-        get { return credentialsvariable.asObservable() }
     }
 }
 

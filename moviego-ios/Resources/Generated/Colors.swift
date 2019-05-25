@@ -22,27 +22,36 @@ internal struct ColorName {
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#276fbf"></span>
   /// Alpha: 100% <br/> (0x276fbfff)
   internal static let bkgDark = ColorName(rgbaValue: 0x276fbfff)
-  /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#f6f4f3"></span>
-  /// Alpha: 100% <br/> (0xf6f4f3ff)
-  internal static let bkgLight = ColorName(rgbaValue: 0xf6f4f3ff)
+  /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#f4f6f8"></span>
+  /// Alpha: 100% <br/> (0xf4f6f8ff)
+  internal static let bkgLight = ColorName(rgbaValue: 0xf4f6f8ff)
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#f74850"></span>
   /// Alpha: 100% <br/> (0xf74850ff)
   internal static let errorRed = ColorName(rgbaValue: 0xf74850ff)
-  /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#8552ff"></span>
-  /// Alpha: 100% <br/> (0x8552ffff)
-  internal static let primary = ColorName(rgbaValue: 0x8552ffff)
+  /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ffffff"></span>
+  /// Alpha: 100% <br/> (0xffffffff)
+  internal static let primary = ColorName(rgbaValue: 0xffffffff)
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#5839a3"></span>
   /// Alpha: 100% <br/> (0x5839a3ff)
   internal static let primaryDark = ColorName(rgbaValue: 0x5839a3ff)
-  /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#8db38b"></span>
-  /// Alpha: 100% <br/> (0x8db38bff)
-  internal static let secondary = ColorName(rgbaValue: 0x8db38bff)
+  /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ff8e5d"></span>
+  /// Alpha: 100% <br/> (0xff8e5dff)
+  internal static let secondary = ColorName(rgbaValue: 0xff8e5dff)
+  /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#e8e8e8"></span>
+  /// Alpha: 100% <br/> (0xe8e8e8ff)
+  internal static let separator = ColorName(rgbaValue: 0xe8e8e8ff)
+  /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#c2c8d3"></span>
+  /// Alpha: 100% <br/> (0xc2c8d3ff)
+  internal static let subtitle = ColorName(rgbaValue: 0xc2c8d3ff)
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#000000"></span>
   /// Alpha: 100% <br/> (0x000000ff)
   internal static let textDark = ColorName(rgbaValue: 0x000000ff)
   /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#ffffff"></span>
   /// Alpha: 100% <br/> (0xffffffff)
   internal static let textLight = ColorName(rgbaValue: 0xffffffff)
+  /// <span style="display:block;width:3em;height:2em;border:1px solid black;background:#5b6576"></span>
+  /// Alpha: 100% <br/> (0x5b6576ff)
+  internal static let title = ColorName(rgbaValue: 0x5b6576ff)
 }
 // swiftlint:enable identifier_name line_length type_body_length
 

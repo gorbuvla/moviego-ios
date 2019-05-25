@@ -39,7 +39,6 @@ class ShowtimeSearchCell: BaseTableViewCell<ShowtimeCellView> {
         let tomatoesAttachment = NSTextAttachment()
         tomatoesAttachment.image = Asset.icTomatoesBadge.image
         
-        
         attrString.append(NSAttributedString(attachment: imdbAttachment))
         attrString.append(NSAttributedString(string: ": \(imdbScore), "))
         attrString.append(NSAttributedString(attachment: tomatoesAttachment))
