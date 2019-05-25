@@ -22,7 +22,6 @@ final class AppDependency {
     // repositories
     lazy var registrationRepository: RegistrationRepositoring = RegistrationRepository()
     lazy var userRepository: UserRepositoring = MockedUserRepository(credentialsStore: UserDefaults.defaultStore)
-    lazy var sessionRepository: SessionRepositoring = MockedSessionRepository()
     lazy var cinemaRepository: CinemaRepositoring = MockedCinemaRepository()
 }
 

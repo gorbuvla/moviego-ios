@@ -15,6 +15,8 @@ protocol UserRepositoring {
     
     func login(credentials: LoginCredentials) -> Single<User>
     func logout() -> Completable
+    
+    func changeCity(to city: City) -> Completable
 }
 
 class UserRepository: UserRepositoring {
@@ -62,6 +64,10 @@ class UserRepository: UserRepositoring {
             return Disposables.create {}
         }
     }
+    
+    func changeCity(to city: City) -> Completable {
+        return Observable.just(()).asSingle().asCompletable() // jackie chan meme
+    }
 }
 
 class MockedUserRepository: UserRepositoring {
@@ -80,6 +86,10 @@ class MockedUserRepository: UserRepositoring {
     init(credentialsStore: CredentialsStore) {
         self.credentialsStore = credentialsStore
         self.userVariable = Variable(credentialsStore.user)
+    }
+    
+    func changeCity(to city: City) -> Completable {
+        return Observable.just(()).asSingle().asCompletable() // jackie chan meme
     }
     
     func login(credentials: LoginCredentials) -> Single<User> {

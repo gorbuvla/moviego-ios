@@ -12,9 +12,9 @@ import ACKategories
 class LoginCoordinator: FlowCoordinator {
     
     override func start() -> UIViewController {
-        let navigation = UINavigationController()
-        navigation.translucentStyle()
-        navigation.navigationBar.barStyle = .blackOpaque
+        let navigation = BaseNavigationController()
+//        navigation.translucentStyle()
+//        navigation.navigationBar.barStyle = .blackOpaque
         
         let vc = LoginViewController(viewModel: dependencies.loginViewModelFactory())
         vc.navigationDelegate = self

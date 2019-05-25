@@ -15,5 +15,6 @@ extension UIColor {
     static var title: UIColor { return UIColor(named: .title) }
     static var subtitle: UIColor { return UIColor(named: .subtitle) }
     static var bkgLight: UIColor { return UIColor(named: .bkgLight) }
+    static var errorRed: UIColor { return UIColor(named: .errorRed) }
     static var primaryDark: UIColor { return UIColor(named: .primaryDark) }
 }

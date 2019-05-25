@@ -20,8 +20,8 @@ class RegistrationCoordinator: FlowCoordinator {
     
     override func start(with navigationController: UINavigationController) {
         self.navController = navigationController
-        
-        let vc = RegisterUserViewController(viewModel: factories.userRegistrationViewModelFactory())
+        self.navigationController = navigationController
+        let vc = ChooseCityViewController(viewModel: factories.registerCityViewModelFactory())
         vc.navigationDelegate = self
         self.navController?.pushViewController(vc, animated: true)
     }
@@ -29,31 +29,15 @@ class RegistrationCoordinator: FlowCoordinator {
 
 extension RegistrationCoordinator: RegistrUserNavigationDelegate {
     
-    func didTapGoToPassword() {
-        let vc = RegisterPasswordViewController(viewModel: factories.registerPasswordViewModelFactory())
+    func didTapNext() {
+        
+    }
+}
+
+extension RegistrationCoordinator: ChooseCityNavigationDelegate {
+    func onCityPicked() {
+        let vc = RegisterUserViewController(viewModel: factories.userRegistrationViewModelFactory())
         vc.navigationDelegate = self
-        navController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
-
-extension RegistrationCoordinator: RegisterPasswordNavigationDelegate {
-    
-    func didTapGoToCity() {
-        let vc = PickCityViewController(viewModel: factories.registerCityViewModelFactory())
-        vc.navigationDelegate = self
-        navController?.pushViewController(vc, animated: true)
-    }
-}
-
-extension RegistrationCoordinator: PickCityNavigationDelegate {
-    func onPickSuccess() {
-        // TODO: navigate to dashboard
-    }
-}
-
-//extension RegistrationCoordinator: RegisterCityNavigationDelegate {
-//
-//    func onRegisterSuccess() {
-//        // todo: continue into main flow
-//    }
-//}

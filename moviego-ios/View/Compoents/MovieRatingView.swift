@@ -73,7 +73,7 @@ class MovieRatingView: BaseView {
     }
 }
 
-extension DslMaker {
+extension ViewDslMaker {
     
     @discardableResult
     func movieRatingView(block: (MovieRatingView) -> ()) -> MovieRatingView {

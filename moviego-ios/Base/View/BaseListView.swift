@@ -20,7 +20,8 @@ class BaseListView: BaseView {
         tableView.backgroundColor = .white
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.tableFooterView = UIView(frame: .zero)
-        tableView.scrollsToTop = true
+        tableView.tableHeaderView = UIView(frame: .zero)
+        //tableView.scrollsToTop = true
         //tableView.contentInsetAdjustmentBehavior = .never
         self.tableView = tableView
         self.addSubview(tableView)

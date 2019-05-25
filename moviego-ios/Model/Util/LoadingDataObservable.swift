@@ -38,11 +38,24 @@ struct LoadingResult<T>: LoadingDataObservable {
 extension ObservableType {
     
     func mapLoadingEvent() -> Observable<LoadingResult<Element>> {
-        return materialize().map(LoadingResult.init)
+        return materialize()
+            .filter { e in
+                switch e {
+                case .completed: return false
+                default: return true
+                }
+            }
+            .map(LoadingResult.init)
     }
     
     func mapLoading() -> Observable<LoadingResult<Element>> {
         return materialize()
+            .filter { e in
+                switch e {
+                case .completed: return false
+                default: return true
+                }
+            }
             .map(LoadingResult.init)
             .startWith(LoadingResult(true))
     }

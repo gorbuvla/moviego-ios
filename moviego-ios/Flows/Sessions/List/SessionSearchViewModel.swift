@@ -17,7 +17,7 @@ class SessionSearchViewModel: BaseViewModel {
     
     static let DEFAULT_LIMIT = 10
     
-    private let showtimeRepository: SessionRepositoring
+    private let showtimeRepository: CinemaRepositoring
     private let userRepository: UserRepositoring
     private let locationManager = CLLocationManager()
     private let viewStateVariable = BehaviorSubject(value: LoadingResult<[SessionSearchItem]>(false))
@@ -46,7 +46,7 @@ class SessionSearchViewModel: BaseViewModel {
         return mutableData
     }
     
-    init(showtimeRepository: SessionRepositoring, userRepository: UserRepositoring) {
+    init(showtimeRepository: CinemaRepositoring, userRepository: UserRepositoring) {
         self.showtimeRepository = showtimeRepository
         self.userRepository = userRepository
         super.init()
@@ -76,7 +76,7 @@ class SessionSearchViewModel: BaseViewModel {
     private func fetch(location: CLLocation?, date: Date, offset: Int = 0) {
         guard canFetchMore else { return }
         
-            showtimeRepository.fetchTrendingSessions(
+            showtimeRepository.fetchSessions(
                     startingFrom: date,
                     lat: location?.coordinate.latitude,
                     lng: location?.coordinate.latitude,
@@ -85,10 +85,10 @@ class SessionSearchViewModel: BaseViewModel {
                 ).asObservable()
             .do(onNext: { searchItems in
                 self.canFetchMore = searchItems.count == SessionSearchViewModel.DEFAULT_LIMIT
-                self.mutableData = offset == 0 ? searchItems : self.mutableData + searchItems
+                //self.mutableData = offset == 0 ? searchItems : self.mutableData + searchItems
             })
             .mapLoading()
-            .bind(to: viewStateVariable)
-            .disposed(by: disposeBag)
+//            .bind(to: viewStateVariable)
+//            .disposed(by: disposeBag)
     }
 }

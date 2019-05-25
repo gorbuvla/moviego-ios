@@ -28,7 +28,7 @@ class LoadingView: BaseView {
     }
 }
 
-extension DslMaker {
+extension ViewDslMaker {
     
     func loadingView(_ block: (LoadingView) -> ()) -> LoadingView {
         return customView(LoadingView(), block)

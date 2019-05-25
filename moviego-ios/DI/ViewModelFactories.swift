@@ -14,7 +14,6 @@ protocol HasViewModelFactories {
 
 protocol RegistrationViewModelFactories {
     var userRegistrationViewModelFactory: () -> RegisterUserViewModel { get }
-    var registerPasswordViewModelFactory: () -> RegisterPasswordViewModel { get }
     var registerCityViewModelFactory: () -> RegisterCityViewModel { get }
 }
 
@@ -34,10 +33,6 @@ extension AppDependency: ViewModelFactory {
         return { RegisterUserViewModel(repository: dependencies.registrationRepository) }
     }
     
-    var registerPasswordViewModelFactory: () -> RegisterPasswordViewModel {
-        return { RegisterPasswordViewModel(repository: dependencies.registrationRepository) }
-    }
-    
     var registerCityViewModelFactory: () -> RegisterCityViewModel {
         return { RegisterCityViewModel(cityApi: dependencies.cityApi, repository: dependencies.registrationRepository) }
     }
@@ -45,7 +40,7 @@ extension AppDependency: ViewModelFactory {
     var showtimeListViewModelFactory: () -> SessionSearchViewModel {
         return {
             SessionSearchViewModel(
-                showtimeRepository: dependencies.sessionRepository, userRepository: dependencies.userRepository
+                showtimeRepository: dependencies.cinemaRepository, userRepository: dependencies.userRepository
             )
         }
     }

@@ -11,10 +11,10 @@ import RxSwift
 import RxCocoa
 
 protocol RegistrUserNavigationDelegate: class {
-    func didTapGoToPassword()
+    func didTapNext()
 }
 
-class RegisterUserViewController: BaseViewController<RegisterUserView> {
+class RegisterUserViewController: BaseViewController<RegisterUserView>, UITextFieldDelegate {
     
     private let viewModel: RegisterUserViewModel
     var navigationDelegate: RegistrUserNavigationDelegate?
@@ -28,20 +28,104 @@ class RegisterUserViewController: BaseViewController<RegisterUserView> {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func shouldObserveKeyboardChanges() -> Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Enter info"
         
-//        combinedFormInput.map { $0.isNotEmpty && $1.isNotEmpty }
+//        layout.continueButton.rx.tap
+//            .withLatestFrom(combinedFormInput) { $1 }
+//            .bind(onNext: { [weak viewModel] (name, surname, email, password, confirm) in
+//                viewModel?.submit(name: name, surname: surname, email: email, password: password, confirm: confirm)
+//            })
+//            .disposed(by: disposeBag)
+//
+//        combinedFormInput.map { input in
+//            input.0.isNotEmpty && input.1.isNotEmpty
+//                && input.2.isNotEmpty && input.3.isNotEmpty && input.4.isNotEmpty
+//            }
 //            .bind(to: layout.continueButton.rx.isEnabled)
+//            .disposed(by: disposeBag)
+//
+//        viewModel.viewState
+//            .map { try! $0.get() }
+//            .observeOn(MainScheduler.instance)
+//            .subscribe(
+//                onNext: { [weak navigationDelegate] _ in navigationDelegate?.didTapNext() },
+//                onError: { [weak self] error in self?.handleError(error: error as! RegisterationValidationException) }
+//            )
 //            .disposed(by: disposeBag)
         
         layout.continueButton.rx.tap
-            .bind(onNext: { [weak navigationDelegate] in navigationDelegate?.didTapGoToPassword() })
+            .bind(onNext: { [weak navigationDelegate] in navigationDelegate?.didTapNext() })
             .disposed(by: disposeBag)
     }
     
-    private var combinedFormInput: Observable<(String, String)> {
-        get { return Observable.combineLatest(layout.nameTextField.textField.rx.text.orEmpty, layout.emailTextField.textField.rx.text.orEmpty) }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case layout.nameTextField.textField:
+            layout.surnameTextField.textField.becomeFirstResponder()
+        case layout.surnameTextField.textField:
+            layout.emailTextField.textField.becomeFirstResponder()
+        case layout.passwordInput.textField:
+            layout.confirmInput.textField.becomeFirstResponder()
+        case layout.confirmInput.textField:
+            layout.confirmInput.textField.resignFirstResponder()
+            
+            guard let name = layout.nameTextField.textField.text,
+                let surname = layout.surnameTextField.textField.text,
+                let email = layout.emailTextField.textField.text,
+                let password = layout.passwordInput.textField.text,
+                let confirm = layout.confirmInput.textField.text else {
+                    return false
+                }
+            
+            if name.isNotEmpty && surname.isNotEmpty && email.isNotEmpty && password.isNotEmpty && confirm.isNotEmpty {
+                viewModel.submit(name: name, surname: surname, email: email, password: password, confirm: confirm)
+            }
+        default: break
+        }
+        
+        return false
+    }
+    
+    override func receiveKeyboardChange(_ offset: CGFloat, _ duration: Double) {
+        layout.scrollView.snp.updateConstraints { make in
+            make.bottom.equalToSuperview().offset(-offset)
+        }
+        
+        UIView.animate(withDuration: duration) { [weak self] in
+            self?.view.layoutIfNeeded()
+        }
+    }
+    
+    private func handleValidationError(error: RegisterationValidationException) {
+        switch error {
+        case .nameFieldError(let errorStr):
+            layout.nameTextField.error = errorStr
+        case .surnameFieldError(let errorStr):
+            layout.surnameTextField.error = errorStr
+        case .emailFieldError(let errorStr):
+            layout.emailTextField.error = errorStr
+        case .passwordFieldError(let errorStr):
+            layout.passwordInput.error = errorStr
+        case .confirmFieldError(let errorStr):
+            layout.confirmInput.error = errorStr
+        }
+    }
+    
+    private var combinedFormInput: Observable<(String, String, String, String, String)> {
+        get {
+            return Observable.combineLatest(
+                layout.nameTextField.textField.rx.text.orEmpty,
+                layout.surnameTextField.textField.rx.text.orEmpty,
+                layout.emailTextField.textField.rx.text.orEmpty,
+                layout.passwordInput.textField.rx.text.orEmpty,
+                layout.passwordInput.textField.rx.text.orEmpty
+            )
+        }
     }
 }
