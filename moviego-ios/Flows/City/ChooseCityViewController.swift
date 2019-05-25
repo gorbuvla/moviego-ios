@@ -83,9 +83,12 @@ class ChooseCityViewController: BaseListController {
         
         viewModel.continuation.error
             .observeOn(MainScheduler.instance)
-            .bind(onNext: { error in
-                print(error)
+            .bind(onNext: { [weak self] error in
+                if let error = error as? UnsupportedCityError {
+                    self?.handleUnsupportedError(error: error)
+                }
             })
+            .disposed(by: disposeBag)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -102,9 +105,15 @@ class ChooseCityViewController: BaseListController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Choosing city")
         guard let city = viewModel.data[safe: indexPath.row] else { return }
-        print("Choosing city 2")
+        
         viewModel.selectCity(city)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    private func handleUnsupportedError(error: UnsupportedCityError) {
+        let alert = UIAlertController(title: "Unsupported", message: error.message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(alert, animated: true)
     }
 }
