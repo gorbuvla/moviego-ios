@@ -6,6 +6,20 @@
 	objectVersion = 51;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		C267FFB4229AB3F1004BC1EE /* Localization */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = C267FFB5229AB3F1004BC1EE /* Build configuration list for PBXAggregateTarget "Localization" */;
+			buildPhases = (
+				C267FFB9229AB40A004BC1EE /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Localization;
+			productName = Localization;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		1CD77DADF868C089F1AD1BA0 /* Pods_moviego_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 300592F8A601A1E85853C83F /* Pods_moviego_ios.framework */; };
 		C212BC45224FBB2000C624A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BC44224FBB2000C624A7 /* AppDelegate.swift */; };
@@ -879,6 +893,9 @@
 						CreatedOnToolsVersion = 10.2;
 						TestTargetID = C212BC40224FBB2000C624A7;
 					};
+					C267FFB4229AB3F1004BC1EE = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
 				};
 			};
 			buildConfigurationList = C212BC3C224FBB2000C624A7 /* Build configuration list for PBXProject "moviego-ios" */;
@@ -896,6 +913,7 @@
 			targets = (
 				C212BC40224FBB2000C624A7 /* moviego-ios */,
 				C212BC6C224FC4C100C624A7 /* UnitTests */,
+				C267FFB4229AB3F1004BC1EE /* Localization */,
 			);
 		};
 /* End PBXProject section */
@@ -1014,6 +1032,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "CURRENT_ENV_FILE=\"${ENVIRONMENT_DIR}/.current\"\nENVIRONMENT=`cat ${CURRENT_ENV_FILE} || echo \"Development\"`\nSELECTED_ENV_DIR=\"${ENVIRONMENT_DIR}/${ENVIRONMENT}\"\nCURRENT_ENV_DIR=\"${ENVIRONMENT_DIR}/Current\"\n\nrm -rf \"${CURRENT_ENV_DIR}\"\ncp -r \"${SELECTED_ENV_DIR}\" \"${CURRENT_ENV_DIR}\"\ntouch \"${INFOPLIST_FILE}\"\ntouch \"$CURRENT_ENV_DIR\"\n";
+		};
+		C267FFB9229AB40A004BC1EE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n\"$PROJECT_DIR/Pods/ACKLocalization/Localization\" \"1vRhJKJSUDhJCv1hv2zpwThQxKwBEOu5h8mX2zXJohcgueVwYUx0kcRSoIZH2CK3bmY2HV_8xsqaMHiJ\" \"key_ios\" '{\"EN\": \"Base\"}' \"$PROJECT_DIR/moviego-ios/Resources\" \"Localizable.strings\" \n";
 		};
 		D75EC136B8F2B05DF3D002B7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1473,6 +1508,33 @@
 			};
 			name = Beta;
 		};
+		C267FFB6229AB3F1004BC1EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P88J5J9T9W;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C267FFB7229AB3F1004BC1EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P88J5J9T9W;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C267FFB8229AB3F1004BC1EE /* Beta */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P88J5J9T9W;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Beta;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1502,6 +1564,16 @@
 				C212BC75224FC4C100C624A7 /* Debug */,
 				C212BC76224FC4C100C624A7 /* Release */,
 				C212BC7A224FD0ED00C624A7 /* Beta */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Beta;
+		};
+		C267FFB5229AB3F1004BC1EE /* Build configuration list for PBXAggregateTarget "Localization" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C267FFB6229AB3F1004BC1EE /* Debug */,
+				C267FFB7229AB3F1004BC1EE /* Release */,
+				C267FFB8229AB3F1004BC1EE /* Beta */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Beta;

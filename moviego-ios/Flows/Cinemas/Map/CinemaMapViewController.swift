@@ -31,7 +31,7 @@ class CinemaMapViewController: BaseViewController<BaseMapView>, MKMapViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = L10n.Cinema.Map.title
+        //navigationItem.title = L10n.Cinema.Map.title
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: UIActivityIndicatorView(style: .gray))
         modalClosable()
         layout.mapView.delegate = self

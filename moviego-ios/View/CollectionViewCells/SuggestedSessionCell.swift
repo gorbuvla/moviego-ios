@@ -15,8 +15,8 @@ class SuggestedSessionCell: BaseCollectionViewCell<SuggestedSessionView> {
         didSet {
             guard let session = session else { return }
             
-            layout.titleLabel.text = L10n.Session.titleWithYear(session.movie.title, session.movie.year)
-            layout.subtitleLabel.text = L10n.Session.subtitleFormat(session.cinema.name, "600m") // TODO: compute actual distance
+            layout.titleLabel.text = L10n.Dashboard.SessionSuggest.titleWithYearFormat(session.movie.title, session.movie.year)
+            layout.subtitleLabel.text = L10n.Dashboard.SessionSuggest.subtitleCinemaKmFormat(session.cinema.name, "600m") // TODO: compute actual distance
             layout.posterThumbnail.af_setImage(withURL: session.movie.poster)
         }
     }

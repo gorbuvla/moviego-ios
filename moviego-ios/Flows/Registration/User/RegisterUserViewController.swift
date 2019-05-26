@@ -73,6 +73,8 @@ class RegisterUserViewController: BaseViewController<RegisterUserView>, UITextFi
             layout.surnameTextField.textField.becomeFirstResponder()
         case layout.surnameTextField.textField:
             layout.emailTextField.textField.becomeFirstResponder()
+        case layout.emailTextField.textField:
+            layout.passwordTextField.becomeFirstResponder()
         case layout.passwordTextField.textField:
             layout.confirmTextField.textField.becomeFirstResponder()
         case layout.confirmTextField.textField:
