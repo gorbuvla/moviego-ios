@@ -12,7 +12,7 @@ import ACKategories
 class DashboardCoordinator: FlowCoordinator {
     
     override func start(with navigationController: UINavigationController) {
-        let vc = DashboardViewController(viewModel: dependencies.dashboardViewModelFactory())
+        let vc = DashboardViewController(viewModel: factories.dashboardViewModelFactory())
         vc.navigationDelegate = self
         self.navigationController = navigationController
         navigationController.pushViewController(vc, animated: true)
@@ -31,13 +31,13 @@ extension DashboardCoordinator: DashboardNavigatioNDelegate {
     
     func presentCinemaMap(from viewController: UIViewController) {
         let navidation = BaseNavigationController()
-        navidation.viewControllers = [CinemaMapViewController(viewModel: dependencies.cinemaMapViewModel())]
+        navidation.viewControllers = [CinemaMapViewController(viewModel: factories.cinemaMapViewModel())]
         viewController.present(navidation, animated: true)
     }
     
     func presentProfile(from viewController: UIViewController) {
         let navigation = BaseNavigationController()
-        navigation.viewControllers = [ProfileViewController(viewModel: dependencies.profileViewModel())]
+        navigation.viewControllers = [ProfileViewController(viewModel: factories.profileViewModel())]
         viewController.present(navigation, animated: true)
     }
 }

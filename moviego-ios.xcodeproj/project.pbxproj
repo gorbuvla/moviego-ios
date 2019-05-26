@@ -38,7 +38,7 @@
 		C212BCAB2250325C00C624A7 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCAA2250325C00C624A7 /* LocalizedStrings.swift */; };
 		C212BCBE2250475E00C624A7 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C212BCBC2250475E00C624A7 /* RxSwift.framework */; };
 		C212BCBF2250475E00C624A7 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C212BCBD2250475E00C624A7 /* RxCocoa.framework */; };
-		C212BCD02250D81F00C624A7 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCCF2250D81F00C624A7 /* AppDependency.swift */; };
+		C212BCD02250D81F00C624A7 /* ModelDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCCF2250D81F00C624A7 /* ModelDependency.swift */; };
 		C212BCD22250DB9E00C624A7 /* ViewModelFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCD12250DB9E00C624A7 /* ViewModelFactories.swift */; };
 		C212BCD62250E98D00C624A7 /* RxSwiftExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C212BCD52250E98D00C624A7 /* RxSwiftExt.framework */; };
 		C212BCD922511AF000C624A7 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCD822511AF000C624A7 /* BaseTableViewCell.swift */; };
@@ -181,7 +181,7 @@
 		C212BCAA2250325C00C624A7 /* LocalizedStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
 		C212BCBC2250475E00C624A7 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		C212BCBD2250475E00C624A7 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
-		C212BCCF2250D81F00C624A7 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
+		C212BCCF2250D81F00C624A7 /* ModelDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDependency.swift; sourceTree = "<group>"; };
 		C212BCD12250DB9E00C624A7 /* ViewModelFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactories.swift; sourceTree = "<group>"; };
 		C212BCD52250E98D00C624A7 /* RxSwiftExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwiftExt.framework; path = Carthage/Build/iOS/RxSwiftExt.framework; sourceTree = "<group>"; };
 		C212BCD822511AF000C624A7 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -573,7 +573,7 @@
 		C212BCB9225037DC00C624A7 /* DI */ = {
 			isa = PBXGroup;
 			children = (
-				C212BCCF2250D81F00C624A7 /* AppDependency.swift */,
+				C212BCCF2250D81F00C624A7 /* ModelDependency.swift */,
 				C212BCD12250DB9E00C624A7 /* ViewModelFactories.swift */,
 			);
 			path = DI;
@@ -1141,7 +1141,7 @@
 				C23EEB9D2279D26100A95185 /* LoadingView.swift in Sources */,
 				C212BCF322515DD500C624A7 /* UserRepository.swift in Sources */,
 				C2C52ED2225E4211009A6D93 /* ChooseCityViewController.swift in Sources */,
-				C212BCD02250D81F00C624A7 /* AppDependency.swift in Sources */,
+				C212BCD02250D81F00C624A7 /* ModelDependency.swift in Sources */,
 				C23EEBB1227CCDAE00A95185 /* CinemaApiService.swift in Sources */,
 				C212BCEC225151AC00C624A7 /* CredentialsProvider.swift in Sources */,
 				C24400E0225D063B001C88A1 /* LoginCoordinator.swift in Sources */,
