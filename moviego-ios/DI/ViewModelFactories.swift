@@ -9,7 +9,6 @@
 import Foundation
 
 protocol HasViewModelFactories {
-    
 }
 
 protocol ProfileViewModelFactories {
@@ -23,28 +22,34 @@ protocol RegistrationViewModelFactories {
 
 typealias ViewModelFactory = HasViewModelFactories & RegistrationViewModelFactories & ProfileViewModelFactories
 
-extension AppDependency: ViewModelFactory {
+final class ViewModelDependency: ViewModelFactory {
+    
+    private let dependencies: ModelDependency
+    
+    init(modelDependency: ModelDependency) {
+        self.dependencies = modelDependency
+    }
     
     var loginViewModelFactory: () -> LoginViewModel {
-        return { LoginViewModel(repository: dependencies.userRepository) }
+        return { LoginViewModel(repository: self.dependencies.userRepository) }
     }
     
     var userRegistrationViewModelFactory: (RegistrationRepository) -> RegisterUserViewModel {
         return { registrationRepository in
-            RegisterUserViewModel(repository: registrationRepository, userRepository: dependencies.userRepository)
+            RegisterUserViewModel(repository: registrationRepository, userRepository: self.dependencies.userRepository)
         }
     }
     
     var registerCityViewModelFactory: (RegistrationRepository) -> RegisterCityViewModel {
         return { registrationRepository in
-            RegisterCityViewModel(cityApi: dependencies.cityApi, repository: registrationRepository)
+            RegisterCityViewModel(cityApi: self.dependencies.cityApi, repository: registrationRepository)
         }
     }
     
     var showtimeListViewModelFactory: () -> SessionSearchViewModel {
         return {
             SessionSearchViewModel(
-                showtimeRepository: dependencies.cinemaRepository, userRepository: dependencies.userRepository
+                showtimeRepository: self.dependencies.cinemaRepository, userRepository: self.dependencies.userRepository
             )
         }
     }
@@ -58,14 +63,16 @@ extension AppDependency: ViewModelFactory {
     }
     
     var dashboardViewModelFactory: () -> DashboardViewModel {
-        return { DashboardViewModel(repository: dependencies.cinemaRepository) }
+        return { DashboardViewModel(repository: self.dependencies.cinemaRepository) }
     }
     
     var cinemaMapViewModel: () -> CinemaMapViewModel {
-        return { CinemaMapViewModel(repository: dependencies.cinemaRepository) }
+        return { CinemaMapViewModel(repository: self.dependencies.cinemaRepository) }
     }
     
     var profileViewModel: () -> ProfileViewModel {
         return { ProfileViewModel() }
     }
 }
+
+let factories = ViewModelDependency(modelDependency: ModelDependency.shared)

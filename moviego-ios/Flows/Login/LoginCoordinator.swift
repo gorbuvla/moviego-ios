@@ -13,10 +13,8 @@ class LoginCoordinator: FlowCoordinator {
     
     override func start() -> UIViewController {
         let navigation = BaseNavigationController()
-//        navigation.translucentStyle()
-//        navigation.navigationBar.barStyle = .blackOpaque
         
-        let vc = LoginViewController(viewModel: dependencies.loginViewModelFactory())
+        let vc = LoginViewController(viewModel: factories.loginViewModelFactory())
         vc.navigationDelegate = self
         navigation.viewControllers = [vc]
         navigationController = navigation
@@ -30,7 +28,7 @@ class LoginCoordinator: FlowCoordinator {
 
 extension LoginCoordinator: LoginNavigationDelegate {
     func didTapRegister() {
-        let registrationCoordinator = RegistrationCoordinator(factories: dependencies)
+        let registrationCoordinator = RegistrationCoordinator(factories: factories)
         addChild(registrationCoordinator)
         registrationCoordinator.start(with: navigationController!)
     }

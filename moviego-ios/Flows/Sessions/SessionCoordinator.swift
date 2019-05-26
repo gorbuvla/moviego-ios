@@ -12,7 +12,7 @@ import ACKategories
 class SessionCoordinator: FlowCoordinator {
     
     override func start() -> UIViewController {
-        let vc = SessionSearchViewController(viewModel: dependencies.showtimeListViewModelFactory())
+        let vc = SessionSearchViewController(viewModel: factories.showtimeListViewModelFactory())
         vc.navigationDelegate = self
         
         let nav = BaseNavigationController(rootViewController: vc)
@@ -21,7 +21,7 @@ class SessionCoordinator: FlowCoordinator {
     }
     
     override func start(with navigationController: UINavigationController) {
-        let vc = SessionSearchViewController(viewModel: dependencies.showtimeListViewModelFactory())
+        let vc = SessionSearchViewController(viewModel: factories.showtimeListViewModelFactory())
         vc.navigationDelegate = self
         self.navigationController = navigationController
         navigationController.pushViewController(vc, animated: true)
@@ -31,18 +31,18 @@ class SessionCoordinator: FlowCoordinator {
 extension SessionCoordinator: SessionSearchNavigationDelegate {
     func presentMap(from viewController: UIViewController) {
         let navidation = UINavigationController()
-        navidation.viewControllers = [CinemaMapViewController(viewModel: dependencies.cinemaMapViewModel())]
+        navidation.viewControllers = [CinemaMapViewController(viewModel: factories.cinemaMapViewModel())]
         viewController.present(navidation, animated: true)
     }
     
     func presentProfile(from viewController: UIViewController) {
         let navigation = UINavigationController()
-        navigation.viewControllers = [ProfileViewController(viewModel: dependencies.profileViewModel())]
+        navigation.viewControllers = [ProfileViewController(viewModel: factories.profileViewModel())]
         viewController.present(navigation, animated: true)
     }
     
     func didSelect(searchItem: SessionSearchItem) {
-        let sessionDetailViewModel = dependencies.sessionDetailViewModelFactory(searchItem.movie, searchItem.cinema, searchItem.showtimes)
+        let sessionDetailViewModel = factories.sessionDetailViewModelFactory(searchItem.movie, searchItem.cinema, searchItem.showtimes)
         let sessionDetailViewController = SessionDetailViewController(viewModel: sessionDetailViewModel)
         navigationController?.pushViewController(sessionDetailViewController, animated: true)
     }

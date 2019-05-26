@@ -12,8 +12,7 @@ import ACKategories
 class ProfileCoordinator: FlowCoordinator {
     
     override func start() -> UIViewController {
-        let vc = ProfileViewController(viewModel: dependencies.profileViewModel())
-        //vc.tabBarItem.title = L10n.Tabbar.Profile.title
+        let vc = ProfileViewController(viewModel: factories.profileViewModel())
         let nav = UINavigationController()
         nav.viewControllers = [vc]
         navigationController = nav

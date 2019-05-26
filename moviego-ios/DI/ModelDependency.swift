@@ -7,7 +7,11 @@
 //
 import Foundation
 
-final class AppDependency {
+final class ModelDependency {
+    
+    static var shared: ModelDependency = {
+        ModelDependency()
+    }()
     
     // networking
     lazy var network: Network = Network()
@@ -24,5 +28,3 @@ final class AppDependency {
     lazy var userRepository: UserRepositoring = MockedUserRepository(credentialsStore: UserDefaults.defaultStore)
     lazy var cinemaRepository: CinemaRepositoring = MockedCinemaRepository()
 }
-
-let dependencies = AppDependency()
