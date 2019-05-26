@@ -40,7 +40,6 @@
 		C212BCBF2250475E00C624A7 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C212BCBD2250475E00C624A7 /* RxCocoa.framework */; };
 		C212BCD02250D81F00C624A7 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCCF2250D81F00C624A7 /* AppDependency.swift */; };
 		C212BCD22250DB9E00C624A7 /* ViewModelFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCD12250DB9E00C624A7 /* ViewModelFactories.swift */; };
-		C212BCD42250E45500C624A7 /* LoadingDataObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCD32250E45500C624A7 /* LoadingDataObservable.swift */; };
 		C212BCD62250E98D00C624A7 /* RxSwiftExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C212BCD52250E98D00C624A7 /* RxSwiftExt.framework */; };
 		C212BCD922511AF000C624A7 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCD822511AF000C624A7 /* BaseTableViewCell.swift */; };
 		C212BCDB2251247100C624A7 /* Reqres.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C212BCDA2251247100C624A7 /* Reqres.framework */; };
@@ -108,6 +107,8 @@
 		C2649841227DB2170037AF48 /* BaseMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2649840227DB2170037AF48 /* BaseMapView.swift */; };
 		C2649843227E1FFC0037AF48 /* ShowtimeSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2649842227E1FFC0037AF48 /* ShowtimeSearchCell.swift */; };
 		C267FFBC229AC454004BC1EE /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267FFBB229AC454004BC1EE /* State.swift */; };
+		C267FFBE229AD86C004BC1EE /* RxState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267FFBD229AD86C004BC1EE /* RxState.swift */; };
+		C267FFC0229ADBED004BC1EE /* RxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267FFBF229ADBED004BC1EE /* RxExtensions.swift */; };
 		C27BAD45226A3B420052BDA6 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27BAD44226A3B420052BDA6 /* StringExtensions.swift */; };
 		C28812B822836563006D2120 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28812B722836563006D2120 /* BaseNavigationController.swift */; };
 		C28812BE2284065B006D2120 /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28812BD2284065B006D2120 /* SessionDetailView.swift */; };
@@ -182,7 +183,6 @@
 		C212BCBD2250475E00C624A7 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		C212BCCF2250D81F00C624A7 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
 		C212BCD12250DB9E00C624A7 /* ViewModelFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactories.swift; sourceTree = "<group>"; };
-		C212BCD32250E45500C624A7 /* LoadingDataObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingDataObservable.swift; sourceTree = "<group>"; };
 		C212BCD52250E98D00C624A7 /* RxSwiftExt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwiftExt.framework; path = Carthage/Build/iOS/RxSwiftExt.framework; sourceTree = "<group>"; };
 		C212BCD822511AF000C624A7 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		C212BCDA2251247100C624A7 /* Reqres.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reqres.framework; path = Carthage/Build/iOS/Reqres.framework; sourceTree = "<group>"; };
@@ -251,6 +251,8 @@
 		C2649840227DB2170037AF48 /* BaseMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMapView.swift; sourceTree = "<group>"; };
 		C2649842227E1FFC0037AF48 /* ShowtimeSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowtimeSearchCell.swift; sourceTree = "<group>"; };
 		C267FFBB229AC454004BC1EE /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		C267FFBD229AD86C004BC1EE /* RxState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxState.swift; sourceTree = "<group>"; };
+		C267FFBF229ADBED004BC1EE /* RxExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxExtensions.swift; sourceTree = "<group>"; };
 		C27BAD44226A3B420052BDA6 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		C28812B722836563006D2120 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		C28812BD2284065B006D2120 /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
@@ -628,7 +630,6 @@
 		C212BCF72251674C00C624A7 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				C212BCD32250E45500C624A7 /* LoadingDataObservable.swift */,
 				C228EF0022834A1C004C19EE /* CloudinaryExtensions.swift */,
 			);
 			path = Util;
@@ -753,6 +754,8 @@
 			isa = PBXGroup;
 			children = (
 				C267FFBB229AC454004BC1EE /* State.swift */,
+				C267FFBD229AD86C004BC1EE /* RxState.swift */,
+				C267FFBF229ADBED004BC1EE /* RxExtensions.swift */,
 			);
 			path = Rx;
 			sourceTree = "<group>";
@@ -1118,7 +1121,6 @@
 				C29C625F2284927300FD0876 /* SessionSearchViewController.swift in Sources */,
 				C216F52D2275C045001EB291 /* CityCell.swift in Sources */,
 				C28812BE2284065B006D2120 /* SessionDetailView.swift in Sources */,
-				C212BCD42250E45500C624A7 /* LoadingDataObservable.swift in Sources */,
 				C24400CB225CD276001C88A1 /* LoginViewModel.swift in Sources */,
 				C264983B227D96540037AF48 /* CinemaMapViewModel.swift in Sources */,
 				C249D6CA22987C8C00FBD0BC /* SessionSuggestView.swift in Sources */,
@@ -1126,6 +1128,7 @@
 				C249D6C62298629500FBD0BC /* MovieRatingView.swift in Sources */,
 				C29C6268228494B400FD0876 /* CinemaDetailView.swift in Sources */,
 				C24400C2225C9C73001C88A1 /* LoginViewController.swift in Sources */,
+				C267FFC0229ADBED004BC1EE /* RxExtensions.swift in Sources */,
 				C212BCD22250DB9E00C624A7 /* ViewModelFactories.swift in Sources */,
 				C212BCE022512CBF00C624A7 /* Network.swift in Sources */,
 				C228EEFD2282F36A004C19EE /* CinemaAnnotation.swift in Sources */,
@@ -1161,6 +1164,7 @@
 				C2C52EC8225E3CA3009A6D93 /* SessionCoordinator.swift in Sources */,
 				C29C626C22849FE000FD0876 /* Promotion.swift in Sources */,
 				C2F86D5F22946B62001D9878 /* CinemaAnnotationView.swift in Sources */,
+				C267FFBE229AD86C004BC1EE /* RxState.swift in Sources */,
 				C23EEBA9227B790200A95185 /* Movie.swift in Sources */,
 				F5FCCCB022563B1C00640F2A /* DateExtensions.swift in Sources */,
 				C29C6261228492A900FD0876 /* SessionSearchViewModel.swift in Sources */,

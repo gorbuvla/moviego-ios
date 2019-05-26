@@ -20,7 +20,7 @@ class SessionSearchViewModel: BaseViewModel {
     private let showtimeRepository: CinemaRepositoring
     private let userRepository: UserRepositoring
     private let locationManager = CLLocationManager()
-    private let viewStateVariable = BehaviorSubject(value: LoadingResult<[SessionSearchItem]>(false))
+    private let viewStateVariable = BehaviorSubject(value: State<[SessionSearchItem]>.loading)
     
     // stored values by which search is affected
     private let searchLocationRelay = BehaviorRelay<CLLocation?>(value: nil)
@@ -38,7 +38,7 @@ class SessionSearchViewModel: BaseViewModel {
         get { return locationManager.location }
     }
     
-    var viewState: ObservableProperty<[SessionSearchItem]> {
+    var viewState: StateObservable<[SessionSearchItem]> {
         get { return viewStateVariable.asObservable() }
     }
     
@@ -87,7 +87,7 @@ class SessionSearchViewModel: BaseViewModel {
                 self.canFetchMore = searchItems.count == SessionSearchViewModel.DEFAULT_LIMIT
                 //self.mutableData = offset == 0 ? searchItems : self.mutableData + searchItems
             })
-            .mapLoading()
+            .mapState()
 //            .bind(to: viewStateVariable)
 //            .disposed(by: disposeBag)
     }

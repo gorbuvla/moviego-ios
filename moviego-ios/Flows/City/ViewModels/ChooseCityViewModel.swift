@@ -11,19 +11,19 @@ import RxSwift
 class ChooseCityViewModel: BaseViewModel {
     
     private let cityApi: CityApiServicing
-    private let viewStateSubject = BehaviorSubject(value: LoadingResult<[City]>(false))
-    private let continuationSubject = PublishSubject<LoadingResult<City>>()
+    private let viewStateSubject = BehaviorSubject(value: State<[City]>.loading)
+    private let continuationSubject = PublishSubject<State<City>>()
     
-    var viewState: ObservableProperty<[City]> {
+    var viewState: StateObservable<[City]> {
         get { return viewStateSubject.asObservable() }
     }
     
-    var continuation: ObservableProperty<City> {
+    var continuation: StateObservable<City> {
         return continuationSubject.asObservable()
     }
     
     var data: [City] {
-        get { return viewStateSubject.value.data?.element ?? [] }
+        get { return viewStateSubject.value.value ?? [] }
     }
     
     init(cityApi: CityApiServicing) {
@@ -34,13 +34,13 @@ class ChooseCityViewModel: BaseViewModel {
     
     func selectCity(_ city: City) {
         if city.name != "Prague" {
-            continuationSubject.onNext(.init(.error(UnsupportedCityError(message: L10n.Registration.ChooseCity.Unsupported.message(city.name)))))
+            continuationSubject.onNext(.error(UnsupportedCityError(message: L10n.Registration.ChooseCity.Unsupported.message(city.name))))
             return
         }
         
         saveSelection(city)
             .asObservable()
-            .mapLoading()
+            .mapState()
             .bind(onNext: { city in
                 // because bind:to does not dispose same observer from previous saveSelection...
                 self.continuationSubject.onNext(city)
@@ -55,7 +55,7 @@ class ChooseCityViewModel: BaseViewModel {
     private func fetchCities() {
         cityApi.fetchCities()
             .asObservable()
-            .mapLoading()
+            .mapState()
             .bind(to: viewStateSubject)
             .disposed(by: disposeBag)
     }

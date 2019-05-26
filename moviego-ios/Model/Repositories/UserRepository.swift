@@ -109,7 +109,7 @@ class MockedUserRepository: UserRepositoring {
         var singleSource: Single<UserWithCredentials> = Single.error(ApiException.unauthorized)
         
         if email == "movielover@moviego.me" && password == "password" {
-            singleSource = Single.just(UserWithCredentials(id: 1, name: "Hackerman", email: "movielover@moviego.me", avatarId: "user_avatars/hackerman.jpg", city: City(id: 2, name: "Prague", pictureId: "id", cinemasCount: 2), credentials: Credentials(accessToken: "AT", refreshToken: "RT", expiresIn: 3600)))
+            singleSource = Single.just(UserWithCredentials(id: 1, name: "Hackerman", email: "movielover@moviego.me", avatarId: "user_avatars/hackerman.jpg", city: City(id: 2, name: "Prague", pictureId: "id", cinemasCount: 2), credentials: Credentials(accessToken: "AT", refreshToken: "RT", expiresIn: 3600))).delay(.seconds(1), scheduler: MainScheduler.instance)
         }
 
         return singleSource.do(onSuccess: { [weak self] userWithCredentials in
@@ -117,7 +117,6 @@ class MockedUserRepository: UserRepositoring {
                 self?.credentialsStore.credentials = userWithCredentials.credentials
                 self?.userVariable.value = userWithCredentials.user
             }).map { $0.user }
-            .delay(.seconds(1), scheduler: MainScheduler.instance)
     }
     
     func register(credentials: RegisterCredentials) -> Single<User> {

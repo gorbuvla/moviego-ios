@@ -14,12 +14,12 @@ import RxRelay
 class CinemaMapViewModel: BaseViewModel {
     
     private let viewportSubject = PublishSubject<Viewport>()
-    private let viewStateVariable = BehaviorRelay(value: LoadingResult<[Cinema]>(false))
+    private let viewStateVariable = BehaviorRelay(value: State<[Cinema]>.loading)
     private let repository: CinemaRepositoring
     
     let locationManager: CLLocationManager
     
-    var viewState: ObservableProperty<[Cinema]> {
+    var viewState: StateObservable<[Cinema]> {
         get { return viewStateVariable.asObservable() }
     }
     
@@ -36,14 +36,9 @@ class CinemaMapViewModel: BaseViewModel {
     }
     
     private func bindUpdates() {
-        locationManager.rx.location
-        
-        
-        
-        
         viewportSubject.debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
             .flatMap { viewport in self.repository.fetchCinemas(lat: viewport.lat, lng: viewport.lng, radius: viewport.radius) }
-            .mapLoading() // TODO: this should emit loading every time viewport changes... 
+            .mapState()
             .bind(to: viewStateVariable)
             .disposed(by: disposeBag)
     }

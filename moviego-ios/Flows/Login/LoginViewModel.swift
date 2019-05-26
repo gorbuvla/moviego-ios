@@ -28,7 +28,7 @@ class LoginViewModel: BaseViewModel {
             viewStateSubject.onNext(.error(error))
             return
         }
-        
+
         repository.login(credentials: .password(username: emailOrUsername, password: password))
             .asObservable()
             .map { _ in () }

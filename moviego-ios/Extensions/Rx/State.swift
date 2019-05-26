@@ -6,34 +6,37 @@
 //  Copyright © 2019 Vlad Gorbunov. All rights reserved.
 //
 
-import Foundation
-import RxSwift
-import RxSwiftExt
-
-enum State<Element> {
+enum State<Value> {
     case loading
-    case loaded(Element)
+    case value(Value)
     case error(Error)
 }
 
-extension State {
+protocol StateConvertible {
+    associatedtype SValue
     
-    init?(event: Event<Element>) {
-        switch event {
-        case .next(let value):
-            self = .loaded(value)
-        case .error(let error):
-            self = .error(error)
-        default:
-            return nil
-        }
-    }
+    var state: State<SValue> { get }
+}
+
+extension State: StateConvertible {
+    typealias SValue = Value
+    
+    var state: State<Value> { return self }
 }
 
 infix operator ~=
-infix operator ~==
 
 extension State {
+    
+    static func ~=(lhs: State, rhs: State) -> Bool {
+        switch (lhs, rhs) {
+        case (.loading, .loading): return true
+        case (.value(_), .value(_)): return true
+        case (.error(_), .error(_)): return true
+        default: return false
+        }
+    }
+    
     var isLoading: Bool {
         switch self {
         case .loading: return true
@@ -41,23 +44,9 @@ extension State {
         }
     }
     
-    var isValue: Bool {
+    var value: Value? {
         switch self {
-        case .loaded(_): return true
-        default: return false
-        }
-    }
-    
-    var isError: Bool {
-        switch self {
-        case .error(_): return true
-        default: return false
-        }
-    }
-    
-    var value: Element? {
-        switch self {
-        case .loaded(let value): return value
+        case .value(let value): return value
         default: return nil
         }
     }
@@ -69,47 +58,3 @@ extension State {
         }
     }
 }
-
-protocol StateConvertible {
-    associatedtype Value
-    
-    var state: State<Value> { get }
-}
-
-extension State: StateConvertible {
-    typealias Value = Element
-    
-    var state: State<Element> {
-        return self
-    }
-}
-
-extension ObservableType {
-    
-    func mapState() -> Observable<State<Element>> {
-        return materialize()
-            .compactMap(State.init)
-            .startWith(State.loading)
-    }
-}
-
-extension ObservableType where Element: StateConvertible {
-    
-    var loading: Observable<Bool> {
-        get { return self.map { $0.state.isLoading } }
-    }
-    
-    var value: Observable<Element.Value> {
-        get { return compactMap { $0.state.value } }
-    }
-    
-    var error: Observable<Error> {
-        get { return compactMap { $0.state.error } }
-    }
-}
-
-fileprivate struct NoneWrap<E> {
-    let value: E
-}
-
-typealias StateObservable<Value> = Observable<State<Value>>
