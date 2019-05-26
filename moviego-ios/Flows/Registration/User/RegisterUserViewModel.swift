@@ -13,9 +13,9 @@ class RegisterUserViewModel: BaseViewModel {
     
     private var repository: RegistrationRepositoring
     private let userRepository: UserRepositoring
-    private let viewStateSubject = PublishSubject<Result<Void, RegisterationValidationException>>()
+    private let viewStateSubject = PublishSubject<State<()>>()
     
-    var viewState: Observable<Result<Void, RegisterationValidationException>> {
+    var viewState: StateObservable<()> {
         get { return viewStateSubject.asObservable() }
     }
     
@@ -32,7 +32,7 @@ class RegisterUserViewModel: BaseViewModel {
             repository.email = email
             repository.password = password
         } catch {
-            viewStateSubject.onNext(.failure(error as! RegisterationValidationException))
+            viewStateSubject.onNext(.error(error as! RegisterationValidationException))
             return
         }
         
@@ -42,10 +42,11 @@ class RegisterUserViewModel: BaseViewModel {
     private func register() {
         // TODO: make actual call
         userRepository.register(credentials: repository.credentials)
-            .subscribe()
+            .asObservable()
+            .map { _ in () }
+            .mapState()
+            .bind(to: viewStateSubject)
             .disposed(by: disposeBag)
-
-        viewStateSubject.onNext(.success(()))
     }
     
     private func validate(_ name: String, _ surname: String, _ email: String, _ password: String, _ confirm: String) throws {

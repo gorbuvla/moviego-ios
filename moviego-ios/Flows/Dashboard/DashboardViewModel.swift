@@ -16,23 +16,23 @@ class DashboardViewModel: BaseViewModel {
     private let locationManager: CLLocationManager
     private let fetcher: PagedFetcher<Movie>
     private let repository: CinemaRepositoring
-    private let viewStateSubject = BehaviorSubject<LoadingResult<[Movie]>>(value: LoadingResult(false))
-    private let sessionStateSubject = BehaviorSubject<LoadingResult<[Session]>>(value: LoadingResult(false))
+    private let viewStateSubject = BehaviorSubject<State<[Movie]>>(value: .loading)
+    private let sessionStateSubject = BehaviorSubject<State<[Session]>>(value: .loading)
     
-    var viewState: ObservableProperty<[Movie]> {
+    var viewState: StateObservable<[Movie]> {
         return viewStateSubject.asObserver()
     }
     
-    var topSessions: ObservableProperty<[Session]> {
+    var topSessions: StateObservable<[Session]> {
         return sessionStateSubject.asObservable()
     }
     
     var movies: [Movie] {
-        get { return viewStateSubject.value.data?.element ?? [] }
+        get { return viewStateSubject.value.value ?? [] }
     }
     
     var sessions: [Session] {
-        get { return sessionStateSubject.value.data?.element ?? [] }
+        get { return sessionStateSubject.value.value ?? [] }
     }
     
     var canFetchMore: Bool {
@@ -59,7 +59,7 @@ class DashboardViewModel: BaseViewModel {
     
     private func bindUpdates() {
         fetcher.pagedResult
-            .mapLoading()
+            .mapState()
             .bind(to: viewStateSubject)
             .disposed(by: disposeBag)
         
@@ -69,7 +69,7 @@ class DashboardViewModel: BaseViewModel {
             .flatMap { location in
                 self.repository.fetchSessions(startingFrom: Date(), lat: location?.coordinate.latitude, lng: location?.coordinate.longitude, limit: 10, offset: 0)
             }
-            .mapLoading()
+            .mapState()
             .bind(to: sessionStateSubject)
             .disposed(by: disposeBag)
     }
@@ -105,12 +105,5 @@ class PagedFetcher<T> {
             .asObservable()
             .bind(to: pagerSubject)
             .disposed(by: disposeBag)
-    }
-}
-
-extension BehaviorSubject {
-    
-    var value: Element {
-        return try! self.value()
     }
 }

@@ -11,31 +11,29 @@ import RxSwift
 class LoginViewModel: BaseViewModel {
     
     private let repository: UserRepositoring
-    private let viewStateObserver: Variable<LoadingResult<Void>>
+    private let viewStateSubject = PublishSubject<State<()>>()
     
-    var viewState: ObservableProperty<Void> {
-        get { return viewStateObserver.asObservable() }
+    var viewState: StateObservable<()> {
+        get { return viewStateSubject.asObservable() }
     }
     
     init(repository: UserRepositoring) {
         self.repository = repository
-        self.viewStateObserver = Variable(LoadingResult(false))
     }
     
     func login(emailOrUsername: String, password: String) {
-        viewStateObserver.value = LoadingResult(true)
-        
         do {
             try validateFields(credential: emailOrUsername, password: password)
         } catch {
-            viewStateObserver.value = LoadingResult(.error(error))
+            viewStateSubject.onNext(.error(error))
             return
         }
-        
+
         repository.login(credentials: .password(username: emailOrUsername, password: password))
+            .asObservable()
             .map { _ in () }
-            .asObservable() // ... :(
-            .subscribe { self.viewStateObserver.value = LoadingResult($0) }
+            .mapState()
+            .bind(to: viewStateSubject)
             .disposed(by: disposeBag)
     }
     

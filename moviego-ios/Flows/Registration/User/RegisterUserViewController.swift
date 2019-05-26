@@ -54,6 +54,27 @@ class RegisterUserViewController: BaseViewController<RegisterUserView>, UITextFi
             .bind(to: layout.continueButton.rx.isEnabled)
             .disposed(by: disposeBag)
 
+        viewModel.viewState.loading.map { !$0 }
+            .observeOn(MainScheduler.instance)
+            .bind(to: layout.loadingView.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        viewModel.viewState.data
+            .observeOn(MainScheduler.instance)
+            .bind(onNext: { [weak navigationDelegate] _ in navigationDelegate?.didTapNext() })
+            .disposed(by: disposeBag)
+        
+        viewModel.viewState.error
+            .observeOn(MainScheduler.instance)
+            .bind(onNext: { [weak self] error in
+                if let error = error as? RegisterationValidationException {
+                    self?.handleValidationError(error: error)
+                } else {
+                    self?.handleError(error: error)
+                }
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.viewState
             .observeOn(MainScheduler.instance)
             .subscribe(
