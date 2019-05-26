@@ -8,6 +8,9 @@
 
 import UIKit
 
+
+// Extensions to apply styleguide styles to common text components.
+
 protocol Styleable {
     
     func applyTextStyle(color: UIColor)
