@@ -16,6 +16,7 @@ class RegisterUserView: BaseScrollView {
     weak var passwordTextField: FramedTextField!
     weak var confirmTextField: FramedTextField!
     
+    weak var loadingView: LoadingView!
     weak var footerView: UIView!
     weak var continueButton: UIButton!
     
@@ -46,6 +47,14 @@ class RegisterUserView: BaseScrollView {
         scrollView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
             make.bottom.equalTo(footerView.snp.top)
+        }
+        
+        loadingView = ui.loadingView { it in
+            it.isHidden = true
+            
+            it.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
         }
     }
     

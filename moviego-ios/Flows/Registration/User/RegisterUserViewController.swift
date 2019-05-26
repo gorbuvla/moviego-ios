@@ -54,6 +54,11 @@ class RegisterUserViewController: BaseViewController<RegisterUserView>, UITextFi
             .bind(to: layout.continueButton.rx.isEnabled)
             .disposed(by: disposeBag)
 
+        viewModel.viewState.loading.map { !$0 }
+            .observeOn(MainScheduler.instance)
+            .bind(to: layout.loadingView.rx.isHidden)
+            .disposed(by: disposeBag)
+        
         viewModel.viewState.data
             .observeOn(MainScheduler.instance)
             .bind(onNext: { [weak navigationDelegate] _ in navigationDelegate?.didTapNext() })

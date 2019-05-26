@@ -120,10 +120,11 @@ class MockedUserRepository: UserRepositoring {
     }
     
     func register(credentials: RegisterCredentials) -> Single<User> {
-        let user = User(id: 1, name: credentials.name, email: credentials.surname, avatarId: nil, city: credentials.city)
-        userVariable.value = user
         return Single.just(User(id: 1, name: credentials.name, email: credentials.surname, avatarId: nil, city: credentials.city))
             .delay(.seconds(1), scheduler: MainScheduler.instance)
+            .do(onSuccess: { u in
+                self.userVariable.value = u
+            })
     }
     
     func logout() -> Completable {
