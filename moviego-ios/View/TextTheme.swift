@@ -8,114 +8,83 @@
 
 import UIKit
 
-// TODO: unify all these...
+protocol Styleable {
+    
+    func applyTextStyle(color: UIColor)
+    func applyFontStyle(font: UIFont)
+}
 
-extension UILabel {
-    
-    func textStyleLight(opacity: Float = 0.6) {
-        textColor = UIColor(named: .textLight).withAlphaComponent(CGFloat(opacity))
+extension UILabel: Styleable {
+    func applyTextStyle(color: UIColor) {
+        self.textColor = color
     }
     
-    func textStyleDark(opacity: Float = 0.6) {
-        textColor = UIColor(named: .textDark).withAlphaComponent(CGFloat(opacity))
-    }
-    
-    func styleHeading1() {
-        font = UIFont.boldSystemFont(ofSize: 24)
-    }
-    
-    func styleHeading2() {
-        font = UIFont.boldSystemFont(ofSize: 18)
-    }
-    
-    func styleHeading3() {
-        font = UIFont.boldSystemFont(ofSize: 13)
-    }
-    
-    func styleHeading4() {
-        font = UIFont.boldSystemFont(ofSize: 16)
-    }
-    
-    func styleParagraphNormall() {
-        textColor = .title
-        fontSize = 15
-    }
-    
-    func styleParagraphSmall() {
-        textColor = .subtitle
-        font = UIFont.systemFont(ofSize: 12)
-    }
-    
-    func styleParagraphLarge() {
-        font = UIFont.systemFont(ofSize: 16)
-    }
-    
-    func styleLink() {
-        textColor = UIColor(named: .secondary)
-        font = UIFont.boldSystemFont(ofSize: 13)
-    }
-    
-    func styleLabel() {
-        font = UIFont.systemFont(ofSize: 11)
-    }
-    
-    func styleError() {
-        textColor = UIColor(named: .errorRed)
-        font = UIFont.systemFont(ofSize: 12)
+    func applyFontStyle(font: UIFont) {
+        self.font = font
     }
 }
 
-extension UITextField {
+extension UITextField: Styleable {
+    func applyTextStyle(color: UIColor) {
+        self.textColor = color
+    }
+    
+    func applyFontStyle(font: UIFont) {
+        self.font = font
+    }
+}
+
+extension Styleable {
     
     func textStyleLight(opacity: Float = 0.6) {
-        textColor = UIColor(named: .textLight).withAlphaComponent(CGFloat(opacity))
+        applyTextStyle(color: UIColor(named: .textLight).withAlphaComponent(CGFloat(opacity)))
     }
     
     func textStyleDark(opacity: Float = 0.6) {
-        textColor = UIColor(named: .textDark).withAlphaComponent(CGFloat(opacity))
+        applyTextStyle(color: UIColor(named: .textDark).withAlphaComponent(CGFloat(opacity)))
     }
     
     func styleHeading1() {
-        font = UIFont.boldSystemFont(ofSize: 24)
+        applyFontStyle(font: UIFont.boldSystemFont(ofSize: 24))
     }
     
     func styleHeading2() {
-        font = UIFont.boldSystemFont(ofSize: 18)
+        applyFontStyle(font: UIFont.boldSystemFont(ofSize: 18))
     }
     
     func styleHeading3() {
-        font = UIFont.boldSystemFont(ofSize: 13)
+        applyFontStyle(font: UIFont.boldSystemFont(ofSize: 13))
     }
     
     func styleHeading4() {
-        font = UIFont.boldSystemFont(ofSize: 16)
+        applyFontStyle(font: UIFont.boldSystemFont(ofSize: 16))
     }
     
     func styleParagraphNormall() {
-        textColor = .title
-        font = UIFont.systemFont(ofSize: 15)
+        applyTextStyle(color: .title)
+        applyFontStyle(font: UIFont.systemFont(ofSize: 15))
     }
     
     func styleParagraphSmall() {
-        textColor = .subtitle
-        font = UIFont.systemFont(ofSize: 12)
+        applyTextStyle(color: .subtitle)
+        applyFontStyle(font: UIFont.systemFont(ofSize: 12))
     }
     
     func styleParagraphLarge() {
-        font = UIFont.systemFont(ofSize: 16)
+        applyFontStyle(font: UIFont.systemFont(ofSize: 16))
     }
     
     func styleLink() {
-        textColor = UIColor(named: .secondary)
-        font = UIFont.boldSystemFont(ofSize: 13)
+        applyTextStyle(color: .secondary)
+        applyFontStyle(font: UIFont.boldSystemFont(ofSize: 13))
     }
     
     func styleLabel() {
-        font = UIFont.systemFont(ofSize: 11)
+        applyFontStyle(font: UIFont.systemFont(ofSize: 11))
     }
     
     func styleError() {
-        textColor = UIColor(named: .errorRed)
-        font = UIFont.systemFont(ofSize: 12)
+        applyTextStyle(color: .red)
+        applyFontStyle(font: UIFont.systemFont(ofSize: 12))
     }
 }
