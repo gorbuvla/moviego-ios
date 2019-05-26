@@ -42,7 +42,7 @@ class SessionSuggestView: BaseView, UICollectionViewDelegate {
         collectionView.delegate = self
         addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
-            make.height.equalTo(132)
+            make.height.equalTo(150)
             make.width.equalTo(UIScreen.main.bounds.width)
         }
         self.collectionView = collectionView
