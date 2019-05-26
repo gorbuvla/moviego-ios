@@ -23,7 +23,7 @@ class CinemaDetailViewController: BaseViewController<CinemaDetailView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = L10n.Cinema.Detail.title(viewModel.cinema.name)
+        //navigationItem.title = L10n.Cinema.Detail.title(viewModel.cinema.name)
         layout.titleLabel.text = viewModel.cinema.name
     }
 }

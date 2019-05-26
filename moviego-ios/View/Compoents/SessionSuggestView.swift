@@ -23,7 +23,7 @@ class SessionSuggestView: BaseView, UICollectionViewDelegate {
         backgroundColor = .red
         
         let sectionTitle = UILabel()
-        sectionTitle.text = L10n.Sessions.Suggest.title
+        sectionTitle.text = L10n.Dashboard.SessionSuggest.title
         addSubview(sectionTitle)
         sectionTitle.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(15)

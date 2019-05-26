@@ -17,42 +17,49 @@ internal enum L10n {
     internal static let name = L10n.tr("Localizable", "app.name")
   }
 
-  internal enum Cinema {
-    internal enum Detail {
-      /// %@
-      internal static func title(_ p1: String) -> String {
-        return L10n.tr("Localizable", "cinema.detail.title", p1)
-      }
-    }
-    internal enum Map {
-      /// Cinemas
-      internal static let title = L10n.tr("Localizable", "cinema.map.title")
-    }
-  }
-
   internal enum Dashboard {
     /// Search movies & cinemas
     internal static let searchHint = L10n.tr("Localizable", "dashboard.search_hint")
     /// In theatres
     internal static let title = L10n.tr("Localizable", "dashboard.title")
+    internal enum SessionSuggest {
+      /// At %@, %@ away
+      internal static func subtitleCinemaKmFormat(_ p1: String, _ p2: String) -> String {
+        return L10n.tr("Localizable", "dashboard.session_suggest.subtitle_cinema_km_format", p1, p2)
+      }
+      /// Top sessions:
+      internal static let title = L10n.tr("Localizable", "dashboard.session_suggest.title")
+      /// %@ (%@)
+      internal static func titleWithYearFormat(_ p1: String, _ p2: String) -> String {
+        return L10n.tr("Localizable", "dashboard.session_suggest.title_with_year_format", p1, p2)
+      }
+    }
   }
 
   internal enum General {
     /// Continue
     internal static let `continue` = L10n.tr("Localizable", "general.continue")
-    /// Ok
+    /// OK
     internal static let ok = L10n.tr("Localizable", "general.ok")
   }
 
   internal enum Login {
-    /// Sign In
-    internal static let buttonTitle = L10n.tr("Localizable", "login.button_title")
-    /// Email
-    internal static let emailTitle = L10n.tr("Localizable", "login.email_title")
-    /// Password
-    internal static let password = L10n.tr("Localizable", "login.password")
-    /// Register
-    internal static let registerButton = L10n.tr("Localizable", "login.register_button")
+    internal enum Button {
+      /// Sign In
+      internal static let title = L10n.tr("Localizable", "login.button.title")
+    }
+    internal enum Email {
+      /// Email
+      internal static let title = L10n.tr("Localizable", "login.email.title")
+    }
+    internal enum Password {
+      /// Password
+      internal static let title = L10n.tr("Localizable", "login.password.title")
+    }
+    internal enum RegisterButton {
+      /// Register
+      internal static let title = L10n.tr("Localizable", "login.register_button.title")
+    }
   }
 
   internal enum Registration {
@@ -60,7 +67,7 @@ internal enum L10n {
       /// Choose your city
       internal static let title = L10n.tr("Localizable", "registration.choose_city.title")
       internal enum Unsupported {
-        /// %@ is currently unsupported, you may travel to another city to use our app
+        /// %@ is currently unsupported, ever considered moving to... Prague?:DD
         internal static func message(_ p1: String) -> String {
           return L10n.tr("Localizable", "registration.choose_city.unsupported.message", p1)
         }
@@ -69,61 +76,32 @@ internal enum L10n {
       }
     }
     internal enum User {
-      /// Register
-      internal static let button = L10n.tr("Localizable", "registration.user.button")
-      /// Confirm password
-      internal static let confirmPassword = L10n.tr("Localizable", "registration.user.confirm_password")
-      /// Email
-      internal static let email = L10n.tr("Localizable", "registration.user.email")
-      /// Name
-      internal static let name = L10n.tr("Localizable", "registration.user.name")
-      /// Password
-      internal static let password = L10n.tr("Localizable", "registration.user.password")
-      /// Surname
-      internal static let surname = L10n.tr("Localizable", "registration.user.surname")
       /// Set email & password
       internal static let title = L10n.tr("Localizable", "registration.user.title")
-    }
-  }
-
-  internal enum Session {
-    /// At %@, %@ away
-    internal static func subtitleFormat(_ p1: String, _ p2: String) -> String {
-      return L10n.tr("Localizable", "session.subtitleFormat", p1, p2)
-    }
-    /// %@ (%@)
-    internal static func titleWithYear(_ p1: String, _ p2: String) -> String {
-      return L10n.tr("Localizable", "session.titleWithYear", p1, p2)
-    }
-  }
-
-  internal enum Sessions {
-    /// Movie sessions
-    internal static let detail = L10n.tr("Localizable", "sessions.detail")
-    /// Hot sessions nearby
-    internal static let title = L10n.tr("Localizable", "sessions.title")
-    internal enum Suggest {
-      /// Top sessions:
-      internal static let title = L10n.tr("Localizable", "sessions.suggest.title")
-    }
-  }
-
-  internal enum Tabbar {
-    internal enum Map {
-      /// Map
-      internal static let title = L10n.tr("Localizable", "tabbar.map.title")
-    }
-    internal enum Movies {
-      /// Movies
-      internal static let title = L10n.tr("Localizable", "tabbar.movies.title")
-    }
-    internal enum Profile {
-      /// Profile
-      internal static let title = L10n.tr("Localizable", "tabbar.profile.title")
-    }
-    internal enum Promotions {
-      /// Promotions
-      internal static let title = L10n.tr("Localizable", "tabbar.promotions.title")
+      internal enum Button {
+        /// Register
+        internal static let title = L10n.tr("Localizable", "registration.user.button.title")
+      }
+      internal enum ConfirmPassword {
+        /// Confirm password
+        internal static let title = L10n.tr("Localizable", "registration.user.confirm_password.title")
+      }
+      internal enum Email {
+        /// Email
+        internal static let title = L10n.tr("Localizable", "registration.user.email.title")
+      }
+      internal enum Name {
+        /// Name
+        internal static let title = L10n.tr("Localizable", "registration.user.name.title")
+      }
+      internal enum Password {
+        /// Password
+        internal static let title = L10n.tr("Localizable", "registration.user.password.title")
+      }
+      internal enum Surname {
+        /// Surname
+        internal static let title = L10n.tr("Localizable", "registration.user.surname.title")
+      }
     }
   }
 }

@@ -32,7 +32,7 @@ class SessionSearchViewController: BaseListController, ProfileAccessoryControlle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = L10n.Sessions.title
+        //navigationItem.title = L10n.Sessions.title
         
         let mapButton = UIBarButtonItem(image: Asset.icMap.image, style: .plain, target: self, action: #selector(didTapMapButton))
         navigationItem.rightBarButtonItem = mapButton

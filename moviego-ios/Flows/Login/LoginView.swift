@@ -38,7 +38,7 @@ class LoginView: BaseScrollView {
             it.isHidden = true
             
             emailOrUsernameField = it.ui.framedField(style: .light) { it in
-                it.titleLabel.text = L10n.Login.emailTitle
+                it.titleLabel.text = L10n.Login.Email.title
                 it.textField.textContentType = .emailAddress
                 it.textField.returnKeyType = .next
                 
@@ -48,7 +48,7 @@ class LoginView: BaseScrollView {
             }
             
             passwordField = it.ui.framedField(style: .light) { it in
-                it.titleLabel.text = L10n.Login.password
+                it.titleLabel.text = L10n.Login.Password.title
                 it.textField.textContentType = .password
                 it.textField.returnKeyType = .send
                 it.isSecureTextEntry = true
@@ -59,7 +59,7 @@ class LoginView: BaseScrollView {
             }
             
             registerButton = it.ui.button { it in
-                it.underlinedButton(text: L10n.Login.registerButton)
+                it.underlinedButton(text: L10n.Login.RegisterButton.title)
                 it.titleLabel?.styleLink()
                 it.titleLabel?.textStyleDark()
                 
@@ -70,7 +70,7 @@ class LoginView: BaseScrollView {
             }
             
             loginButton = it.ui.button { it in
-                it.setTitle(L10n.Login.buttonTitle, for: .normal)
+                it.setTitle(L10n.Login.Button.title, for: .normal)
                 it.primaryButton()
                 
                 it.snp.makeConstraints { make in

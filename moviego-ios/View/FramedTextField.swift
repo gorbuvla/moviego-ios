@@ -133,7 +133,8 @@ class FramedTextField: BaseView {
                 
                 secureInputButton = it.ui.button { it in
                     it.isHidden = true
-                    it.setImage(Asset.secureOff.image, for: .normal)
+                    it.tintColor = .secondary
+                    it.setImage(Asset.secureOn.image.withRenderingMode(.alwaysTemplate), for: .normal)
                     it.addTarget(self, action: #selector(didTapSecureInput), for: .touchUpInside)
                 }
                 
@@ -197,7 +198,7 @@ class FramedTextField: BaseView {
     @objc private func didTapSecureInput() {
         textField.isSecureTextEntry = !textField.isSecureTextEntry
         
-        let asset = textField.isSecureTextEntry ? Asset.secureOff : Asset.secureOn
-        secureInputButton.setImage(asset.image, for: .normal)
+        let asset = (textField.isSecureTextEntry ? Asset.secureOn : Asset.secureOff).image.withRenderingMode(.alwaysTemplate)
+        secureInputButton.setImage(asset, for: .normal)
     }
 }
