@@ -8,15 +8,25 @@
 
 import UIKit
 import AlamofireImage
+import CoreLocation
+import MapKit
 
 class SuggestedSessionCell: BaseCollectionViewCell<SuggestedSessionView> {
     
-    var session: Session? {
+    var value: (session: Session, userLocation: CLLocation?)? {
         didSet {
-            guard let session = session else { return }
+            guard let session = value?.session else { return }
             
             layout.titleLabel.text = L10n.Dashboard.SessionSuggest.titleWithYearFormat(session.movie.title)
-            layout.subtitleLabel.text = L10n.Dashboard.SessionSuggest.subtitleCinemaKmFormat(session.cinema.name, "600m") // TODO: compute actual distance
+            
+            if let location = value?.userLocation {
+                let cinemaLocation = CLLocation(latitude: session.cinema.lat, longitude: session.cinema.lng)
+                let dist = location.distance(from: cinemaLocation)
+                layout.subtitleLabel.text = L10n.Dashboard.SessionSuggest.subtitleCinemaKmFormat(session.cinema.name, MKDistanceFormatter.shared.string(fromDistance: dist))
+            } else {
+                layout.subtitleLabel.text = L10n.Dashboard.SessionSuggest.subtitleCinemaFormat(session.cinema.name)
+            }
+            
             layout.posterThumbnail.af_setImage(withURL: session.movie.poster)
         }
     }

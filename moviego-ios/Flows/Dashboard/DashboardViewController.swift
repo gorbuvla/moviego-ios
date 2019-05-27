@@ -103,7 +103,7 @@ class DashboardViewController: BaseViewController<BaseListView>, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == TOP_SESSIONS_CELL_INDEX && !viewModel.sessions.isEmpty {
             let cell = tableView.dequeueReusableCell(withIdentifier: SuggestSessionsCell.ReuseIdentifiers.defaultId) as! SuggestSessionsCell
-            cell.setupDataSource(sessions: viewModel.sessions, didSelectAction: self.didSelectSession(session:))
+            cell.setupDataSource(sessions: viewModel.sessions, userLocation: viewModel.lastLocation, didSelectAction: self.didSelectSession(session:))
             cell.selectionStyle = .none
             return cell
         }

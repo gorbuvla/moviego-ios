@@ -36,6 +36,10 @@ class DashboardViewModel: BaseViewModel {
         get { return sessionStateSubject.value.value ?? [] }
     }
     
+    var lastLocation: CLLocation? {
+        get { return locationManager.location }
+    }
+    
     var canFetchMore: Bool {
         get { return fetcher.canFetchMore }
     }

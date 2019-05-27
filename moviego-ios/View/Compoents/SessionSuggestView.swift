@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class SessionSuggestView: BaseView, UICollectionViewDelegate {
     
@@ -58,10 +59,12 @@ class SessionSuggestView: BaseView, UICollectionViewDelegate {
 class SessionSuggectViewModel: NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
     
     private(set) var sessions: [Session]
+    private(set) var location: CLLocation?
     private(set) var didSelectAction: (Session) -> ()
     
-    init(sessions: [Session], didSelectAction: @escaping (Session) -> ()) {
+    init(sessions: [Session], userLocation: CLLocation?, didSelectAction: @escaping (Session) -> ()) {
         self.sessions = sessions
+        self.location = userLocation
         self.didSelectAction = didSelectAction
     }
     
@@ -70,8 +73,9 @@ class SessionSuggectViewModel: NSObject, UICollectionViewDataSource, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let session = sessions[safe: indexPath.item] else { return UICollectionViewCell() }
         let cell: SuggestedSessionCell = collectionView.dequeueCell(for: indexPath)
-        cell.session = sessions[safe: indexPath.item]
+        cell.value = (session, location)
         return cell
     }
     

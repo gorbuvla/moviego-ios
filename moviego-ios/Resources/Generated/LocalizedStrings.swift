@@ -23,6 +23,10 @@ internal enum L10n {
     /// In theatres
     internal static let title = L10n.tr("Localizable", "dashboard.title")
     internal enum SessionSuggest {
+      /// At %@
+      internal static func subtitleCinemaFormat(_ p1: String) -> String {
+        return L10n.tr("Localizable", "dashboard.session_suggest.subtitle_cinema_format", p1)
+      }
       /// At %@,\n%@ away
       internal static func subtitleCinemaKmFormat(_ p1: String, _ p2: String) -> String {
         return L10n.tr("Localizable", "dashboard.session_suggest.subtitle_cinema_km_format", p1, p2)

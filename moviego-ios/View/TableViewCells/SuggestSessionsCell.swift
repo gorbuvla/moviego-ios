@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class SuggestSessionsCell: BaseTableViewCell<SessionSuggestView> {
     
@@ -14,8 +15,8 @@ class SuggestSessionsCell: BaseTableViewCell<SessionSuggestView> {
         static let defaultId = "suggestSessionCell"
     }
     
-    func setupDataSource(sessions: [Session], didSelectAction: @escaping (Session) -> ()) {
-        layout.viewModel = SessionSuggectViewModel(sessions: sessions, didSelectAction: didSelectAction)
+    func setupDataSource(sessions: [Session], userLocation: CLLocation?, didSelectAction: @escaping (Session) -> ()) {
+        layout.viewModel = SessionSuggectViewModel(sessions: sessions, userLocation: userLocation, didSelectAction: didSelectAction)
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
