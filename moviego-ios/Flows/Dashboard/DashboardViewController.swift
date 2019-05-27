@@ -51,6 +51,13 @@ class DashboardViewController: BaseViewController<BaseListView>, UITableViewData
         layout.tableView.sectionHeaderHeight = 0
         layout.tableView.estimatedSectionHeaderHeight = 0
         layout.tableView.refreshControl = nil
+        
+        let spinner = UIActivityIndicatorView(style: .gray)
+        spinner.startAnimating()
+        spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: layout.tableView.bounds.width, height: CGFloat(44))
+        
+        layout.tableView.tableFooterView = spinner
+        layout.tableView.tableFooterView?.isHidden = true
 
         // TODO: uncomment once search is implemented
 //        let searchController = UISearchController(searchResultsController:  nil)
@@ -69,7 +76,10 @@ class DashboardViewController: BaseViewController<BaseListView>, UITableViewData
     private func bindUpdates() {
         viewModel.viewState.data
             .observeOn(MainScheduler.instance)
-            .bind(onNext: { [weak layout] _ in layout?.tableView.reloadData() })
+            .bind(onNext: { [weak layout] _ in
+                layout?.tableView.reloadData()
+                layout?.tableView.tableFooterView?.isHidden = true
+            })
             .disposed(by: disposeBag)
         
         viewModel.topSessions
@@ -118,6 +128,7 @@ class DashboardViewController: BaseViewController<BaseListView>, UITableViewData
         let isLastRowInSection = indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1
         
         if isLastSection && isLastRowInSection && viewModel.canFetchMore {
+            layout.tableView.tableFooterView?.isHidden = false
             viewModel.fetchNext()
         }
     }
