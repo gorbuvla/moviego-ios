@@ -46,14 +46,6 @@ final class ViewModelDependency: ViewModelFactory {
         }
     }
     
-    var showtimeListViewModelFactory: () -> SessionSearchViewModel {
-        return {
-            SessionSearchViewModel(
-                showtimeRepository: self.dependencies.cinemaRepository, userRepository: self.dependencies.userRepository
-            )
-        }
-    }
-    
     var sessionDetailViewModelFactory: (Movie, Cinema, [Session]?) -> SessionDetailViewModel {
         return { movie, cinema, sessions in
             SessionDetailViewModel(
