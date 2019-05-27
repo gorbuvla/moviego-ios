@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import RxRelay
 import CoreLocation
 import RxCoreLocation
 
@@ -33,6 +34,10 @@ class DashboardViewModel: BaseViewModel {
     
     var sessions: [Session] {
         get { return sessionStateSubject.value.value ?? [] }
+    }
+    
+    var lastLocation: CLLocation? {
+        get { return locationManager.location }
     }
     
     var canFetchMore: Bool {
@@ -61,7 +66,7 @@ class DashboardViewModel: BaseViewModel {
         fetcher.pagedResult
             .mapState()
             .bind(to: viewStateSubject)
-            .disposed(by: disposeBag)
+            .disposed(by: disposeBag)        
         
         locationManager.rx.location
             .take(1)
@@ -71,39 +76,6 @@ class DashboardViewModel: BaseViewModel {
             }
             .mapState()
             .bind(to: sessionStateSubject)
-            .disposed(by: disposeBag)
-    }
-}
-
-class PagedFetcher<T> {
-    private let DEFAULT_PAGE_LIMIT = 10
-    private let disposeBag = DisposeBag()
-    private let pagerSubject = BehaviorSubject<[T]>(value: [])
-    
-    private let request: (Int, Int) -> Single<[T]>
-    
-    private(set) var canFetchMore: Bool = true
-    
-    var pagedResult: Observable<[T]> {
-        return pagerSubject.asObservable()
-    }
-    
-    init(request: @escaping (Int, Int) -> Single<[T]>) {
-        self.request = request
-    }
-    
-    func fetchInitial() {
-        request(0, DEFAULT_PAGE_LIMIT).asObservable()
-            .bind(to: pagerSubject)
-            .disposed(by: disposeBag)
-    }
-    
-    func fetchNext() {
-        request(pagerSubject.value.count, DEFAULT_PAGE_LIMIT)
-            .do(onSuccess: { page in self.canFetchMore = page.count == self.DEFAULT_PAGE_LIMIT })
-            .map { page in self.pagerSubject.value + page }
-            .asObservable()
-            .bind(to: pagerSubject)
             .disposed(by: disposeBag)
     }
 }

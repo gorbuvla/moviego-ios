@@ -81,7 +81,12 @@ class MockedCinemaRepository: CinemaRepositoring {
     }
     
     func fetchMovies(offset: Int, limit: Int) -> Single<[Movie]> {
-        return Single.just([rhapsody, atomicBlonde]).delay(.seconds(1), scheduler: MainScheduler.instance)
+        let list = Array(repeating: [rhapsody, atomicBlonde], count: 15).flatMap { $0 }
+        if offset == list.count { return Single.just([]) }
+        
+        let slice = list[offset..<(offset+limit)]
+        print("Return slice of size: \(slice.count) offset: \(offset) limit: \(limit)")
+        return Single.just(Array(slice)).delay(.seconds(1), scheduler: MainScheduler.instance)
     }
     
     func fetchSessions(startingFrom: Date, lat: Double?, lng: Double?, limit: Int, offset: Int) -> Single<[Session]> {

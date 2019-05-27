@@ -16,7 +16,7 @@ class BaseListView: BaseView {
     weak var loadingView: LoadingView!
     
     override func createView() {
-        let tableView = UITableView(frame: .zero, style: .grouped)
+        let tableView = UITableView(frame: .zero, style: .plain)
         tableView.backgroundColor = .white
         self.tableView = tableView
         self.addSubview(tableView)

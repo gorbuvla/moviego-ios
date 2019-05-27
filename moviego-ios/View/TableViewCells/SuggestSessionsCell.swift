@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class SuggestSessionsCell: BaseTableViewCell<SessionSuggestView> {
     
@@ -14,11 +15,16 @@ class SuggestSessionsCell: BaseTableViewCell<SessionSuggestView> {
         static let defaultId = "suggestSessionCell"
     }
     
-    var sessions: [Session]? {
-        didSet {
-            guard let sessions = sessions else { return }
-            
-            layout.viewModel = SessionSuggectViewModel(sessions: sessions)
-        }
+    func setupDataSource(sessions: [Session], userLocation: CLLocation?, didSelectAction: @escaping (Session) -> ()) {
+        layout.viewModel = SessionSuggectViewModel(sessions: sessions, userLocation: userLocation, didSelectAction: didSelectAction)
+    }
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = .bkgLight
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
