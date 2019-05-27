@@ -77,8 +77,8 @@ class DashboardViewController: BaseViewController<BaseListView>, UITableViewData
         viewModel.viewState.data
             .observeOn(MainScheduler.instance)
             .bind(onNext: { [weak layout] _ in
-                layout?.tableView.reloadData()
                 layout?.tableView.tableFooterView?.isHidden = true
+                layout?.tableView.reloadData()
             })
             .disposed(by: disposeBag)
         
@@ -97,30 +97,32 @@ class DashboardViewController: BaseViewController<BaseListView>, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.movies.count //+ min(viewModel.sessions.count, 1)
+        return viewModel.movies.count + min(viewModel.sessions.count, 1)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        if indexPath.row == TOP_SESSIONS_CELL_INDEX && !viewModel.sessions.isEmpty {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: SuggestSessionsCell.ReuseIdentifiers.defaultId) as! SuggestSessionsCell
-//            cell.sessions = viewModel.sessions
-//            return cell
-//        }
+        if indexPath.row == TOP_SESSIONS_CELL_INDEX && !viewModel.sessions.isEmpty {
+            let cell = tableView.dequeueReusableCell(withIdentifier: SuggestSessionsCell.ReuseIdentifiers.defaultId) as! SuggestSessionsCell
+            cell.setupDataSource(sessions: viewModel.sessions, didSelectAction: self.didSelectSession(session:))
+            cell.selectionStyle = .none
+            return cell
+        }
         
-        //let adjustIndex = indexPath.row > TOP_SESSIONS_CELL_INDEX ? indexPath.row + 1 : indexPath.row
-        let adjustIndex = indexPath.row
-        let adjustIndexPath = IndexPath(row: adjustIndex, section: indexPath.section)
+        let movieIndex = indexPath.row > TOP_SESSIONS_CELL_INDEX ? indexPath.row - min(1, viewModel.sessions.count) : indexPath.row
         
-        guard let movie = viewModel.movies[safe: adjustIndex] else { return UITableViewCell() }
+        guard let movie = viewModel.movies[safe: movieIndex] else { return UITableViewCell() }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.ReuseIdentifiers.defaultId, for: adjustIndexPath) as! MovieCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.ReuseIdentifiers.defaultId, for: indexPath) as! MovieCell
         cell.movie = movie
-        cell.selectionStyle = .default
+        cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationDelegate?.didSelectMovie(movie: viewModel.movies[indexPath.row])
+        guard !(indexPath.row == TOP_SESSIONS_CELL_INDEX && viewModel.sessions.isNotEmpty) else { return }
+        
+        let movieIndex = indexPath.row > TOP_SESSIONS_CELL_INDEX ? indexPath.row - min(1, viewModel.sessions.count) : indexPath.row
+        navigationDelegate?.didSelectMovie(movie: viewModel.movies[movieIndex])
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -128,9 +130,13 @@ class DashboardViewController: BaseViewController<BaseListView>, UITableViewData
         let isLastRowInSection = indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1
         
         if isLastSection && isLastRowInSection && viewModel.canFetchMore {
-            layout.tableView.tableFooterView?.isHidden = false
+            layout.tableView.tableFooterView?.isHidden = viewModel.movies.count == 0
             viewModel.fetchNext()
         }
+    }
+    
+    private func didSelectSession(session: Session) {
+        navigationDelegate?.didSelectSession(session: session)
     }
     
     @objc private func didTapMapButton() {

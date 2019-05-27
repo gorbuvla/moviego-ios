@@ -110,6 +110,7 @@
 		C267FFBE229AD86C004BC1EE /* RxState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267FFBD229AD86C004BC1EE /* RxState.swift */; };
 		C267FFC0229ADBED004BC1EE /* RxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267FFBF229ADBED004BC1EE /* RxExtensions.swift */; };
 		C267FFC4229B3A48004BC1EE /* PagedFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267FFC3229B3A48004BC1EE /* PagedFetcher.swift */; };
+		C27A468E229C676500068FC3 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27A468D229C676500068FC3 /* MovieViewController.swift */; };
 		C27BAD45226A3B420052BDA6 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27BAD44226A3B420052BDA6 /* StringExtensions.swift */; };
 		C28812B822836563006D2120 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28812B722836563006D2120 /* BaseNavigationController.swift */; };
 		C28812BE2284065B006D2120 /* SessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28812BD2284065B006D2120 /* SessionDetailView.swift */; };
@@ -251,6 +252,7 @@
 		C267FFBD229AD86C004BC1EE /* RxState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxState.swift; sourceTree = "<group>"; };
 		C267FFBF229ADBED004BC1EE /* RxExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxExtensions.swift; sourceTree = "<group>"; };
 		C267FFC3229B3A48004BC1EE /* PagedFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedFetcher.swift; sourceTree = "<group>"; };
+		C27A468D229C676500068FC3 /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
 		C27BAD44226A3B420052BDA6 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		C28812B722836563006D2120 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		C28812BD2284065B006D2120 /* SessionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDetailView.swift; sourceTree = "<group>"; };
@@ -517,6 +519,7 @@
 		C212BCB4225035E500C624A7 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				C27A468C229C675400068FC3 /* Movie */,
 				C23AFA182297203900CC753D /* Dashboard */,
 				C2649836227D95950037AF48 /* Cinemas */,
 				C2C52ED0225E4200009A6D93 /* City */,
@@ -753,6 +756,14 @@
 				C267FFBF229ADBED004BC1EE /* RxExtensions.swift */,
 			);
 			path = Rx;
+			sourceTree = "<group>";
+		};
+		C27A468C229C675400068FC3 /* Movie */ = {
+			isa = PBXGroup;
+			children = (
+				C27A468D229C676500068FC3 /* MovieViewController.swift */,
+			);
+			path = Movie;
 			sourceTree = "<group>";
 		};
 		C29C62622284946400FD0876 /* Detail */ = {
@@ -1158,6 +1169,7 @@
 				C24400C9225CD222001C88A1 /* ViewDsl.swift in Sources */,
 				C2C52EBA225E3547009A6D93 /* ProfileViewController.swift in Sources */,
 				C212BCFC225169B100C624A7 /* BaseListView.swift in Sources */,
+				C27A468E229C676500068FC3 /* MovieViewController.swift in Sources */,
 				C216F52B2275B238001EB291 /* UIViewExtensions.swift in Sources */,
 				C243CC482274E93200B68DC5 /* UIElementTheme.swift in Sources */,
 				C243CC3B226B33F900B68DC5 /* CityApiService.swift in Sources */,

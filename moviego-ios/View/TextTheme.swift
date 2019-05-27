@@ -52,15 +52,15 @@ extension Styleable {
     }
     
     func styleHeading2() {
-        applyFontStyle(font: UIFont.boldSystemFont(ofSize: 18))
+        applyFontStyle(font: UIFont.boldSystemFont(ofSize: 14))
     }
     
     func styleHeading3() {
-        applyFontStyle(font: UIFont.boldSystemFont(ofSize: 13))
+        applyFontStyle(font: UIFont.boldSystemFont(ofSize: 11))
     }
     
     func styleHeading4() {
-        applyFontStyle(font: UIFont.boldSystemFont(ofSize: 16))
+        applyFontStyle(font: UIFont.boldSystemFont(ofSize: 9))
     }
     
     func styleParagraphNormall() {

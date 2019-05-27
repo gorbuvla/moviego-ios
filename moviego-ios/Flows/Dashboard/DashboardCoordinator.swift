@@ -22,11 +22,11 @@ class DashboardCoordinator: FlowCoordinator {
 extension DashboardCoordinator: DashboardNavigatioNDelegate {
     
     func didSelectMovie(movie: Movie) {
-        // TODO: go to movie detail
+        navigationController?.pushViewController(MovieViewController(movie: movie), animated: true)
     }
     
     func didSelectSession(session: Session) {
-        // TODO: go to session detail
+        navigationController?.pushViewController(SessionDetailViewController(viewModel: SessionDetailViewModel(movie: session.movie, cinema: session.cinema)), animated: true)
     }
     
     func presentCinemaMap(from viewController: UIViewController) {

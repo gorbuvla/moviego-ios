@@ -18,5 +18,5 @@
 "dashboard.title" = "In theatres";
 "dashboard.search_hint" = "Search movies & cinemas";
 "dashboard.session_suggest.title" = "Top sessions:";
-"dashboard.session_suggest.title_with_year_format" = "%@ (%@)";
-"dashboard.session_suggest.subtitle_cinema_km_format" = "At %@, %@ away";
+"dashboard.session_suggest.title_with_year_format" = "%@";
+"dashboard.session_suggest.subtitle_cinema_km_format" = "At %@,\n%@ away";
