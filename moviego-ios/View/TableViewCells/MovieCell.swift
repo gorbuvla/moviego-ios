@@ -22,7 +22,7 @@ class MovieCell: BaseTableViewCell<MovieCellView> {
             layout.yearLabel.text = movie.year
             layout.posterImage.af_setImage(withURL: movie.poster)
             layout.ratingView.imdbScore = movie.imdbRating
-            layout.ratingView.tomatoScore = 96
+            layout.ratingView.tomatoScore = movie.rottenTomatoesRating
         }
     }
     
@@ -84,7 +84,6 @@ class MovieCellView: BaseView {
             // top section
             it.ui.stack { it in
                 it.axis = .vertical
-                
                 it.spacing = 5
                 
                 titleLabel = it.ui.label { it in
@@ -96,18 +95,20 @@ class MovieCellView: BaseView {
                 }
                 
                 it.snp.makeConstraints { make in
-                    make.top.trailing.equalToSuperview().inset(10)
+                    make.top.equalToSuperview().inset(10)
                     make.leading.equalTo(posterImage.snp.trailing).offset(10)
                     make.bottom.equalTo(divider.snp.top).offset(-15)
+                    make.trailing.lessThanOrEqualToSuperview()
                 }
             }
             
             ratingView = it.ui.movieRatingView { it in
                 
                 it.snp.makeConstraints { make in
-                    make.bottom.trailing.equalToSuperview().inset(6)
+                    make.bottom.equalToSuperview().inset(10)
                     make.leading.equalTo(posterImage.snp.trailing).offset(10)
-                    make.top.equalTo(divider.snp.top).inset(6)
+                    make.top.equalTo(divider.snp.bottom).inset(-10)
+                    make.trailing.lessThanOrEqualToSuperview().inset(10)
                 }
             }
             

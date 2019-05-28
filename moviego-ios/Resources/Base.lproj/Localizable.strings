@@ -21,3 +21,5 @@
 "dashboard.session_suggest.title_with_year_format" = "%@";
 "dashboard.session_suggest.subtitle_cinema_format" = "At %@";
 "dashboard.session_suggest.subtitle_cinema_km_format" = "At %@,\n%@ away";
+"dashboard.movie.imdb_badge" = "IMDb";
+"dashboard.movie.tomatoes_badge" = "Tomatometer";

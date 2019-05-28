@@ -22,6 +22,12 @@ internal enum L10n {
     internal static let searchHint = L10n.tr("Localizable", "dashboard.search_hint")
     /// In theatres
     internal static let title = L10n.tr("Localizable", "dashboard.title")
+    internal enum Movie {
+      /// IMDb
+      internal static let imdbBadge = L10n.tr("Localizable", "dashboard.movie.imdb_badge")
+      /// Tomatometer
+      internal static let tomatoesBadge = L10n.tr("Localizable", "dashboard.movie.tomatoes_badge")
+    }
     internal enum SessionSuggest {
       /// At %@
       internal static func subtitleCinemaFormat(_ p1: String) -> String {
