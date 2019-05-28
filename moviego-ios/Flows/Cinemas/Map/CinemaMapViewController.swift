@@ -16,7 +16,7 @@ protocol CinemaMapNavigationDelegate {
     func didTapNavigateCinema(cinema: Cinema)
 }
 
-class CinemaMapViewController: BaseViewController<BaseMapView>, MKMapViewDelegate {
+class CinemaMapViewController: BaseViewController<CinemaMapView>, MKMapViewDelegate {
     
     private let viewModel: CinemaMapViewModel
     
@@ -31,9 +31,10 @@ class CinemaMapViewController: BaseViewController<BaseMapView>, MKMapViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //navigationItem.title = L10n.Cinema.Map.title
+        navigationItem.title = L10n.Cinema.Map.title
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: UIActivityIndicatorView(style: .gray))
         modalClosable()
+        
         layout.mapView.delegate = self
         
         viewModel.locationManager.rx.location
@@ -62,11 +63,27 @@ class CinemaMapViewController: BaseViewController<BaseMapView>, MKMapViewDelegat
         viewModel.viewportDidChange(mapView.currentViewport)
     }
     
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        if let cinemaAnnotation = view.annotation as? CinemaAnnotation {
+            viewModel.selectedAnnotation = cinemaAnnotation
+            mapView.setCenter(cinemaAnnotation.coordinate, animated: true)
+            
+            // TODO: change to selected icon
+            
+            
+            
+            
+        }
+    }
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? CinemaAnnotation {
             let reuseId = CinemaAnnotationView.ReuseIdentifiers.defaultId
-            let view = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) ?? CinemaAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            view.annotation = annotation
+            
+            let view = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) ?? MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            view.image = Asset.icMapPinInactive.image
+            view.canShowCallout = true
             return view
         }
         

@@ -23,3 +23,4 @@
 "dashboard.session_suggest.subtitle_cinema_km_format" = "At %@,\n%@ away";
 "dashboard.movie.imdb_badge" = "IMDb";
 "dashboard.movie.tomatoes_badge" = "Tomatometer";
+"cinema.map.title" = "Explore";

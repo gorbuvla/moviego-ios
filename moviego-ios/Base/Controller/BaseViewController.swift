@@ -82,7 +82,7 @@ class BaseViewController<V: UIView>: UIViewController {
     
     func modalClosable() {
         let closeButton = UIBarButtonItem(image: Asset.icClose.image, style: .plain, target: self, action: #selector(close))
-        closeButton.tintColor = .blue
+        closeButton.tintColor = .white
         navigationItem.leftBarButtonItem = closeButton
     }
     
