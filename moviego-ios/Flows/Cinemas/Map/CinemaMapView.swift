@@ -10,12 +10,11 @@ import UIKit
 
 class CinemaMapView: BaseMapView {
     
-    weak var bottomCard: UIView!
+    weak var bottomCard: CinemaBottomSheetView!
     
     override func createView() {
         super.createView()
-        
-        bottomCard = ui.view { it in
+        bottomCard = ui.customView(CinemaBottomSheetView()) { it in
             it.snp.makeConstraints { make in
                 make.leading.trailing.equalTo(safeArea).inset(16)
                 make.bottom.equalTo(safeArea).inset(20)

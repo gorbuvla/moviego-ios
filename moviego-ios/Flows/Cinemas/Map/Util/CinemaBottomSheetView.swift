@@ -8,10 +8,19 @@
 
 import UIKit
 import Cloudinary
+import RxSwift
+import RxCocoa
+
+protocol CinemaBottomSheetDelegate {
+    func didTapDetail()
+}
 
 class CinemaBottomSheetView: BaseView {
     
     private weak var header: CinemaCardHeader!
+    private weak var footer: CinemaCardFooter!
+    
+    var delegate: CinemaBottomSheetDelegate?
     
     var cinema: Cinema? {
         didSet {
@@ -20,10 +29,16 @@ class CinemaBottomSheetView: BaseView {
             // header setup
             header.titleLabel.text = cinema.name
             header.addressLabel.text = cinema.address
+            header.typesLabel.text = "Standard, 3D, 4DX, IMAX" // TODO: actual
             header.thumbnailImage.cldSetImage(cinema.thumnailId ?? "", cloudinary: CLDCloudinary.shared, placeholder: Asset.imgCinemaThumbnailPlaceholder.image)
             
             // footer setup
-            // TODO: top movies x button
+            footer.viewModel = CinemaCardFooter.ReferenceMovieViewModel(movies: cinema.topMovies)
+            let _ = footer.detailButton.rx.tap
+                .bind(onNext: {
+                    self.delegate?.didTapDetail()
+                })
+            
         }
     }
     
@@ -35,76 +50,182 @@ class CinemaBottomSheetView: BaseView {
     override func createView() {
         backgroundColor = .white
         layer.cornerRadius = 4
+        clipsToBounds = true
         
-        ui.stack { it in
-            
-            it.ui.customView(CinemaCardHeader()) { it in
-                it.snp.makeConstraints { make in
-                    make.width.equalToSuperview()
-                }
+        header = ui.customView(CinemaCardHeader()) { it in
+            it.snp.makeConstraints { make in
+                make.top.leading.trailing.equalToSuperview().inset(12)
+                make.width.equalToSuperview()
             }
-            
-            it.ui.view { it in
-                it.backgroundColor = .black // TODO: debug
-                
-                it.snp.makeConstraints { make in
-                    make.height.equalTo(1)
-                    make.width.equalToSuperview().inset(30)
-                }
-            }
-            
-            
-            // TODO: future footer
-            it.ui.view { it in
-                it.snp.makeConstraints { make in
-                    make.width.equalToSuperview()
-                    make.height.equalTo(80)
-                }
-            }
+        }
+        
+        let divider = ui.view { it in
+            it.backgroundColor = .separator
             
             it.snp.makeConstraints { make in
-                make.edges.equalToSuperview().inset(UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+                make.top.equalTo(header.snp.bottom).offset(12)
+                make.leading.trailing.equalToSuperview().inset(12)
+                make.height.equalTo(1)
+            }
+        }
+        
+        footer = ui.customView(CinemaCardFooter()) { it in
+            it.snp.makeConstraints { make in
+                make.top.equalTo(divider.snp.bottom).offset(12)
+                make.leading.trailing.bottom.equalToSuperview()
             }
         }
     }
+}
+
+private class CinemaCardHeader: BaseView {
     
-    private class CinemaCardHeader: BaseView {
-        
-        weak var thumbnailImage: UIImageView!
-        weak var titleLabel: UILabel!
-        weak var addressLabel: UILabel!
-        
-        override func createView() {
-            thumbnailImage = ui.imageView { it in
-                it.layer.cornerRadius = 4
-                it.clipsToBounds = true
-                
-                it.snp.makeConstraints { make in
-                    make.width.equalTo(120)
-                    make.height.equalTo(it.snp.width).multipliedBy(0.5)
-                    make.top.leading.trailing.equalToSuperview()
-                }
-            }
+    weak var thumbnailImage: UIImageView!
+    weak var titleLabel: UILabel!
+    weak var addressLabel: UILabel!
+    weak var typesLabel: UILabel!
+    
+    override func createView() {
+        thumbnailImage = ui.imageView { it in
+            it.layer.cornerRadius = 4
+            it.clipsToBounds = true
             
-            titleLabel = ui.label { it in
+            it.snp.makeConstraints { make in
+                make.width.equalTo(120)
+                make.height.equalTo(it.snp.width).multipliedBy(0.5)
+                make.top.leading.bottom.equalToSuperview()
+            }
+        }
+        
+        ui.stack { it in
+            it.axis = .vertical
+            it.distribution = .fillProportionally
+            
+            titleLabel = it.ui.label { it in
                 it.styleHeading2()
                 it.textStyleDark()
                 
                 it.snp.makeConstraints { make in
-                    make.leading.equalTo(thumbnailImage.snp.trailing).inset(10)
-                    make.top.trailing.equalToSuperview()
+                    make.width.equalToSuperview()
                 }
             }
             
-            addressLabel = ui.label { it in
-                it.styleHeading4()
+            addressLabel = it.ui.label { it in
+                it.styleHeading3()
                 it.textStyleDark(opacity: 0.4)
                 
                 it.snp.makeConstraints { make in
-                    make.leading.equalTo(thumbnailImage.snp.trailing).inset(10)
-                    make.top.equalTo(titleLabel.snp.bottom).inset(5)
-                    make.bottom.trailing.equalToSuperview()
+                    make.width.equalToSuperview()
                 }
+            }
+            
+            typesLabel = it.ui.label { it in
+                it.styleHeading3()
+                it.textStyleDark(opacity: 0.4)
+                
+                it.snp.makeConstraints { make in
+                    make.width.equalToSuperview()
+                }
+            }
+            
+            it.snp.makeConstraints { make in
+                make.leading.equalTo(thumbnailImage.snp.trailing).inset(-10)
+                make.top.trailing.bottom.equalToSuperview()
+            }
+        }
+    }
+}
+
+private class CinemaCardFooter: BaseView {
+    
+    class ReferenceMovieViewModel: NSObject, UICollectionViewDataSource {
+        
+        private let movies: [Movie]
+        
+        init(movies: [Movie]) {
+            self.movies = movies
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            return movies.count
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            guard let movie = movies[safe: indexPath.item] else { return UICollectionViewCell() }
+            
+            let cell: ReferenceMovieCell = collectionView.dequeueCell(for: indexPath)
+            cell.movie = movie
+            return cell
+        }
+    }
+    
+    private class ReferenceMovieCell: UICollectionViewCell {
+        
+        weak var thumbnail: UIImageView!
+        
+        var movie: Movie? {
+            didSet {
+                guard let movie = movie else { return }
+                
+                thumbnail.af_setImage(withURL: movie.poster) // TODO: handle error
+            }
+        }
+        
+        override init(frame: CGRect) {
+            super.init(frame: frame)
+            thumbnail = ui.imageView { it in
+                it.layer.cornerRadius = 4
+                it.clipsToBounds = true
+                it.snp.makeConstraints { make in
+                    make.edges.equalToSuperview()
+                }
+            }
+        }
+        
+        required init?(coder aDecoder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+    }
+    
+    
+    weak var collectionView: UICollectionView!
+    weak var detailButton: UIButton!
+    
+    var viewModel: ReferenceMovieViewModel? {
+        didSet {
+            collectionView.dataSource = viewModel
+            collectionView.reloadData()
+        }
+    }
+    
+    override func createView() {
+        clipsToBounds = true
+        let collectionFlowLayout = UICollectionViewFlowLayout()
+        collectionFlowLayout.minimumLineSpacing = 8
+        collectionFlowLayout.itemSize = CGSize(width: 60, height: 80)
+        collectionFlowLayout.scrollDirection = .horizontal
+        collectionFlowLayout.sectionInset = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)
+        
+        collectionView = ui.collectionView(frame: .zero, flowLayout: collectionFlowLayout) { it in
+            it.showsHorizontalScrollIndicator = false
+            it.backgroundColor = .white
+            
+            it.snp.makeConstraints { make in
+                make.top.leading.trailing.equalToSuperview()
+                make.width.equalToSuperview()
+                make.height.equalTo(80)
+            }
+        }
+        
+        detailButton = ui.button { it in
+            it.setTitle(L10n.Cinema.Map.BottomSheet.Button.title.uppercased(), for: .normal)
+            it.accentButton()
+            
+            it.snp.makeConstraints { make in
+                make.top.equalTo(collectionView.snp.bottom).offset(8)
+                make.leading.trailing.bottom.equalToSuperview()
+                make.height.equalTo(40)
+                make.width.equalToSuperview()
             }
         }
     }

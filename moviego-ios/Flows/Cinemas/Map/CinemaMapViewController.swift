@@ -11,14 +11,15 @@ import MapKit
 import RxSwift
 import RxCoreLocation
 
-protocol CinemaMapNavigationDelegate {
+protocol CinemaMapNavigationDelegate: class {
     func didTapShowDetail(of cinema: Cinema)
-    func didTapNavigateCinema(cinema: Cinema)
 }
 
 class CinemaMapViewController: BaseViewController<CinemaMapView>, MKMapViewDelegate {
     
     private let viewModel: CinemaMapViewModel
+    
+    weak var navigationDelegate: CinemaMapNavigationDelegate?
     
     init(viewModel: CinemaMapViewModel) {
         self.viewModel = viewModel
@@ -36,15 +37,16 @@ class CinemaMapViewController: BaseViewController<CinemaMapView>, MKMapViewDeleg
         modalClosable()
         
         layout.mapView.delegate = self
+        layout.bottomCard.delegate = self
         
-        viewModel.locationManager.rx.location
-            .take(1)
-            .mapRegion(width: 1000, height: 1000)
-            .observeOn(MainScheduler.instance)
-            .bind(onNext: { [weak layout] region in
-                layout?.mapView.setRegion(region, animated: true)
-            })
-            .disposed(by: disposeBag)
+//        viewModel.locationManager.rx.location
+//            .take(1)
+//            .mapRegion(width: 1000, height: 1000)
+//            .observeOn(MainScheduler.instance)
+//            .bind(onNext: { [weak layout] region in
+//                layout?.mapView.setRegion(region, animated: true)
+//            })
+//            .disposed(by: disposeBag)
         
         viewModel.viewState.data
             .map { cinemas in cinemas.map { CinemaAnnotation(cinema: $0) } }
@@ -71,7 +73,8 @@ class CinemaMapViewController: BaseViewController<CinemaMapView>, MKMapViewDeleg
             
             // TODO: change to selected icon
             
-            
+            layout.bottomCard.cinema = cinemaAnnotation.cinema
+            layout.bottomCard.layoutSubviews()
             
             
         }
@@ -89,6 +92,14 @@ class CinemaMapViewController: BaseViewController<CinemaMapView>, MKMapViewDeleg
         
         // TODO: handle annotations for prizes
         return nil
+    }
+}
+
+extension CinemaMapViewController: CinemaBottomSheetDelegate {
+    func didTapDetail() {
+        if let annotation = viewModel.selectedAnnotation {
+            navigationDelegate?.didTapShowDetail(of: annotation.cinema)
+        }
     }
 }
 

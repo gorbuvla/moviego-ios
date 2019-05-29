@@ -36,6 +36,16 @@ extension UIButton {
         titleLabel?.styleLink()
     }
     
+    func accentButton() {
+        setBackgroundImage(UIColor(named: .accentGreen).image(), for: .normal)
+        setBackgroundImage(UIColor(named: .accentGreen).withAlphaComponent(0.4).image(), for: .disabled)
+        setTitleColor(.white, for: .normal)
+        setTitleColor(UIColor.white.withAlphaComponent(0.3), for: .disabled)
+        
+        clipsToBounds = true
+        titleLabel?.styleLink()
+    }
+    
     func underlinedButton(text: String) {
         let title = NSMutableAttributedString(string: text, attributes: [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue])
         self.setAttributedTitle(title, for: .normal)

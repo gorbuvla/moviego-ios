@@ -21,6 +21,12 @@ internal enum L10n {
     internal enum Map {
       /// Explore
       internal static let title = L10n.tr("Localizable", "cinema.map.title")
+      internal enum BottomSheet {
+        internal enum Button {
+          /// Detail
+          internal static let title = L10n.tr("Localizable", "cinema.map.bottom_sheet.button.title")
+        }
+      }
     }
   }
 
