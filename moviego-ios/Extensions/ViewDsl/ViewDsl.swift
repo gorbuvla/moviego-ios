@@ -86,4 +86,9 @@ extension ViewDslMaker {
     func mapView(_ block: (MKMapView) -> Void) -> MKMapView {
         return customView(MKMapView(), block)
     }
+    
+    @discardableResult
+    func collectionView(frame: CGRect, flowLayout: UICollectionViewFlowLayout, _ block: (UICollectionView) -> Void) -> UICollectionView {
+        return customView(UICollectionView(frame: frame, collectionViewLayout: flowLayout), block)
+    }
 }

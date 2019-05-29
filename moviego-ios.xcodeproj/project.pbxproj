@@ -110,6 +110,8 @@
 		C267FFBE229AD86C004BC1EE /* RxState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267FFBD229AD86C004BC1EE /* RxState.swift */; };
 		C267FFC0229ADBED004BC1EE /* RxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267FFBF229ADBED004BC1EE /* RxExtensions.swift */; };
 		C267FFC4229B3A48004BC1EE /* PagedFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267FFC3229B3A48004BC1EE /* PagedFetcher.swift */; };
+		C26873E9229DE18F00A22931 /* CinemaMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26873E8229DE18F00A22931 /* CinemaMapView.swift */; };
+		C26873EB229DE54C00A22931 /* CinemaBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26873EA229DE54C00A22931 /* CinemaBottomSheetView.swift */; };
 		C27A468E229C676500068FC3 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27A468D229C676500068FC3 /* MovieViewController.swift */; };
 		C27BAD45226A3B420052BDA6 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27BAD44226A3B420052BDA6 /* StringExtensions.swift */; };
 		C28812B822836563006D2120 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C28812B722836563006D2120 /* BaseNavigationController.swift */; };
@@ -252,6 +254,8 @@
 		C267FFBD229AD86C004BC1EE /* RxState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxState.swift; sourceTree = "<group>"; };
 		C267FFBF229ADBED004BC1EE /* RxExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxExtensions.swift; sourceTree = "<group>"; };
 		C267FFC3229B3A48004BC1EE /* PagedFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedFetcher.swift; sourceTree = "<group>"; };
+		C26873E8229DE18F00A22931 /* CinemaMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaMapView.swift; sourceTree = "<group>"; };
+		C26873EA229DE54C00A22931 /* CinemaBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaBottomSheetView.swift; sourceTree = "<group>"; };
 		C27A468D229C676500068FC3 /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
 		C27BAD44226A3B420052BDA6 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		C28812B722836563006D2120 /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
@@ -734,6 +738,7 @@
 				C2F86D6022947121001D9878 /* Util */,
 				C2649838227D96460037AF48 /* CinemaMapViewController.swift */,
 				C264983A227D96540037AF48 /* CinemaMapViewModel.swift */,
+				C26873E8229DE18F00A22931 /* CinemaMapView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -837,6 +842,7 @@
 			children = (
 				C2F86D5E22946B62001D9878 /* CinemaAnnotationView.swift */,
 				C228EEFC2282F36A004C19EE /* CinemaAnnotation.swift */,
+				C26873EA229DE54C00A22931 /* CinemaBottomSheetView.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1130,6 +1136,7 @@
 				C29C62642284948F00FD0876 /* CinemaDetailViewController.swift in Sources */,
 				C23AFA1A2297204900CC753D /* DashboardViewController.swift in Sources */,
 				C27BAD45226A3B420052BDA6 /* StringExtensions.swift in Sources */,
+				C26873EB229DE54C00A22931 /* CinemaBottomSheetView.swift in Sources */,
 				C24400DA225CF7F5001C88A1 /* RegistrationRepository.swift in Sources */,
 				C23EEB9D2279D26100A95185 /* LoadingView.swift in Sources */,
 				C212BCF322515DD500C624A7 /* UserRepository.swift in Sources */,
@@ -1155,6 +1162,7 @@
 				C23AFA1C2297207400CC753D /* DashboardViewModel.swift in Sources */,
 				C212BCAB2250325C00C624A7 /* LocalizedStrings.swift in Sources */,
 				C29C626C22849FE000FD0876 /* Promotion.swift in Sources */,
+				C26873E9229DE18F00A22931 /* CinemaMapView.swift in Sources */,
 				C2F86D5F22946B62001D9878 /* CinemaAnnotationView.swift in Sources */,
 				C267FFBE229AD86C004BC1EE /* RxState.swift in Sources */,
 				C23EEBA9227B790200A95185 /* Movie.swift in Sources */,

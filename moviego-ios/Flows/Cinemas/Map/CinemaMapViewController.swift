@@ -11,14 +11,15 @@ import MapKit
 import RxSwift
 import RxCoreLocation
 
-protocol CinemaMapNavigationDelegate {
+protocol CinemaMapNavigationDelegate: class {
     func didTapShowDetail(of cinema: Cinema)
-    func didTapNavigateCinema(cinema: Cinema)
 }
 
-class CinemaMapViewController: BaseViewController<BaseMapView>, MKMapViewDelegate {
+class CinemaMapViewController: BaseViewController<CinemaMapView>, MKMapViewDelegate {
     
     private let viewModel: CinemaMapViewModel
+    
+    weak var navigationDelegate: CinemaMapNavigationDelegate?
     
     init(viewModel: CinemaMapViewModel) {
         self.viewModel = viewModel
@@ -31,19 +32,21 @@ class CinemaMapViewController: BaseViewController<BaseMapView>, MKMapViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //navigationItem.title = L10n.Cinema.Map.title
+        navigationItem.title = L10n.Cinema.Map.title
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: UIActivityIndicatorView(style: .gray))
         modalClosable()
-        layout.mapView.delegate = self
         
-        viewModel.locationManager.rx.location
-            .take(1)
-            .mapRegion(width: 1000, height: 1000)
-            .observeOn(MainScheduler.instance)
-            .bind(onNext: { [weak layout] region in
-                layout?.mapView.setRegion(region, animated: true)
-            })
-            .disposed(by: disposeBag)
+        layout.mapView.delegate = self
+        layout.bottomCard.delegate = self
+        
+//        viewModel.locationManager.rx.location
+//            .take(1)
+//            .mapRegion(width: 1000, height: 1000)
+//            .observeOn(MainScheduler.instance)
+//            .bind(onNext: { [weak layout] region in
+//                layout?.mapView.setRegion(region, animated: true)
+//            })
+//            .disposed(by: disposeBag)
         
         viewModel.viewState.data
             .map { cinemas in cinemas.map { CinemaAnnotation(cinema: $0) } }
@@ -62,16 +65,41 @@ class CinemaMapViewController: BaseViewController<BaseMapView>, MKMapViewDelegat
         viewModel.viewportDidChange(mapView.currentViewport)
     }
     
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        if let cinemaAnnotation = view.annotation as? CinemaAnnotation {
+            viewModel.selectedAnnotation = cinemaAnnotation
+            mapView.setCenter(cinemaAnnotation.coordinate, animated: true)
+            
+            // TODO: change to selected icon
+            
+            layout.bottomCard.cinema = cinemaAnnotation.cinema
+            layout.bottomCard.layoutSubviews()
+            
+            
+        }
+    }
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? CinemaAnnotation {
             let reuseId = CinemaAnnotationView.ReuseIdentifiers.defaultId
-            let view = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) ?? CinemaAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            view.annotation = annotation
+            
+            let view = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) ?? MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            view.image = Asset.icMapPinInactive.image
+            view.canShowCallout = true
             return view
         }
         
         // TODO: handle annotations for prizes
         return nil
+    }
+}
+
+extension CinemaMapViewController: CinemaBottomSheetDelegate {
+    func didTapDetail() {
+        if let annotation = viewModel.selectedAnnotation {
+            navigationDelegate?.didTapShowDetail(of: annotation.cinema)
+        }
     }
 }
 

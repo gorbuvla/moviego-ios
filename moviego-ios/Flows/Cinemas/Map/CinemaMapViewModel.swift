@@ -19,6 +19,8 @@ class CinemaMapViewModel: BaseViewModel {
     
     let locationManager: CLLocationManager
     
+    var selectedAnnotation: CinemaAnnotation? = nil // TODO: how about promotions?
+    
     var viewState: StateObservable<[Cinema]> {
         get { return viewStateVariable.asObservable() }
     }

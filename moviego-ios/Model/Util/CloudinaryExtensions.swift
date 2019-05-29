@@ -11,7 +11,7 @@ import Cloudinary
 // any better way to do this?
 extension CLDCloudinary {
     
-    static var shared: CLDCloudinary {
-        return CLDCloudinary(configuration: CLDConfiguration(cloudName: "do04iflqy"))
-    }
+    static var shared: CLDCloudinary = {
+        CLDCloudinary(configuration: CLDConfiguration(cloudName: "do04iflqy"))
+    }()
 }

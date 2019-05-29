@@ -17,6 +17,19 @@ internal enum L10n {
     internal static let name = L10n.tr("Localizable", "app.name")
   }
 
+  internal enum Cinema {
+    internal enum Map {
+      /// Explore
+      internal static let title = L10n.tr("Localizable", "cinema.map.title")
+      internal enum BottomSheet {
+        internal enum Button {
+          /// Detail
+          internal static let title = L10n.tr("Localizable", "cinema.map.bottom_sheet.button.title")
+        }
+      }
+    }
+  }
+
   internal enum Dashboard {
     /// Search movies & cinemas
     internal static let searchHint = L10n.tr("Localizable", "dashboard.search_hint")
