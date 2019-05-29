@@ -15,58 +15,83 @@ class MovieRatingView: BaseView {
     
     var imdbScore: Float = 0.0 {
         didSet {
-            imdbLabel.attributedText = formatRatingString(Asset.icImdbBadge, text: "\(imdbScore)")
+            imdbLabel.text =  "\(imdbScore)"
         }
     }
     
-    var tomatoScore: Int = 0 {
+    var tomatoScore: String? = nil {
         didSet {
-            tomatoLabel.attributedText = formatRatingString(Asset.icTomatoesBadge, text: "\(tomatoScore)%")
+            tomatoLabel.text = tomatoScore
         }
     }
     
     override func createView() {
         ui.stack { it in
             it.axis = .horizontal
+            it.spacing = 0
+            it.distribution = .fillEqually
+            
             
             it.ui.customView(RatingView()) { it in
                 imdbLabel = it.title
-                it.subtitle.text = "ImDb"
+                it.subtitle.text = L10n.Dashboard.Movie.imdbBadge
+                it.iconImage.image = Asset.icImdbBadge.image
             }
             
             it.ui.customView(RatingView()) { it in
                 tomatoLabel = it.title
-                it.subtitle.text = "Tomatometer"
+                it.subtitle.text = L10n.Dashboard.Movie.tomatoesBadge
+                it.iconImage.image = Asset.icTomatoesBadge.image
+            }
+
+            it.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
             }
         }
     }
     
-    private func formatRatingString(_ imageAsset: ImageAsset, text: String) -> NSAttributedString {
-        let attrString = NSMutableAttributedString()
-        
-        let imageAttachment = NSTextAttachment()
-        imageAttachment.image = imageAsset.image
-        
-        attrString.append(NSAttributedString(attachment: imageAttachment))
-        attrString.append(NSAttributedString(string: text))
-        return attrString
-    }
-    
     private class RatingView: BaseView {
         
+        weak var iconImage: UIImageView!
         weak var title: UILabel!
         weak var subtitle: UILabel!
         
         override func createView() {
             ui.stack { it in
                 it.axis = .vertical
+                it.spacing = 0
+                it.distribution = .fillEqually
                 
-                title = it.ui.label { it in
-                    //
+                it.ui.view { it in
+                    iconImage = it.ui.imageView { it in
+                        it.snp.makeConstraints { make in
+                            make.leading.top.bottom.equalToSuperview()
+                            make.width.height.equalTo(20)
+                        }
+                    }
+                    
+                    title = it.ui.label { it in
+                        it.textStyleDark(opacity: 0.7)
+                        it.styleParagraphNormall()
+                        
+                        it.snp.makeConstraints { make in
+                            make.leading.equalTo(iconImage.snp.trailing).offset(2)
+                            make.top.bottom.trailing.equalToSuperview()
+                        }
+                    }
+                    
+                    it.snp.makeConstraints { make in
+                        make.height.equalTo(24)
+                    }
                 }
                 
                 subtitle = it.ui.label { it in
-                    //
+                    it.styleHeading3()
+                    it.textStyleDark(opacity: 0.5)
+                }
+                
+                it.snp.makeConstraints { make in
+                    make.edges.equalToSuperview()
                 }
             }
         }
