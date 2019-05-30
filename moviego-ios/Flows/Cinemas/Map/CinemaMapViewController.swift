@@ -39,6 +39,11 @@ class CinemaMapViewController: BaseViewController<CinemaMapView>, MKMapViewDeleg
         layout.mapView.delegate = self
         layout.bottomCard.delegate = self
         
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleMapTap(sender:)))
+        tapGestureRecognizer.cancelsTouchesInView = false
+        tapGestureRecognizer.isEnabled = true
+        layout.mapView.addGestureRecognizer(tapGestureRecognizer)
+        
 //        viewModel.locationManager.rx.location
 //            .take(1)
 //            .mapRegion(width: 1000, height: 1000)
@@ -56,6 +61,7 @@ class CinemaMapViewController: BaseViewController<CinemaMapView>, MKMapViewDeleg
                 
                 let present = mapView.annotations.compactMap { $0 as? CinemaAnnotation }
                 mapView.addAnnotations(annotations.filter { !present.contains($0) })
+                mapView.zoomAnnotations()
             })
             .disposed(by: disposeBag)
         
@@ -68,16 +74,32 @@ class CinemaMapViewController: BaseViewController<CinemaMapView>, MKMapViewDeleg
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
         if let cinemaAnnotation = view.annotation as? CinemaAnnotation {
-            viewModel.selectedAnnotation = cinemaAnnotation
             mapView.setCenter(cinemaAnnotation.coordinate, animated: true)
             
             // TODO: change to selected icon
             
             layout.bottomCard.cinema = cinemaAnnotation.cinema
-            layout.bottomCard.layoutSubviews()
-            
-            
+            showBottomSheet()
+            viewModel.selectedAnnotation = cinemaAnnotation
         }
+    }
+    
+    func showBottomSheet() {
+        if let _ = viewModel.selectedAnnotation {
+            UIView.transition(with: self.layout.bottomCard, duration: 0.5, options: .transitionFlipFromTop, animations: {})
+        } else {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.layout.bottomSheetConstraint.update(inset: 20)
+                self.view.layoutIfNeeded()
+            })
+        }
+    }
+    
+    func hideBottomSheet() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.layout.bottomSheetConstraint.update(inset: -2000)
+            self.view.layoutIfNeeded()
+        })
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -93,11 +115,21 @@ class CinemaMapViewController: BaseViewController<CinemaMapView>, MKMapViewDeleg
         // TODO: handle annotations for prizes
         return nil
     }
+    
+    @objc private func handleMapTap(sender: UIGestureRecognizer) {
+        let tapLocation = sender.location(in: layout)
+        if let subview = layout.hitTest(tapLocation, with: nil) {
+            if subview.isKind(of: NSClassFromString("MKAnnotationContainerView")!) {
+                viewModel.selectedAnnotation = nil
+                hideBottomSheet()
+            }
+        }
+    }
 }
 
 extension CinemaMapViewController: CinemaBottomSheetDelegate {
     func didTapDetail() {
-        if let annotation = viewModel.selectedAnnotation {
+        if let annotation = viewModel.selectedAnnotation as? CinemaAnnotation {
             navigationDelegate?.didTapShowDetail(of: annotation.cinema)
         }
     }
@@ -135,6 +167,15 @@ extension MKMapView {
             
             return Viewport(lat: Float(centerCoordinate.latitude), lng: Float(centerCoordinate.longitude), radius: max(distVertical, distHorizontal))
         }
+    }
+    
+    func zoomAnnotations() {
+        let zoomRect = annotations
+            .map { MKMapPoint($0.coordinate) }
+            .map { MKMapRect(x: $0.x, y: $0.y, width: 0.01, height: 0.01) }
+            .reduce(MKMapRect.null, { acc, rect in acc.union(rect) })
+        
+        setVisibleMapRect(zoomRect, edgePadding: UIEdgeInsets(top: 40, left: 40, bottom: 40, right: 40), animated: true)
     }
 }
 

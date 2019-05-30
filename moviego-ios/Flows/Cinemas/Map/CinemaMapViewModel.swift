@@ -10,6 +10,7 @@ import RxSwift
 import CoreLocation
 import RxCoreLocation
 import RxRelay
+import MapKit
 
 class CinemaMapViewModel: BaseViewModel {
     
@@ -19,7 +20,7 @@ class CinemaMapViewModel: BaseViewModel {
     
     let locationManager: CLLocationManager
     
-    var selectedAnnotation: CinemaAnnotation? = nil // TODO: how about promotions?
+    var selectedAnnotation: MKAnnotation? = nil
     
     var viewState: StateObservable<[Cinema]> {
         get { return viewStateVariable.asObservable() }
@@ -38,7 +39,7 @@ class CinemaMapViewModel: BaseViewModel {
     }
     
     private func bindUpdates() {
-        viewportSubject.debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
+        viewportSubject.take(1).debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
             .flatMap { viewport in self.repository.fetchCinemas(lat: viewport.lat, lng: viewport.lng, radius: viewport.radius) }
             .mapState()
             .bind(to: viewStateVariable)
