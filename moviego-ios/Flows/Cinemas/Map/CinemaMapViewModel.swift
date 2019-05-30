@@ -10,6 +10,7 @@ import RxSwift
 import CoreLocation
 import RxCoreLocation
 import RxRelay
+import MapKit
 
 class CinemaMapViewModel: BaseViewModel {
     
@@ -19,7 +20,7 @@ class CinemaMapViewModel: BaseViewModel {
     
     let locationManager: CLLocationManager
     
-    var selectedAnnotation: CinemaAnnotation? = nil // TODO: how about promotions?
+    var selectedAnnotation: MKAnnotation? = nil
     
     var viewState: StateObservable<[Cinema]> {
         get { return viewStateVariable.asObservable() }

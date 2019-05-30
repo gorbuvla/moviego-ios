@@ -17,7 +17,7 @@ class CinemaMapView: BaseMapView {
         bottomCard = ui.customView(CinemaBottomSheetView()) { it in
             it.snp.makeConstraints { make in
                 make.leading.trailing.equalTo(safeArea).inset(16)
-                make.bottom.equalTo(safeArea).inset(20)
+                make.top.equalTo(self.snp.bottom)
             }
         }
     }
