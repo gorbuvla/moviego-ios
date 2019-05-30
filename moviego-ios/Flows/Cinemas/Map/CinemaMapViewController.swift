@@ -61,6 +61,7 @@ class CinemaMapViewController: BaseViewController<CinemaMapView>, MKMapViewDeleg
                 
                 let present = mapView.annotations.compactMap { $0 as? CinemaAnnotation }
                 mapView.addAnnotations(annotations.filter { !present.contains($0) })
+                mapView.zoomAnnotations()
             })
             .disposed(by: disposeBag)
         
@@ -185,6 +186,15 @@ extension MKMapView {
             
             return Viewport(lat: Float(centerCoordinate.latitude), lng: Float(centerCoordinate.longitude), radius: max(distVertical, distHorizontal))
         }
+    }
+    
+    func zoomAnnotations() {
+        let zoomRect = annotations
+            .map { MKMapPoint($0.coordinate) }
+            .map { MKMapRect(x: $0.x, y: $0.y, width: 0.01, height: 0.01) }
+            .reduce(MKMapRect.null, { acc, rect in acc.union(rect) })
+        
+        setVisibleMapRect(zoomRect, edgePadding: UIEdgeInsets(top: 40, left: 40, bottom: 40, right: 40), animated: true)
     }
 }
 
