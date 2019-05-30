@@ -86,38 +86,19 @@ class CinemaMapViewController: BaseViewController<CinemaMapView>, MKMapViewDeleg
     
     func showBottomSheet() {
         if let _ = viewModel.selectedAnnotation {
-            UIView.transition(with: self.layout.bottomCard, duration: 0.5, options: .transitionFlipFromTop, animations: {
-                self.layout.bottomCard.isHidden = false
-            })
+            UIView.transition(with: self.layout.bottomCard, duration: 0.5, options: .transitionFlipFromTop, animations: {})
         } else {
-            
-            
             UIView.animate(withDuration: 0.5, animations: {
-                self.layout.bottomCard.snp.remakeConstraints { make in
-                    make.leading.trailing.equalTo(self.safeArea).inset(16)
-                    make.bottom.equalTo(self.safeArea).inset(20)
-                }
+                self.layout.bottomSheetConstraint.update(inset: 20)
                 self.view.layoutIfNeeded()
-            }, completion: { _ in
-                UIView.transition(with: self.view, duration: 0.5, options: .transitionCrossDissolve, animations: {
-                    self.layout.bottomCard.isHidden = false
-                })
             })
         }
     }
     
     func hideBottomSheet() {
-        layout.bottomCard.snp.remakeConstraints { make in
-            make.leading.trailing.equalTo(safeArea).inset(16)
-            make.top.equalTo(layout.snp.bottom)
-        }
-        
         UIView.animate(withDuration: 0.5, animations: {
+            self.layout.bottomSheetConstraint.update(inset: -2000)
             self.view.layoutIfNeeded()
-        }, completion: { _ in
-            UIView.transition(with: self.view, duration: 0.5, options: .transitionCrossDissolve, animations: {
-                self.layout.bottomCard.isHidden = true
-            })
         })
     }
     

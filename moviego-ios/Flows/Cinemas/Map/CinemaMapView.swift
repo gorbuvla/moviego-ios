@@ -7,17 +7,19 @@
 //
 
 import UIKit
+import SnapKit
 
 class CinemaMapView: BaseMapView {
     
     weak var bottomCard: CinemaBottomSheetView!
+    weak var bottomSheetConstraint: Constraint!
     
     override func createView() {
         super.createView()
         bottomCard = ui.customView(CinemaBottomSheetView()) { it in
             it.snp.makeConstraints { make in
                 make.leading.trailing.equalTo(safeArea).inset(16)
-                make.top.equalTo(self.snp.bottom)
+                bottomSheetConstraint = make.bottom.equalTo(safeArea).inset(-2000).constraint
             }
         }
     }
