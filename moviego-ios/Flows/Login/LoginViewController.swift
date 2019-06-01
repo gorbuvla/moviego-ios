@@ -89,9 +89,9 @@ class LoginViewController: BaseViewController<LoginView>, UITextFieldDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         layout.logoImage.snp.remakeConstraints { (make) in
-            make.height.width.equalTo(180)
+            make.width.height.equalTo(180)
             make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().multipliedBy(0.5)
+            make.centerY.equalToSuperview().multipliedBy(0.6)
         }
         
         UIView.animate(withDuration: 1.0, animations: {

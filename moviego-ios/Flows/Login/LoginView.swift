@@ -24,7 +24,8 @@ class LoginView: BaseScrollView {
         backgroundColor = .bkgLight
         
         logoImage = contentView.ui.imageView { it in
-            it.image = Asset.logo.image
+            it.image = Asset.icAppLogo.image
+            it.contentMode = .scaleAspectFit
             
             it.snp.makeConstraints { make in
                 make.width.height.equalTo(240)
@@ -81,8 +82,8 @@ class LoginView: BaseScrollView {
             
             it.snp.makeConstraints { make in
                 make.leading.trailing.equalToSuperview().inset(16)
-                make.top.equalTo(logoImage.snp.bottom).offset(50)
-                make.bottom.lessThanOrEqualToSuperview()
+                make.top.equalTo(logoImage.snp.bottom).offset(30)
+                make.bottom.equalToSuperview()
             }
         }
         

@@ -18,6 +18,7 @@
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 internal enum Asset {
+  internal static let icAppLogo = ImageAsset(name: "ic_app_logo")
   internal static let icBackArrow = ImageAsset(name: "ic_back_arrow")
   internal static let icChevron = ImageAsset(name: "ic_chevron")
   internal static let icClose = ImageAsset(name: "ic_close")
