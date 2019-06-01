@@ -45,25 +45,25 @@ final class ViewModelDependency: ViewModelFactory {
             RegisterCityViewModel(cityApi: self.dependencies.cityApi, repository: registrationRepository)
         }
     }
-    
-    var sessionDetailViewModelFactory: (Movie, Cinema, [Session]?) -> SessionDetailViewModel {
-        return { movie, cinema, sessions in
-            SessionDetailViewModel(
-                movie: movie, cinema: cinema, sessions: sessions
-            )
-        }
-    }
-    
+
     var dashboardViewModelFactory: () -> DashboardViewModel {
         return { DashboardViewModel(repository: self.dependencies.cinemaRepository) }
     }
     
-    var cinemaMapViewModel: () -> CinemaMapViewModel {
+    var cinemaMapViewModelFactory: () -> CinemaMapViewModel {
         return { CinemaMapViewModel(repository: self.dependencies.cinemaRepository) }
     }
     
-    var cinemaDetailViewModel: (Cinema) -> CinemaDetailViewModel {
+    var cinemaDetailViewModelFactory: (Cinema) -> CinemaDetailViewModel {
         return { cinema in CinemaDetailViewModel(cinema: cinema, repository: self.dependencies.cinemaRepository) }
+    }
+    
+    var movieDetailViewModelFactory: (Movie) -> MovieDetailViewModel {
+        return { movie in MovieDetailViewModel(movie: movie, repository: self.dependencies.cinemaRepository) }
+    }
+    
+    var sessionDetailViewModelFactory: (Movie, Cinema) -> SessionDetailViewModel {
+        return { movie, cinema in SessionDetailViewModel(movie: movie, cinema: cinema) }
     }
     
     var profileViewModel: () -> ProfileViewModel {

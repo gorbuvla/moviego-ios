@@ -13,7 +13,7 @@ class CinemaCoordinator: FlowCoordinator {
     
     override func start() -> UIViewController {
         let navController = BaseNavigationController()
-        let vc = CinemaMapViewController(viewModel: factories.cinemaMapViewModel())
+        let vc = CinemaMapViewController(viewModel: factories.cinemaMapViewModelFactory())
         vc.navigationDelegate = self
         navController.viewControllers = [vc]
         navigationController = navController
@@ -24,7 +24,7 @@ class CinemaCoordinator: FlowCoordinator {
 extension CinemaCoordinator: CinemaMapNavigationDelegate {
     func didTapShowDetail(of cinema: Cinema) {
         print("go detail")
-        let vc = CinemaDetailViewController(viewModel: factories.cinemaDetailViewModel(cinema))
+        let vc = CinemaDetailViewController(viewModel: factories.cinemaDetailViewModelFactory(cinema))
         navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -40,6 +40,8 @@ class CinemaDetailViewController: BaseViewController<BaseListView>, UITableViewD
         layout.tableView.sectionHeaderHeight = 0
         layout.tableView.estimatedSectionHeaderHeight = 0
         layout.tableView.refreshControl = nil
+        layout.tableView.backgroundColor = .secondary
+        layout.tableView.tableHeaderView = CinemaDetailHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 300))
         
         let spinner = UIActivityIndicatorView(style: .gray)
         spinner.startAnimating()
@@ -57,7 +59,6 @@ class CinemaDetailViewController: BaseViewController<BaseListView>, UITableViewD
         viewModel.viewState.data
             .observeOn(MainScheduler.instance)
             .bind(onNext: { [weak layout] _ in
-                print("Data")
                 layout?.tableView.tableFooterView?.isHidden = true
                 layout?.tableView.reloadData()
             })

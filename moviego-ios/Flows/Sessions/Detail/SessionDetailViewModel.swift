@@ -12,11 +12,9 @@ class SessionDetailViewModel: BaseViewModel {
     
     let movie: Movie
     let cinema: Cinema
-    let sessions: [Session]?
     
-    init(movie: Movie, cinema: Cinema, sessions: [Session]? = nil) {
+    init(movie: Movie, cinema: Cinema) {
         self.movie = movie
         self.cinema = cinema
-        self.sessions = sessions
     }
 }
