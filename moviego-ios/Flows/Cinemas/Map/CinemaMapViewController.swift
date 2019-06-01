@@ -67,8 +67,11 @@ class CinemaMapViewController: BaseViewController<CinemaMapView>, MKMapViewDeleg
         if let cinemaAnnotation = view.annotation as? CinemaAnnotation {
             mapView.setCenter(cinemaAnnotation.coordinate, animated: true)
             
+            if let annotation = viewModel.selectedAnnotation as? CinemaAnnotation {
+                mapView.view(for: annotation)?.image = Asset.icMapPinInactive.image
+            }
             // TODO: change to selected icon
-            
+            view.image = Asset.icMapPinActive.image
             layout.bottomCard.cinema = cinemaAnnotation.cinema
             showBottomSheet()
             viewModel.selectedAnnotation = cinemaAnnotation
@@ -87,6 +90,10 @@ class CinemaMapViewController: BaseViewController<CinemaMapView>, MKMapViewDeleg
     }
     
     func hideBottomSheet() {
+        if let annotation = viewModel.selectedAnnotation as? CinemaAnnotation {
+            layout.mapView.view(for: annotation)?.image = Asset.icMapPinInactive.image
+        }
+        
         UIView.animate(withDuration: 0.5, animations: {
             self.layout.bottomSheetConstraint.update(inset: -2000)
             self.view.layoutIfNeeded()
@@ -98,8 +105,8 @@ class CinemaMapViewController: BaseViewController<CinemaMapView>, MKMapViewDeleg
             let reuseId = CinemaAnnotationView.ReuseIdentifiers.defaultId
             
             let view = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) ?? MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            view.image = Asset.icMapPinInactive.image
-            view.canShowCallout = true
+            view.image = viewModel.selectedAnnotation?.isEqual(annotation) == true ? Asset.icMapPinActive.image : Asset.icMapPinInactive.image
+            view.canShowCallout = false
             return view
         }
         
@@ -111,8 +118,8 @@ class CinemaMapViewController: BaseViewController<CinemaMapView>, MKMapViewDeleg
         let tapLocation = sender.location(in: layout)
         if let subview = layout.hitTest(tapLocation, with: nil) {
             if subview.isKind(of: NSClassFromString("MKAnnotationContainerView")!) {
-                viewModel.selectedAnnotation = nil
                 hideBottomSheet()
+                viewModel.selectedAnnotation = nil
             }
         }
     }
