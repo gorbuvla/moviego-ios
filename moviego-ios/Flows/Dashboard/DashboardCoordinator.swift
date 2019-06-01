@@ -30,9 +30,8 @@ extension DashboardCoordinator: DashboardNavigatioNDelegate {
     }
     
     func presentCinemaMap(from viewController: UIViewController) {
-        let navidation = BaseNavigationController()
-        navidation.viewControllers = [CinemaMapViewController(viewModel: factories.cinemaMapViewModel())]
-        viewController.present(navidation, animated: true)
+        let cinemaFlow = CinemaCoordinator()
+        viewController.present(cinemaFlow.start(), animated: true)
     }
     
     func presentProfile(from viewController: UIViewController) {

@@ -13,6 +13,7 @@ protocol CinemaRepositoring {
     func fetchCinemas(lat: Float?, lng: Float?, radius: Double?) -> Single<[Cinema]>
     
     func fetchMovies(offset: Int, limit: Int) -> Single<[Movie]>
+    func fetchMovies(for cinema: Cinema, offset: Int, limit: Int) -> Single<[Movie]>
     func fetchSessions(startingFrom: Date, lat: Double?, lng: Double?, limit: Int, offset: Int) -> Single<[Session]>
     func fetchPromotions() -> Single<[Promotion]>
 }
@@ -193,6 +194,10 @@ class MockedCinemaRepository: CinemaRepositoring {
         let slice = list[offset..<(offset+limit)]
         print("Return slice of size: \(slice.count) offset: \(offset) limit: \(limit)")
         return Single.just(Array(slice)).delay(.seconds(1), scheduler: MainScheduler.instance)
+    }
+    
+    func fetchMovies(for cinema: Cinema, offset: Int, limit: Int) -> Single<[Movie]> {
+        return fetchMovies(offset: offset, limit: limit)
     }
     
     func fetchSessions(startingFrom: Date, lat: Double?, lng: Double?, limit: Int, offset: Int) -> Single<[Session]> {

@@ -20,7 +20,7 @@ class CinemaMapViewController: BaseViewController<CinemaMapView> {
     private weak var activityIndicator: UIActivityIndicatorView!
     private let viewModel: CinemaMapViewModel
     
-    weak var navigationDelegate: CinemaMapNavigationDelegate?
+    var navigationDelegate: CinemaMapNavigationDelegate?
     
     init(viewModel: CinemaMapViewModel) {
         self.viewModel = viewModel

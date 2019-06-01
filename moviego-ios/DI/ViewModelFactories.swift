@@ -62,6 +62,10 @@ final class ViewModelDependency: ViewModelFactory {
         return { CinemaMapViewModel(repository: self.dependencies.cinemaRepository) }
     }
     
+    var cinemaDetailViewModel: (Cinema) -> CinemaDetailViewModel {
+        return { cinema in CinemaDetailViewModel(cinema: cinema, repository: self.dependencies.cinemaRepository) }
+    }
+    
     var profileViewModel: () -> ProfileViewModel {
         return { ProfileViewModel() }
     }
