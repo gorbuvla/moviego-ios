@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="5nS-hu-7uh">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_app_logo" translatesAutoresizingMaskIntoConstraints="NO" id="5nS-hu-7uh">
                                 <rect key="frame" x="87" y="333" width="240" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="240" id="334-US-tKj"/>
@@ -25,7 +25,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.15294117647058825" green="0.43529411764705883" blue="0.74901960784313726" alpha="0.80388484589041098" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.95686274509803915" green="0.96470588235294119" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="5nS-hu-7uh" firstAttribute="centerX" secondItem="JGd-SE-9jO" secondAttribute="centerX" id="wCq-wK-fbF"/>
                             <constraint firstItem="5nS-hu-7uh" firstAttribute="centerY" secondItem="JGd-SE-9jO" secondAttribute="centerY" id="y6o-Qb-Lfe"/>
@@ -38,6 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="60" height="60"/>
+        <image name="ic_app_logo" width="161" height="36"/>
     </resources>
 </document>

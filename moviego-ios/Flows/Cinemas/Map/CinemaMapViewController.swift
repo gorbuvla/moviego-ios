@@ -44,15 +44,6 @@ class CinemaMapViewController: BaseViewController<CinemaMapView>, MKMapViewDeleg
         tapGestureRecognizer.isEnabled = true
         layout.mapView.addGestureRecognizer(tapGestureRecognizer)
         
-//        viewModel.locationManager.rx.location
-//            .take(1)
-//            .mapRegion(width: 1000, height: 1000)
-//            .observeOn(MainScheduler.instance)
-//            .bind(onNext: { [weak layout] region in
-//                layout?.mapView.setRegion(region, animated: true)
-//            })
-//            .disposed(by: disposeBag)
-        
         viewModel.viewState.data
             .map { cinemas in cinemas.map { CinemaAnnotation(cinema: $0) } }
             .observeOn(MainScheduler.instance)
