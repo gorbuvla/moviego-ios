@@ -10,6 +10,10 @@ import MapKit
 
 class CinemaAnnotation: NSObject, MKAnnotation {
     
+    enum ReuseIdentifiers {
+        static let defaultId = "cinemaId"
+    }
+    
     let title: String?
     let subtitle: String?
     let cinema: Cinema

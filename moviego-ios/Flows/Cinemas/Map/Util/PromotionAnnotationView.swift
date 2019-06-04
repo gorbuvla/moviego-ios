@@ -7,117 +7,84 @@
 //
 
 import MapKit
+import Cloudinary
+import RxSwift
+
+protocol PromoCalloutDelegate: class {
+    func showDetail(of promotion: Promotion)
+}
 
 class PromotionCalloutView: BaseView {
     
-    private weak var cinemaThumbnail: UIImageView!
-    private weak var cinemaLabel: UILabel!
+    private weak var movieLabel: UILabel!
+    private weak var sceneThumbnail: UIImageView!
+    private weak var sceneDescription: UILabel!
     private weak var detailButton: UIButton!
+    
+    weak var delegate: PromoCalloutDelegate?
     
     var promotion: Promotion? {
         didSet {
             guard let promotion = promotion else { return }
             
-            print("promotion did set")
-            
-            cinemaThumbnail.image = Asset.imgCinemaThumbnailPlaceholder.image
-            cinemaLabel.text = "Promotion"
+            movieLabel.text = promotion.movie.title
+            sceneThumbnail.cldSetImage(publicId: promotion.thumbnailId, cloudinary: CLDCloudinary.shared)
+            sceneDescription.text = promotion.description
         }
     }
     
     override func createView() {
         backgroundColor = .white
         
-        cinemaThumbnail = ui.imageView { it in
+        movieLabel = ui.label { it in
+            it.styleHeading1()
+            it.textStyleDark()
+            it.adjustsFontSizeToFitWidth = true
             
             it.snp.makeConstraints { make in
-                make.top.leading.trailing.equalToSuperview().inset(12)
-                make.width.equalTo(200)
-                make.height.equalTo(100).multipliedBy(0.5)
+                make.leading.trailing.top.equalToSuperview()
             }
         }
         
-        cinemaLabel = ui.label { it in
+        sceneThumbnail = ui.imageView { it in
+            it.layer.cornerRadius = 4
+            it.clipsToBounds = true
             
             it.snp.makeConstraints { make in
-                make.top.equalTo(cinemaThumbnail.snp.bottom).offset(10)
-                make.width.equalToSuperview().inset(20)
+                make.top.equalTo(movieLabel.snp.bottom).offset(5)
+                make.leading.trailing.equalToSuperview()
+                make.width.equalTo(250)
+                make.height.equalTo(it.snp.width).multipliedBy(0.5)
+            }
+        }
+        
+        sceneDescription = ui.label { it in
+            it.numberOfLines = 0
+            it.textAlignment = .center
+            
+            it.styleHeading4()
+            it.textStyleDark(opacity: 0.5)
+            
+            it.snp.makeConstraints { make in
+                make.top.equalTo(sceneThumbnail.snp.bottom).offset(5)
+                make.width.equalToSuperview()
             }
         }
         
         detailButton = ui.button { it in
             it.setTitle("Detail", for: .normal)
-            it.primaryButton()
+            it.accentButton()
+            
+            let _ = it.rx.tap.bind(onNext: { [weak delegate] in
+                delegate?.showDetail(of: self.promotion!)
+            })
             
             it.snp.makeConstraints { make in
-                make.top.equalTo(cinemaLabel.snp.bottom)
+                make.top.equalTo(sceneDescription.snp.bottom).offset(5)
                 make.width.equalToSuperview()
                 make.height.equalTo(40)
                 make.bottom.equalToSuperview()
             }
         }
-    }
-}
-
-class PromotionAnnotationView: MKAnnotationView {
-    
-    private static let ANIM_DURATION = 0.5
-    
-    enum ReuseIdentifiers {
-        static let defaultId = "cinemaAnnotationView"
-    }
-    
-    private weak var calloutView: PromotionCalloutView?
-    
-    override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
-        super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
-        self.canShowCallout = false
-        self.image = Asset.icMapPinInactive.image
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.canShowCallout = false
-        self.image = Asset.icMapPinInactive.image
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        selected ? showCallout(animated) : hideCallout(animated)
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        self.calloutView?.removeFromSuperview()
-    }
-    
-    
-    private func showCallout(_ animated: Bool) {
-        calloutView?.removeFromSuperview()
-        
-        let callout = PromotionCalloutView(frame: CGRect(x: 0, y: 0, width: 240, height: 320))
-        callout.promotion = (annotation as? PromotionAnnotation)?.promotion
-        
-        callout.frame.origin.x -= callout.frame.width / 2.0 - (frame.width / 2.0)
-        callout.frame.origin.y -= callout.frame.height
-        
-        addSubview(callout)
-        
-        calloutView = callout
-        
-        if animated {
-            calloutView?.alpha = 0.0
-            UIView.animate(withDuration: PromotionAnnotationView.ANIM_DURATION, animations: { [weak self] in
-                self?.calloutView?.alpha = 1.0
-            })
-        }
-    }
-    
-    private func hideCallout(_ animated: Bool) {
-        UIView.animate(withDuration: animated ? PromotionAnnotationView.ANIM_DURATION : 0.0, animations: { [weak self] in
-            self?.calloutView?.alpha = 0.0
-        }, completion: { [weak self] _ in
-            self?.calloutView?.removeFromSuperview()
-        })
     }
 }

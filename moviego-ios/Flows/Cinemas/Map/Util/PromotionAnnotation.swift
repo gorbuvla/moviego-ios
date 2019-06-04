@@ -10,13 +10,13 @@ import MapKit
 
 class PromotionAnnotation: NSObject, MKAnnotation {
     
-    let title: String?
-    let subtitle: String?
+    enum ReuseIdentifiers {
+        static let defaultId = "promoId"
+    }
+    
     let promotion: Promotion
     
     init(promotion: Promotion) {
-        title = promotion.movie.title
-        subtitle = "Promotion"
         self.promotion = promotion
     }
     

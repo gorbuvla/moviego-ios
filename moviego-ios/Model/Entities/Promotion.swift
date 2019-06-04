@@ -14,6 +14,7 @@ struct Promotion: Codable {
     let lat: Double
     let lng: Double
     let thumbnailId: String
+    let description: String
     let movie: Movie
 }
 

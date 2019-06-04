@@ -842,10 +842,10 @@
 		C2F86D6022947121001D9878 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				C2F86D5E22946B62001D9878 /* PromotionAnnotationView.swift */,
 				C228EEFC2282F36A004C19EE /* CinemaAnnotation.swift */,
 				C26873EA229DE54C00A22931 /* CinemaBottomSheetView.swift */,
 				C261C8C922A6B41800D9096C /* PromotionAnnotation.swift */,
+				C2F86D5E22946B62001D9878 /* PromotionAnnotationView.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";

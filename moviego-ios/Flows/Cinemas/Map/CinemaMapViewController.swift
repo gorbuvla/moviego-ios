@@ -9,10 +9,10 @@
 import UIKit
 import MapKit
 import RxSwift
-import RxCoreLocation
 
 protocol CinemaMapNavigationDelegate: class {
     func didTapShowDetail(of cinema: Cinema)
+    func didTapShowDetail(of promotion: Promotion)
 }
 
 class CinemaMapViewController: BaseViewController<CinemaMapView> {
@@ -71,7 +71,7 @@ class CinemaMapViewController: BaseViewController<CinemaMapView> {
         
     }
     
-    func showBottomSheet() {
+    private func showBottomSheet() {
         if let _ = viewModel.selectedAnnotation {
             UIView.transition(with: self.layout.bottomCard, duration: 0.5, options: .transitionFlipFromTop, animations: {})
         } else {
@@ -82,7 +82,7 @@ class CinemaMapViewController: BaseViewController<CinemaMapView> {
         }
     }
     
-    func hideBottomSheet() {
+    private func hideBottomSheet() {
         if let annotation = viewModel.selectedAnnotation as? CinemaAnnotation {
             layout.mapView.view(for: annotation)?.image = Asset.icMapPinInactive.image
         }
@@ -104,16 +104,23 @@ class CinemaMapViewController: BaseViewController<CinemaMapView> {
     }
 }
 
+//
+// MARK: - MKMapViewDelegate
+//
 extension CinemaMapViewController: MKMapViewDelegate {
     func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
         viewModel.viewportDidChange(mapView.currentViewport)
     }
     
-    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        // nothing
-    }
-    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        // Different animations are applied when closing/switching item in card, so distinguish between
+        // a promotion and cinema clicks.
+        if let _ = view.annotation as? PromotionAnnotation {
+            if let annotation = viewModel.selectedAnnotation as? CinemaAnnotation {
+                mapView.view(for: annotation)?.image = Asset.icMapPinInactive.image
+                hideBottomSheet()
+            }
+        }
         
         if let cinemaAnnotation = view.annotation as? CinemaAnnotation {
             mapView.setCenter(cinemaAnnotation.coordinate, animated: true)
@@ -131,7 +138,7 @@ extension CinemaMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? CinemaAnnotation {
-            let reuseId = PromotionAnnotationView.ReuseIdentifiers.defaultId
+            let reuseId = CinemaAnnotation.ReuseIdentifiers.defaultId
             
             let view = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) ?? MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             view.image = viewModel.selectedAnnotation?.isEqual(annotation) == true ? Asset.icMapPinActive.image : Asset.icMapPinInactive.image
@@ -140,21 +147,32 @@ extension CinemaMapViewController: MKMapViewDelegate {
         }
         
         if let annotation = annotation as? PromotionAnnotation {
-            let reuseId = "promo_id"
-            let view = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) ?? PromotionAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            //let view = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) ?? MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            //view.image = Asset.icChevron.image
-            //view.canShowCallout = true
-            view.annotation = annotation
+            let reuseId = PromotionAnnotation.ReuseIdentifiers.defaultId
+            
+            let view = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) ?? MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            let callout = PromotionCalloutView()
+            callout.promotion = annotation.promotion
+            view.detailCalloutAccessoryView = callout
+            view.image = Asset.icChevron.image
+            view.canShowCallout = true
             return view
         }
-        
-        // TODO: handle annotations for prizes
         return nil
     }
-
 }
 
+//
+// MARK: - PromoCalloutDelegate
+//
+extension CinemaMapViewController: PromoCalloutDelegate {
+    func showDetail(of promotion: Promotion) {
+        navigationDelegate?.didTapShowDetail(of: promotion)
+    }
+}
+
+//
+// MARK: - CinemaBottomSheetDelegate
+//
 extension CinemaMapViewController: CinemaBottomSheetDelegate {
     func didTapDetail() {
         if let annotation = viewModel.selectedAnnotation as? CinemaAnnotation {
@@ -163,6 +181,9 @@ extension CinemaMapViewController: CinemaBottomSheetDelegate {
     }
 }
 
+//
+// Support structs
+//
 struct Viewport {
     let lat: Float
     let lng: Float
