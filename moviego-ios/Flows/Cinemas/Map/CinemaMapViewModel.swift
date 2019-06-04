@@ -16,6 +16,7 @@ class CinemaMapViewModel: BaseViewModel {
     
     private let viewportSubject = PublishSubject<Viewport>()
     private let viewStateVariable = BehaviorRelay(value: State<[Cinema]>.loading)
+    private let promotionsRelay = BehaviorRelay(value: [Promotion]())
     private let repository: CinemaRepositoring
     
     let locationManager: CLLocationManager
@@ -26,10 +27,21 @@ class CinemaMapViewModel: BaseViewModel {
         get { return viewStateVariable.asObservable() }
     }
     
+    var promotions: Observable<[Promotion]> {
+        get {
+            return Observable.combineLatest(locationManager.rx.location.compactMap { $0 }, promotionsRelay) { ($0, $1) }
+                .map {
+                    let (location, promotions) = $0
+                    return promotions.filter { location.distance(from: $0.location) < Double(Environment.promotionRadius) }
+                }
+        }
+    }
+    
     init(repository: CinemaRepositoring) {
         self.repository = repository
         self.locationManager = CLLocationManager()
         self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
         super.init()
         bindUpdates()
     }
@@ -43,6 +55,11 @@ class CinemaMapViewModel: BaseViewModel {
             .flatMap { viewport in self.repository.fetchCinemas(lat: viewport.lat, lng: viewport.lng, radius: viewport.radius) }
             .mapState()
             .bind(to: viewStateVariable)
+            .disposed(by: disposeBag)
+        
+        repository.fetchPromotions()
+            .asObservable()
+            .bind(to: promotionsRelay)
             .disposed(by: disposeBag)
     }
 }

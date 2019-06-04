@@ -8,18 +8,20 @@
 
 import MapKit
 
-class CinemaCalloutView: BaseView {
+class PromotionCalloutView: BaseView {
     
     private weak var cinemaThumbnail: UIImageView!
     private weak var cinemaLabel: UILabel!
     private weak var detailButton: UIButton!
     
-    var cinema: Cinema? {
+    var promotion: Promotion? {
         didSet {
-            guard let cinema = cinema else { return }
+            guard let promotion = promotion else { return }
+            
+            print("promotion did set")
             
             cinemaThumbnail.image = Asset.imgCinemaThumbnailPlaceholder.image
-            cinemaLabel.text = cinema.name
+            cinemaLabel.text = "Promotion"
         }
     }
     
@@ -30,8 +32,8 @@ class CinemaCalloutView: BaseView {
             
             it.snp.makeConstraints { make in
                 make.top.leading.trailing.equalToSuperview().inset(12)
-                make.width.equalToSuperview()
-                make.height.equalTo(it.snp.width).multipliedBy(0.5)
+                make.width.equalTo(200)
+                make.height.equalTo(100).multipliedBy(0.5)
             }
         }
         
@@ -57,7 +59,7 @@ class CinemaCalloutView: BaseView {
     }
 }
 
-class CinemaAnnotationView: MKAnnotationView {
+class PromotionAnnotationView: MKAnnotationView {
     
     private static let ANIM_DURATION = 0.5
     
@@ -65,7 +67,7 @@ class CinemaAnnotationView: MKAnnotationView {
         static let defaultId = "cinemaAnnotationView"
     }
     
-    private weak var calloutView: CinemaCalloutView?
+    private weak var calloutView: PromotionCalloutView?
     
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
@@ -93,25 +95,26 @@ class CinemaAnnotationView: MKAnnotationView {
     private func showCallout(_ animated: Bool) {
         calloutView?.removeFromSuperview()
         
-        let callout = CinemaCalloutView()
-        callout.cinema = (annotation as? CinemaAnnotation)?.cinema
+        let callout = PromotionCalloutView(frame: CGRect(x: 0, y: 0, width: 240, height: 320))
+        callout.promotion = (annotation as? PromotionAnnotation)?.promotion
         
         callout.frame.origin.x -= callout.frame.width / 2.0 - (frame.width / 2.0)
         callout.frame.origin.y -= callout.frame.height
         
         addSubview(callout)
+        
         calloutView = callout
         
         if animated {
             calloutView?.alpha = 0.0
-            UIView.animate(withDuration: CinemaAnnotationView.ANIM_DURATION, animations: { [weak self] in
+            UIView.animate(withDuration: PromotionAnnotationView.ANIM_DURATION, animations: { [weak self] in
                 self?.calloutView?.alpha = 1.0
             })
         }
     }
     
     private func hideCallout(_ animated: Bool) {
-        UIView.animate(withDuration: animated ? CinemaAnnotationView.ANIM_DURATION : 0.0, animations: { [weak self] in
+        UIView.animate(withDuration: animated ? PromotionAnnotationView.ANIM_DURATION : 0.0, animations: { [weak self] in
             self?.calloutView?.alpha = 0.0
         }, completion: { [weak self] _ in
             self?.calloutView?.removeFromSuperview()
