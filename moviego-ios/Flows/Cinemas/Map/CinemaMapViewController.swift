@@ -45,7 +45,7 @@ class CinemaMapViewController: BaseViewController<CinemaMapView> {
         tapGestureRecognizer.isEnabled = true
         layout.mapView.addGestureRecognizer(tapGestureRecognizer)
         
-        viewModel.viewState.data
+        viewModel.cinemasState.data
             .map { cinemas in cinemas.map { CinemaAnnotation(cinema: $0) } }
             .observeOn(MainScheduler.instance)
             .bind(onNext: { [weak layout] annotations in
@@ -57,7 +57,7 @@ class CinemaMapViewController: BaseViewController<CinemaMapView> {
             })
             .disposed(by: disposeBag)
         
-        viewModel.promotions
+        viewModel.promotionsState
             .map { promotions in promotions.map { PromotionAnnotation(promotion: $0) }}
             .observeOn(MainScheduler.instance)
             .bind(onNext: { [weak layout] annotations in

@@ -10,12 +10,17 @@ import Foundation
 import CoreLocation
 
 // TODO: add model name, movie promotion is for, etc...
-struct Promotion: Codable {
+struct Promotion: Codable, Equatable {
+    let id: Int
     let lat: Double
     let lng: Double
     let thumbnailId: String
     let description: String
     let movie: Movie
+    
+    static func == (lhs: Promotion, rhs: Promotion) -> Bool {
+        return lhs.id == rhs.id
+    }
 }
 
 extension Promotion {

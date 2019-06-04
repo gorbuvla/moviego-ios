@@ -525,6 +525,7 @@
 		C212BCB4225035E500C624A7 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				C2310C6A22A6FE5E00729B93 /* New Group */,
 				C27A468C229C675400068FC3 /* Movie */,
 				C23AFA182297203900CC753D /* Dashboard */,
 				C2649836227D95950037AF48 /* Cinemas */,
@@ -646,6 +647,13 @@
 				C249D6CE22987F9000FBD0BC /* BaseCollectionViewCell.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		C2310C6A22A6FE5E00729B93 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		C23AFA182297203900CC753D /* Dashboard */ = {

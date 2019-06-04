@@ -15,25 +15,26 @@ import MapKit
 class CinemaMapViewModel: BaseViewModel {
     
     private let viewportSubject = PublishSubject<Viewport>()
-    private let viewStateVariable = BehaviorRelay(value: State<[Cinema]>.loading)
+    private let cinemasRelay = BehaviorRelay(value: State<[Cinema]>.loading)
     private let promotionsRelay = BehaviorRelay(value: [Promotion]())
     private let repository: CinemaRepositoring
     
-    let locationManager: CLLocationManager
+    private let locationManager: CLLocationManager
     
     var selectedAnnotation: MKAnnotation? = nil
     
-    var viewState: StateObservable<[Cinema]> {
-        get { return viewStateVariable.asObservable() }
+    var cinemasState: StateObservable<[Cinema]> {
+        get { return cinemasRelay.asObservable() }
     }
     
-    var promotions: Observable<[Promotion]> {
+    var promotionsState: Observable<[Promotion]> {
         get {
             return Observable.combineLatest(locationManager.rx.location.compactMap { $0 }, promotionsRelay) { ($0, $1) }
                 .map {
                     let (location, promotions) = $0
                     return promotions.filter { location.distance(from: $0.location) < Double(Environment.promotionRadius) }
                 }
+                .distinctUntilChanged()
         }
     }
     
@@ -54,7 +55,7 @@ class CinemaMapViewModel: BaseViewModel {
         viewportSubject.take(1).debounce(RxTimeInterval.seconds(1), scheduler: MainScheduler.instance)
             .flatMap { viewport in self.repository.fetchCinemas(lat: viewport.lat, lng: viewport.lng, radius: viewport.radius) }
             .mapState()
-            .bind(to: viewStateVariable)
+            .bind(to: cinemasRelay)
             .disposed(by: disposeBag)
         
         repository.fetchPromotions()
@@ -63,4 +64,3 @@ class CinemaMapViewModel: BaseViewModel {
             .disposed(by: disposeBag)
     }
 }
-
