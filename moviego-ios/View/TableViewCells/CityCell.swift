@@ -19,7 +19,7 @@ class CityCell: BaseTableViewCell<CityCellView> {
         didSet {
             guard let city = city else { return }
             
-            layout.thumbnailImage.cldSetImage(publicId: city.pictureId, cloudinary: CLDCloudinary(configuration: CLDConfiguration(cloudName: "do04iflqy")))
+            layout.thumbnailImage.cldSetImage(publicId: city.pictureId, cloudinary: CLDCloudinary.shared)
             layout.titleLabel.text = city.name.uppercased()
             layout.subtitleLabel.text = "Cinemas: \(city.cinemasCount)"
         }

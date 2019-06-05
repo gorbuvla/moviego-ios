@@ -14,6 +14,7 @@ protocol CinemaRepositoring {
     
     func fetchMovies(offset: Int, limit: Int) -> Single<[Movie]>
     func fetchSessions(startingFrom: Date, lat: Double?, lng: Double?, limit: Int, offset: Int) -> Single<[Session]>
+    func fetchPromotions() -> Single<[Promotion]>
 }
 
 class MockedCinemaRepository: CinemaRepositoring {
@@ -45,7 +46,34 @@ class MockedCinemaRepository: CinemaRepositoring {
         director: Person(name: "David Leitch"),
         actors: "Charlize Theron, James McAvoy, Eddie Marsan, John Goodman".components(separatedBy: ", ").map { Person(name: $0) }
     )
-
+    
+    private let spiderMan = Movie(
+        title: "Spider-Man: Far from Home",
+        year: "2019",
+        imdbRating: 8.0,
+        imdbId: "tt6320628",
+        rottenTomatoesRating: "90%",
+        plot: "Following the events of Avengers: Endgame, Spider-Man must step up to take on new threats in a world that has changed forever.",
+        poster: URL(string: "https://m.media-amazon.com/images/M/MV5BNmFkYjkzZmUtYjJiYi00NDU1LTk4MjktNzc3ZmU2YjhiYzBhXkEyXkFqcGdeQXVyOTI5MTk1MjU@._V1_SY1000_SX675_AL_.jpg")!,
+        release: "2019",
+        trailer: "https://www.youtube.com/watch?v=Nt9L1jCKGnE",
+        director: Person(name: "Jon Watts"),
+        actors: [Person(name: "Tom Holland"), Person(name: "Jake Gyllenhaal")]
+    )
+    
+    private let casinoRoyale = Movie(
+        title: "Casino Royale",
+        year: "2006",
+        imdbRating: 8.0,
+        imdbId: "tt0381061",
+        rottenTomatoesRating: "90%",
+        plot: "Armed with a license to kill, Secret Agent James Bond sets out on his first mission as 007, and must defeat a private banker to terrorists in a high stakes game of poker at Casino Royale, Montenegro, but things are not what they seem.",
+        poster: URL(string: "https://m.media-amazon.com/images/M/MV5BMDI5ZWJhOWItYTlhOC00YWNhLTlkNzctNDU5YTI1M2E1MWZhXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_SY1000_CR0,0,672,1000_AL_.jpg")!,
+        release: "2006",
+        trailer: "https://www.youtube.com/watch?v=36mnx8dBbGE",
+        director: Person(name: "Martin Campbell"),
+        actors: [Person(name: "Daniel Craig"), Person(name: "Mads Mikkelsen")]
+    )
     
     private let ccAndel = Cinema(
         id: 1,
@@ -90,6 +118,18 @@ class MockedCinemaRepository: CinemaRepositoring {
             trailer: "https://www.youtube.com/watch?v=mP0VHJYFOAU",
             director: Person(name: "Bryan Singer"),
             actors: "Rami Malek, Lucy Boynton, Gwilym Lee, Ben Hardy".components(separatedBy: ", ").map { Person(name: $0) }
+            ), Movie(
+                title: "Casino Royale",
+                year: "2006",
+                imdbRating: 8.0,
+                imdbId: "tt0381061",
+                rottenTomatoesRating: "90%",
+                plot: "Armed with a license to kill, Secret Agent James Bond sets out on his first mission as 007, and must defeat a private banker to terrorists in a high stakes game of poker at Casino Royale, Montenegro, but things are not what they seem.",
+                poster: URL(string: "https://m.media-amazon.com/images/M/MV5BMDI5ZWJhOWItYTlhOC00YWNhLTlkNzctNDU5YTI1M2E1MWZhXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_SY1000_CR0,0,672,1000_AL_.jpg")!,
+                release: "2006",
+                trailer: "https://www.youtube.com/watch?v=36mnx8dBbGE",
+                director: Person(name: "Martin Campbell"),
+                actors: [Person(name: "Daniel Craig"), Person(name: "Mads Mikkelsen")]
             )
 ]
     )
@@ -126,6 +166,18 @@ class MockedCinemaRepository: CinemaRepositoring {
                 trailer: "https://www.youtube.com/watch?v=yIUube1pSC0",
                 director: Person(name: "David Leitch"),
                 actors: "Charlize Theron, James McAvoy, Eddie Marsan, John Goodman".components(separatedBy: ", ").map { Person(name: $0) }
+            ),  Movie(
+                title: "Spider-Man: Far from Home",
+                year: "2019",
+                imdbRating: 8.0,
+                imdbId: "tt6320628",
+                rottenTomatoesRating: "90%",
+                plot: "Following the events of Avengers: Endgame, Spider-Man must step up to take on new threats in a world that has changed forever.",
+                poster: URL(string: "https://m.media-amazon.com/images/M/MV5BNmFkYjkzZmUtYjJiYi00NDU1LTk4MjktNzc3ZmU2YjhiYzBhXkEyXkFqcGdeQXVyOTI5MTk1MjU@._V1_SY1000_SX675_AL_.jpg")!,
+                release: "2019",
+                trailer: "https://www.youtube.com/watch?v=Nt9L1jCKGnE",
+                director: Person(name: "Jon Watts"),
+                actors: [Person(name: "Tom Holland"), Person(name: "Jake Gyllenhaal")]
             )
 ]
     )
@@ -135,7 +187,7 @@ class MockedCinemaRepository: CinemaRepositoring {
     }
     
     func fetchMovies(offset: Int, limit: Int) -> Single<[Movie]> {
-        let list = Array(repeating: [rhapsody, atomicBlonde], count: 15).flatMap { $0 }
+        let list = Array(repeating: [rhapsody, atomicBlonde, spiderMan, casinoRoyale], count: 15).flatMap { $0 }
         if offset == list.count { return Single.just([]) }
         
         let slice = list[offset..<(offset+limit)]
@@ -146,12 +198,20 @@ class MockedCinemaRepository: CinemaRepositoring {
     func fetchSessions(startingFrom: Date, lat: Double?, lng: Double?, limit: Int, offset: Int) -> Single<[Session]> {
         
         let results = [ccAndel, ccChodov, csAndel]
-            .flatMap { cinema in [rhapsody, atomicBlonde].map { movie in (cinema, movie) } }
+            .flatMap { cinema in [rhapsody, atomicBlonde, spiderMan, casinoRoyale].map { movie in (cinema, movie) } }
             .map { cinema, movie in
                 Session(type: "2D", startsAt: Date(), cinema: cinema, movie: movie)
             }
 
         return Single.just(results).delay(.seconds(1), scheduler: MainScheduler.instance)
+    }
+    
+    func fetchPromotions() -> Single<[Promotion]> {
+        print("fetch")
+        return Single.just([
+            Promotion(id: 1, lat: 50.086537, lng: 14.411172, iconId: "promotions/ic_spider_man", pulseColor: "", thumbnailId: "promotions/thumbnail_spiderslav", description: "Spider man finds himself in Prague. Walking past a shop with hm... traditional Czech Matreshkas he notices Charles Bridge which will bee closed for the next 40 years.", movie: spiderMan),
+            Promotion(id: 2, lat: 50.0943222, lng: 14.4417161, iconId: "promotions/ic_casino_royale", pulseColor: "", thumbnailId: "promotions/casino_royale_danube", description: "James Bond, as always, while taking rest from his romantic adventures comes to Danube House to kill a traitor, but finds himself locked in the elevator and there is no slečna recepční who may help him...", movie: casinoRoyale)
+        ])
     }
 }
 

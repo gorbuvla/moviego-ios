@@ -27,6 +27,7 @@ internal enum Asset {
   internal static let icMapPinActive = ImageAsset(name: "ic_map_pin_active")
   internal static let icMapPinInactive = ImageAsset(name: "ic_map_pin_inactive")
   internal static let icProfilePlaceholder = ImageAsset(name: "ic_profile_placeholder")
+  internal static let icPromotion = ImageAsset(name: "ic_promotion")
   internal static let icTabMovies = ImageAsset(name: "ic_tab_movies")
   internal static let icTomatoesBadge = ImageAsset(name: "ic_tomatoes_badge")
   internal static let imgCinemaThumbnailPlaceholder = ImageAsset(name: "img_cinema_thumbnail_placeholder")
