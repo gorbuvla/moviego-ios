@@ -11,7 +11,7 @@ import Cloudinary
 import RxSwift
 
 protocol PromoCalloutDelegate: class {
-    func showDetail(of promotion: Promotion)
+    func showDetail()
 }
 
 class PromotionCalloutView: BaseView {
@@ -76,7 +76,7 @@ class PromotionCalloutView: BaseView {
             it.accentButton()
             
             let _ = it.rx.tap.bind(onNext: { [weak delegate] in
-                delegate?.showDetail(of: self.promotion!)
+                delegate?.showDetail()
             })
             
             it.snp.makeConstraints { make in

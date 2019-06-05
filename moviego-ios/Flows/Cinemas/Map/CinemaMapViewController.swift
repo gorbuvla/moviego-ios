@@ -129,11 +129,13 @@ extension CinemaMapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         // Different animations are applied when closing/switching item in card, so distinguish between
         // a promotion and cinema clicks.
-        if let _ = view.annotation as? PromotionAnnotation {
+        if let promoAnnotation = view.annotation as? PromotionAnnotation {
             if let annotation = viewModel.selectedAnnotation as? CinemaAnnotation {
                 mapView.view(for: annotation)?.image = Asset.icMapPinInactive.image
                 hideBottomSheet()
             }
+            
+            viewModel.selectedAnnotation = promoAnnotation
         }
         
         if let cinemaAnnotation = view.annotation as? CinemaAnnotation {
@@ -167,6 +169,7 @@ extension CinemaMapViewController: MKMapViewDelegate {
             view.promotion = annotation.promotion
             let callout = PromotionCalloutView()
             callout.promotion = annotation.promotion
+            callout.delegate = self
             
             view.detailCalloutAccessoryView = callout
             view.image = Asset.icPromotion.image
@@ -182,8 +185,10 @@ extension CinemaMapViewController: MKMapViewDelegate {
 // MARK: - PromoCalloutDelegate
 //
 extension CinemaMapViewController: PromoCalloutDelegate {
-    func showDetail(of promotion: Promotion) {
-        navigationDelegate?.didTapShowDetail(of: promotion)
+    func showDetail() {
+        if let annotation = viewModel.selectedAnnotation as? PromotionAnnotation {
+            navigationDelegate?.didTapShowDetail(of: annotation.promotion)
+        }
     }
 }
 
