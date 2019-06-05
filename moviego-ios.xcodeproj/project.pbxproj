@@ -22,6 +22,8 @@
 
 /* Begin PBXBuildFile section */
 		1CD77DADF868C089F1AD1BA0 /* Pods_moviego_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 300592F8A601A1E85853C83F /* Pods_moviego_ios.framework */; };
+		C209A6A122A72122003368E7 /* PromotionAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209A6A022A72122003368E7 /* PromotionAnnotationView.swift */; };
+		C209A6A322A7BA2E003368E7 /* PromotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C209A6A222A7BA2E003368E7 /* PromotionViewController.swift */; };
 		C212BC45224FBB2000C624A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BC44224FBB2000C624A7 /* AppDelegate.swift */; };
 		C212BC47224FBB2000C624A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BC46224FBB2000C624A7 /* ViewController.swift */; };
 		C212BC4C224FBB2200C624A7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C212BC4B224FBB2200C624A7 /* Images.xcassets */; };
@@ -135,7 +137,7 @@
 		C2DF15522280BF500071A9FB /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2DF15512280BF500071A9FB /* RxRelay.framework */; };
 		C2DF8771229334C500694A28 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DF8770229334C500694A28 /* ColorTheme.swift */; };
 		C2F7409D22997D8C00E55F25 /* BaseShadowedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F7409C22997D8C00E55F25 /* BaseShadowedView.swift */; };
-		C2F86D5F22946B62001D9878 /* PromotionAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F86D5E22946B62001D9878 /* PromotionAnnotationView.swift */; };
+		C2F86D5F22946B62001D9878 /* PromotionCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F86D5E22946B62001D9878 /* PromotionCalloutView.swift */; };
 		F5FCCCB022563B1C00640F2A /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCCCAF22563B1C00640F2A /* DateExtensions.swift */; };
 		F5FCCCB22256469200640F2A /* OAuthApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5FCCCB12256469200640F2A /* OAuthApiService.swift */; };
 /* End PBXBuildFile section */
@@ -159,6 +161,8 @@
 		714178FBA904447304E10E73 /* Pods-moviego-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moviego-ios.debug.xcconfig"; path = "Target Support Files/Pods-moviego-ios/Pods-moviego-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		97338950936FA0C4CF8B0169 /* Pods-moviego-iosUITests.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moviego-iosUITests.beta.xcconfig"; path = "Target Support Files/Pods-moviego-iosUITests/Pods-moviego-iosUITests.beta.xcconfig"; sourceTree = "<group>"; };
 		C07042668D445943B41D986B /* Pods_ios_skeletonUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_skeletonUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C209A6A022A72122003368E7 /* PromotionAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionAnnotationView.swift; sourceTree = "<group>"; };
+		C209A6A222A7BA2E003368E7 /* PromotionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewController.swift; sourceTree = "<group>"; };
 		C212BC41224FBB2000C624A7 /* moviego-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "moviego-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C212BC44224FBB2000C624A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C212BC46224FBB2000C624A7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -280,7 +284,7 @@
 		C2DF15512280BF500071A9FB /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		C2DF8770229334C500694A28 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ColorTheme.swift; path = "moviego-ios/Base/ColorTheme.swift"; sourceTree = SOURCE_ROOT; };
 		C2F7409C22997D8C00E55F25 /* BaseShadowedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseShadowedView.swift; sourceTree = "<group>"; };
-		C2F86D5E22946B62001D9878 /* PromotionAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionAnnotationView.swift; sourceTree = "<group>"; };
+		C2F86D5E22946B62001D9878 /* PromotionCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionCalloutView.swift; sourceTree = "<group>"; };
 		C9F82BCC923BFCAABAED12FA /* Pods-moviego-iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moviego-iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-moviego-iosUITests/Pods-moviego-iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CD5853AE2A03E0C9B6969ED1 /* Pods-moviego-ios.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moviego-ios.beta.xcconfig"; path = "Target Support Files/Pods-moviego-ios/Pods-moviego-ios.beta.xcconfig"; sourceTree = "<group>"; };
 		F5FCCCAF22563B1C00640F2A /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
@@ -525,7 +529,7 @@
 		C212BCB4225035E500C624A7 /* Flows */ = {
 			isa = PBXGroup;
 			children = (
-				C2310C6A22A6FE5E00729B93 /* New Group */,
+				C2310C6A22A6FE5E00729B93 /* Promotion */,
 				C27A468C229C675400068FC3 /* Movie */,
 				C23AFA182297203900CC753D /* Dashboard */,
 				C2649836227D95950037AF48 /* Cinemas */,
@@ -649,11 +653,12 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		C2310C6A22A6FE5E00729B93 /* New Group */ = {
+		C2310C6A22A6FE5E00729B93 /* Promotion */ = {
 			isa = PBXGroup;
 			children = (
+				C209A6A222A7BA2E003368E7 /* PromotionViewController.swift */,
 			);
-			path = "New Group";
+			path = Promotion;
 			sourceTree = "<group>";
 		};
 		C23AFA182297203900CC753D /* Dashboard */ = {
@@ -853,7 +858,8 @@
 				C228EEFC2282F36A004C19EE /* CinemaAnnotation.swift */,
 				C26873EA229DE54C00A22931 /* CinemaBottomSheetView.swift */,
 				C261C8C922A6B41800D9096C /* PromotionAnnotation.swift */,
-				C2F86D5E22946B62001D9878 /* PromotionAnnotationView.swift */,
+				C2F86D5E22946B62001D9878 /* PromotionCalloutView.swift */,
+				C209A6A022A72122003368E7 /* PromotionAnnotationView.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1131,6 +1137,7 @@
 				C216F52F2275CD12001EB291 /* ChooseCityViewModel.swift in Sources */,
 				C216F52922752B9F001EB291 /* RegisterUserView.swift in Sources */,
 				C216F52D2275C045001EB291 /* CityCell.swift in Sources */,
+				C209A6A122A72122003368E7 /* PromotionAnnotationView.swift in Sources */,
 				C28812BE2284065B006D2120 /* SessionDetailView.swift in Sources */,
 				C24400CB225CD276001C88A1 /* LoginViewModel.swift in Sources */,
 				C264983B227D96540037AF48 /* CinemaMapViewModel.swift in Sources */,
@@ -1175,7 +1182,7 @@
 				C212BCAB2250325C00C624A7 /* LocalizedStrings.swift in Sources */,
 				C29C626C22849FE000FD0876 /* Promotion.swift in Sources */,
 				C26873E9229DE18F00A22931 /* CinemaMapView.swift in Sources */,
-				C2F86D5F22946B62001D9878 /* PromotionAnnotationView.swift in Sources */,
+				C2F86D5F22946B62001D9878 /* PromotionCalloutView.swift in Sources */,
 				C267FFBE229AD86C004BC1EE /* RxState.swift in Sources */,
 				C23EEBA9227B790200A95185 /* Movie.swift in Sources */,
 				F5FCCCB022563B1C00640F2A /* DateExtensions.swift in Sources */,
@@ -1201,6 +1208,7 @@
 				C28812B822836563006D2120 /* BaseNavigationController.swift in Sources */,
 				C24400E2225D0778001C88A1 /* AppCoordinator.swift in Sources */,
 				C23AFA1E2297376B00CC753D /* DashboardCoordinator.swift in Sources */,
+				C209A6A322A7BA2E003368E7 /* PromotionViewController.swift in Sources */,
 				C24400C4225CCBA8001C88A1 /* BaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -17,6 +17,7 @@ protocol CinemaMapNavigationDelegate: class {
 
 class CinemaMapViewController: BaseViewController<CinemaMapView> {
     
+    private weak var activityIndicator: UIActivityIndicatorView!
     private let viewModel: CinemaMapViewModel
     
     weak var navigationDelegate: CinemaMapNavigationDelegate?
@@ -34,6 +35,13 @@ class CinemaMapViewController: BaseViewController<CinemaMapView> {
         super.viewDidLoad()
         navigationItem.title = L10n.Cinema.Map.title
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: UIActivityIndicatorView(style: .gray))
+        
+        let activityIndicator = UIActivityIndicatorView(style: .white)
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.startAnimating()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
+        self.activityIndicator = activityIndicator
+        
         modalClosable()
         
         layout.mapView.delegate = self
@@ -44,6 +52,13 @@ class CinemaMapViewController: BaseViewController<CinemaMapView> {
         tapGestureRecognizer.cancelsTouchesInView = false
         tapGestureRecognizer.isEnabled = true
         layout.mapView.addGestureRecognizer(tapGestureRecognizer)
+        
+        viewModel.cinemasState.loading
+            .observeOn(MainScheduler.instance)
+            .bind(onNext: { [weak activityIndicator] loading in
+                loading ? activityIndicator?.startAnimating() : activityIndicator?.stopAnimating()
+            })
+            .disposed(by: disposeBag)
         
         viewModel.cinemasState.data
             .map { cinemas in cinemas.map { CinemaAnnotation(cinema: $0) } }
@@ -57,7 +72,7 @@ class CinemaMapViewController: BaseViewController<CinemaMapView> {
             })
             .disposed(by: disposeBag)
         
-        viewModel.promotionsState
+        viewModel.promotions
             .map { promotions in promotions.map { PromotionAnnotation(promotion: $0) }}
             .observeOn(MainScheduler.instance)
             .bind(onNext: { [weak layout] annotations in
@@ -149,12 +164,15 @@ extension CinemaMapViewController: MKMapViewDelegate {
         if let annotation = annotation as? PromotionAnnotation {
             let reuseId = PromotionAnnotation.ReuseIdentifiers.defaultId
             
-            let view = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) ?? MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            let view: PromotionAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? PromotionAnnotationView ?? PromotionAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            view.promotion = annotation.promotion
             let callout = PromotionCalloutView()
             callout.promotion = annotation.promotion
+            
             view.detailCalloutAccessoryView = callout
-            view.image = Asset.icChevron.image
+            view.image = Asset.icPromotion.image
             view.canShowCallout = true
+            
             return view
         }
         return nil

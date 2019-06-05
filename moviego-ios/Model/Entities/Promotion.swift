@@ -14,6 +14,8 @@ struct Promotion: Codable, Equatable {
     let id: Int
     let lat: Double
     let lng: Double
+    let iconId: String
+    let pulseColor: String // UIColor or CGColor ?
     let thumbnailId: String
     let description: String
     let movie: Movie

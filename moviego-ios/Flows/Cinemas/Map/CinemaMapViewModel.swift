@@ -27,7 +27,7 @@ class CinemaMapViewModel: BaseViewModel {
         get { return cinemasRelay.asObservable() }
     }
     
-    var promotionsState: Observable<[Promotion]> {
+    var promotions: Observable<[Promotion]> {
         get {
             return Observable.combineLatest(locationManager.rx.location.compactMap { $0 }, promotionsRelay) { ($0, $1) }
                 .map {

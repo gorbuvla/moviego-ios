@@ -11,6 +11,11 @@ import MapKit
 
 extension UIView {
     
+    var isVisible: Bool {
+        get { return !isHidden }
+        set(value) { isHidden = !value }
+    }
+    
     func applyShadow() {
         let shadowPath = UIBezierPath(rect: bounds)
         layer.masksToBounds = false
