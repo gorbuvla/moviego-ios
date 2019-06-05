@@ -38,9 +38,8 @@ class CinemaMapViewController: BaseViewController<CinemaMapView> {
         
         let activityIndicator = UIActivityIndicatorView(style: .white)
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.startAnimating()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
         self.activityIndicator = activityIndicator
+        navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: activityIndicator)]
         
         modalClosable()
         

@@ -11,7 +11,7 @@ import MapKit
 import Cloudinary
 
 //
-// TODO: pulse & custom icon for each promotion
+// MKAnnotationView for promotions, sets custom pin image and a pulsing effect.
 //
 class PromotionAnnotationView: MKAnnotationView {
     
@@ -22,16 +22,13 @@ class PromotionAnnotationView: MKAnnotationView {
             image = Asset.icPromotion.image
             let url = CLDCloudinary.shared.createUrl().generate(promotion.iconId)
             CLDCloudinary.shared.createDownloader().fetchImage(url!, nil, completionHandler: { image, error in
-                if let image = image {
-                    self.image = image
-                }
-                
-                if let error = error {
-                    print(error)
+                let scaledImage = image?.scale(to: CGSize(width: 24, height: 24))
+                DispatchQueue.main.async {
+                    self.image = scaledImage ?? Asset.icPromotion.image
                 }
             })
-            // set icon
-            // set pulse
+            
+            // TODO: add pulse
             
 //            let circulatPath = UIBezierPath(arcCenter: .zero, radius: 20, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
 //

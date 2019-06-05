@@ -26,6 +26,17 @@ extension UIView {
     }
 }
 
+extension UIImage {
+    
+    func scale(to size: CGSize) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, 0.0);
+        draw(in: CGRect(origin: CGPoint.zero, size: CGSize(width: size.width, height: size.height)))
+        let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+}
+
 extension MKMapView {
     
     var currentViewport: Viewport {

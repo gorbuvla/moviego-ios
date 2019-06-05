@@ -209,7 +209,7 @@ class MockedCinemaRepository: CinemaRepositoring {
     func fetchPromotions() -> Single<[Promotion]> {
         print("fetch")
         return Single.just([
-            Promotion(id: 1, lat: 50.086537, lng: 14.411172, iconId: "", pulseColor: "", thumbnailId: "promotions/thumbnail_spiderslav", description: "Spider man finds himself in Prague. Walking past a shop with hm... traditional Czech Matreshkas he notices Charles Bridge which will bee closed for the next 40 years.", movie: spiderMan),
+            Promotion(id: 1, lat: 50.086537, lng: 14.411172, iconId: "promotions/ic_spider_man", pulseColor: "", thumbnailId: "promotions/thumbnail_spiderslav", description: "Spider man finds himself in Prague. Walking past a shop with hm... traditional Czech Matreshkas he notices Charles Bridge which will bee closed for the next 40 years.", movie: spiderMan),
             Promotion(id: 2, lat: 50.0943222, lng: 14.4417161, iconId: "promotions/ic_casino_royale", pulseColor: "", thumbnailId: "promotions/casino_royale_danube", description: "James Bond, as always, while taking rest from his romantic adventures comes to Danube House to kill a traitor, but finds himself locked in the elevator and there is no slečna recepční who may help him...", movie: casinoRoyale)
         ])
     }

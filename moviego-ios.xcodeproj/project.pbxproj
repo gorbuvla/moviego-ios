@@ -58,7 +58,7 @@
 		C212BCFC225169B100C624A7 /* BaseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCFB225169B100C624A7 /* BaseListView.swift */; };
 		C212BD0022516AA800C624A7 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C212BCFF22516AA800C624A7 /* BaseViewModel.swift */; };
 		C216F52922752B9F001EB291 /* RegisterUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216F52822752B9F001EB291 /* RegisterUserView.swift */; };
-		C216F52B2275B238001EB291 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216F52A2275B238001EB291 /* UIViewExtensions.swift */; };
+		C216F52B2275B238001EB291 /* UIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216F52A2275B238001EB291 /* UIKitExtensions.swift */; };
 		C216F52D2275C045001EB291 /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216F52C2275C045001EB291 /* CityCell.swift */; };
 		C216F52F2275CD12001EB291 /* ChooseCityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C216F52E2275CD12001EB291 /* ChooseCityViewModel.swift */; };
 		C224E183225BDE0800A4AE37 /* ACKategories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C224E182225BDE0800A4AE37 /* ACKategories.framework */; };
@@ -205,7 +205,7 @@
 		C212BCFB225169B100C624A7 /* BaseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListView.swift; sourceTree = "<group>"; };
 		C212BCFF22516AA800C624A7 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		C216F52822752B9F001EB291 /* RegisterUserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterUserView.swift; sourceTree = "<group>"; };
-		C216F52A2275B238001EB291 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		C216F52A2275B238001EB291 /* UIKitExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitExtensions.swift; sourceTree = "<group>"; };
 		C216F52C2275C045001EB291 /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
 		C216F52E2275CD12001EB291 /* ChooseCityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCityViewModel.swift; sourceTree = "<group>"; };
 		C224E182225BDE0800A4AE37 /* ACKategories.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ACKategories.framework; path = Carthage/Build/iOS/ACKategories.framework; sourceTree = "<group>"; };
@@ -616,7 +616,7 @@
 				F5FCCCAF22563B1C00640F2A /* DateExtensions.swift */,
 				C24400DB225CFA73001C88A1 /* Copyable.swift */,
 				C27BAD44226A3B420052BDA6 /* StringExtensions.swift */,
-				C216F52A2275B238001EB291 /* UIViewExtensions.swift */,
+				C216F52A2275B238001EB291 /* UIKitExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1197,7 +1197,7 @@
 				C2C52EBA225E3547009A6D93 /* ProfileViewController.swift in Sources */,
 				C212BCFC225169B100C624A7 /* BaseListView.swift in Sources */,
 				C27A468E229C676500068FC3 /* MovieViewController.swift in Sources */,
-				C216F52B2275B238001EB291 /* UIViewExtensions.swift in Sources */,
+				C216F52B2275B238001EB291 /* UIKitExtensions.swift in Sources */,
 				C243CC482274E93200B68DC5 /* UIElementTheme.swift in Sources */,
 				C243CC3B226B33F900B68DC5 /* CityApiService.swift in Sources */,
 				C24400C6225CD1E2001C88A1 /* LoginView.swift in Sources */,
