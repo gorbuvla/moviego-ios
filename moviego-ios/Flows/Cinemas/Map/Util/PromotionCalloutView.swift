@@ -21,7 +21,7 @@ class PromotionCalloutView: BaseView {
     private weak var sceneDescription: UILabel!
     private weak var detailButton: UIButton!
     
-    weak var delegate: PromoCalloutDelegate?
+    var delegate: PromoCalloutDelegate?
     
     var promotion: Promotion? {
         didSet {
@@ -75,8 +75,8 @@ class PromotionCalloutView: BaseView {
             it.setTitle("Detail", for: .normal)
             it.accentButton()
             
-            let _ = it.rx.tap.bind(onNext: { [weak delegate] in
-                delegate?.showDetail()
+            let _ = it.rx.tap.bind(onNext: {
+                self.delegate?.showDetail()
             })
             
             it.snp.makeConstraints { make in

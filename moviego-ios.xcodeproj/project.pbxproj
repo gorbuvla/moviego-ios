@@ -104,8 +104,6 @@
 		C249D6CD22987F5E00FBD0BC /* SuggestedSessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C249D6CC22987F5E00FBD0BC /* SuggestedSessionCell.swift */; };
 		C249D6CF22987F9000FBD0BC /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C249D6CE22987F9000FBD0BC /* BaseCollectionViewCell.swift */; };
 		C261C8CA22A6B41800D9096C /* PromotionAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261C8C922A6B41800D9096C /* PromotionAnnotation.swift */; };
-		C251AFC022A312D100B6678E /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C251AFBF22A312D100B6678E /* MovieDetailViewController.swift */; };
-		C251AFC222A3134000B6678E /* MovieDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C251AFC122A3134000B6678E /* MovieDetailViewModel.swift */; };
 		C2649839227D96460037AF48 /* CinemaMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2649838227D96460037AF48 /* CinemaMapViewController.swift */; };
 		C264983B227D96540037AF48 /* CinemaMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C264983A227D96540037AF48 /* CinemaMapViewModel.swift */; };
 		C264983F227D99FB0037AF48 /* CinemaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C264983E227D99FB0037AF48 /* CinemaRepository.swift */; };
@@ -376,6 +374,7 @@
 				C212BC42224FBB2000C624A7 /* Products */,
 				2D9FE7A8F1CB3A24053EB5F6 /* Pods */,
 				AA2D6159C38A722E5FA71F43 /* Frameworks */,
+				C2A2291022A7CB3F0063E2B3 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -534,7 +533,6 @@
 			isa = PBXGroup;
 			children = (
 				C2310C6A22A6FE5E00729B93 /* Promotion */,
-				C27A468C229C675400068FC3 /* Movie */,
 				C23AFA182297203900CC753D /* Dashboard */,
 				C2649836227D95950037AF48 /* Cinemas */,
 				C2C52ED0225E4200009A6D93 /* City */,
@@ -793,6 +791,15 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		C2A2291022A7CB3F0063E2B3 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				C251AFC122A3134000B6678E /* MovieDetailViewModel.swift */,
+				C251AFBF22A312D100B6678E /* MovieDetailViewController.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		C2C52EB7225E3450009A6D93 /* Sessions */ = {
 			isa = PBXGroup;
 			children = (
@@ -826,15 +833,6 @@
 				C2C52ED1225E4211009A6D93 /* ChooseCityViewController.swift */,
 			);
 			path = City;
-			sourceTree = "<group>";
-		};
-		C2CA247B22A311F800C6A81B /* Movie */ = {
-			isa = PBXGroup;
-			children = (
-				C251AFBF22A312D100B6678E /* MovieDetailViewController.swift */,
-				C251AFC122A3134000B6678E /* MovieDetailViewModel.swift */,
-			);
-			path = Movie;
 			sourceTree = "<group>";
 		};
 		C2DF87722293377000694A28 /* Controller */ = {
@@ -1121,7 +1119,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C24400D3225CD72C001C88A1 /* RegisterUserViewModel.swift in Sources */,
-				C251AFC222A3134000B6678E /* MovieDetailViewModel.swift in Sources */,
 				C212BCD922511AF000C624A7 /* BaseTableViewCell.swift in Sources */,
 				C2DF8771229334C500694A28 /* ColorTheme.swift in Sources */,
 				C243CC422274E27400B68DC5 /* TextTheme.swift in Sources */,
@@ -1137,7 +1134,6 @@
 				C212BC47224FBB2000C624A7 /* ViewController.swift in Sources */,
 				C2C52EC1225E3880009A6D93 /* MainCoordinator.swift in Sources */,
 				C2F7409D22997D8C00E55F25 /* BaseShadowedView.swift in Sources */,
-				C251AFC022A312D100B6678E /* MovieDetailViewController.swift in Sources */,
 				C228EEFF22834913004C19EE /* ProfileAccessoryController.swift in Sources */,
 				C24400CF225CD57B001C88A1 /* RegisterUserViewController.swift in Sources */,
 				C28812C022848CBE006D2120 /* SessionDetailViewModel.swift in Sources */,
@@ -1205,7 +1201,6 @@
 				C24400C9225CD222001C88A1 /* ViewDsl.swift in Sources */,
 				C2C52EBA225E3547009A6D93 /* ProfileViewController.swift in Sources */,
 				C212BCFC225169B100C624A7 /* BaseListView.swift in Sources */,
-				C27A468E229C676500068FC3 /* MovieViewController.swift in Sources */,
 				C216F52B2275B238001EB291 /* UIKitExtensions.swift in Sources */,
 				C243CC482274E93200B68DC5 /* UIElementTheme.swift in Sources */,
 				C243CC3B226B33F900B68DC5 /* CityApiService.swift in Sources */,

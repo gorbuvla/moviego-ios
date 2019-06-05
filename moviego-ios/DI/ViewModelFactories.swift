@@ -58,10 +58,6 @@ final class ViewModelDependency: ViewModelFactory {
         return { cinema in CinemaDetailViewModel(cinema: cinema, repository: self.dependencies.cinemaRepository) }
     }
     
-    var movieDetailViewModelFactory: (Movie) -> MovieDetailViewModel {
-        return { movie in MovieDetailViewModel(movie: movie, repository: self.dependencies.cinemaRepository) }
-    }
-    
     var sessionDetailViewModelFactory: (Movie, Cinema) -> SessionDetailViewModel {
         return { movie, cinema in SessionDetailViewModel(movie: movie, cinema: cinema) }
     }

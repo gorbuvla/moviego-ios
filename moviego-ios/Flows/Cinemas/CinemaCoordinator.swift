@@ -23,8 +23,12 @@ class CinemaCoordinator: FlowCoordinator {
 
 extension CinemaCoordinator: CinemaMapNavigationDelegate {
     func didTapShowDetail(of cinema: Cinema) {
-        print("go detail")
         let vc = CinemaDetailViewController(viewModel: factories.cinemaDetailViewModelFactory(cinema))
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func didTapShowDetail(of promotion: Promotion) {
+        let vc = PromotionViewController(promotion: promotion)
         navigationController?.pushViewController(vc, animated: true)
     }
 }
