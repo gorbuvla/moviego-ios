@@ -84,6 +84,7 @@ class MockedCinemaRepository: CinemaRepositoring {
         lng: 14.4025448,
         thumnailId: nil,
         website: "https://cinemacity.cz/",
+        types: "Standard, 3D, 4DX, IMAX".split(separator: ",").map { "\($0)".trimmed() },
         topMovies: [Movie(
             title: "Atomic Blonde",
             year: "2017",
@@ -107,6 +108,7 @@ class MockedCinemaRepository: CinemaRepositoring {
         lng: 14.4885782,
         thumnailId: nil,
         website: "https://cinemacity.cz/",
+        types: "Standard, 3D, 4DX, IMAX".split(separator: ",").map { "\($0)".trimmed() },
         topMovies: [Movie(
             title: "Bohemian Rhapsody",
             year: "2018",
@@ -143,6 +145,7 @@ class MockedCinemaRepository: CinemaRepositoring {
         lng: 14.3996753,
         thumnailId: nil,
         website: "https://cinestar.cz/",
+        types: "Standard, 3D, 4DX, IMAX".split(separator: ",").map { "\($0)".trimmed() },
         topMovies: [Movie(
             title: "Bohemian Rhapsody",
             year: "2018",

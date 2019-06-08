@@ -20,6 +20,7 @@ class CinemaBottomSheetView: BaseView {
     private weak var header: CinemaCardHeader!
     private weak var footer: CinemaCardFooter!
     
+    private var disposable: Disposable?
     var delegate: CinemaBottomSheetDelegate?
     
     var cinema: Cinema? {
@@ -29,12 +30,14 @@ class CinemaBottomSheetView: BaseView {
             // header setup
             header.titleLabel.text = cinema.name
             header.addressLabel.text = cinema.address
-            header.typesLabel.text = "Standard, 3D, 4DX, IMAX" // TODO: actual
+            header.typesLabel.text = cinema.types.joined(separator: ", ")
             header.thumbnailImage.cldSetImage(cinema.thumnailId ?? "", cloudinary: CLDCloudinary.shared, placeholder: Asset.imgCinemaThumbnailPlaceholder.image)
             
             // footer setup
             footer.viewModel = CinemaCardFooter.ReferenceMovieViewModel(movies: cinema.topMovies)
-            let _ = footer.detailButton.rx.tap
+            
+            disposable?.dispose()
+            disposable = footer.detailButton.rx.tap
                 .bind(onNext: {
                     self.delegate?.didTapDetail()
                 })

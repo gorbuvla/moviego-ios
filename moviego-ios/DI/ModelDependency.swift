@@ -13,6 +13,8 @@ final class ModelDependency {
         ModelDependency()
     }()
     
+    private init() {}
+    
     // networking
     lazy var network: Network = Network()
     lazy var apiInteractor: ApiInteracting = ApiInteractor(network: self.network)

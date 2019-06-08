@@ -11,16 +11,12 @@ import Foundation
 protocol HasViewModelFactories {
 }
 
-protocol ProfileViewModelFactories {
-    var profileViewModel: () -> ProfileViewModel { get }
-}
-
 protocol RegistrationViewModelFactories {
     var userRegistrationViewModelFactory: (RegistrationRepository) -> RegisterUserViewModel { get }
     var registerCityViewModelFactory: (RegistrationRepository) -> RegisterCityViewModel { get }
 }
 
-typealias ViewModelFactory = HasViewModelFactories & RegistrationViewModelFactories & ProfileViewModelFactories
+typealias ViewModelFactory = HasViewModelFactories & RegistrationViewModelFactories
 
 final class ViewModelDependency: ViewModelFactory {
     
@@ -47,7 +43,7 @@ final class ViewModelDependency: ViewModelFactory {
     }
 
     var dashboardViewModelFactory: () -> DashboardViewModel {
-        return { DashboardViewModel(repository: self.dependencies.cinemaRepository) }
+        return { DashboardViewModel(cinemaRepository: self.dependencies.cinemaRepository, userRepository: self.dependencies.userRepository) }
     }
     
     var cinemaMapViewModelFactory: () -> CinemaMapViewModel {
@@ -60,10 +56,6 @@ final class ViewModelDependency: ViewModelFactory {
     
     var sessionDetailViewModelFactory: (Movie, Cinema) -> SessionDetailViewModel {
         return { movie, cinema in SessionDetailViewModel(movie: movie, cinema: cinema) }
-    }
-    
-    var profileViewModel: () -> ProfileViewModel {
-        return { ProfileViewModel() }
     }
 }
 
