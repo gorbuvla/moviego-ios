@@ -6,17 +6,22 @@
 //  Copyright © 2019 Vlad Gorbunov. All rights reserved.
 //
 
-import UIKit
+import RxSwift
+import RxRelay
+import Foundation
 
 class SessionDetailViewModel: BaseViewModel {
     
-    let movie: Movie
-    let cinema: Cinema
-    let sessions: [Session]?
+    private let cinemaRelay: BehaviorRelay<Cinema?>
+    private let dateRelay: BehaviorRelay<Date>
     
-    init(movie: Movie, cinema: Cinema, sessions: [Session]? = nil) {
+    let movie: Movie
+    let cinema: Cinema?
+    
+    init(movie: Movie, cinema: Cinema? = nil) {
         self.movie = movie
         self.cinema = cinema
-        self.sessions = sessions
+        self.cinemaRelay = BehaviorRelay(value: cinema)
+        self.dateRelay = BehaviorRelay(value: Date())
     }
 }

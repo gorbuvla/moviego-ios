@@ -22,7 +22,7 @@ class DashboardCoordinator: FlowCoordinator {
 extension DashboardCoordinator: DashboardNavigatioNDelegate {
     
     func didSelectMovie(movie: Movie) {
-        navigationController?.pushViewController(MovieViewController(movie: movie), animated: true)
+        navigationController?.pushViewController(SessionDetailViewController(viewModel: factories.sessionDetailViewModelFactory(movie, nil)), animated: true)
     }
     
     func didSelectSession(session: Session) {
@@ -30,14 +30,7 @@ extension DashboardCoordinator: DashboardNavigatioNDelegate {
     }
     
     func presentCinemaMap(from viewController: UIViewController) {
-        let navidation = BaseNavigationController()
-        navidation.viewControllers = [CinemaMapViewController(viewModel: factories.cinemaMapViewModel())]
-        viewController.present(navidation, animated: true)
-    }
-    
-    func presentProfile(from viewController: UIViewController) {
-        let navigation = BaseNavigationController()
-        navigation.viewControllers = [ProfileViewController(viewModel: factories.profileViewModel())]
-        viewController.present(navigation, animated: true)
+        let cinemaFlow = CinemaCoordinator()
+        viewController.present(cinemaFlow.start(), animated: true)
     }
 }

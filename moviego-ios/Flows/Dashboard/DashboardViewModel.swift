@@ -16,15 +16,16 @@ class DashboardViewModel: BaseViewModel {
     
     private let locationManager: CLLocationManager
     private let fetcher: PagedFetcher<Movie>
-    private let repository: CinemaRepositoring
+    private let cinemaRepository: CinemaRepositoring
+    private let userRepository: UserRepositoring
     private let viewStateSubject = BehaviorSubject<State<[Movie]>>(value: .loading)
     private let sessionStateSubject = BehaviorSubject<State<[Session]>>(value: .loading)
     
-    var viewState: StateObservable<[Movie]> {
+    var movieState: StateObservable<[Movie]> {
         return viewStateSubject.asObserver()
     }
     
-    var topSessions: StateObservable<[Session]> {
+    var sessionState: StateObservable<[Session]> {
         return sessionStateSubject.asObservable()
     }
     
@@ -44,9 +45,10 @@ class DashboardViewModel: BaseViewModel {
         get { return fetcher.canFetchMore }
     }
     
-    init(repository: CinemaRepositoring) {
-        self.repository = repository
-        self.fetcher = PagedFetcher(request: repository.fetchMovies)
+    init(cinemaRepository: CinemaRepositoring, userRepository: UserRepositoring) {
+        self.cinemaRepository = cinemaRepository
+        self.userRepository = userRepository
+        self.fetcher = PagedFetcher(request: cinemaRepository.fetchMovies)
         self.locationManager = CLLocationManager()
         self.locationManager.requestWhenInUseAuthorization()
         super.init()
@@ -62,6 +64,10 @@ class DashboardViewModel: BaseViewModel {
         fetcher.fetchNext()
     }
     
+    func logout() {
+        let _ = userRepository.logout().subscribe()
+    }
+    
     private func bindUpdates() {
         fetcher.pagedResult
             .mapState()
@@ -72,7 +78,7 @@ class DashboardViewModel: BaseViewModel {
             .take(1)
             .asObservable()
             .flatMap { location in
-                self.repository.fetchSessions(startingFrom: Date(), lat: location?.coordinate.latitude, lng: location?.coordinate.longitude, limit: 10, offset: 0)
+                self.cinemaRepository.fetchSessions(startingFrom: Date(), lat: location?.coordinate.latitude, lng: location?.coordinate.longitude, limit: 10, offset: 0)
             }
             .mapState()
             .bind(to: sessionStateSubject)

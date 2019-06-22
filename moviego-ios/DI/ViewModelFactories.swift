@@ -11,16 +11,12 @@ import Foundation
 protocol HasViewModelFactories {
 }
 
-protocol ProfileViewModelFactories {
-    var profileViewModel: () -> ProfileViewModel { get }
-}
-
 protocol RegistrationViewModelFactories {
     var userRegistrationViewModelFactory: (RegistrationRepository) -> RegisterUserViewModel { get }
     var registerCityViewModelFactory: (RegistrationRepository) -> RegisterCityViewModel { get }
 }
 
-typealias ViewModelFactory = HasViewModelFactories & RegistrationViewModelFactories & ProfileViewModelFactories
+typealias ViewModelFactory = HasViewModelFactories & RegistrationViewModelFactories
 
 final class ViewModelDependency: ViewModelFactory {
     
@@ -45,25 +41,21 @@ final class ViewModelDependency: ViewModelFactory {
             RegisterCityViewModel(cityApi: self.dependencies.cityApi, repository: registrationRepository)
         }
     }
-    
-    var sessionDetailViewModelFactory: (Movie, Cinema, [Session]?) -> SessionDetailViewModel {
-        return { movie, cinema, sessions in
-            SessionDetailViewModel(
-                movie: movie, cinema: cinema, sessions: sessions
-            )
-        }
-    }
-    
+
     var dashboardViewModelFactory: () -> DashboardViewModel {
-        return { DashboardViewModel(repository: self.dependencies.cinemaRepository) }
+        return { DashboardViewModel(cinemaRepository: self.dependencies.cinemaRepository, userRepository: self.dependencies.userRepository) }
     }
     
-    var cinemaMapViewModel: () -> CinemaMapViewModel {
+    var cinemaMapViewModelFactory: () -> CinemaMapViewModel {
         return { CinemaMapViewModel(repository: self.dependencies.cinemaRepository) }
     }
     
-    var profileViewModel: () -> ProfileViewModel {
-        return { ProfileViewModel() }
+    var cinemaDetailViewModelFactory: (Cinema) -> CinemaDetailViewModel {
+        return { cinema in CinemaDetailViewModel(cinema: cinema, repository: self.dependencies.cinemaRepository) }
+    }
+    
+    var sessionDetailViewModelFactory: (Movie, Cinema?) -> SessionDetailViewModel {
+        return { movie, cinema in SessionDetailViewModel(movie: movie, cinema: cinema) }
     }
 }
 

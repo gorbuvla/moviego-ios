@@ -14,7 +14,6 @@ protocol DashboardNavigatioNDelegate: class {
     func didSelectMovie(movie: Movie)
     func didSelectSession(session: Session)
     func presentCinemaMap(from viewController: UIViewController)
-    func presentProfile(from viewController: UIViewController)
 }
 
 class DashboardViewController: BaseViewController<BaseListView>, UITableViewDataSource, UITableViewDelegate {
@@ -40,6 +39,8 @@ class DashboardViewController: BaseViewController<BaseListView>, UITableViewData
         let mapButton = UIBarButtonItem(image: Asset.icMap.image, style: .plain, target: self, action: #selector(didTapMapButton))
         navigationItem.rightBarButtonItem = mapButton
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: L10n.Dashboard.logout, style: .plain, target: self, action: #selector(didTapLogout))
+        
         layout.tableView.register(MovieCell.self, forCellReuseIdentifier: MovieCell.ReuseIdentifiers.defaultId)
         layout.tableView.register(SuggestSessionsCell.self, forCellReuseIdentifier: SuggestSessionsCell.ReuseIdentifiers.defaultId)
         
@@ -58,23 +59,12 @@ class DashboardViewController: BaseViewController<BaseListView>, UITableViewData
         
         layout.tableView.tableFooterView = spinner
         layout.tableView.tableFooterView?.isHidden = true
-
-        // TODO: uncomment once search is implemented
-//        let searchController = UISearchController(searchResultsController:  nil)
-//        searchController.searchBar.tintColor = .white
-//        searchController.searchBar.textField.backgroundColor = .primaryDark
-//        searchController.searchBar.placeholder = "Search Movies & Cinemas"
-//        searchController.hidesNavigationBarDuringPresentation = true
-//        searchController.dimsBackgroundDuringPresentation = true
-//
-//        navigationItem.searchController = searchController
-//        definesPresentationContext = true
         
         bindUpdates()
     }
     
     private func bindUpdates() {
-        viewModel.viewState.data
+        viewModel.movieState.data
             .observeOn(MainScheduler.instance)
             .bind(onNext: { [weak layout] _ in
                 layout?.tableView.tableFooterView?.isHidden = true
@@ -82,12 +72,12 @@ class DashboardViewController: BaseViewController<BaseListView>, UITableViewData
             })
             .disposed(by: disposeBag)
         
-        viewModel.topSessions
+        viewModel.sessionState
             .observeOn(MainScheduler.instance)
             .bind(onNext: { [weak layout] _ in layout?.tableView.reloadData() })
             .disposed(by: disposeBag)
         
-        viewModel.viewState.loading
+        viewModel.movieState.loading
             .map { !$0 }
             .observeOn(MainScheduler.instance)
             .bind(to: layout.loadingView.rx.isHidden)
@@ -143,7 +133,7 @@ class DashboardViewController: BaseViewController<BaseListView>, UITableViewData
         navigationDelegate?.presentCinemaMap(from: self)
     }
     
-    @objc private func didTapProfile() {
-        navigationDelegate?.presentProfile(from: self)
+    @objc private func didTapLogout() {
+        viewModel.logout()
     }
 }

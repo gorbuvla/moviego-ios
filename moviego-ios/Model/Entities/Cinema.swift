@@ -16,6 +16,7 @@ struct Cinema: Codable {
     let lng: Double
     let thumnailId: String?
     let website: String?
+    let types: [String]
     let topMovies: [Movie]
 }
 

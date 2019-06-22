@@ -23,7 +23,8 @@ class SessionDetailViewController: BaseViewController<SessionDetailView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = viewModel.movie.title
         
-        layout.labelText.text = "\(viewModel.movie.title) at \(viewModel.cinema.name)"
+        //layout.labelText.text = "\(viewModel.movie.title) at \(viewModel.cinema?.name)"
     }
 }

@@ -13,6 +13,7 @@ protocol CinemaRepositoring {
     func fetchCinemas(lat: Float?, lng: Float?, radius: Double?) -> Single<[Cinema]>
     
     func fetchMovies(offset: Int, limit: Int) -> Single<[Movie]>
+    func fetchMovies(for cinema: Cinema, offset: Int, limit: Int) -> Single<[Movie]>
     func fetchSessions(startingFrom: Date, lat: Double?, lng: Double?, limit: Int, offset: Int) -> Single<[Session]>
     func fetchPromotions() -> Single<[Promotion]>
 }
@@ -81,8 +82,9 @@ class MockedCinemaRepository: CinemaRepositoring {
         address: "Andel Praha 5",
         lat: 50.0741409,
         lng: 14.4025448,
-        thumnailId: nil,
+        thumnailId: "cinemas/cc_andel",
         website: "https://cinemacity.cz/",
+        types: "Standard, 3D, 4DX, IMAX".split(separator: ",").map { "\($0)".trimmed() },
         topMovies: [Movie(
             title: "Atomic Blonde",
             year: "2017",
@@ -104,8 +106,9 @@ class MockedCinemaRepository: CinemaRepositoring {
         address: "Chodov Praha 4",
         lat: 50.0304824,
         lng: 14.4885782,
-        thumnailId: nil,
+        thumnailId: "cinemas/cc_chodov",
         website: "https://cinemacity.cz/",
+        types: "Standard, 3D, 4DX, IMAX".split(separator: ",").map { "\($0)".trimmed() },
         topMovies: [Movie(
             title: "Bohemian Rhapsody",
             year: "2018",
@@ -140,8 +143,9 @@ class MockedCinemaRepository: CinemaRepositoring {
         address: "Andel Praha 5",
         lat: 50.071116,
         lng: 14.3996753,
-        thumnailId: nil,
+        thumnailId: "cinemas/cs_andel",
         website: "https://cinestar.cz/",
+        types: "Standard, 3D, 4DX, IMAX".split(separator: ",").map { "\($0)".trimmed() },
         topMovies: [Movie(
             title: "Bohemian Rhapsody",
             year: "2018",
@@ -193,6 +197,10 @@ class MockedCinemaRepository: CinemaRepositoring {
         let slice = list[offset..<(offset+limit)]
         print("Return slice of size: \(slice.count) offset: \(offset) limit: \(limit)")
         return Single.just(Array(slice)).delay(.seconds(1), scheduler: MainScheduler.instance)
+    }
+    
+    func fetchMovies(for cinema: Cinema, offset: Int, limit: Int) -> Single<[Movie]> {
+        return fetchMovies(offset: offset, limit: limit)
     }
     
     func fetchSessions(startingFrom: Date, lat: Double?, lng: Double?, limit: Int, offset: Int) -> Single<[Session]> {

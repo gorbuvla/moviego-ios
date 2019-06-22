@@ -31,6 +31,8 @@ internal enum L10n {
   }
 
   internal enum Dashboard {
+    /// Logout
+    internal static let logout = L10n.tr("Localizable", "dashboard.logout")
     /// Search movies & cinemas
     internal static let searchHint = L10n.tr("Localizable", "dashboard.search_hint")
     /// In theatres
