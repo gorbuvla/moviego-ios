@@ -9,7 +9,7 @@
 import RxSwift
 import RxRelay
 
-class CinemaDetailViewModel: BaseViewModel {
+final class CinemaDetailViewModel: BaseViewModel {
     
     private let viewStateRelay = BehaviorRelay<State<[Movie]>>(value: .loading)
     private let fetcher: PagedFetcher<Movie>

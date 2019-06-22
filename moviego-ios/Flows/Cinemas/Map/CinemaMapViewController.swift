@@ -86,7 +86,7 @@ class CinemaMapViewController: BaseViewController<CinemaMapView> {
     }
     
     private func showBottomSheet() {
-        if let _ = viewModel.selectedAnnotation {
+        if let _ = viewModel.selectedAnnotation as? CinemaAnnotation {
             UIView.transition(with: self.layout.bottomCard, duration: 0.5, options: .transitionFlipFromTop, animations: {})
         } else {
             UIView.animate(withDuration: 0.5, animations: {

@@ -15,7 +15,9 @@ protocol CinemaDetailNavigationDelegate: class {
     func didSelect(movie: Movie, in cinema: Cinema)
 }
 
-class CinemaDetailViewController: BaseViewController<BaseListView> {
+final class CinemaDetailViewController: BaseViewController<BaseListView> {
+    
+    private let kHeaderHeight: CGFloat = 300
     
     private let viewModel: CinemaDetailViewModel
     private weak var flexibleHeader: FlexibleCinemaHeader!
@@ -32,9 +34,6 @@ class CinemaDetailViewController: BaseViewController<BaseListView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         
         layout.tableView.dataSource = self
@@ -47,15 +46,7 @@ class CinemaDetailViewController: BaseViewController<BaseListView> {
         layout.tableView.refreshControl = nil
         layout.tableView.register(MovieCell.self, forCellReuseIdentifier: MovieCell.ReuseIdentifiers.defaultId)
         
-        layout.tableView.contentInset = UIEdgeInsets(top: 300, left: 0, bottom: 0, right: 0)
-        
-        let header = FlexibleCinemaHeader(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 300))
-        header.delegate = self
-        header.cinema = viewModel.cinema
-        view.addSubview(header)
-        flexibleHeader = header
-        
-        view.bringSubviewToFront(layout.loadingView)
+        layout.tableView.contentInset = UIEdgeInsets(top: kHeaderHeight, left: 0, bottom: 0, right: 0)
         
         let spinner = UIActivityIndicatorView(style: .gray)
         spinner.startAnimating()
@@ -63,6 +54,13 @@ class CinemaDetailViewController: BaseViewController<BaseListView> {
         
         layout.tableView.tableFooterView = spinner
         layout.tableView.tableFooterView?.isHidden = true
+        
+        let header = FlexibleCinemaHeader(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: kHeaderHeight))
+        header.delegate = self
+        header.cinema = viewModel.cinema
+        view.addSubview(header)
+        flexibleHeader = header
+        view.bringSubviewToFront(layout.loadingView)
         
         bindUpdates()
     }
@@ -117,6 +115,10 @@ extension CinemaDetailViewController: UITableViewDataSource, UITableViewDelegate
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         flexibleHeader.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: -scrollView.contentOffset.y)
+        
+        // TODO: something better + affects navBar of whole navController!!!
+        let background = kHeaderHeight + 64 + scrollView.contentOffset.y > kHeaderHeight / 2 ? UIColor.secondary.image() : UIImage()
+        self.navigationController?.navigationBar.setBackgroundImage(background, for: .default)
     }
 }
 

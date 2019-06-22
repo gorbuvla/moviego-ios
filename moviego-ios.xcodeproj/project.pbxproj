@@ -124,7 +124,6 @@
 		C29C6266228494A100FD0876 /* CinemaDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C6265228494A100FD0876 /* CinemaDetailViewModel.swift */; };
 		C29C626A22849F9400FD0876 /* PromotionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C626922849F9400FD0876 /* PromotionRepository.swift */; };
 		C29C626C22849FE000FD0876 /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C626B22849FE000FD0876 /* Promotion.swift */; };
-		C2A0590522BE6B1E00AB7DAA /* CheckDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A0590422BE6B1E00AB7DAA /* CheckDetailViewController.swift */; };
 		C2A0590722BE88F000AB7DAA /* FlexibleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A0590622BE88F000AB7DAA /* FlexibleHeaderView.swift */; };
 		C2A0590922BE8B4B00AB7DAA /* FlexibleCinemaHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A0590822BE8B4B00AB7DAA /* FlexibleCinemaHeader.swift */; };
 		C2C52EC1225E3880009A6D93 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C52EC0225E3880009A6D93 /* MainCoordinator.swift */; };
@@ -272,7 +271,6 @@
 		C29C6265228494A100FD0876 /* CinemaDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaDetailViewModel.swift; sourceTree = "<group>"; };
 		C29C626922849F9400FD0876 /* PromotionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionRepository.swift; sourceTree = "<group>"; };
 		C29C626B22849FE000FD0876 /* Promotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promotion.swift; sourceTree = "<group>"; };
-		C2A0590422BE6B1E00AB7DAA /* CheckDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckDetailViewController.swift; sourceTree = "<group>"; };
 		C2A0590622BE88F000AB7DAA /* FlexibleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleHeaderView.swift; sourceTree = "<group>"; };
 		C2A0590822BE8B4B00AB7DAA /* FlexibleCinemaHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleCinemaHeader.swift; sourceTree = "<group>"; };
 		C2C52EC0225E3880009A6D93 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
@@ -784,7 +782,6 @@
 			children = (
 				C29C62632284948F00FD0876 /* CinemaDetailViewController.swift */,
 				C29C6265228494A100FD0876 /* CinemaDetailViewModel.swift */,
-				C2A0590422BE6B1E00AB7DAA /* CheckDetailViewController.swift */,
 				C2A0590822BE8B4B00AB7DAA /* FlexibleCinemaHeader.swift */,
 			);
 			path = Detail;
@@ -1146,7 +1143,6 @@
 				C264983F227D99FB0037AF48 /* CinemaRepository.swift in Sources */,
 				C29C62642284948F00FD0876 /* CinemaDetailViewController.swift in Sources */,
 				C23AFA1A2297204900CC753D /* DashboardViewController.swift in Sources */,
-				C2A0590522BE6B1E00AB7DAA /* CheckDetailViewController.swift in Sources */,
 				C27BAD45226A3B420052BDA6 /* StringExtensions.swift in Sources */,
 				C26873EB229DE54C00A22931 /* CinemaBottomSheetView.swift in Sources */,
 				C24400DA225CF7F5001C88A1 /* RegistrationRepository.swift in Sources */,

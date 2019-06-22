@@ -43,7 +43,6 @@ final class FlexibleCinemaHeader: FlexibleHeaderView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        print("Here, is null: \(delegate == nil)")
         let _ = btnNavigate.rx.tap.bind(onNext: { [weak self] in self?.delegate?.didTapNavigate() })
         let _ = btnTaxi.rx.tap.bind(onNext: { [weak self] in self?.delegate?.didTapTaxi() })
         let _ = btnWeb.rx.tap.bind(onNext: { [weak self] in self?.delegate?.didTapWeb() })
@@ -54,11 +53,9 @@ final class FlexibleCinemaHeader: FlexibleHeaderView {
     }
     
     override func getFlexibleView() -> UIView {
-        let imageView = UIImageView()
+        let imageView = GradientImageView(frame: .zero)
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .yellow
-        imageView.image = Asset.imgHeaderPlaceholder.image
         thumbnailImage = imageView
         return imageView
     }
@@ -112,5 +109,26 @@ final class FlexibleCinemaHeader: FlexibleHeaderView {
                 make.top.bottom.leading.trailing.equalToSuperview().inset(20)
             }
         }
+    }
+}
+
+class GradientImageView: UIImageView {
+    
+    override public class var layerClass: Swift.AnyClass {
+        return CAGradientLayer.self
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        guard let gradientLayer = self.layer as? CAGradientLayer else { return }
+        
+        print("init with layer")
+        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.bkgLight.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
