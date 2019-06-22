@@ -31,7 +31,7 @@ class CinemaBottomSheetView: BaseView {
             header.titleLabel.text = cinema.name
             header.addressLabel.text = cinema.address
             header.typesLabel.text = cinema.types.joined(separator: ", ")
-            header.thumbnailImage.cldSetImage(cinema.thumnailId ?? "", cloudinary: CLDCloudinary.shared, placeholder: Asset.imgCinemaThumbnailPlaceholder.image)
+            header.thumbnailImage.cldSetImage(publicId: cinema.thumnailId ?? "", cloudinary: CLDCloudinary.shared, placeholder: Asset.imgCinemaThumbnailPlaceholder.image)
             
             // footer setup
             footer.viewModel = CinemaCardFooter.ReferenceMovieViewModel(movies: cinema.topMovies)

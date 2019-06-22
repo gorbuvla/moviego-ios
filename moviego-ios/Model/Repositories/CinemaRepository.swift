@@ -82,7 +82,7 @@ class MockedCinemaRepository: CinemaRepositoring {
         address: "Andel Praha 5",
         lat: 50.0741409,
         lng: 14.4025448,
-        thumnailId: nil,
+        thumnailId: "cinemas/cc_andel",
         website: "https://cinemacity.cz/",
         types: "Standard, 3D, 4DX, IMAX".split(separator: ",").map { "\($0)".trimmed() },
         topMovies: [Movie(
@@ -106,7 +106,7 @@ class MockedCinemaRepository: CinemaRepositoring {
         address: "Chodov Praha 4",
         lat: 50.0304824,
         lng: 14.4885782,
-        thumnailId: nil,
+        thumnailId: "cinemas/cc_chodov",
         website: "https://cinemacity.cz/",
         types: "Standard, 3D, 4DX, IMAX".split(separator: ",").map { "\($0)".trimmed() },
         topMovies: [Movie(
@@ -143,7 +143,7 @@ class MockedCinemaRepository: CinemaRepositoring {
         address: "Andel Praha 5",
         lat: 50.071116,
         lng: 14.3996753,
-        thumnailId: nil,
+        thumnailId: "cinemas/cs_andel",
         website: "https://cinestar.cz/",
         types: "Standard, 3D, 4DX, IMAX".split(separator: ",").map { "\($0)".trimmed() },
         topMovies: [Movie(
