@@ -103,6 +103,8 @@
 		C249D6CA22987C8C00FBD0BC /* SessionSuggestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C249D6C922987C8C00FBD0BC /* SessionSuggestView.swift */; };
 		C249D6CD22987F5E00FBD0BC /* SuggestedSessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C249D6CC22987F5E00FBD0BC /* SuggestedSessionCell.swift */; };
 		C249D6CF22987F9000FBD0BC /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C249D6CE22987F9000FBD0BC /* BaseCollectionViewCell.swift */; };
+		C24EC52E22BEDE3E001B1CB8 /* FlexibleSessionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24EC52D22BEDE3E001B1CB8 /* FlexibleSessionHeader.swift */; };
+		C24EC53022BF9DAF001B1CB8 /* MovieTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24EC52F22BF9DAF001B1CB8 /* MovieTitleView.swift */; };
 		C261C8CA22A6B41800D9096C /* PromotionAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C261C8C922A6B41800D9096C /* PromotionAnnotation.swift */; };
 		C2649839227D96460037AF48 /* CinemaMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2649838227D96460037AF48 /* CinemaMapViewController.swift */; };
 		C264983B227D96540037AF48 /* CinemaMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C264983A227D96540037AF48 /* CinemaMapViewModel.swift */; };
@@ -248,6 +250,8 @@
 		C249D6C922987C8C00FBD0BC /* SessionSuggestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSuggestView.swift; sourceTree = "<group>"; };
 		C249D6CC22987F5E00FBD0BC /* SuggestedSessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedSessionCell.swift; sourceTree = "<group>"; };
 		C249D6CE22987F9000FBD0BC /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		C24EC52D22BEDE3E001B1CB8 /* FlexibleSessionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleSessionHeader.swift; sourceTree = "<group>"; };
+		C24EC52F22BF9DAF001B1CB8 /* MovieTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTitleView.swift; sourceTree = "<group>"; };
 		C251AFBF22A312D100B6678E /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		C251AFC122A3134000B6678E /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
 		C261C8C922A6B41800D9096C /* PromotionAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionAnnotation.swift; sourceTree = "<group>"; };
@@ -721,6 +725,7 @@
 		C249D6C42298627100FBD0BC /* Compoents */ = {
 			isa = PBXGroup;
 			children = (
+				C24EC52F22BF9DAF001B1CB8 /* MovieTitleView.swift */,
 				C249D6C52298629500FBD0BC /* MovieRatingView.swift */,
 				C249D6C922987C8C00FBD0BC /* SessionSuggestView.swift */,
 				C2A0590622BE88F000AB7DAA /* FlexibleHeaderView.swift */,
@@ -763,6 +768,7 @@
 				C29C625C2284920D00FD0876 /* SessionDetailViewController.swift */,
 				C28812BD2284065B006D2120 /* SessionDetailView.swift */,
 				C28812BF22848CBE006D2120 /* SessionDetailViewModel.swift */,
+				C24EC52D22BEDE3E001B1CB8 /* FlexibleSessionHeader.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -1150,6 +1156,7 @@
 				C212BCF322515DD500C624A7 /* UserRepository.swift in Sources */,
 				C2C52ED2225E4211009A6D93 /* ChooseCityViewController.swift in Sources */,
 				C212BCD02250D81F00C624A7 /* ModelDependency.swift in Sources */,
+				C24EC52E22BEDE3E001B1CB8 /* FlexibleSessionHeader.swift in Sources */,
 				C23EEBB1227CCDAE00A95185 /* CinemaApiService.swift in Sources */,
 				C212BCEC225151AC00C624A7 /* CredentialsProvider.swift in Sources */,
 				C24400E0225D063B001C88A1 /* LoginCoordinator.swift in Sources */,
@@ -1179,6 +1186,7 @@
 				C2CA247622A2D01400C6A81B /* CinemaCoordinator.swift in Sources */,
 				C2A0590722BE88F000AB7DAA /* FlexibleHeaderView.swift in Sources */,
 				C212BCF1225158BD00C624A7 /* CollectionExtensions.swift in Sources */,
+				C24EC53022BF9DAF001B1CB8 /* MovieTitleView.swift in Sources */,
 				C23AFA172297160300CC753D /* MovieCell.swift in Sources */,
 				C2649839227D96460037AF48 /* CinemaMapViewController.swift in Sources */,
 				C249D6C82298641E00FBD0BC /* SuggestSessionsCell.swift in Sources */,

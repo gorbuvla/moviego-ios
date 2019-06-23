@@ -11,10 +11,12 @@ import Foundation
 
 protocol CinemaRepositoring {
     func fetchCinemas(lat: Float?, lng: Float?, radius: Double?) -> Single<[Cinema]>
+    func fetchCinema(for movie: Movie) -> Single<[Cinema]>
     
     func fetchMovies(offset: Int, limit: Int) -> Single<[Movie]>
     func fetchMovies(for cinema: Cinema, offset: Int, limit: Int) -> Single<[Movie]>
     func fetchSessions(startingFrom: Date, lat: Double?, lng: Double?, limit: Int, offset: Int) -> Single<[Session]>
+    func fetchSessions(for movie: Movie, in cinema: Cinema, startingAt: Date) -> Single<[Session]>
     func fetchPromotions() -> Single<[Promotion]>
 }
 
@@ -190,6 +192,10 @@ class MockedCinemaRepository: CinemaRepositoring {
         return Single.just([csAndel, ccAndel, ccChodov]).delay(.seconds(1), scheduler: MainScheduler.instance)
     }
     
+    func fetchCinema(for movie: Movie) -> Single<[Cinema]> {
+        return Single.just([csAndel, ccAndel, ccChodov]).delay(.seconds(1), scheduler: MainScheduler.instance)
+    }
+    
     func fetchMovies(offset: Int, limit: Int) -> Single<[Movie]> {
         let list = Array(repeating: [rhapsody, atomicBlonde, spiderMan, casinoRoyale], count: 15).flatMap { $0 }
         if offset == list.count { return Single.just([]) }
@@ -211,6 +217,15 @@ class MockedCinemaRepository: CinemaRepositoring {
                 Session(type: "2D", startsAt: Date(), cinema: cinema, movie: movie)
             }
 
+        return Single.just(results).delay(.seconds(1), scheduler: MainScheduler.instance)
+    }
+    
+    func fetchSessions(for movie: Movie, in cinema: Cinema, startingAt: Date) -> Single<[Session]> {
+        let results = ["2D", "3D", "IMAX"]
+            .flatMap { type in [Date(), Date(timeIntervalSinceNow: TimeInterval.init(exactly: 30000)!)].map { time in (type, time) } }
+            .map { type, time in
+                Session(type: type, startsAt: time, cinema: cinema, movie: movie)
+            }
         return Single.just(results).delay(.seconds(1), scheduler: MainScheduler.instance)
     }
     

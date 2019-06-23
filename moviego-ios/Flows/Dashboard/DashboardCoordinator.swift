@@ -26,7 +26,7 @@ extension DashboardCoordinator: DashboardNavigatioNDelegate {
     }
     
     func didSelectSession(session: Session) {
-        navigationController?.pushViewController(SessionDetailViewController(viewModel: SessionDetailViewModel(movie: session.movie, cinema: session.cinema)), animated: true)
+        navigationController?.pushViewController(SessionDetailViewController(viewModel:factories.sessionDetailViewModelFactory(session.movie, session.cinema)), animated: true)
     }
     
     func presentCinemaMap(from viewController: UIViewController) {
