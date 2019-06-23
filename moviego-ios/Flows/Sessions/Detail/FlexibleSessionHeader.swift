@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import RxCocoa
+import Cloudinary
 
 protocol FlexibleSessionHeaderDelegate: class {
-    func didTapPlayVideo()
     func didTapInviteFriends()
 }
 
@@ -35,15 +36,24 @@ final class FlexibleSessionHeader: FlexibleHeaderView {
             ratingView.tomatoScore = movie.rottenTomatoesRating
             
             posterImage.af_setImage(withURL: movie.poster)
+            thumbnailImage.cldSetImage(publicId: movie.thumbnailId, cloudinary: CLDCloudinary.shared, placeholder: Asset.imgHeaderPlaceholder.image)
         }
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        let _ = inviteButton.rx.tap.bind(onNext: { [weak self] in self?.delegate?.didTapInviteFriends() })
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
     override func getFlexibleView() -> UIView {
-        // TODO: video player
         let imageView = GradientImageView(frame: .zero)
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.image = Asset.imgHeaderPlaceholder.image
         thumbnailImage = imageView
         return imageView
     }

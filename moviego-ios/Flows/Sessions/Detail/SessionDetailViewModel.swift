@@ -16,22 +16,30 @@ class SessionDetailViewModel: BaseViewModel {
     private let cinemaRelay: BehaviorRelay<Cinema?>
     private let dateRelay: BehaviorRelay<Date>
     
-    private let sessionsRelay: BehaviorRelay<State<[Session]>>
+    private let sessionsRelay: BehaviorRelay<State<[SessionType:[Session]]>>
     private let cinemasRelay: BehaviorRelay<State<[Cinema]>>
     
     let movie: Movie
     let cinema: Cinema?
     
+    var selectedCinema: Observable<Cinema?> {
+        get { return cinemaRelay.asObservable() }
+    }
+    
+    var selectedDate: Observable<Date> {
+        get { return dateRelay.asObservable() }
+    }
+    
     var cinemas: StateObservable<[Cinema]> {
         get { return cinemasRelay.asObservable() }
     }
-    
-    var sessions: StateObservable<[Session]> {
+
+    var sessions: StateObservable<[SessionType:[Session]]> {
         get { return sessionsRelay.asObservable() }
     }
     
-    var sessionList: [Session] {
-        get { return sessionsRelay.value.value ?? [] }
+    var sessionList: [SessionType:[Session]] {
+        get { return sessionsRelay.value.value ?? [:] }
     }
     
     init(movie: Movie, cinema: Cinema? = nil, cinemaRepository: CinemaRepositoring) {
@@ -65,7 +73,9 @@ class SessionDetailViewModel: BaseViewModel {
         
         Observable.combineLatest(cinemaRelay.asObservable().compactMap { $0 }, dateRelay.asObservable()) { ($0, $1) }
             .flatMap { params in
-                 self.cinemaRepository.fetchSessions(for: self.movie, in: params.0, startingAt: params.1)
+                self.cinemaRepository.fetchSessions(for: self.movie, in: params.0, startingAt: params.1)
+                    .map { sessions in Dictionary(grouping: sessions, by: { $0.type })
+                }
             }
             .mapState()
             .bind(to: sessionsRelay)

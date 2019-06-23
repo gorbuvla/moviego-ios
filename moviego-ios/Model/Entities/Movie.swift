@@ -16,12 +16,7 @@ struct Movie: Codable {
     let rottenTomatoesRating: String
     let plot: String
     let poster: URL
+    let thumbnailId: String
     let release: String
     let trailer: String
-    let director: Person
-    let actors: [Person]
-}
-
-struct Person: Codable {
-    let name: String
 }

@@ -13,6 +13,7 @@ import RxCocoa
 class SessionDetailViewController: BaseViewController<BaseListView> {
     
     private let kHeaderHeight = CGFloat(300)
+    private weak var filterHeader: SessionFilterView!
     private weak var flexibleHeader: FlexibleSessionHeader!
     private let viewModel: SessionDetailViewModel
     
@@ -31,6 +32,7 @@ class SessionDetailViewController: BaseViewController<BaseListView> {
         
         self.navigationController?.navigationBar.isTranslucent = true
         
+        layout.tableView.backgroundColor = .bkgLight
         layout.tableView.dataSource = self
         layout.tableView.delegate = self
         layout.tableView.separatorStyle = .none
@@ -39,7 +41,7 @@ class SessionDetailViewController: BaseViewController<BaseListView> {
         layout.tableView.sectionHeaderHeight = 0
         layout.tableView.estimatedSectionHeaderHeight = 0
         layout.tableView.refreshControl = nil
-        layout.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "customId")
+        layout.tableView.register(SessionCell.self, forCellReuseIdentifier: SessionCell.ReuseIdentifiers.defaultId)
         layout.tableView.contentInset = UIEdgeInsets(top: kHeaderHeight, left: 0, bottom: 0, right: 0)
         
         let header = FlexibleSessionHeader(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: kHeaderHeight))
@@ -48,6 +50,10 @@ class SessionDetailViewController: BaseViewController<BaseListView> {
         view.addSubview(header)
         flexibleHeader = header
         view.bringSubviewToFront(layout.loadingView)
+        
+        let tableHeader = SessionFilterView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100))
+        filterHeader = tableHeader
+        layout.tableView.tableHeaderView = tableHeader
         
         bindUpdates()
     }
@@ -65,19 +71,60 @@ class SessionDetailViewController: BaseViewController<BaseListView> {
                 layout?.tableView.reloadData()
             })
             .disposed(by: disposeBag)
+        
+        viewModel.selectedCinema
+            .observeOn(MainScheduler.instance)
+            .bind { [weak filterHeader] cinema in
+                filterHeader?.cinemaSelect.itemSelected(item: cinema)
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.selectedDate
+            .observeOn(MainScheduler.instance)
+            .bind { [weak filterHeader] date in
+                filterHeader?.dateSelect.itemSelected(item: date)
+            }
+            .disposed(by: disposeBag)
+        
+        filterHeader.cinemaSelect.rx.controlEvent(.touchUpInside)
+            .bind {
+                // TODO: present options
+            }
+            .disposed(by: disposeBag)
+        
+        filterHeader.dateSelect.rx.controlEvent(.touchUpInside)
+            .bind {
+                // TODO: present options
+            }
+            .disposed(by: disposeBag)
     }
 }
 
 extension SessionDetailViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.sessionList.keys.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.sessionList.count
+        let key = viewModel.sessionList.key(at: section)
+        return viewModel.sessionList[key]?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return viewModel.sessionList.key(at: section).rawValue
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "customId") as! UITableViewCell
-        let session = viewModel.sessionList[indexPath.row]
-        cell.textLabel?.text = "\(session.type) \(session.startsAt)"
-        
+        let key = viewModel.sessionList.key(at: indexPath.section)
+        let session = viewModel.sessionList[key]![indexPath.row]
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: SessionCell.ReuseIdentifiers.defaultId) as! SessionCell
+        cell.session = session
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -91,7 +138,7 @@ extension SessionDetailViewController: UITableViewDataSource, UITableViewDelegat
 }
 
 extension SessionDetailViewController: FlexibleSessionHeaderDelegate {
-    func didTapPlayVideo() {
+    func didTapInviteFriends() {
         
     }
 }
