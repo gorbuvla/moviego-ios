@@ -9,7 +9,7 @@
 import Foundation
 
 struct Session: Codable {
-    let type: String
+    let type: SessionType
     let startsAt: Date
     let cinema: Cinema
     let movie: Movie
@@ -19,6 +19,13 @@ struct SessionSearchItem: Codable {
     let cinema: Cinema
     let movie: Movie
     let showtimes: [Session]
+}
+
+enum SessionType: String, Codable, CaseIterable {
+    case D2 = "2D"
+    case D3 = "3D"
+    case IMAX = "IMAX"
+    case DX4 = "4DX"
 }
 
 enum SessionOrderBy: String {

@@ -22,3 +22,13 @@ extension Collection {
         return indices.contains(index) ? self[index] : nil
     }
 }
+
+extension Dictionary {
+    func index(of pathIndex: Int) -> Dictionary.Index {
+        return keys.index(startIndex, offsetBy: pathIndex)
+    }
+    
+    func key(at position: Int) -> Dictionary.Key {
+        return keys[index(of: position)]
+    }
+}

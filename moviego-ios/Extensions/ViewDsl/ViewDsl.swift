@@ -28,7 +28,7 @@ extension UIView {
 extension ViewDslMaker {
     
     @discardableResult
-    func customView<V: UIView>(_ view: V, _ block: (V) -> Void) -> V {
+    func customView<V: UIView>(_ view: V, _ block: (V) -> Void = { _ in }) -> V {
         addView(view)
         block(view)
         return view

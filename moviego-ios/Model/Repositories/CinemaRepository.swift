@@ -11,10 +11,12 @@ import Foundation
 
 protocol CinemaRepositoring {
     func fetchCinemas(lat: Float?, lng: Float?, radius: Double?) -> Single<[Cinema]>
+    func fetchCinema(for movie: Movie) -> Single<[Cinema]>
     
     func fetchMovies(offset: Int, limit: Int) -> Single<[Movie]>
     func fetchMovies(for cinema: Cinema, offset: Int, limit: Int) -> Single<[Movie]>
     func fetchSessions(startingFrom: Date, lat: Double?, lng: Double?, limit: Int, offset: Int) -> Single<[Session]>
+    func fetchSessions(for movie: Movie, in cinema: Cinema, startingAt: Date) -> Single<[Session]>
     func fetchPromotions() -> Single<[Promotion]>
 }
 
@@ -28,10 +30,9 @@ class MockedCinemaRepository: CinemaRepositoring {
         rottenTomatoesRating: "83%",
         plot: "The story of the legendary rock music band Queen and its lead singer Freddie Mercury.",
         poster: URL(string: "https://m.media-amazon.com/images/M/MV5BNDg2NjIxMDUyNF5BMl5BanBnXkFtZTgwMzEzNTE1NTM@._V1_SX300.jpg")!,
+        thumbnailId: "movies/keanu",
         release: "02 Nov 2018",
-        trailer: "https://www.youtube.com/watch?v=mP0VHJYFOAU",
-        director: Person(name: "Bryan Singer"),
-        actors: "Rami Malek, Lucy Boynton, Gwilym Lee, Ben Hardy".components(separatedBy: ", ").map { Person(name: $0) }
+        trailer: "https://www.youtube.com/watch?v=mP0VHJYFOAU"
     )
     
     private let atomicBlonde = Movie(
@@ -42,10 +43,9 @@ class MockedCinemaRepository: CinemaRepositoring {
         rottenTomatoesRating: "78%",
         plot: "An undercover MI6 agent is sent to Berlin during the Cold War to investigate the murder of a fellow agent and recover a missing list of double agents.",
         poster: URL(string: "https://m.media-amazon.com/images/M/MV5BMjM5NDYzMzg5N15BMl5BanBnXkFtZTgwOTM2NDU1MjI@._V1_SX300.jpg")!,
+        thumbnailId: "movies/keanu",
         release: "28 Jul 2017",
-        trailer: "https://www.youtube.com/watch?v=yIUube1pSC0",
-        director: Person(name: "David Leitch"),
-        actors: "Charlize Theron, James McAvoy, Eddie Marsan, John Goodman".components(separatedBy: ", ").map { Person(name: $0) }
+        trailer: "https://www.youtube.com/watch?v=yIUube1pSC0"
     )
     
     private let spiderMan = Movie(
@@ -56,10 +56,9 @@ class MockedCinemaRepository: CinemaRepositoring {
         rottenTomatoesRating: "90%",
         plot: "Following the events of Avengers: Endgame, Spider-Man must step up to take on new threats in a world that has changed forever.",
         poster: URL(string: "https://m.media-amazon.com/images/M/MV5BNmFkYjkzZmUtYjJiYi00NDU1LTk4MjktNzc3ZmU2YjhiYzBhXkEyXkFqcGdeQXVyOTI5MTk1MjU@._V1_SY1000_SX675_AL_.jpg")!,
+        thumbnailId: "movies/keanu",
         release: "2019",
-        trailer: "https://www.youtube.com/watch?v=Nt9L1jCKGnE",
-        director: Person(name: "Jon Watts"),
-        actors: [Person(name: "Tom Holland"), Person(name: "Jake Gyllenhaal")]
+        trailer: "https://www.youtube.com/watch?v=Nt9L1jCKGnE"
     )
     
     private let casinoRoyale = Movie(
@@ -70,10 +69,9 @@ class MockedCinemaRepository: CinemaRepositoring {
         rottenTomatoesRating: "90%",
         plot: "Armed with a license to kill, Secret Agent James Bond sets out on his first mission as 007, and must defeat a private banker to terrorists in a high stakes game of poker at Casino Royale, Montenegro, but things are not what they seem.",
         poster: URL(string: "https://m.media-amazon.com/images/M/MV5BMDI5ZWJhOWItYTlhOC00YWNhLTlkNzctNDU5YTI1M2E1MWZhXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_SY1000_CR0,0,672,1000_AL_.jpg")!,
+        thumbnailId: "movies/poke",
         release: "2006",
-        trailer: "https://www.youtube.com/watch?v=36mnx8dBbGE",
-        director: Person(name: "Martin Campbell"),
-        actors: [Person(name: "Daniel Craig"), Person(name: "Mads Mikkelsen")]
+        trailer: "https://www.youtube.com/watch?v=36mnx8dBbGE"
     )
     
     private let ccAndel = Cinema(
@@ -93,10 +91,9 @@ class MockedCinemaRepository: CinemaRepositoring {
             rottenTomatoesRating: "78%",
             plot: "An undercover MI6 agent is sent to Berlin during the Cold War to investigate the murder of a fellow agent and recover a missing list of double agents.",
             poster: URL(string: "https://m.media-amazon.com/images/M/MV5BMjM5NDYzMzg5N15BMl5BanBnXkFtZTgwOTM2NDU1MjI@._V1_SX300.jpg")!,
+            thumbnailId: "movies/poke",
             release: "28 Jul 2017",
-            trailer: "https://www.youtube.com/watch?v=yIUube1pSC0",
-            director: Person(name: "David Leitch"),
-            actors: "Charlize Theron, James McAvoy, Eddie Marsan, John Goodman".components(separatedBy: ", ").map { Person(name: $0) }
+            trailer: "https://www.youtube.com/watch?v=yIUube1pSC0"
             )]
     )
     
@@ -117,10 +114,9 @@ class MockedCinemaRepository: CinemaRepositoring {
             rottenTomatoesRating: "83%",
             plot: "The story of the legendary rock music band Queen and its lead singer Freddie Mercury.",
             poster: URL(string: "https://m.media-amazon.com/images/M/MV5BNDg2NjIxMDUyNF5BMl5BanBnXkFtZTgwMzEzNTE1NTM@._V1_SX300.jpg")!,
+            thumbnailId: "movies/poke",
             release: "02 Nov 2018",
-            trailer: "https://www.youtube.com/watch?v=mP0VHJYFOAU",
-            director: Person(name: "Bryan Singer"),
-            actors: "Rami Malek, Lucy Boynton, Gwilym Lee, Ben Hardy".components(separatedBy: ", ").map { Person(name: $0) }
+            trailer: "https://www.youtube.com/watch?v=mP0VHJYFOAU"
             ), Movie(
                 title: "Casino Royale",
                 year: "2006",
@@ -129,10 +125,9 @@ class MockedCinemaRepository: CinemaRepositoring {
                 rottenTomatoesRating: "90%",
                 plot: "Armed with a license to kill, Secret Agent James Bond sets out on his first mission as 007, and must defeat a private banker to terrorists in a high stakes game of poker at Casino Royale, Montenegro, but things are not what they seem.",
                 poster: URL(string: "https://m.media-amazon.com/images/M/MV5BMDI5ZWJhOWItYTlhOC00YWNhLTlkNzctNDU5YTI1M2E1MWZhXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_SY1000_CR0,0,672,1000_AL_.jpg")!,
+                thumbnailId: "movies/poke",
                 release: "2006",
-                trailer: "https://www.youtube.com/watch?v=36mnx8dBbGE",
-                director: Person(name: "Martin Campbell"),
-                actors: [Person(name: "Daniel Craig"), Person(name: "Mads Mikkelsen")]
+                trailer: "https://www.youtube.com/watch?v=36mnx8dBbGE"
             )
 ]
     )
@@ -154,10 +149,9 @@ class MockedCinemaRepository: CinemaRepositoring {
             rottenTomatoesRating: "83%",
             plot: "The story of the legendary rock music band Queen and its lead singer Freddie Mercury.",
             poster: URL(string: "https://m.media-amazon.com/images/M/MV5BNDg2NjIxMDUyNF5BMl5BanBnXkFtZTgwMzEzNTE1NTM@._V1_SX300.jpg")!,
+            thumbnailId: "movies/poke",
             release: "02 Nov 2018",
-            trailer: "https://www.youtube.com/watch?v=mP0VHJYFOAU",
-            director: Person(name: "Bryan Singer"),
-            actors: "Rami Malek, Lucy Boynton, Gwilym Lee, Ben Hardy".components(separatedBy: ", ").map { Person(name: $0) }
+            trailer: "https://www.youtube.com/watch?v=mP0VHJYFOAU"
             ), Movie(
                 title: "Atomic Blonde",
                 year: "2017",
@@ -166,10 +160,9 @@ class MockedCinemaRepository: CinemaRepositoring {
                 rottenTomatoesRating: "78%",
                 plot: "An undercover MI6 agent is sent to Berlin during the Cold War to investigate the murder of a fellow agent and recover a missing list of double agents.",
                 poster: URL(string: "https://m.media-amazon.com/images/M/MV5BMjM5NDYzMzg5N15BMl5BanBnXkFtZTgwOTM2NDU1MjI@._V1_SX300.jpg")!,
+                thumbnailId: "movies/poke",
                 release: "28 Jul 2017",
-                trailer: "https://www.youtube.com/watch?v=yIUube1pSC0",
-                director: Person(name: "David Leitch"),
-                actors: "Charlize Theron, James McAvoy, Eddie Marsan, John Goodman".components(separatedBy: ", ").map { Person(name: $0) }
+                trailer: "https://www.youtube.com/watch?v=yIUube1pSC0"
             ),  Movie(
                 title: "Spider-Man: Far from Home",
                 year: "2019",
@@ -178,15 +171,18 @@ class MockedCinemaRepository: CinemaRepositoring {
                 rottenTomatoesRating: "90%",
                 plot: "Following the events of Avengers: Endgame, Spider-Man must step up to take on new threats in a world that has changed forever.",
                 poster: URL(string: "https://m.media-amazon.com/images/M/MV5BNmFkYjkzZmUtYjJiYi00NDU1LTk4MjktNzc3ZmU2YjhiYzBhXkEyXkFqcGdeQXVyOTI5MTk1MjU@._V1_SY1000_SX675_AL_.jpg")!,
+                thumbnailId: "movies/poke",
                 release: "2019",
-                trailer: "https://www.youtube.com/watch?v=Nt9L1jCKGnE",
-                director: Person(name: "Jon Watts"),
-                actors: [Person(name: "Tom Holland"), Person(name: "Jake Gyllenhaal")]
+                trailer: "https://www.youtube.com/watch?v=Nt9L1jCKGnE"
             )
 ]
     )
     
     func fetchCinemas(lat: Float?, lng: Float?, radius: Double?) -> Single<[Cinema]> {
+        return Single.just([csAndel, ccAndel, ccChodov]).delay(.seconds(1), scheduler: MainScheduler.instance)
+    }
+    
+    func fetchCinema(for movie: Movie) -> Single<[Cinema]> {
         return Single.just([csAndel, ccAndel, ccChodov]).delay(.seconds(1), scheduler: MainScheduler.instance)
     }
     
@@ -208,9 +204,18 @@ class MockedCinemaRepository: CinemaRepositoring {
         let results = [ccAndel, ccChodov, csAndel]
             .flatMap { cinema in [rhapsody, atomicBlonde, spiderMan, casinoRoyale].map { movie in (cinema, movie) } }
             .map { cinema, movie in
-                Session(type: "2D", startsAt: Date(), cinema: cinema, movie: movie)
+                Session(type: .D2, startsAt: Date(), cinema: cinema, movie: movie)
             }
 
+        return Single.just(results).delay(.seconds(1), scheduler: MainScheduler.instance)
+    }
+    
+    func fetchSessions(for movie: Movie, in cinema: Cinema, startingAt: Date) -> Single<[Session]> {
+        let results = [.D2, .D3, .IMAX]
+            .flatMap { type in [Date(), Date(timeIntervalSinceNow: TimeInterval.init(exactly: 30000)!)].map { time in (type, time) } }
+            .map { type, time in
+                Session(type: type, startsAt: time, cinema: cinema, movie: movie)
+            }
         return Single.just(results).delay(.seconds(1), scheduler: MainScheduler.instance)
     }
     

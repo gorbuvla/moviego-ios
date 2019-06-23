@@ -24,10 +24,9 @@ class MockedPromotionRepository: PromotionRepositoring {
         rottenTomatoesRating: "73%",
         plot: "Bond has left active service. His peace is short-lived when his old friend Felix Leiter from the CIA turns up asking for help, leading Bond onto the trail of a mysterious villain armed with dangerous new technology.",
         poster: URL(string: "https://m.media-amazon.com/images/M/MV5BM2E5ODliOGMtY2Q5My00ODFlLTk5NGItODFmNjU4YzM5NDA3XkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_SX300.jpg")!,
+        thumbnailId: "movies/poke",
         release: "08 Apr 2020",
-        trailer: "https://www.youtube.com/watch?v=NHwT8adPgQE",
-        director: Person(name: "Cary Joji Fukunaga"),
-        actors: "Rami Malek, Daniel Craig, Ana de Armas, Ralph Fiennes".components(separatedBy: ", ").map { Person(name: $0) }
+        trailer: "https://www.youtube.com/watch?v=NHwT8adPgQE"
     )
     
     private let spiderMan = Movie(
@@ -38,10 +37,9 @@ class MockedPromotionRepository: PromotionRepositoring {
         rottenTomatoesRating: "73%",
         plot: "Peter Parker and his friends go on a European vacation, where Peter finds himself agreeing to help Nick Fury uncover the mystery of several elemental creature attacks, creating havoc across the continent.",
         poster: URL(string: "https://m.media-amazon.com/images/M/MV5BZjBhYWNiMDQtYjRmYy00NzEzLTg1MDYtYzg3YzRkZmRkYjY3XkEyXkFqcGdeQXVyNjg2NjQwMDQ@._V1_SX300.jpg")!,
+        thumbnailId: "movies/poke",
         release: "05 Jul 2019",
-        trailer: "https://www.youtube.com/watch?v=Nt9L1jCKGnE",
-        director: Person(name: "Jon Watts"),
-        actors: "Rami Malek, Daniel Craig, Ana de Armas, Ralph Fiennes".components(separatedBy: ", ").map { Person(name: $0) }
+        trailer: "https://www.youtube.com/watch?v=Nt9L1jCKGnE"
     )
     
     
