@@ -9,15 +9,17 @@
 import ACKategories
 import UIKit
 
+//
+// Coordinator for registration flow
+//
 class RegistrationCoordinator: FlowCoordinator {
     
-    private let factories: RegistrationViewModelFactories
     private let repository: RegistrationRepository
     private var navController: UINavigationController? = nil
     
-    init(factories: RegistrationViewModelFactories) {
-        self.factories = factories
+    override init() {
         self.repository = RegistrationRepository()
+        super.init()
     }
     
     override func start(with navigationController: UINavigationController) {
@@ -29,17 +31,9 @@ class RegistrationCoordinator: FlowCoordinator {
     }
 }
 
-extension RegistrationCoordinator: RegistrUserNavigationDelegate {
-    
-    func didTapNext() {
-        
-    }
-}
-
 extension RegistrationCoordinator: ChooseCityNavigationDelegate {
     func onCityPicked() {
         let vc = RegisterUserViewController(viewModel: factories.userRegistrationViewModelFactory(repository))
-        vc.navigationDelegate = self
         navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -100,6 +100,9 @@ class SessionDetailViewController: BaseViewController<BaseListView> {
     }
 }
 
+//
+// MARK: UITableView data source & delegate
+//
 extension SessionDetailViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.sessionList.keys.count
@@ -137,8 +140,14 @@ extension SessionDetailViewController: UITableViewDataSource, UITableViewDelegat
     }
 }
 
+//
+// MARK: FlexibleSessionHeaderDelegate
+//
 extension SessionDetailViewController: FlexibleSessionHeaderDelegate {
     func didTapInviteFriends() {
-        
+        let share = L10n.Session.shareMessage(viewModel.movie.title)
+        let controller = UIActivityViewController(activityItems: [share], applicationActivities: nil)
+        controller.excludedActivityTypes = [.postToWeibo, .postToTencentWeibo, .postToFacebook, .airDrop] // exclude all undesired activity types eligible for string sharing
+        present(controller, animated: true, completion: nil)
     }
 }

@@ -9,6 +9,9 @@
 import UIKit
 import ACKategories
 
+//
+// Login coordinaotor
+//
 class LoginCoordinator: FlowCoordinator {
     
     override func start() -> UIViewController {
@@ -28,7 +31,7 @@ class LoginCoordinator: FlowCoordinator {
 
 extension LoginCoordinator: LoginNavigationDelegate {
     func didTapRegister() {
-        let registrationCoordinator = RegistrationCoordinator(factories: factories)
+        let registrationCoordinator = RegistrationCoordinator()
         addChild(registrationCoordinator)
         registrationCoordinator.start(with: navigationController!)
     }

@@ -10,6 +10,9 @@ import UIKit
 import ACKategories
 import RxSwift
 
+//
+// Main app coordinator
+//
 class AppCoordinator: FlowCoordinator {
     
     private let userRepository: UserRepositoring
@@ -25,21 +28,16 @@ class AppCoordinator: FlowCoordinator {
         userStateDisposable = userRepository.user.distinctUntilChanged { $0?.name == $1?.name }
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] user in
-                //self?.childCoordinators.forEach { $0.stop(animated: false) }
-                
-                let coordinator = user == nil ? LoginCoordinator() : MainCoordinator()
-                
+                let coordinator = user == nil ? LoginCoordinator() : DashboardCoordinator()
                 self?.addChild(coordinator)
             
                 let root = coordinator.start()
                 self?.rootViewController = root
                 window.rootViewController = root
             })
-        
     }
     
     override func stop(animated: Bool = false) {
-        //super.stop()
         userStateDisposable?.dispose()
     }
 }

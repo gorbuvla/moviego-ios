@@ -9,13 +9,18 @@
 import UIKit
 import ACKategories
 
+//
+// Coordinator for dashboard flow.
+//
 class DashboardCoordinator: FlowCoordinator {
     
-    override func start(with navigationController: UINavigationController) {
+    override func start() -> UIViewController {
+        let navController = BaseNavigationController()
+        self.navigationController = navController
         let vc = DashboardViewController(viewModel: factories.dashboardViewModelFactory())
         vc.navigationDelegate = self
-        self.navigationController = navigationController
-        navigationController.pushViewController(vc, animated: true)
+        navController.pushViewController(vc, animated: true)
+        return navController
     }
 }
 
