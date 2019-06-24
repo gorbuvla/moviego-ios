@@ -9,14 +9,18 @@
 import UIKit
 import ACKategories
 
+//
+// Coordinator for cinema flow.
+//
 class CinemaCoordinator: FlowCoordinator {
     
     override func start() -> UIViewController {
         let navController = BaseNavigationController()
+        self.navigationController = navController
+        
         let vc = CinemaMapViewController(viewModel: factories.cinemaMapViewModelFactory())
         vc.navigationDelegate = self
         navController.viewControllers = [vc]
-        navigationController = navController
         return navController
     }
 }

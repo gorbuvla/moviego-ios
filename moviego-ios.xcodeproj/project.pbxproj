@@ -132,7 +132,6 @@
 		C29C626C22849FE000FD0876 /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29C626B22849FE000FD0876 /* Promotion.swift */; };
 		C2A0590722BE88F000AB7DAA /* FlexibleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A0590622BE88F000AB7DAA /* FlexibleHeaderView.swift */; };
 		C2A0590922BE8B4B00AB7DAA /* FlexibleCinemaHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2A0590822BE8B4B00AB7DAA /* FlexibleCinemaHeader.swift */; };
-		C2C52EC1225E3880009A6D93 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C52EC0225E3880009A6D93 /* MainCoordinator.swift */; };
 		C2C52ED2225E4211009A6D93 /* ChooseCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C52ED1225E4211009A6D93 /* ChooseCityViewController.swift */; };
 		C2C52ED4225E4243009A6D93 /* ChangeCityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C52ED3225E4243009A6D93 /* ChangeCityViewModel.swift */; };
 		C2CA247622A2D01400C6A81B /* CinemaCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CA247522A2D01400C6A81B /* CinemaCoordinator.swift */; };
@@ -155,6 +154,19 @@
 			remoteInfo = "moviego-ios";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C26410E922C134DB00A495ED /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		065CD81856D464FE9274FA2B /* Pods-moviego-ios.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moviego-ios.production.xcconfig"; path = "Target Support Files/Pods-moviego-ios/Pods-moviego-ios.production.xcconfig"; sourceTree = "<group>"; };
@@ -263,6 +275,9 @@
 		C251AFBF22A312D100B6678E /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		C251AFC122A3134000B6678E /* MovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewModel.swift; sourceTree = "<group>"; };
 		C261C8C922A6B41800D9096C /* PromotionAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionAnnotation.swift; sourceTree = "<group>"; };
+		C26410DC22C134DB00A495ED /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		C26410DF22C134DB00A495ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		C26410E122C134DB00A495ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C2649838227D96460037AF48 /* CinemaMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaMapViewController.swift; sourceTree = "<group>"; };
 		C264983A227D96540037AF48 /* CinemaMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaMapViewModel.swift; sourceTree = "<group>"; };
 		C264983E227D99FB0037AF48 /* CinemaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaRepository.swift; sourceTree = "<group>"; };
@@ -285,7 +300,6 @@
 		C29C626B22849FE000FD0876 /* Promotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promotion.swift; sourceTree = "<group>"; };
 		C2A0590622BE88F000AB7DAA /* FlexibleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleHeaderView.swift; sourceTree = "<group>"; };
 		C2A0590822BE8B4B00AB7DAA /* FlexibleCinemaHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleCinemaHeader.swift; sourceTree = "<group>"; };
-		C2C52EC0225E3880009A6D93 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		C2C52ED1225E4211009A6D93 /* ChooseCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCityViewController.swift; sourceTree = "<group>"; };
 		C2C52ED3225E4243009A6D93 /* ChangeCityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCityViewModel.swift; sourceTree = "<group>"; };
 		C2CA247522A2D01400C6A81B /* CinemaCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaCoordinator.swift; sourceTree = "<group>"; };
@@ -379,6 +393,7 @@
 				C212BC64224FC2D600C624A7 /* Environment */,
 				C212BC43224FBB2000C624A7 /* moviego-ios */,
 				C212BC6E224FC4C100C624A7 /* Tests */,
+				C26410DB22C134DB00A495ED /* SessionShareExtension */,
 				C212BC42224FBB2000C624A7 /* Products */,
 				2D9FE7A8F1CB3A24053EB5F6 /* Pods */,
 				AA2D6159C38A722E5FA71F43 /* Frameworks */,
@@ -398,9 +413,10 @@
 		C212BC43224FBB2000C624A7 /* moviego-ios */ = {
 			isa = PBXGroup;
 			children = (
-				C212BCB9225037DC00C624A7 /* DI */,
 				C212BCB72250365100C624A7 /* Base */,
+				C212BCB9225037DC00C624A7 /* DI */,
 				C212BCB02250351700C624A7 /* Model */,
+				C26410EA22C14E2A00A495ED /* Coordinators */,
 				C212BCB4225035E500C624A7 /* Flows */,
 				C212BCEF225158AB00C624A7 /* Extensions */,
 				C212BCB52250361300C624A7 /* View */,
@@ -544,11 +560,9 @@
 				C23AFA182297203900CC753D /* Dashboard */,
 				C2649836227D95950037AF48 /* Cinemas */,
 				C2C52ED0225E4200009A6D93 /* City */,
-				C2C52EBF225E386A009A6D93 /* Main */,
 				C2C52EB7225E3450009A6D93 /* Sessions */,
 				C24400CC225CD438001C88A1 /* Registration */,
 				C24400C0225C9C51001C88A1 /* Login */,
-				C24400E1225D0778001C88A1 /* AppCoordinator.swift */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -687,7 +701,6 @@
 			children = (
 				C23AFA192297204900CC753D /* DashboardViewController.swift */,
 				C23AFA1B2297207400CC753D /* DashboardViewModel.swift */,
-				C23AFA1D2297376B00CC753D /* DashboardCoordinator.swift */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
@@ -708,7 +721,6 @@
 				C24400C1225C9C73001C88A1 /* LoginViewController.swift */,
 				C24400C5225CD1E2001C88A1 /* LoginView.swift */,
 				C24400CA225CD276001C88A1 /* LoginViewModel.swift */,
-				C24400DF225D063B001C88A1 /* LoginCoordinator.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -727,7 +739,6 @@
 			children = (
 				C24400CD225CD560001C88A1 /* User */,
 				C24400D9225CF7F5001C88A1 /* RegistrationRepository.swift */,
-				C24400DD225CFDE1001C88A1 /* RegistrationCoordinator.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -761,12 +772,33 @@
 			path = CollectionViewCells;
 			sourceTree = "<group>";
 		};
+		C26410DB22C134DB00A495ED /* SessionShareExtension */ = {
+			isa = PBXGroup;
+			children = (
+				C26410DC22C134DB00A495ED /* ShareViewController.swift */,
+				C26410DE22C134DB00A495ED /* MainInterface.storyboard */,
+				C26410E122C134DB00A495ED /* Info.plist */,
+			);
+			path = SessionShareExtension;
+			sourceTree = "<group>";
+		};
+		C26410EA22C14E2A00A495ED /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				C23AFA1D2297376B00CC753D /* DashboardCoordinator.swift */,
+				C2CA247522A2D01400C6A81B /* CinemaCoordinator.swift */,
+				C24400DD225CFDE1001C88A1 /* RegistrationCoordinator.swift */,
+				C24400DF225D063B001C88A1 /* LoginCoordinator.swift */,
+				C24400E1225D0778001C88A1 /* AppCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
 		C2649836227D95950037AF48 /* Cinemas */ = {
 			isa = PBXGroup;
 			children = (
 				C29C62622284946400FD0876 /* Detail */,
 				C2649837227D96330037AF48 /* Map */,
-				C2CA247522A2D01400C6A81B /* CinemaCoordinator.swift */,
 			);
 			path = Cinemas;
 			sourceTree = "<group>";
@@ -830,14 +862,6 @@
 			path = Sessions;
 			sourceTree = "<group>";
 		};
-		C2C52EBF225E386A009A6D93 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				C2C52EC0225E3880009A6D93 /* MainCoordinator.swift */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
 		C2C52ED0225E4200009A6D93 /* City */ = {
 			isa = PBXGroup;
 			children = (
@@ -895,6 +919,7 @@
 				C212BC3F224FBB2000C624A7 /* Resources */,
 				D75EC136B8F2B05DF3D002B7 /* [CP] Embed Pods Frameworks */,
 				C212BC88224FE83500C624A7 /* Carthage */,
+				C26410E922C134DB00A495ED /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -1146,7 +1171,6 @@
 				C212BD0022516AA800C624A7 /* BaseViewModel.swift in Sources */,
 				C249D6CD22987F5E00FBD0BC /* SuggestedSessionCell.swift in Sources */,
 				C212BC47224FBB2000C624A7 /* ViewController.swift in Sources */,
-				C2C52EC1225E3880009A6D93 /* MainCoordinator.swift in Sources */,
 				C2F7409D22997D8C00E55F25 /* BaseShadowedView.swift in Sources */,
 				C228EEFF22834913004C19EE /* ProfileAccessoryController.swift in Sources */,
 				C24400CF225CD57B001C88A1 /* RegisterUserViewController.swift in Sources */,
@@ -1252,6 +1276,17 @@
 			targetProxy = C212BC72224FC4C100C624A7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C26410DE22C134DB00A495ED /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C26410DF22C134DB00A495ED /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C212BC5C224FBB2200C624A7 /* Debug */ = {
@@ -1378,6 +1413,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 714178FBA904447304E10E73 /* Pods-moviego-ios.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APP_NAME = "MovieGo Dev";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1403,6 +1439,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1208531ACDFE9F70ACF977E4 /* Pods-moviego-ios.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APP_NAME = MovieGo;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1525,6 +1562,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CD5853AE2A03E0C9B6969ED1 /* Pods-moviego-ios.beta.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APP_NAME = "MovieGo Beta";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

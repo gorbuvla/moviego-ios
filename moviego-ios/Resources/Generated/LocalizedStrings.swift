@@ -129,6 +129,13 @@ internal enum L10n {
       }
     }
   }
+
+  internal enum Session {
+    /// Hey, let's meet and watch %@
+    internal static func shareMessage(_ p1: String) -> String {
+      return L10n.tr("Localizable", "session.share_message", p1)
+    }
+  }
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name

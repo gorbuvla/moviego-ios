@@ -26,3 +26,4 @@
 "dashboard.logout" = "Logout";
 "cinema.map.title" = "Explore";
 "cinema.map.bottom_sheet.button.title" = "Detail";
+"session.share_message" = "Hey, let's meet and watch %@";
