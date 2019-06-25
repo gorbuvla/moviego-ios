@@ -7,6 +7,6 @@
 	<key>is_dev</key>
 	<true/>
 	<key>base_url</key>
-	<string>url</string>
+	<string>http://192.168.1.22:8080</string>
 </dict>
 </plist>

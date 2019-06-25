@@ -26,20 +26,21 @@ class OAuthApiService: OAuthApiServicing {
     
     func login(email: String, password: String) -> Single<UserWithCredentials> {
         let params = ["email": email, "password": password]
-        return interactor.request("/auth/login", method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil)
+        return interactor.request("/api/auth/login", method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil)
             .mapObject(to: UserWithCredentials.self)
             .asSingle()
     }
     
     func register(credentials: RegisterCredentials) -> Single<UserWithCredentials> {
         // TODO: some cool way to decode object to parameters
-        return interactor.request("/auth/register", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil)
+        //let params = try? JSONEncoder().encode(credentials)
+        return interactor.request("/api/auth/register", method: .post, parameters: credentials.dictionary, encoding: JSONEncoding.default, headers: nil)
             .mapObject(to: UserWithCredentials.self)
             .asSingle()
     }
     
     func refreshToken(credentials: Credentials) -> Single<Credentials> {
-        return interactor.request("/auth/refresh", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil)
+        return interactor.request("/api/auth/refresh", method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil)
             .mapObject(to: Credentials.self)
             .asSingle()
     }

@@ -31,7 +31,7 @@ class RegistrationRepository: RegistrationRepositoring {
     var credentials: RegisterCredentials {
         get {
             assert(name != nil && surname != nil && email != nil && password != nil && city != nil)
-            return RegisterCredentials(name: name!, surname: surname!, email: email!, password: password!, city: city!)
+            return RegisterCredentials(name: name!, surname: surname!, email: email!, password: password!, preferredCityId: city!.id)
         }
     }
 }

@@ -9,6 +9,9 @@
 import UIKit
 import MapKit
 
+//
+// View with a map.
+//
 class BaseMapView: BaseView {
     
     weak var mapView: MKMapView!

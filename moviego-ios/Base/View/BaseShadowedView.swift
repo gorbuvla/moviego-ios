@@ -8,6 +8,9 @@
 
 import UIKit
 
+//
+// Base view with shadowed container.
+//
 class BaseShadowedView: BaseView {
     
     private weak var container: UIView!

@@ -6,6 +6,9 @@
 //  Copyright © 2019 Vlad Gorbunov. All rights reserved.
 //
 
+//
+// Inspired by Result type, this one is used to indicate loading process.
+//
 enum State<Value> {
     case loading
     case value(Value)

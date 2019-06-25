@@ -9,17 +9,20 @@
 import RxSwift
 import RxCocoa
 
+//
+// ViewModel for choosing city in registration process.
+//
 class RegisterCityViewModel: ChooseCityViewModel {
     
-    private var repository: RegistrationRepositoring
+    private var registrationRepository: RegistrationRepositoring
     
-    init(cityApi: CityApiServicing, repository: RegistrationRepositoring) {
-        self.repository = repository
-        super.init(cityApi: cityApi)
+    init(cityRepository: CityRepositoring, registrationRepository: RegistrationRepositoring) {
+        self.registrationRepository = registrationRepository
+        super.init(cityRepository: cityRepository)
     }
     
     override func saveSelection(_ city: City) -> Single<City> {
-        repository.city = city
+        registrationRepository.city = city
         return super.saveSelection(city)
     }
 }

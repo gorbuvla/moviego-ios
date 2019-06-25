@@ -9,6 +9,9 @@
 import UIKit
 import RxSwift
 
+//
+// UINavigationController that sets up provided view.
+//
 class BaseViewController<V: UIView>: UIViewController {
     
     private var tapGestureRecognizer: UITapGestureRecognizer!
@@ -55,7 +58,6 @@ class BaseViewController<V: UIView>: UIViewController {
         self.navigationItem.backBarButtonItem = item
         
         tapGestureRecognizer.isEnabled = shouldObserveKeyboardChanges()
-        
         tapGestureRecognizer.rx.event
             .bind(onNext: { _ in self.view.endEditing(true) })
             .disposed(by: disposeBag)
@@ -104,9 +106,7 @@ extension Observable where Element == Notification {
     func mapOffsetDuration() -> Observable<(CGFloat, Double)> {
         return self.map { notification in
             let offset = UIScreen.main.bounds.size.height - ((notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.origin.y ?? CGFloat(0))
-            
             let duration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
-            
             return (offset, duration)
         }
     }
@@ -121,6 +121,7 @@ extension BaseViewController where V: UIView {
         }
         
         let errorAlert = UIAlertController(title: "Uncategorized error", message: errorMessage, preferredStyle: .alert)
+        errorAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
         present(errorAlert, animated: true)
     }
 }

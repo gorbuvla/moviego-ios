@@ -8,6 +8,9 @@
 
 import UIKit
 
+//
+// Base class for creating custom views.
+//
 class BaseView: UIView {
     
     public override init(frame: CGRect) {
