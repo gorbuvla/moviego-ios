@@ -29,7 +29,7 @@ final class Database {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
          */
-        let container = NSPersistentContainer(name: "Model")
+        let container = NSSharedPersistentContainer(name: "Model")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             print("[STORE DESCRIPTION]", storeDescription)
             if let error = error as NSError? {
@@ -52,6 +52,15 @@ final class Database {
     
     func performBackgroundTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
         persistentContainer.performBackgroundTask(block)
+    }
+}
+
+final class NSSharedPersistentContainer: NSPersistentContainer {
+    
+    override class func defaultDirectoryURL() -> URL {
+        var storeURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.me.gorbuvla.moviego")
+        //storeURL = storeURL?.appendingPathComponent("MovieGo.sqlite")
+        return storeURL!
     }
 }
 

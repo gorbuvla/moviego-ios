@@ -79,6 +79,13 @@ final class CinemaDetailViewController: BaseViewController<BaseListView> {
             .observeOn(MainScheduler.instance)
             .bind(to: layout.loadingView.rx.isHidden)
             .disposed(by: disposeBag)
+        
+        viewModel.viewState.error
+            .observeOn(MainScheduler.instance)
+            .bind { [weak self] error in
+                self?.handleError(error: error)
+            }
+            .disposed(by: disposeBag)
     }
 }
 

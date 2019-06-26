@@ -7,11 +7,12 @@
 //
 
 import RxSwift
+import RxRelay
 
 class MockedUserRepository: UserRepositoring {
     
     private var credentialsStore: CredentialsStore
-    private let userVariable: Variable<User?>
+    private let userVariable: BehaviorRelay<User?>
     
     var currentUser: User? {
         return userVariable.value
@@ -23,7 +24,7 @@ class MockedUserRepository: UserRepositoring {
     
     init(credentialsStore: CredentialsStore) {
         self.credentialsStore = credentialsStore
-        self.userVariable = Variable(credentialsStore.user)
+        self.userVariable = BehaviorRelay(value: credentialsStore.user)
     }
     
     func changeCity(to city: City) -> Completable {
@@ -40,9 +41,10 @@ class MockedUserRepository: UserRepositoring {
         }
         
         return singleSource.do(onSuccess: { [weak self] userWithCredentials in
+            print("all ok, \(self == nil)")
             self?.credentialsStore.user = userWithCredentials.user
             self?.credentialsStore.credentials = userWithCredentials.credentials
-            self?.userVariable.value = userWithCredentials.user
+            self?.userVariable.accept(userWithCredentials.user)
         }).map { $0.user }
     }
     
@@ -50,7 +52,7 @@ class MockedUserRepository: UserRepositoring {
         return Single.just(User(id: 1, name: credentials.name, email: credentials.surname, avatarId: nil, preferredCityId: credentials.preferredCityId))
             .delay(.seconds(1), scheduler: MainScheduler.instance)
             .do(onSuccess: { u in
-                self.userVariable.value = u
+                self.userVariable.accept(u)
             })
     }
     
@@ -58,7 +60,7 @@ class MockedUserRepository: UserRepositoring {
         return Completable.create { [weak self] completable in
             self?.credentialsStore.user = nil
             self?.credentialsStore.credentials = nil
-            self?.userVariable.value = nil
+            self?.userVariable.accept(nil)
             
             completable(.completed)
             return Disposables.create {}

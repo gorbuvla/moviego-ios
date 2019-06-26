@@ -11,5 +11,4 @@ target 'moviego-ios' do
     pod 'SwiftLint', '~> 0.27'
     pod 'SwiftGen', '~> 6.0'
     pod 'Cloudinary', '~> 2.7'
-    pod 'youtube-ios-player-helper', '~> 0.1.4'
 end

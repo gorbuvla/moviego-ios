@@ -49,4 +49,4 @@ final class ViewModelDependency {
     }
 }
 
-let factories = ViewModelDependency(modelDependency: ModelDependency.shared)
+let factories = ViewModelDependency(modelDependency: MockedModelDependency.shared)

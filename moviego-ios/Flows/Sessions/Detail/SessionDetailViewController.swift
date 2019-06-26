@@ -72,6 +72,13 @@ class SessionDetailViewController: BaseViewController<BaseListView> {
             })
             .disposed(by: disposeBag)
         
+        viewModel.sessions.error
+            .observeOn(MainScheduler.instance)
+            .bind  { [weak self] error in
+                self?.handleError(error: error)
+            }
+            .disposed(by: disposeBag)
+        
         viewModel.selectedCinema
             .observeOn(MainScheduler.instance)
             .bind { [weak filterHeader] cinema in

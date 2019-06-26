@@ -112,7 +112,6 @@
 		C26410F122C1778A00A495ED /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C26410F022C1778A00A495ED /* NotificationCenter.framework */; };
 		C26410F422C1778B00A495ED /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26410F322C1778B00A495ED /* TodayViewController.swift */; };
 		C26410FB22C1778B00A495ED /* TodaySessionsExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C26410EF22C1778A00A495ED /* TodaySessionsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		C264110122C179AB00A495ED /* TodaySessionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C264110022C179AB00A495ED /* TodaySessionsView.swift */; };
 		C264110222C17A3500A495ED /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C212BC9D225002D500C624A7 /* SnapKit.framework */; };
 		C264110522C1800B00A495ED /* TodaySessionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C264110422C1800B00A495ED /* TodaySessionsViewModel.swift */; };
 		C264110622C180F600A495ED /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C23EEBA8227B790200A95185 /* Movie.swift */; };
@@ -133,6 +132,8 @@
 		C267AE7122C2D12900B28956 /* MovieApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267AE7022C2D12900B28956 /* MovieApiService.swift */; };
 		C267AE7322C2D21A00B28956 /* PromotionApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267AE7222C2D21A00B28956 /* PromotionApiService.swift */; };
 		C267AE7522C2D62800B28956 /* SessionApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267AE7422C2D62800B28956 /* SessionApiService.swift */; };
+		C267AE7722C34A6900B28956 /* TodayMovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267AE7622C34A6900B28956 /* TodayMovieCollectionViewCell.swift */; };
+		C267AE7B22C3626E00B28956 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2DF154D227F82440071A9FB /* AlamofireImage.framework */; };
 		C267FFBC229AC454004BC1EE /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267FFBB229AC454004BC1EE /* State.swift */; };
 		C267FFBE229AD86C004BC1EE /* RxState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267FFBD229AD86C004BC1EE /* RxState.swift */; };
 		C267FFC0229ADBED004BC1EE /* RxExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C267FFBF229ADBED004BC1EE /* RxExtensions.swift */; };
@@ -303,7 +304,6 @@
 		C26410F022C1778A00A495ED /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		C26410F322C1778B00A495ED /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		C26410F822C1778B00A495ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C264110022C179AB00A495ED /* TodaySessionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionsView.swift; sourceTree = "<group>"; };
 		C264110422C1800B00A495ED /* TodaySessionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySessionsViewModel.swift; sourceTree = "<group>"; };
 		C2649838227D96460037AF48 /* CinemaMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaMapViewController.swift; sourceTree = "<group>"; };
 		C264983A227D96540037AF48 /* CinemaMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaMapViewModel.swift; sourceTree = "<group>"; };
@@ -320,6 +320,10 @@
 		C267AE7022C2D12900B28956 /* MovieApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieApiService.swift; sourceTree = "<group>"; };
 		C267AE7222C2D21A00B28956 /* PromotionApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionApiService.swift; sourceTree = "<group>"; };
 		C267AE7422C2D62800B28956 /* SessionApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionApiService.swift; sourceTree = "<group>"; };
+		C267AE7622C34A6900B28956 /* TodayMovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		C267AE7922C3625E00B28956 /* AlamofireImage.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = AlamofireImage.framework.dSYM; path = Carthage/Build/iOS/AlamofireImage.framework.dSYM; sourceTree = "<group>"; };
+		C267AE7C22C36E2400B28956 /* TodaySessionsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TodaySessionsExtension.entitlements; sourceTree = "<group>"; };
+		C267AE7D22C36E2D00B28956 /* moviego-ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "moviego-ios.entitlements"; sourceTree = "<group>"; };
 		C267FFBB229AC454004BC1EE /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		C267FFBD229AD86C004BC1EE /* RxState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxState.swift; sourceTree = "<group>"; };
 		C267FFBF229ADBED004BC1EE /* RxExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxExtensions.swift; sourceTree = "<group>"; };
@@ -383,6 +387,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C267AE7B22C3626E00B28956 /* AlamofireImage.framework in Frameworks */,
 				C264110222C17A3500A495ED /* SnapKit.framework in Frameworks */,
 				C26410F122C1778A00A495ED /* NotificationCenter.framework in Frameworks */,
 			);
@@ -408,6 +413,7 @@
 		AA2D6159C38A722E5FA71F43 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C267AE7922C3625E00B28956 /* AlamofireImage.framework.dSYM */,
 				C2DF15512280BF500071A9FB /* RxRelay.framework */,
 				C2DF154F227F8AFA0071A9FB /* RxCoreLocation.framework */,
 				C2DF154D227F82440071A9FB /* AlamofireImage.framework */,
@@ -460,6 +466,7 @@
 		C212BC43224FBB2000C624A7 /* moviego-ios */ = {
 			isa = PBXGroup;
 			children = (
+				C267AE7D22C36E2D00B28956 /* moviego-ios.entitlements */,
 				C212BCB72250365100C624A7 /* Base */,
 				C212BCB9225037DC00C624A7 /* DI */,
 				C212BCB02250351700C624A7 /* Model */,
@@ -839,10 +846,11 @@
 		C26410F222C1778B00A495ED /* TodaySessionsExtension */ = {
 			isa = PBXGroup;
 			children = (
+				C267AE7C22C36E2400B28956 /* TodaySessionsExtension.entitlements */,
 				C26410F322C1778B00A495ED /* TodayViewController.swift */,
 				C26410F822C1778B00A495ED /* Info.plist */,
-				C264110022C179AB00A495ED /* TodaySessionsView.swift */,
 				C264110422C1800B00A495ED /* TodaySessionsViewModel.swift */,
+				C267AE7622C34A6900B28956 /* TodayMovieCollectionViewCell.swift */,
 			);
 			path = TodaySessionsExtension;
 			sourceTree = "<group>";
@@ -1050,6 +1058,11 @@
 				TargetAttributes = {
 					C212BC40224FBB2000C624A7 = {
 						CreatedOnToolsVersion = 10.2;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					C212BC6C224FC4C100C624A7 = {
 						CreatedOnToolsVersion = 10.2;
@@ -1057,6 +1070,11 @@
 					};
 					C26410EE22C1778A00A495ED = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					C267FFB4229AB3F1004BC1EE = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -1235,7 +1253,6 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Cloudinary/Cloudinary.framework",
 				"${BUILT_PRODUCTS_DIR}/Smartling.i18n/Smartling_i18n.framework",
-				"${BUILT_PRODUCTS_DIR}/youtube-ios-player-helper/youtube_ios_player_helper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -1244,7 +1261,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cloudinary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Smartling_i18n.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/youtube_ios_player_helper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1382,8 +1398,8 @@
 			files = (
 				C267AE6422C2B22700B28956 /* Database.swift in Sources */,
 				C26410F422C1778B00A495ED /* TodayViewController.swift in Sources */,
-				C264110122C179AB00A495ED /* TodaySessionsView.swift in Sources */,
 				C267AE6122C2B0DA00B28956 /* Model.xcdatamodeld in Sources */,
+				C267AE7722C34A6900B28956 /* TodayMovieCollectionViewCell.swift in Sources */,
 				C264110522C1800B00A495ED /* TodaySessionsViewModel.swift in Sources */,
 				C264110622C180F600A495ED /* Movie.swift in Sources */,
 			);
@@ -1532,6 +1548,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APP_NAME = "MovieGo Dev";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "moviego-ios/moviego-ios.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P88J5J9T9W;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1558,6 +1575,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APP_NAME = MovieGo;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "moviego-ios/moviego-ios.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P88J5J9T9W;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1681,6 +1699,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APP_NAME = "MovieGo Beta";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "moviego-ios/moviego-ios.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P88J5J9T9W;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1723,6 +1742,7 @@
 		C26410FD22C1778B00A495ED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TodaySessionsExtension/TodaySessionsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P88J5J9T9W;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1730,7 +1750,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = TodaySessionsExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1747,6 +1767,7 @@
 		C26410FE22C1778B00A495ED /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TodaySessionsExtension/TodaySessionsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P88J5J9T9W;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1754,7 +1775,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = TodaySessionsExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1771,6 +1792,7 @@
 		C26410FF22C1778B00A495ED /* Beta */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = TodaySessionsExtension/TodaySessionsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = P88J5J9T9W;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1778,7 +1800,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = TodaySessionsExtension/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

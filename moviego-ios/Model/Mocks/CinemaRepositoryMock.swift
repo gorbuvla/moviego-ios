@@ -186,12 +186,12 @@ class MockedCinemaRepository: CinemaRepositoring {
     }
     
     func fetchMovies(offset: Int, limit: Int) -> Single<[Movie]> {
-        let list = Array(repeating: [rhapsody, atomicBlonde, spiderMan, casinoRoyale], count: 15).flatMap { $0 }
+        let list = Array(repeating: [rhapsody, atomicBlonde, spiderMan, casinoRoyale], count: 1).flatMap { $0 }
         if offset == list.count { return Single.just([]) }
         
-        let slice = list[offset..<(offset+limit)]
-        print("Return slice of size: \(slice.count) offset: \(offset) limit: \(limit)")
-        return Single.just(Array(slice)).delay(.seconds(1), scheduler: MainScheduler.instance)
+        //let slice = list[offset..<(offset+limit)]
+        //print("Return slice of size: \(slice.count) offset: \(offset) limit: \(limit)")
+        return Single.just(list).delay(.seconds(1), scheduler: MainScheduler.instance)
     }
     
     func fetchMovies(for cinema: Cinema, offset: Int, limit: Int) -> Single<[Movie]> {

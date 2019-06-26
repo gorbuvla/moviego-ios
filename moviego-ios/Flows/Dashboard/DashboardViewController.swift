@@ -83,7 +83,12 @@ class DashboardViewController: BaseViewController<BaseListView>, UITableViewData
             .bind(to: layout.loadingView.rx.isHidden)
             .disposed(by: disposeBag)
         
-        // TODO: handle errors & empty
+        Observable.merge(viewModel.movieState.error, viewModel.sessionState.error)
+            .observeOn(MainScheduler.instance)
+            .bind { [weak self] error in
+                self?.handleError(error: error)
+            }
+            .disposed(by: disposeBag)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

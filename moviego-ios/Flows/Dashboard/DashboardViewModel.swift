@@ -11,6 +11,7 @@ import RxSwift
 import RxRelay
 import CoreLocation
 import RxCoreLocation
+import CoreData
 
 class DashboardViewModel: BaseViewModel {
     
@@ -72,7 +73,45 @@ class DashboardViewModel: BaseViewModel {
         fetcher.pagedResult
             .mapState()
             .bind(to: viewStateSubject)
-            .disposed(by: disposeBag)        
+            .disposed(by: disposeBag)
+        
+        fetcher.pagedResult
+            .filter { movies in movies.isNotEmpty }
+            .take(1)
+            .bind(onNext: { movies in
+                
+                let request: NSFetchRequest<DBMovie> = DBMovie.fetchRequest()
+                
+                Database.shared.performBackgroundTask { context in
+                    let result = try? context.fetch(request)
+                    
+                    print("Fetch result: \(result)")
+                    
+                    result?.forEach { obj in
+                        print("deleting")
+                        context.delete(obj)
+                    }
+                    
+                    movies.forEach { movie in
+                        print("creating")
+                        let entity = DBMovie(context: context)
+                        entity.id = Int32(movie.id)
+                        entity.title = movie.title
+                        entity.posterId = movie.poster.absoluteString
+                        entity.imdbRating = movie.imdbRating
+                        entity.tomatoesRating = movie.rottenTomatoesRating
+                    }
+                    
+                    print("saving")
+                    try? context.save()
+                    print("saved")
+                }
+            })
+            .disposed(by: disposeBag)
+        
+    
+        
+        
         
         locationManager.rx.location
             .take(1)

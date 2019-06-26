@@ -28,6 +28,7 @@ class AppCoordinator: FlowCoordinator {
         userStateDisposable = userRepository.user.distinctUntilChanged { $0?.name == $1?.name }
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] user in
+                print("User arrived")
                 let coordinator = user == nil ? LoginCoordinator() : DashboardCoordinator()
                 self?.addChild(coordinator)
             
