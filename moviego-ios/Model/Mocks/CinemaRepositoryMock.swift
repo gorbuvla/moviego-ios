@@ -12,7 +12,7 @@ import Foundation
 class MockedCinemaRepository: CinemaRepositoring {
     
     private let rhapsody = Movie(
-        id: 0,
+        id: 1,
         title: "Bohemian Rhapsody",
         year: "2018",
         imdbRating: 8.3,
@@ -40,7 +40,7 @@ class MockedCinemaRepository: CinemaRepositoring {
     )
     
     private let spiderMan = Movie(
-        id: 0,
+        id: 4,
         title: "Spider-Man: Far from Home",
         year: "2019",
         imdbRating: 8.0,
@@ -54,7 +54,7 @@ class MockedCinemaRepository: CinemaRepositoring {
     )
     
     private let casinoRoyale = Movie(
-        id: 0,
+        id: 3,
         title: "Casino Royale",
         year: "2006",
         imdbRating: 8.0,
@@ -101,7 +101,7 @@ class MockedCinemaRepository: CinemaRepositoring {
         website: URL(string: "https://cinemacity.cz/")!,
         types: "Standard, 3D, 4DX, IMAX".split(separator: ",").map { "\($0)".trimmed() },
         topMovies: [Movie(
-            id: 0,
+            id: 1,
             title: "Bohemian Rhapsody",
             year: "2018",
             imdbRating: 8.3,
@@ -113,7 +113,7 @@ class MockedCinemaRepository: CinemaRepositoring {
             release: "02 Nov 2018",
             trailer: "https://www.youtube.com/watch?v=mP0VHJYFOAU"
             ), Movie(
-                id: 0,
+                id: 3,
                 title: "Casino Royale",
                 year: "2006",
                 imdbRating: 8.0,
@@ -138,7 +138,7 @@ class MockedCinemaRepository: CinemaRepositoring {
         website: URL(string: "https://cinemacity.cz/")!,
         types: "Standard, 3D, 4DX, IMAX".split(separator: ",").map { "\($0)".trimmed() },
         topMovies: [Movie(
-            id: 0,
+            id: 1,
             title: "Bohemian Rhapsody",
             year: "2018",
             imdbRating: 8.3,
@@ -162,7 +162,7 @@ class MockedCinemaRepository: CinemaRepositoring {
                 release: "28 Jul 2017",
                 trailer: "https://www.youtube.com/watch?v=yIUube1pSC0"
             ),  Movie(
-                id: 0,
+                id: 4,
                 title: "Spider-Man: Far from Home",
                 year: "2019",
                 imdbRating: 8.0,
@@ -183,6 +183,18 @@ class MockedCinemaRepository: CinemaRepositoring {
     
     func fetchCinema(for movie: Movie) -> Single<[Cinema]> {
         return Single.just([csAndel, ccAndel, ccChodov]).delay(.seconds(1), scheduler: MainScheduler.instance)
+    }
+    
+    func fetchMovie(id: Int) -> Single<Movie> {
+        let movie: Movie = {
+            switch id {
+            case 0: return atomicBlonde
+            case 1: return rhapsody
+            case 2: return casinoRoyale
+            default: return spiderMan
+            }
+        }()
+        return Single.just(movie).delay(.seconds(1), scheduler: MainScheduler.instance)
     }
     
     func fetchMovies(offset: Int, limit: Int) -> Single<[Movie]> {

@@ -18,6 +18,12 @@ class MovieApiService  {
         self.interactor = interactor
     }
     
+    func fetchMovie(_ id: Int) -> Single<Movie> {
+        return interactor.request("/api/movies", method: .get, parameters: ["id": id], encoding: JSONEncoding.default, headers: nil)
+            .mapObject(to: Movie.self)
+            .asSingle()
+    }
+    
     func fetchMovies(for cinemaId: Int? = nil, offset: Int = 0, limit: Int = 0) -> Single<[Movie]> {
         let params = [
             "cinemaId": cinemaId,

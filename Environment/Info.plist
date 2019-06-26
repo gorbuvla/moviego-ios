@@ -19,7 +19,18 @@
 	<key>CFBundleShortVersionString</key>
 	<string>$(APP_VERSION)</string>
 	<key>CFBundleURLTypes</key>
-	<array/>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>CFBundleURLName</key>
+			<string>me.gorbuvla.moviego</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>moviego</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>

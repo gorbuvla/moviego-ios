@@ -28,8 +28,6 @@ class SessionDetailViewController: BaseViewController<BaseListView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = viewModel.movie.title
-        
         self.navigationController?.navigationBar.isTranslucent = true
         
         layout.tableView.backgroundColor = .bkgLight
@@ -46,7 +44,6 @@ class SessionDetailViewController: BaseViewController<BaseListView> {
         
         let header = FlexibleSessionHeader(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: kHeaderHeight))
         header.delegate = self
-        header.movie = viewModel.movie
         view.addSubview(header)
         flexibleHeader = header
         view.bringSubviewToFront(layout.loadingView)
@@ -59,7 +56,7 @@ class SessionDetailViewController: BaseViewController<BaseListView> {
     }
     
     private func bindUpdates() {
-        Observable.merge(viewModel.cinemas.loading, viewModel.sessions.loading)
+        Observable.merge(viewModel.cinemas.loading, viewModel.sessions.loading, viewModel.movie.loading)
             .map { !$0 }
             .observeOn(MainScheduler.instance)
             .bind(to: layout.loadingView.rx.isHidden)
@@ -72,7 +69,14 @@ class SessionDetailViewController: BaseViewController<BaseListView> {
             })
             .disposed(by: disposeBag)
         
-        viewModel.sessions.error
+        viewModel.movie.data
+            .observeOn(MainScheduler.instance)
+            .bind { [weak self] movie in
+                self?.flexibleHeader.movie = movie
+            }
+            .disposed(by: disposeBag)
+        
+        Observable.merge(viewModel.sessions.error, viewModel.movie.error)
             .observeOn(MainScheduler.instance)
             .bind  { [weak self] error in
                 self?.handleError(error: error)
@@ -152,9 +156,16 @@ extension SessionDetailViewController: UITableViewDataSource, UITableViewDelegat
 //
 extension SessionDetailViewController: FlexibleSessionHeaderDelegate {
     func didTapInviteFriends() {
-        let share = L10n.Session.shareMessage(viewModel.movie.title)
-        let controller = UIActivityViewController(activityItems: [share], applicationActivities: nil)
-        controller.excludedActivityTypes = [.postToWeibo, .postToTencentWeibo, .postToFacebook, .airDrop] // exclude all undesired activity types eligible for string sharing
-        present(controller, animated: true, completion: nil)
+        viewModel.movie.first()
+            .observeOn(MainScheduler.instance)
+            .subscribe(onSuccess: { [weak self] state in
+                guard let movie = state?.value, let `self` = self else { return }
+                
+                let share = L10n.Session.shareMessage(movie.title) + " moviego://movie?id=\(movie.id)"
+                let controller = UIActivityViewController(activityItems: [share], applicationActivities: nil)
+                controller.excludedActivityTypes = [.postToWeibo, .postToTencentWeibo, .postToFacebook, .airDrop] // exclude all undesired activity types eligible for string sharing
+                self.present(controller, animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
     }
 }

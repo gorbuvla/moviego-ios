@@ -13,6 +13,7 @@ protocol CinemaRepositoring {
     func fetchCinemas(lat: Float?, lng: Float?, radius: Double?) -> Single<[Cinema]>
     func fetchCinema(for movie: Movie) -> Single<[Cinema]>
     
+    func fetchMovie(id: Int) -> Single<Movie>
     func fetchMovies(offset: Int, limit: Int) -> Single<[Movie]>
     func fetchMovies(for cinema: Cinema, offset: Int, limit: Int) -> Single<[Movie]>
     
@@ -46,6 +47,10 @@ class CinemaRepository: CinemaRepositoring {
     
     func fetchCinema(for movie: Movie) -> Single<[Cinema]> {
         return cinemaApi.fetchMovies(movieId: movie.id)
+    }
+    
+    func fetchMovie(id: Int) -> Single<Movie> {
+        return movieApi.fetchMovie(id)
     }
     
     func fetchMovies(offset: Int, limit: Int) -> Single<[Movie]> {

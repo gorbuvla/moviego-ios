@@ -47,6 +47,11 @@ final class ViewModelDependency {
     var sessionDetailViewModelFactory: (Movie, Cinema?) -> SessionDetailViewModel {
         return { movie, cinema in SessionDetailViewModel(movie: movie, cinema: cinema, cinemaRepository: self.dependencies.cinemaRepository) }
     }
+    
+    // :-(
+    var loadingSessionDetailViewModelFactory: (Int) -> SessionDetailViewModel {
+        return { movieId in SessionDetailViewModel(movieId: movieId, cinemaRepository: self.dependencies.cinemaRepository) }
+    }
 }
 
 let factories = ViewModelDependency(modelDependency: MockedModelDependency.shared)
