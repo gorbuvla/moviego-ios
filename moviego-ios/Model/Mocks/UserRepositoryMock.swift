@@ -41,7 +41,6 @@ class MockedUserRepository: UserRepositoring {
         }
         
         return singleSource.do(onSuccess: { [weak self] userWithCredentials in
-            print("all ok, \(self == nil)")
             self?.credentialsStore.user = userWithCredentials.user
             self?.credentialsStore.credentials = userWithCredentials.credentials
             self?.userVariable.accept(userWithCredentials.user)

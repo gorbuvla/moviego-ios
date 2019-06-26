@@ -46,7 +46,7 @@ class DashboardCoordinator: FlowCoordinator {
     }
 }
 
-extension DashboardCoordinator: DashboardNavigatioNDelegate {
+extension DashboardCoordinator: DashboardNavigationDelegate {
     
     func didSelectMovie(movie: Movie) {
         navigationController?.pushViewController(SessionDetailViewController(viewModel: factories.sessionDetailViewModelFactory(movie, nil)), animated: true)

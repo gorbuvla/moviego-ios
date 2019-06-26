@@ -33,14 +33,14 @@ extension UserDefaults: CredentialsStore, CredentialsProvider {
     var credentials: Credentials? {
         get { return decode(key: Keys.credentials)}
         set {
-            encode(value: credentials, key: Keys.credentials)
-            encode(value: Date.currentTimeMillis + (credentials?.expiresIn ?? 0), key: Keys.tokenExpiration)
+            encode(value: newValue, key: Keys.credentials)
+            encode(value: Date.currentTimeMillis + (newValue?.expiresIn ?? 0), key: Keys.tokenExpiration)
         }
     }
     
     var user: User? {
         get { return decode(key: Keys.user)}
-        set { encode(value: user, key: Keys.user) }
+        set { encode(value: newValue, key: Keys.user) }
     }
     
     var isTokenExpired: Bool {
