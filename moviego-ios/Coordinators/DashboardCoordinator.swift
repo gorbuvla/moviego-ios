@@ -14,6 +14,12 @@ import ACKategories
 //
 class DashboardCoordinator: FlowCoordinator {
     
+    private let movieId: Int?
+    
+    init(movieId: Int? = nil) {
+        self.movieId = movieId
+    }
+    
     override func start() -> UIViewController {
         let navController = BaseNavigationController()
         self.navigationController = navController
@@ -22,9 +28,25 @@ class DashboardCoordinator: FlowCoordinator {
         navController.pushViewController(vc, animated: true)
         return navController
     }
+    
+    func start(with movieId: Int) -> UIViewController {
+        let navController = BaseNavigationController()
+        self.navigationController = navController
+        
+        let dashboard = DashboardViewController(viewModel: factories.dashboardViewModelFactory())
+        dashboard.navigationDelegate = self
+        
+        let session = SessionDetailViewController(viewModel: factories.loadingSessionDetailViewModelFactory(movieId))
+        
+        navController.viewControllers = [
+            dashboard, session
+        ]
+        
+        return navController
+    }
 }
 
-extension DashboardCoordinator: DashboardNavigatioNDelegate {
+extension DashboardCoordinator: DashboardNavigationDelegate {
     
     func didSelectMovie(movie: Movie) {
         navigationController?.pushViewController(SessionDetailViewController(viewModel: factories.sessionDetailViewModelFactory(movie, nil)), animated: true)

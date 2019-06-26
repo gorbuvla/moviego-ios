@@ -6,7 +6,6 @@ PODS:
   - Smartling.i18n (1.0.14)
   - SwiftGen (6.1.0)
   - SwiftLint (0.30.1)
-  - youtube-ios-player-helper (0.1.6)
 
 DEPENDENCIES:
   - ACKLocalization (~> 0.3)
@@ -14,7 +13,6 @@ DEPENDENCIES:
   - Smartling.i18n (~> 1.0)
   - SwiftGen (~> 6.0)
   - SwiftLint (~> 0.27)
-  - youtube-ios-player-helper (~> 0.1.4)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -24,7 +22,6 @@ SPEC REPOS:
     - Smartling.i18n
     - SwiftGen
     - SwiftLint
-    - youtube-ios-player-helper
 
 SPEC CHECKSUMS:
   ACKLocalization: a9a8c719b2972e2ccdf79177be7965f6a009bded
@@ -33,8 +30,7 @@ SPEC CHECKSUMS:
   Smartling.i18n: 0d508b89a2a12f0e070e6369e4dcdcf46ae2d59f
   SwiftGen: f872ca75cbd17bf7103c17f13dcfa0d9a15667b0
   SwiftLint: a54bf1fe12b55c68560eb2a7689dfc81458508f7
-  youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: 555377feab64d28676600d93076a707eae0b2d2b
+PODFILE CHECKSUM: fd54201461aeed60f33693f4abd5a7868c3ad88e
 
 COCOAPODS: 1.6.1

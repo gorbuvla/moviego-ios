@@ -9,12 +9,7 @@
 import RxSwift
 import Alamofire
 
-protocol CinemaApiServicing {
-    
-    func fetchByDistance(lat: Float?, lng: Float?, radius: Double?) -> Single<[Cinema]>
-}
-
-class CinemaApiService: CinemaApiServicing  {
+class CinemaApiService  {
     
     private let interactor: ApiInteracting
     
@@ -22,14 +17,15 @@ class CinemaApiService: CinemaApiServicing  {
         self.interactor = interactor
     }
     
-    func fetchByDistance(lat: Float?, lng: Float?, radius: Double?) -> Single<[Cinema]> {
+    func fetchMovies(movieId: Int? = nil, lat: Float? = nil, lng: Float? = nil, radius: Double? = nil) -> Single<[Cinema]> {
         let params: [String: Any?] = [
+            "movieId": movieId,
             "lat": lat,
             "lng": lng,
             "radius": radius
         ]
         
-        return interactor.request("/cinemas", method: .get, parameters: params.nilsRemoved, encoding: JSONEncoding.default, headers: nil)
+        return interactor.request("/api/cinemas", method: .get, parameters: params.nilsRemoved, encoding: JSONEncoding.default, headers: nil)
             .mapObject(to: [Cinema].self)
             .asSingle()
     }

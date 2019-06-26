@@ -37,7 +37,9 @@ class AuthApiInteractor: ApiInteracting {
     private let credentialsCallFactory: CredentialsCallFactory
     
     private var authHeader: Single<HTTPHeaders> {
-        guard let credentials = credentialsStore.credentials else { return Single.just([:]) }
+        guard let credentials = credentialsStore.credentials else {
+            print("Else guard")
+            return Single.just([:]) }
         
         let source: Single<Credentials> = credentialsStore.isTokenExpired ? credentialsCallFactory(credentials).do(onSuccess: { [weak self] it in self?.credentialsStore.credentials = it }) : Single.just(credentialsStore.credentials!)
         return source.map { ["Authorization": "Bearer " + $0.accessToken] }
@@ -52,12 +54,12 @@ class AuthApiInteractor: ApiInteracting {
     func request(_ url: RequestURL, method: HTTPMethod, parameters: [String : Any]?, encoding: ParameterEncoding, headers: HTTPHeaders? = [:]) -> Observable<(HTTPURLResponse, Data)> {
         // todo: on 401 repeat once
         return authHeader
-                .map { $0 + headers! }.asObservable() // no .flatMapObservable() :-(
+            .map { $0 }.asObservable() // no .flatMapObservable() :-(
                 .flatMap { [unowned network] in network.request(url, method: method, parameters: parameters, encoding: encoding, headers: $0) }
     }
 }
 
-extension ObservableType where E == (HTTPURLResponse, Data) {
+extension ObservableType where Element == (HTTPURLResponse, Data) {
     public func mapObject<T: Codable>(to type: T.Type) -> Observable<T> {
         return map { (response, data) -> T in
             if response.statusCode == 200 {

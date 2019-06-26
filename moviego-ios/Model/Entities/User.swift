@@ -15,7 +15,7 @@ struct UserWithCredentials: Codable {
     let credentials: Credentials
     
     var user: User {
-        get { return User(id: id, name: name, email: email, avatarId: avatarId, city: city) }
+        get { return User(id: id, name: name, email: email, avatarId: avatarId, preferredCityId: city.id) }
     }
 }
 
@@ -24,7 +24,7 @@ struct User: Codable {
     let name: String
     let email: String
     let avatarId: String?
-    let city: City
+    let preferredCityId: Int
 }
 
 struct ServiceUser: Codable {

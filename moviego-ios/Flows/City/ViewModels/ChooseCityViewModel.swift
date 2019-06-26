@@ -10,7 +10,7 @@ import RxSwift
 
 class ChooseCityViewModel: BaseViewModel {
     
-    private let cityApi: CityApiServicing
+    private let cityRepository: CityRepositoring
     private let viewStateSubject = BehaviorSubject(value: State<[City]>.loading)
     private let continuationSubject = PublishSubject<State<City>>()
     
@@ -26,13 +26,14 @@ class ChooseCityViewModel: BaseViewModel {
         get { return viewStateSubject.value.value ?? [] }
     }
     
-    init(cityApi: CityApiServicing) {
-        self.cityApi = cityApi
+    init(cityRepository: CityRepositoring) {
+        self.cityRepository = cityRepository
         super.init()
         fetchCities()
     }
     
     func selectCity(_ city: City) {
+        // TODO: let's say other cities are not supported...
         if city.name != "Prague" {
             continuationSubject.onNext(.error(UnsupportedCityError(message: L10n.Registration.ChooseCity.Unsupported.message(city.name))))
             return
@@ -53,7 +54,7 @@ class ChooseCityViewModel: BaseViewModel {
     }
     
     private func fetchCities() {
-        cityApi.fetchCities()
+        cityRepository.fetchCities()
             .asObservable()
             .mapState()
             .bind(to: viewStateSubject)

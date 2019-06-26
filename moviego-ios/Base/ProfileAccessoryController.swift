@@ -12,6 +12,10 @@ import RxCocoa
 import RxSwift
 import AlamofireImage
 
+//
+// TODO: unfinished
+// Extension for UIViewControllers that have Profile accessory button as UINavigationItem
+//
 protocol ProfileAccessoryController {}
 
 extension ProfileAccessoryController {

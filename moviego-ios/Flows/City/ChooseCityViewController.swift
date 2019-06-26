@@ -44,35 +44,34 @@ class ChooseCityViewController: BaseViewController<BaseListView>, UITableViewDat
         layout.tableView.rowHeight = UITableView.automaticDimension
         layout.tableView.estimatedRowHeight = 120
         
-        viewModel.viewState.loading.map { !$0 }
-            .observeOn(MainScheduler.instance)
-            .bind(to: layout.loadingView.rx.isHidden)
-            .disposed(by: disposeBag)
-        
-        viewModel.continuation.loading.map { !$0 }
+        Observable.merge(viewModel.viewState.loading, viewModel.continuation.loading).map { !$0 }
             .observeOn(MainScheduler.instance)
             .bind(to: layout.loadingView.rx.isHidden)
             .disposed(by: disposeBag)
         
         viewModel.viewState.data
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { data in
-                self.layout.tableView.reloadData() })
+            .subscribe { _ in
+                self.layout.tableView.reloadData()
+            }
             .disposed(by: disposeBag)
         
         viewModel.continuation.data
             .observeOn(MainScheduler.instance)
-            .bind(onNext: { [weak navigationDelegate] d in
-                navigationDelegate?.onCityPicked() })
+            .bind { [weak navigationDelegate] d in
+                navigationDelegate?.onCityPicked()
+            }
             .disposed(by: disposeBag)
         
         viewModel.continuation.error
             .observeOn(MainScheduler.instance)
-            .bind(onNext: { [weak self] error in
+            .bind { [weak self] error in
                 if let error = error as? UnsupportedCityError {
                     self?.handleUnsupportedError(error: error)
+                } else {
+                    self?.handleError(error: error)
                 }
-            })
+            }
             .disposed(by: disposeBag)
     }
     

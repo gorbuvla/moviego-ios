@@ -9,6 +9,9 @@
 import UIKit
 import SnapKit
 
+//
+// View containing UITableView, UIRefreshControl and a loading indicator.
+//
 class BaseListView: BaseView {
     
     weak var tableView: UITableView!

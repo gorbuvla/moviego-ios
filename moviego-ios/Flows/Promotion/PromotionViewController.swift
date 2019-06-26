@@ -8,6 +8,9 @@
 
 import UIKit
 
+//
+// TODO: unfinished promo detail
+//
 class PromotionViewController: UIViewController {
     
     private let promotion: Promotion

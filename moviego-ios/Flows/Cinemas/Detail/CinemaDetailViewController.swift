@@ -45,7 +45,7 @@ final class CinemaDetailViewController: BaseViewController<BaseListView> {
         layout.tableView.estimatedSectionHeaderHeight = 0
         layout.tableView.refreshControl = nil
         layout.tableView.register(MovieCell.self, forCellReuseIdentifier: MovieCell.ReuseIdentifiers.defaultId)
-        
+        layout.tableView.backgroundColor = .bkgLight
         layout.tableView.contentInset = UIEdgeInsets(top: kHeaderHeight, left: 0, bottom: 0, right: 0)
         
         let spinner = UIActivityIndicatorView(style: .gray)
@@ -78,6 +78,13 @@ final class CinemaDetailViewController: BaseViewController<BaseListView> {
             .map { !$0 }
             .observeOn(MainScheduler.instance)
             .bind(to: layout.loadingView.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        viewModel.viewState.error
+            .observeOn(MainScheduler.instance)
+            .bind { [weak self] error in
+                self?.handleError(error: error)
+            }
             .disposed(by: disposeBag)
     }
 }
@@ -142,7 +149,7 @@ extension CinemaDetailViewController: FlexibleCinemaHeaderDelegate {
     }
     
     func didTapWeb() {
-        let vc = SFSafariViewController(url: URL(string: viewModel.cinema.website!)!) // TOOD: rolling eyes
+        let vc = SFSafariViewController(url: viewModel.cinema.website)
         present(vc, animated: true)
     }
 }

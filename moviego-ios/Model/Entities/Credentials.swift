@@ -23,5 +23,14 @@ struct RegisterCredentials: Codable {
     let surname: String
     let email: String
     let password: String
-    let city: City
+    let preferredCityId: Int
+}
+
+extension Encodable {
+    subscript(key: String) -> Any? {
+        return dictionary[key]
+    }
+    var dictionary: [String: Any] {
+        return (try? JSONSerialization.jsonObject(with: JSONEncoder().encode(self))) as? [String: Any] ?? [:]
+    }
 }

@@ -83,6 +83,12 @@ class CinemaMapViewController: BaseViewController<CinemaMapView> {
             })
             .disposed(by: disposeBag)
         
+        viewModel.cinemasState.error
+            .observeOn(MainScheduler.instance)
+            .bind { [weak self] error in
+                self?.handleError(error: error)
+            }
+            .disposed(by: disposeBag)
     }
     
     private func showBottomSheet() {

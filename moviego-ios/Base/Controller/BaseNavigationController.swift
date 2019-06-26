@@ -8,6 +8,9 @@
 
 import UIKit
 
+//
+// Base UINavigationController that applies styles to UINavigationBar
+//
 class BaseNavigationController: UINavigationController {
     
     init() {

@@ -13,14 +13,13 @@ import Foundation
 class SessionDetailViewModel: BaseViewModel {
     
     private let cinemaRepository: CinemaRepositoring
+    
     private let cinemaRelay: BehaviorRelay<Cinema?>
     private let dateRelay: BehaviorRelay<Date>
     
+    private let movieRelay: BehaviorRelay<State<Movie>>
     private let sessionsRelay: BehaviorRelay<State<[SessionType:[Session]]>>
     private let cinemasRelay: BehaviorRelay<State<[Cinema]>>
-    
-    let movie: Movie
-    let cinema: Cinema?
     
     var selectedCinema: Observable<Cinema?> {
         get { return cinemaRelay.asObservable() }
@@ -38,22 +37,38 @@ class SessionDetailViewModel: BaseViewModel {
         get { return sessionsRelay.asObservable() }
     }
     
+    var movie: StateObservable<Movie> {
+        get { return movieRelay.asObservable() }
+    }
+    
     var sessionList: [SessionType:[Session]] {
         get { return sessionsRelay.value.value ?? [:] }
     }
     
-    init(movie: Movie, cinema: Cinema? = nil, cinemaRepository: CinemaRepositoring) {
-        self.movie = movie
-        self.cinema = cinema
+    init(movieId: Int, cinemaRepository: CinemaRepositoring) {
         self.cinemaRepository = cinemaRepository
-        self.cinemaRelay = BehaviorRelay(value: cinema)
+        self.cinemaRelay = BehaviorRelay(value: nil)
         self.dateRelay = BehaviorRelay(value: Date())
         
+        self.movieRelay = BehaviorRelay(value: .loading)
         self.cinemasRelay = BehaviorRelay(value: .loading)
         self.sessionsRelay = BehaviorRelay(value: .loading)
         super.init()
         
-        bindUpdates()
+        bindUpdates(movieId)
+    }
+    
+    init(movie: Movie, cinema: Cinema? = nil, cinemaRepository: CinemaRepositoring) {
+        self.cinemaRepository = cinemaRepository
+        self.cinemaRelay = BehaviorRelay(value: cinema)
+        self.dateRelay = BehaviorRelay(value: Date())
+        
+        self.movieRelay = BehaviorRelay(value: .value(movie))
+        self.cinemasRelay = BehaviorRelay(value: .loading)
+        self.sessionsRelay = BehaviorRelay(value: .loading)
+        super.init()
+        
+        bindUpdates(movie)
     }
     
     func select(_ cinema: Cinema) {
@@ -64,7 +79,18 @@ class SessionDetailViewModel: BaseViewModel {
         dateRelay.accept(date)
     }
     
-    private func bindUpdates() {
+    private func bindUpdates(_ movieId: Int) {
+        cinemaRepository.fetchMovie(id: movieId)
+            .asObservable()
+            .do(onNext: { [weak self] movie in self?.bindUpdates(movie) })
+            .mapState()
+            .bind(to: movieRelay)
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindUpdates(_ movie: Movie) {
+        movieRelay.accept(.value(movie))
+        
         cinemaRepository.fetchCinema(for: movie)
             .asObservable()
             .mapState()
@@ -73,7 +99,7 @@ class SessionDetailViewModel: BaseViewModel {
         
         Observable.combineLatest(cinemaRelay.asObservable().compactMap { $0 }, dateRelay.asObservable()) { ($0, $1) }
             .flatMap { params in
-                self.cinemaRepository.fetchSessions(for: self.movie, in: params.0, startingAt: params.1)
+                self.cinemaRepository.fetchSessions(for: movie, in: params.0, startingAt: params.1)
                     .map { sessions in Dictionary(grouping: sessions, by: { $0.type })
                 }
             }

@@ -15,7 +15,7 @@ struct Cinema: Codable {
     let lat: Double
     let lng: Double
     let thumnailId: String?
-    let website: String?
+    let website: URL
     let types: [String]
     let topMovies: [Movie]
 }

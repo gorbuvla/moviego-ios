@@ -9,6 +9,9 @@
 import UIKit
 import MapKit
 
+//
+// Wrapper to limit extension scope.
+//
 class ViewDslMaker {
     
     let parent: UIView

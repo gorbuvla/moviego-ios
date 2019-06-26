@@ -8,21 +8,11 @@
 
 import Foundation
 
-protocol HasViewModelFactories {
-}
-
-protocol RegistrationViewModelFactories {
-    var userRegistrationViewModelFactory: (RegistrationRepository) -> RegisterUserViewModel { get }
-    var registerCityViewModelFactory: (RegistrationRepository) -> RegisterCityViewModel { get }
-}
-
-typealias ViewModelFactory = HasViewModelFactories & RegistrationViewModelFactories
-
-final class ViewModelDependency: ViewModelFactory {
+final class ViewModelDependency {
     
-    private let dependencies: ModelDependency
+    private let dependencies: ModelProvider
     
-    init(modelDependency: ModelDependency) {
+    init(modelDependency: ModelProvider) {
         self.dependencies = modelDependency
     }
     
@@ -38,7 +28,7 @@ final class ViewModelDependency: ViewModelFactory {
     
     var registerCityViewModelFactory: (RegistrationRepository) -> RegisterCityViewModel {
         return { registrationRepository in
-            RegisterCityViewModel(cityApi: self.dependencies.cityApi, repository: registrationRepository)
+            RegisterCityViewModel(cityRepository: self.dependencies.cityRepository, registrationRepository: registrationRepository)
         }
     }
 
@@ -57,6 +47,11 @@ final class ViewModelDependency: ViewModelFactory {
     var sessionDetailViewModelFactory: (Movie, Cinema?) -> SessionDetailViewModel {
         return { movie, cinema in SessionDetailViewModel(movie: movie, cinema: cinema, cinemaRepository: self.dependencies.cinemaRepository) }
     }
+    
+    // :-(
+    var loadingSessionDetailViewModelFactory: (Int) -> SessionDetailViewModel {
+        return { movieId in SessionDetailViewModel(movieId: movieId, cinemaRepository: self.dependencies.cinemaRepository) }
+    }
 }
 
-let factories = ViewModelDependency(modelDependency: ModelDependency.shared)
+let factories = ViewModelDependency(modelDependency: MockedModelDependency.shared)

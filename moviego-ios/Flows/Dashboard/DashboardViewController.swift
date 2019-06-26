@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol DashboardNavigatioNDelegate: class {
+protocol DashboardNavigationDelegate: class {
     func didSelectMovie(movie: Movie)
     func didSelectSession(session: Session)
     func presentCinemaMap(from viewController: UIViewController)
@@ -22,7 +22,7 @@ class DashboardViewController: BaseViewController<BaseListView>, UITableViewData
     
     private let viewModel: DashboardViewModel
     
-    weak var navigationDelegate: DashboardNavigatioNDelegate?
+    var navigationDelegate: DashboardNavigationDelegate?
     
     init(viewModel: DashboardViewModel) {
         self.viewModel = viewModel
@@ -83,7 +83,12 @@ class DashboardViewController: BaseViewController<BaseListView>, UITableViewData
             .bind(to: layout.loadingView.rx.isHidden)
             .disposed(by: disposeBag)
         
-        // TODO: handle errors & empty
+        Observable.merge(viewModel.movieState.error, viewModel.sessionState.error)
+            .observeOn(MainScheduler.instance)
+            .bind { [weak self] error in
+                self?.handleError(error: error)
+            }
+            .disposed(by: disposeBag)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -126,6 +131,7 @@ class DashboardViewController: BaseViewController<BaseListView>, UITableViewData
     }
     
     private func didSelectSession(session: Session) {
+        print("navDelegate \(navigationDelegate == nil)")
         navigationDelegate?.didSelectSession(session: session)
     }
     

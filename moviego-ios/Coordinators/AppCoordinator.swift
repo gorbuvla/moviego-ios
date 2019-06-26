@@ -40,4 +40,15 @@ class AppCoordinator: FlowCoordinator {
     override func stop(animated: Bool = false) {
         userStateDisposable?.dispose()
     }
+    
+    func handleDeeplink(with movieId: Int, window: UIWindow) {
+        
+        if userRepository.currentUser != nil {
+            // sry, the easiest way
+            let coordinator = DashboardCoordinator()
+            let root = coordinator.start(with: movieId)
+            rootViewController = root
+            window.rootViewController = root
+        }
+    }
 }

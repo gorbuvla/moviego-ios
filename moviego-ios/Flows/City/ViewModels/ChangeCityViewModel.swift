@@ -8,17 +8,18 @@
 
 import RxSwift
 
+// TODO: unfinished viewModel for changing user preferred city.
 class ChangeCityViewModel: ChooseCityViewModel {
     
-    private let repository: UserRepositoring
+    private let userRepository: UserRepositoring
     
-    init(cityApi: CityApiServicing, repository: UserRepositoring) {
-        self.repository = repository
-        super.init(cityApi: cityApi)
+    init(cityRepository: CityRepository, userRepository: UserRepositoring) {
+        self.userRepository = userRepository
+        super.init(cityRepository: cityRepository)
     }
     
     override func saveSelection(_ city: City) -> Single<City> {
-        return repository.changeCity(to: city)
+        return userRepository.changeCity(to: city)
             .asObservable()
             .asSingle() // double jackie chan meme
             .map { _ in city }

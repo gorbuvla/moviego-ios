@@ -7,11 +7,12 @@
 //
 
 import RxSwift
+import RxRelay
 
 class LoginViewModel: BaseViewModel {
     
     private let repository: UserRepositoring
-    private let viewStateSubject = PublishSubject<State<()>>()
+    private let viewStateSubject = PublishRelay<State<()>>()
     
     var viewState: StateObservable<()> {
         get { return viewStateSubject.asObservable() }
@@ -25,7 +26,7 @@ class LoginViewModel: BaseViewModel {
         do {
             try validateFields(credential: emailOrUsername, password: password)
         } catch {
-            viewStateSubject.onNext(.error(error))
+            viewStateSubject.accept(.error(error))
             return
         }
 
